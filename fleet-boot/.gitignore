@@ -2,3 +2,4 @@
 /.idea/
 *.iml
 rebel.xml
+*/.DS_Store
