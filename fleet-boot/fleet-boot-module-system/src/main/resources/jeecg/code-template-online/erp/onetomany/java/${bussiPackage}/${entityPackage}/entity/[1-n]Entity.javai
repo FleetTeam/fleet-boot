@@ -6,7 +6,7 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import org.jeecg.common.aspect.annotation.Dict;
+import Dict;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,7 +18,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * @Description: ${subTab.ftlDescription}
- * @Author: jeecg-boot
+ * @Author: fleet-team
  * @Date:   ${.now?string["yyyy-MM-dd"]}
  * @Version: V1.0
  */

@@ -1,4 +1,4 @@
-Fleet-Boot 开发平台
+Fleet 开发平台
 ===============
 
 当前最新版本： 1.0.0（发布日期：20210422）
@@ -58,16 +58,16 @@ QueryWrapper<?> queryWrapper = QueryGenerator.initQueryWrapper(?, req.getParamet
 ```
 
 	@GetMapping(value = "/list")
-	public Result<IPage<JeecgDemo>> list(JeecgDemo jeecgDemo, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, 
+	public Result<IPage<JeecgDemo>> list(JeecgDemo fleetDemo, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, 
 	                                     @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
 			HttpServletRequest req) {
 		Result<IPage<JeecgDemo>> result = new Result<IPage<JeecgDemo>>();
 		
 		//调用QueryGenerator的initQueryWrapper
-		QueryWrapper<JeecgDemo> queryWrapper = QueryGenerator.initQueryWrapper(jeecgDemo, req.getParameterMap());
+		QueryWrapper<JeecgDemo> queryWrapper = QueryGenerator.initQueryWrapper(fleetDemo, req.getParameterMap());
 		
 		Page<JeecgDemo> page = new Page<JeecgDemo>(pageNo, pageSize);
-		IPage<JeecgDemo> pageList = jeecgDemoService.page(page, queryWrapper);
+		IPage<JeecgDemo> pageList = fleetDemoService.page(page, queryWrapper);
 		result.setSuccess(true);
 		result.setResult(pageList);
 		return result;
@@ -93,7 +93,7 @@ QueryWrapper<?> queryWrapper = QueryGenerator.initQueryWrapper(?, req.getParamet
 
 > 功能说明：   一键生成的代码（包括：controller、service、dao、mapper、entity、vue）
  
- - 模板位置： src/main/resources/jeecg/code-template
+ - 模板位置： src/main/resources/fleet/code-template
  - 技术文档： 
 
 

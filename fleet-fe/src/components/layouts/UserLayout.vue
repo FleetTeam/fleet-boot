@@ -5,11 +5,11 @@
         <div class="header">
           <a href="/">
             <!-- <img src="~@/assets/logo.svg" class="logo" alt="logo"> -->
-            <span class="title">Fleet Boot</span>
+            <span class="title">Fleet</span>
           </a>
         </div>
         <div class="desc">
-          Fleet Boot 开发平台
+          Fleet开发平台
         </div>
       </div>
 

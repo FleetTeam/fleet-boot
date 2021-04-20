@@ -26,7 +26,7 @@ spring:
         max-request-size: 10MB
   mail:
     host: smtp.126.com
-    username: jlwrp@126.com
+    username: fleet_team@126.com
     password: ??
     properties:
       mail:
@@ -156,7 +156,7 @@ spring:
     port: 6379
 #mybatis plus 设置
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  mapper-locations: classpath*:org/fleet/modules/**/xml/*Mapper.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false
@@ -171,11 +171,12 @@ mybatis-plus:
     # 返回类型为Map,显示null对应的字段
     call-setters-on-nulls: true
 #minidao 设置
-minidao :
-  base-package: org.jeecg.modules.jmreport.*
-  db-type: mysql
-#jeecg专用配置
-jeecg :
+#minidao :
+  #base-package: org.fleet.modules.jmreport.*
+  #db-type: mysql
+
+#fleet专用配置
+fleet :
   # 本地：local\Minio：minio\阿里云：alioss
   uploadType: local
   path :
@@ -184,17 +185,17 @@ jeecg :
     #webapp文件路径
     webapp: D://opt//webapp
   shiro:
-    excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/category/**,/visual/**,/map/**,/jmreport/bigscreen2/**
+    excludeUrls: /test/fleetDemo/demo3,/test/fleetDemo/redisDemo/**,/category/**,/visual/**,/map/**,/jmreport/bigscreen2/**
   #阿里云oss存储配置
   oss:
     endpoint: oss-cn-beijing.aliyuncs.com
     accessKey: ??
     secretKey: ??
-    bucketName: jeecgos
+    bucketName: fleetos
     staticDomain: ??
   # ElasticSearch 6设置
   elasticsearch:
-    cluster-name: jeecg-ES
+    cluster-name: fleet-ES
     cluster-nodes: 127.0.0.1:9200
     check-enabled: false
   # 表单设计器配置
@@ -207,7 +208,7 @@ jeecg :
   file-view-domain: 127.0.0.1:8012
   # minio文件上传
   minio:
-    minio_url: http://minio.jeecg.com
+    minio_url: http://minio.fleet.com
     minio_name: ??
     minio_pass: ??
     bucketName: otatest
@@ -234,7 +235,7 @@ jeecg :
     address: 127.0.0.1:30007
     ip: 127.0.0.1
     port: 30007
-    logPath: logs/jeecg/job/jobhandler/
+    logPath: logs/fleet/job/jobhandler/
     logRetentionDays: 30
    #自定义路由配置 yml nacos database
   route:
@@ -254,7 +255,7 @@ cas:
 #Mybatis输出sql日志
 logging:
   level:
-    org.jeecg.modules.system.mapper : info
+    org.fleet.modules.system.mapper : info
 #swagger
 knife4j:
   production: false
@@ -269,20 +270,20 @@ justauth:
     GITHUB:
       client-id: ??
       client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/github/callback
+      redirect-uri: http://sso.test.com:8080/fleet-boot/sys/thirdLogin/github/callback
     WECHAT_ENTERPRISE:
       client-id: ??
       client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/wechat_enterprise/callback
+      redirect-uri: http://sso.test.com:8080/fleet-boot/sys/thirdLogin/wechat_enterprise/callback
       agent-id: 1000002
     DINGTALK:
       client-id: ??
       client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/dingtalk/callback
+      redirect-uri: http://sso.test.com:8080/fleet-boot/sys/thirdLogin/dingtalk/callback
     WECHAT_OPEN:
       client-id: ??
       client-secret: ??
-      redirect-uri: http://sso.test.com:8080/jeecg-boot/sys/thirdLogin/wechat_open/callback
+      redirect-uri: http://sso.test.com:8080/fleet-boot/sys/thirdLogin/wechat_open/callback
   cache:
     type: default
     prefix: 'demo::'

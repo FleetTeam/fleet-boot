@@ -1,12 +1,12 @@
 FROM nginx
-MAINTAINER jeecgos@163.com
+MAINTAINER jlwrp@126.com
 VOLUME /tmp
 ENV LANG en_US.UTF-8
 RUN echo "server {  \
                       listen       80; \
-                      location ^~ /jeecg-boot { \
-                      proxy_pass              http://jeecg-boot-system:8080/jeecg-boot/; \
-                      proxy_set_header        Host jeecg-boot-system; \
+                      location ^~ /fleet-boot { \
+                      proxy_pass              http://fleet-boot-system:8080/fleet-boot/; \
+                      proxy_set_header        Host fleet-boot-system; \
                       proxy_set_header        X-Real-IP \$remote_addr; \
                       proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for; \
                   } \

@@ -4,7 +4,7 @@ import feign.*;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.common.constant.CommonConstant;
+import org.fleet.common.constant.CommonConstant;
 import org.jeecg.starter.cloud.feign.IJeecgFeignService;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

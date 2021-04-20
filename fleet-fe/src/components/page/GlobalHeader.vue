@@ -17,8 +17,8 @@
         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
         @click="toggle"/>
 
-      <span v-if="device === 'desktop'">欢迎进入 Fleet-Boot 开发平台</span>
-      <span v-else>Fleet-Boot</span>
+      <span v-if="device === 'desktop'">欢迎进入 Fleet 开发平台</span>
+      <span v-else>Fleet</span>
 
       <user-menu :theme="theme"/>
     </div>

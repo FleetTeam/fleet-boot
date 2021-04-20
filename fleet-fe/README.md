@@ -1,14 +1,13 @@
-Ant Design Jeecg Vue
+fleet-fe
 ====
 
-当前最新版本： 2.4.3（发布日期：20210322）
-
+当前最新版本： 1.0.0
 Overview
 ----
 
 基于 [Ant Design of Vue](https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/) 实现的 Ant Design Pro  Vue 版
-Jeecg-boot 的前段UI框架，采用前后端分离方案，提供强大代码生成器的低代码平台。
-前端页面代码和后端功能代码一键生成，不需要写任何代码，保持jeecg一贯的强大！！
+Fleet-boot 的前段UI框架，采用前后端分离方案，提供强大代码生成器的低代码平台。
+前端页面代码和后端功能代码一键生成，不需要写任何代码，保持fleet一贯的强大！！
 
 
 
@@ -32,8 +31,8 @@ Jeecg-boot 的前段UI框架，采用前后端分离方案，提供强大代码�
 
 - 拉取项目代码
 ```bash
-git clone https://github.com/zhangdaiscott/jeecg-boot.git
-cd  jeecg-boot/ant-design-jeecg-vue
+git clone https://github.com/jlwrp/fleet-boot.git
+cd  fleet-boot/fleet-fe
 ```
 
 - 安装依赖

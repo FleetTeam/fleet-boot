@@ -1,6 +1,6 @@
 version: '2'
 services:
-  jeecg-boot-mysql:
+  fleet-boot-mysql:
     build:
       context: ../db
     environment:
@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_HOST: '%'
       TZ: Asia/Shanghai
     restart: always
-    container_name: jeecg-boot-mysql
+    container_name: fleet-boot-mysql
     command:
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_general_ci
@@ -19,64 +19,64 @@ services:
     ports:
       - 3306:3306
 
-  jeecg-boot-redis:
+  fleet-boot-redis:
     image: redis:5.0
     ports:
       - 6379:6379
     restart: always
-    container_name: jeecg-boot-redis
-    hostname: jeecg-boot-redis
+    container_name: fleet-boot-redis
+    hostname: fleet-boot-redis
 
-  jeecg-boot-nacos:
+  fleet-boot-nacos:
     restart: on-failure
     build:
-      context: ./jeecg-cloud-nacos
+      context: ./fleet-cloud-nacos
     ports:
       - 8848:8848
     depends_on:
-      - jeecg-boot-mysql
-    container_name: jeecg-boot-nacos
-    hostname: jeecg-boot-nacos
+      - fleet-boot-mysql
+    container_name: fleet-boot-nacos
+    hostname: fleet-boot-nacos
 
-  jeecg-boot-gateway:
+  fleet-boot-gateway:
     restart: on-failure
     build:
-      context: ./jeecg-cloud-gateway
+      context: ./fleet-cloud-gateway
     ports:
       - 9999:9999
     depends_on:
-      - jeecg-boot-nacos
-      - jeecg-boot-redis
-    container_name: jeecg-boot-gateway
-    hostname: jeecg-boot-gateway
+      - fleet-boot-nacos
+      - fleet-boot-redis
+    container_name: fleet-boot-gateway
+    hostname: fleet-boot-gateway
 
-  jeecg-boot-system:
+  fleet-boot-system:
     depends_on:
-      - jeecg-boot-mysql
-      - jeecg-boot-redis
-      - jeecg-boot-nacos
+      - fleet-boot-mysql
+      - fleet-boot-redis
+      - fleet-boot-nacos
     build:
-      context: ./jeecg-cloud-system-start
-    container_name: jeecg-boot-system
-    hostname: jeecg-boot-system
+      context: ./fleet-cloud-system-start
+    container_name: fleet-boot-system
+    hostname: fleet-boot-system
     restart: on-failure
     environment:
       - TZ=Asia/Shanghai
 
-#  jeecg-boot-xxljob:
+#  fleet-boot-xxljob:
 #    build:
-#      context: ./jeecg-cloud-xxljob
+#      context: ./fleet-cloud-xxljob
 #    ports:
 #      - 9080:9080
-#    container_name: jeecg-boot-xxljob
-#    hostname: jeecg-boot-xxljob
+#    container_name: fleet-boot-xxljob
+#    hostname: fleet-boot-xxljob
 
-#  jeecg-boot-rabbitmq:
+#  fleet-boot-rabbitmq:
 #    #    image: rabbitmq:3-management
 #    image: rabbitmq:3
 #    ports:
 #      - 5672:5672
 #    #      - 15672:15672
 #    restart: always
-#    container_name: jeecg-boot-rabbitmq
-#    hostname: jeecg-boot-rabbitmq
+#    container_name: fleet-boot-rabbitmq
+#    hostname: fleet-boot-rabbitmq

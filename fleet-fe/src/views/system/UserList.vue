@@ -219,7 +219,7 @@
           {
             title: '用户姓名',
             align: "center",
-            width: 100,
+            width: 120,
             dataIndex: 'realname',
           },
           {
@@ -240,25 +240,25 @@
           {
             title: '生日',
             align: "center",
-            width: 100,
+            width: 120,
             dataIndex: 'birthday'
           },
           {
             title: '手机号码',
             align: "center",
-            width: 100,
+            width: 150,
             dataIndex: 'phone'
           },
           {
             title: '部门',
             align: "center",
-            width: 180,
+            width: 160,
             dataIndex: 'orgCodeTxt'
           },
           {
             title: '负责部门',
             align: "center",
-            width: 180,
+            width: 160,
             dataIndex: 'departIds_dictText'
           },
           {

@@ -1,6 +1,6 @@
 version: '2'
 services:
-  jeecg-boot-mysql:
+  fleet-boot-mysql:
     build:
       context: ./db
     environment:
@@ -8,8 +8,8 @@ services:
       MYSQL_ROOT_HOST: '%'
       TZ: Asia/Shanghai
     restart: always
-    container_name: jeecg-boot-mysql
-    image: jeecg-boot-mysql
+    container_name: fleet-boot-mysql
+    image: fleet-boot-mysql
     command:
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_general_ci
@@ -20,23 +20,23 @@ services:
     ports:
       - 3306:3306
 
-  jeecg-boot-redis:
+  fleet-boot-redis:
     image: redis:5.0
     ports:
       - 6379:6379
     restart: always
-    hostname: jeecg-boot-redis
-    container_name: jeecg-boot-redis
+    hostname: fleet-boot-redis
+    container_name: fleet-boot-redis
 
-  jeecg-boot-system:
+  fleet-boot-system:
     build:
-      context: ./jeecg-boot-module-system
+      context: ./fleet-boot-module-system
     restart: on-failure
     depends_on:
-      - jeecg-boot-mysql
-      - jeecg-boot-redis
-    container_name: jeecg-boot-system
-    image: jeecg-boot-system
-    hostname: jeecg-boot-system
+      - fleet-boot-mysql
+      - fleet-boot-redis
+    container_name: fleet-boot-system
+    image: fleet-boot-system
+    hostname: fleet-boot-system
     ports:
       - 8080:8080

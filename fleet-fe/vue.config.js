@@ -83,7 +83,7 @@ module.exports = {
         ws: false,
         changeOrigin: true,
         pathRewrite: {
-          '/jeecg-boot': ''  //默认所有请求都加了fleet-boot前缀，需要去掉
+          '/fleet-boot': ''  //默认所有请求都加了fleet-boot前缀，需要去掉
         }
       },*/
       '/fleet-boot': {

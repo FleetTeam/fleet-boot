@@ -1,17 +1,13 @@
 <template>
   <div class="footer">
     <div class="links">
-      <a href="http://www.jeecg.com" target="_blank">Fleet 首页</a>
-      <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank">
-        <a-icon type="github"/>
-      </a>
       <a href="https://ant.design/">Ant Design</a>
       <a href="https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/">Vue Antd</a>
     </div>
     <div class="copyright">
       Copyright
       <a-icon type="copyright"/>
-      2021 <span>Fleet 出品</span>
+      2021 <span>Fleet Team 出品</span>
     </div>
   </div>
 </template>

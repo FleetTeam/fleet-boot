@@ -1,19 +1,19 @@
 package ${bussiPackage}.${entityPackage}.controller;
 
-import org.jeecg.common.system.query.QueryGenerator;
+import QueryGenerator;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.common.system.base.controller.JeecgController;
-import org.jeecg.common.api.vo.Result;
+import FleetController;
+import Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.Arrays;
-import org.jeecg.common.util.oConvertUtils;
+import oConvertUtils;
 <#list subTables as sub>
 import ${bussiPackage}.${entityPackage}.entity.${sub.entityName};
 </#list>
@@ -24,9 +24,9 @@ import ${bussiPackage}.${entityPackage}.service.I${sub.entityName}Service;
 </#list>
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.jeecg.common.aspect.annotation.AutoLog;
+import AutoLog;
 import org.apache.shiro.SecurityUtils;
-import org.jeecg.common.system.vo.LoginUser;
+import LoginUser;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -41,7 +41,7 @@ import java.util.stream.Collectors;
 
  /**
  * @Description: ${tableVo.ftlDescription}
- * @Author: jeecg-boot
+ * @Author: fleet-team
  * @Date:   ${.now?string["yyyy-MM-dd"]}
  * @Version: V1.0
  */
@@ -49,7 +49,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/${entityPackage}/${entityName?uncap_first}")
 @Slf4j
-public class ${entityName}Controller extends JeecgController<${entityName}, I${entityName}Service> {
+public class ${entityName}Controller extends FleetController<${entityName}, I${entityName}Service> {
 
 	@Autowired
 	private I${entityName}Service ${entityName?uncap_first}Service;
