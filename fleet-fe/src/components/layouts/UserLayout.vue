@@ -4,12 +4,12 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <!-- <img src="~@/assets/logo.svg" class="logo" alt="logo"> -->
+            <img src="~@/assets/logo.svg" class="logo" alt="logo">
             <span class="title">Fleet</span>
           </a>
         </div>
         <div class="desc">
-          Fleet开发平台
+          欢迎使用Fleet开发平台
         </div>
       </div>
 

@@ -8,3 +8,8 @@
 
 ## front
 **/*.lock
+fleet-boot/fleet-boot-module-demo/src/.DS_Store
+fleet-boot/fleet-boot-module-demo/src/main/.DS_Store
+.gitignore
+.DS_Store
+.gitignore
