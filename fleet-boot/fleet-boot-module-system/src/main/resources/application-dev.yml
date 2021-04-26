@@ -191,7 +191,7 @@ fleet :
     endpoint: oss-cn-beijing.aliyuncs.com
     accessKey: ??
     secretKey: ??
-    bucketName: fleetos
+    bucketName: ??
     staticDomain: ??
   # ElasticSearch 6设置
   elasticsearch:

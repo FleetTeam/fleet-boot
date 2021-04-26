@@ -190,8 +190,8 @@ fleet :
     endpoint: oss-cn-beijing.aliyuncs.com
     accessKey: ??
     secretKey: ??
-    bucketName: fleetos
-    staticDomain: https://static.fleet.com
+    bucketName: ??
+    staticDomain: ??
   # ElasticSearch 设置
   elasticsearch:
     cluster-name: fleet-ES
