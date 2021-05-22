@@ -10,6 +10,7 @@
 - 数据库连接池：`Alibaba Druid 1.1.22`
 - 缓存框架：`Redis`
 - 日志打印：`logback`
+
 - 其他：`fastjson`，`POI`，`Swagger`，`quartz`，`activiti`，`lombok`（简化代码）等。
 
 ## 开发环境
