@@ -10,7 +10,8 @@
 - 数据库连接池：`Alibaba Druid 1.1.22`
 - 缓存框架：`Redis`
 - 日志打印：`logback`
-- 其他：`fastjson`，`poi`，`Swagger-ui`，`quartz`，`lombok`（简化代码）等。
+
+- 其他：`fastjson`，`POI`，`Swagger`，`quartz`，`activiti`，`lombok`（简化代码）等。
 
 ## 开发环境
 
@@ -168,4 +169,34 @@ docker-compose up -d
 ```
 
 6. 访问后台项目（注意要开启`swagger`）：[`http://localhost:8080/fleet-boot/doc.html`](http://localhost:8080/fleet-boot/doc.html)
- 
+
+## 鸣谢
+
+本项目使用了以下第三方库/框架进行开发，按许可证种类进行分类
+
+### MIT
+
+* JWT
+* lombok
+
+### BSD
+
+* Redis
+
+### Apache-2.0
+
+* Spring boot
+* MyBatis-Plus
+* Apache Shiro
+* Alibaba Druid
+* fastjson
+* POI
+* Swagger
+* quartz
+* activiti
+
+### 其他
+
+|Project|License|
+|---|---|
+|logback|EPL v1.0 and LGPL 2.1|
