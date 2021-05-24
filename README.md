@@ -131,7 +131,7 @@ validateCode(rule, value, callback) {
 
 ## docker镜像用法
 
-注意： 如果本地安装了mysql和redis,启动容器前先停掉本地服务，不然会端口冲突。
+注意： 如果本地安装了`mysql`和`redis`,启动容器前先停掉本地服务，不然会端口冲突。
 ```bash
 # windows
 net stop redis
