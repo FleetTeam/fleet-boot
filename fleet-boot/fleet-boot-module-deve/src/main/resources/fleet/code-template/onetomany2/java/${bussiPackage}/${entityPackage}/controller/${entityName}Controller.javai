@@ -16,10 +16,10 @@ import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
 import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
-import org.jeecg.common.system.vo.LoginUser;
-import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.system.query.QueryGenerator;
-import org.jeecg.common.util.oConvertUtils;
+import org.fleet.common.system.vo.LoginUser;
+import org.fleet.common.api.vo.Result;
+import org.fleet.common.system.query.QueryGenerator;
+import org.fleet.common.util.oConvertUtils;
 <#list subTables as sub>
 import ${bussiPackage}.${entityPackage}.entity.${sub.entityName};
 </#list>
@@ -46,7 +46,7 @@ import org.jeecg.common.aspect.annotation.AutoLog;
 
  /**
  * @Description: ${tableVo.ftlDescription}
- * @Author: jeecg-boot
+ * @Author: fleet
  * @Date:   ${.now?string["yyyy-MM-dd"]}
  * @Version: V1.0
  */

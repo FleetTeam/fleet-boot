@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @Description: ${tableVo.ftlDescription}
- * @Author: jeecg-boot
+ * @Author: fleet-team
  * @Date:   ${.now?string["yyyy-MM-dd"]}
  * @Version: V1.0
  */
