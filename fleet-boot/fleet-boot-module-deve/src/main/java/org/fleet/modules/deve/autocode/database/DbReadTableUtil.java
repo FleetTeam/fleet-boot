@@ -2,8 +2,8 @@ package org.fleet.modules.deve.autocode.database;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.fleet.modules.deve.autocode.config.CodeConfigProperties;
-import org.fleet.modules.deve.autocode.database.util.CodeStringUtils;
+import org.fleet.modules.deve.autocode.config.AutoCodeConfigProperties;
+import org.fleet.modules.deve.autocode.database.util.AutoCodeStringUtils;
 import org.fleet.modules.deve.autocode.generate.pojo.ColumnVo;
 import org.fleet.modules.deve.autocode.generate.util.TableConvert;
 import org.slf4j.Logger;
@@ -39,28 +39,28 @@ public class DbReadTableUtil {
         String sql = null;
         List<String> tableNames = new ArrayList<>(0);
         try {
-            Class.forName(CodeConfigProperties.diverName);
-            conn = DriverManager.getConnection(CodeConfigProperties.url, CodeConfigProperties.username,
-                    CodeConfigProperties.password);
+            Class.forName(AutoCodeConfigProperties.diverName);
+            conn = DriverManager.getConnection(AutoCodeConfigProperties.url, AutoCodeConfigProperties.username,
+                    AutoCodeConfigProperties.password);
             stmt = conn.createStatement(1005, 1007);
 
             String databaseName = conn.getCatalog();
             log.info("connect databaseName :" + databaseName);
-            if (CodeConfigProperties.databaseType.equals("mysql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("mysql")) {
                 sql = MessageFormat.format(
                         "select distinct table_name from information_schema.columns where table_schema = {0}",
-                        new Object[]{TableConvert.getV(CodeConfigProperties.databaseName)});
+                        new Object[]{TableConvert.getV(AutoCodeConfigProperties.databaseName)});
             }
 
-            if (CodeConfigProperties.databaseType.equals("oracle")) {
+            if (AutoCodeConfigProperties.databaseType.equals("oracle")) {
                 sql = " select distinct colstable.table_name as  table_name from user_tab_cols colstable order by colstable.table_name";
             }
 
-            if (CodeConfigProperties.databaseType.equals("postgresql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("postgresql")) {
                 sql = "SELECT distinct c.relname AS  table_name FROM pg_class c";
             }
 
-            if (CodeConfigProperties.databaseType.equals("sqlserver")) {
+            if (AutoCodeConfigProperties.databaseType.equals("sqlserver")) {
                 sql = "select distinct c.name as  table_name from sys.objects c where c.type = 'U' ";
             }
             log.debug("--------------sql-------------" + sql);
@@ -94,34 +94,34 @@ public class DbReadTableUtil {
         String sql = null;
         List<ColumnVo> columntList = new ArrayList<>();
         try {
-            Class.forName(CodeConfigProperties.diverName);
-            conn = DriverManager.getConnection(CodeConfigProperties.url, CodeConfigProperties.username,
-                    CodeConfigProperties.password);
+            Class.forName(AutoCodeConfigProperties.diverName);
+            conn = DriverManager.getConnection(AutoCodeConfigProperties.url, AutoCodeConfigProperties.username,
+                    AutoCodeConfigProperties.password);
             stmt = conn.createStatement(1005, 1007);
             String databaseName = conn.getCatalog();
 
             log.info("connect databaseName :" + databaseName);
 
-            if (CodeConfigProperties.databaseType.equals("mysql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("mysql")) {
                 sql = MessageFormat.format(
                         "select column_name,data_type,column_comment,numeric_precision,numeric_scale,character_maximum_length,is_nullable nullable from information_schema.columns where table_name = {0} and table_schema = {1} order by ORDINAL_POSITION",
                         new Object[]{TableConvert.getV(tableName.toUpperCase()),
-                                TableConvert.getV(CodeConfigProperties.databaseName)});
+                                TableConvert.getV(AutoCodeConfigProperties.databaseName)});
             }
 
-            if (CodeConfigProperties.databaseType.equals("oracle")) {
+            if (AutoCodeConfigProperties.databaseType.equals("oracle")) {
                 sql = MessageFormat.format(
                         " select colstable.column_name column_name, colstable.data_type data_type, commentstable.comments column_comment, colstable.Data_Precision column_precision, colstable.Data_Scale column_scale,colstable.Char_Length,colstable.nullable from user_tab_cols colstable  inner join user_col_comments commentstable  on colstable.column_name = commentstable.column_name  where colstable.table_name = commentstable.table_name  and colstable.table_name = {0}",
                         new Object[]{TableConvert.getV(tableName.toUpperCase())});
             }
 
-            if (CodeConfigProperties.databaseType.equals("postgresql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("postgresql")) {
                 sql = MessageFormat.format(
                         "SELECT a.attname AS  field,t.typname AS type,col_description(a.attrelid,a.attnum) as comment,null as column_precision,null as column_scale,null as Char_Length,a.attnotnull  FROM pg_class c,pg_attribute  a,pg_type t  WHERE c.relname = {0} and a.attnum > 0  and a.attrelid = c.oid and a.atttypid = t.oid  ORDER BY a.attnum ",
                         new Object[]{TableConvert.getV(tableName.toLowerCase())});
             }
 
-            if (CodeConfigProperties.databaseType.equals("sqlserver")) {
+            if (AutoCodeConfigProperties.databaseType.equals("sqlserver")) {
                 sql = MessageFormat.format(
                         "select distinct cast(a.name as varchar(50)) column_name,  cast(b.name as varchar(50)) data_type,  cast(e.value as varchar(200)) comment,  cast(ColumnProperty(a.object_id,a.Name,'''Precision''') as int) num_precision,  cast(ColumnProperty(a.object_id,a.Name,'''Scale''') as int) num_scale,  a.max_length,  (case when a.is_nullable=1 then '''y''' else '''n''' end) nullable,column_id   from sys.columns a left join sys.types b on a.user_type_id=b.user_type_id left join (select top 1 * from sys.objects where type = '''U''' and name ={0}  order by name) c on a.object_id=c.object_id left join sys.extended_properties e on e.major_id=c.object_id and e.minor_id=a.column_id and e.class=1 where c.name={0} order by a.column_id",
                         new Object[]{TableConvert.getV(tableName.toLowerCase())});
@@ -136,7 +136,7 @@ public class DbReadTableUtil {
             if (n > 0) {
                 ColumnVo columnt = new ColumnVo();
 
-                if (CodeConfigProperties.DB_FILED_CONVERT) {
+                if (AutoCodeConfigProperties.DB_FILED_CONVERT) {
                     columnt.setFieldName(formatField(rs.getString(1).toLowerCase()));
                 } else {
                     columnt.setFieldName(rs.getString(1).toLowerCase());
@@ -158,19 +158,19 @@ public class DbReadTableUtil {
                 log.debug("columnt.getFieldName() -------------" + columnt.getFieldName());
 
                 String[] ui_filter_fields = new String[0];
-                if (CodeConfigProperties.PAGE_FILTER_FIELDS != null) {
-                    ui_filter_fields = CodeConfigProperties.PAGE_FILTER_FIELDS.toLowerCase().split(",");
+                if (AutoCodeConfigProperties.PAGE_FILTER_FIELDS != null) {
+                    ui_filter_fields = AutoCodeConfigProperties.PAGE_FILTER_FIELDS.toLowerCase().split(",");
                 }
 
-                if (!CodeConfigProperties.DB_TABLE_ID.equals(columnt.getFieldName())
-                        && !CodeStringUtils.isIn(columnt.getFieldDbName().toLowerCase(), ui_filter_fields)) {
+                if (!AutoCodeConfigProperties.DB_TABLE_ID.equals(columnt.getFieldName())
+                        && !AutoCodeStringUtils.isIn(columnt.getFieldDbName().toLowerCase(), ui_filter_fields)) {
 
                     columntList.add(columnt);
                 }
                 while (rs.previous()) {
                     ColumnVo po = new ColumnVo();
 
-                    if (CodeConfigProperties.DB_FILED_CONVERT) {
+                    if (AutoCodeConfigProperties.DB_FILED_CONVERT) {
                         po.setFieldName(formatField(rs.getString(1).toLowerCase()));
                     } else {
                         po.setFieldName(rs.getString(1).toLowerCase());
@@ -178,8 +178,8 @@ public class DbReadTableUtil {
 
                     po.setFieldDbName(rs.getString(1).toUpperCase());
                     log.debug("columnt.getFieldName() -------------" + po.getFieldName());
-                    if (CodeConfigProperties.DB_TABLE_ID.equals(po.getFieldName())
-                            || CodeStringUtils.isIn(po.getFieldDbName().toLowerCase(), ui_filter_fields)) {
+                    if (AutoCodeConfigProperties.DB_TABLE_ID.equals(po.getFieldName())
+                            || AutoCodeStringUtils.isIn(po.getFieldDbName().toLowerCase(), ui_filter_fields)) {
                         continue;
                     }
                     po.setFieldType(formatField(rs.getString(2).toLowerCase()));
@@ -235,32 +235,32 @@ public class DbReadTableUtil {
         String sql = null;
         List<ColumnVo> columntList = new ArrayList<>();
         try {
-            Class.forName(CodeConfigProperties.diverName);
-            conn = DriverManager.getConnection(CodeConfigProperties.url, CodeConfigProperties.username,
-                    CodeConfigProperties.password);
+            Class.forName(AutoCodeConfigProperties.diverName);
+            conn = DriverManager.getConnection(AutoCodeConfigProperties.url, AutoCodeConfigProperties.username,
+                    AutoCodeConfigProperties.password);
             stmt = conn.createStatement(1005, 1007);
             String databaseName = conn.getCatalog();
 
             log.info("connect databaseName :" + databaseName);
-            if (CodeConfigProperties.databaseType.equals("mysql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("mysql")) {
                 sql = MessageFormat.format(
                         "select column_name,data_type,column_comment,numeric_precision,numeric_scale,character_maximum_length,is_nullable nullable from information_schema.columns where table_name = {0} and table_schema = {1} order by ORDINAL_POSITION",
                         new Object[]{TableConvert.getV(tableName.toUpperCase()),
-                                TableConvert.getV(CodeConfigProperties.databaseName)});
+                                TableConvert.getV(AutoCodeConfigProperties.databaseName)});
             }
 
-            if (CodeConfigProperties.databaseType.equals("oracle")) {
+            if (AutoCodeConfigProperties.databaseType.equals("oracle")) {
                 sql = MessageFormat.format(
                         " select colstable.column_name column_name, colstable.data_type data_type, commentstable.comments column_comment, colstable.Data_Precision column_precision, colstable.Data_Scale column_scale,colstable.Char_Length,colstable.nullable from user_tab_cols colstable  inner join user_col_comments commentstable  on colstable.column_name = commentstable.column_name  where colstable.table_name = commentstable.table_name  and colstable.table_name = {0}",
                         new Object[]{TableConvert.getV(tableName.toUpperCase())});
             }
 
-            if (CodeConfigProperties.databaseType.equals("postgresql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("postgresql")) {
                 sql = MessageFormat.format(
                         "SELECT a.attname AS  field,t.typname AS type,col_description(a.attrelid,a.attnum) as comment,null as column_precision,null as column_scale,null as Char_Length,a.attnotnull  FROM pg_class c,pg_attribute  a,pg_type t  WHERE c.relname = {0} and a.attnum > 0  and a.attrelid = c.oid and a.atttypid = t.oid  ORDER BY a.attnum ",
                         new Object[]{TableConvert.getV(tableName.toLowerCase())});
             }
-            if (CodeConfigProperties.databaseType.equals("sqlserver")) {
+            if (AutoCodeConfigProperties.databaseType.equals("sqlserver")) {
                 sql = MessageFormat.format(
                         "select distinct cast(a.name as varchar(50)) column_name,  cast(b.name as varchar(50)) data_type,  cast(e.value as varchar(200)) comment,  cast(ColumnProperty(a.object_id,a.Name,'''Precision''') as int) num_precision,  cast(ColumnProperty(a.object_id,a.Name,'''Scale''') as int) num_scale,  a.max_length,  (case when a.is_nullable=1 then '''y''' else '''n''' end) nullable,column_id   from sys.columns a left join sys.types b on a.user_type_id=b.user_type_id left join (select top 1 * from sys.objects where type = '''U''' and name ={0}  order by name) c on a.object_id=c.object_id left join sys.extended_properties e on e.major_id=c.object_id and e.minor_id=a.column_id and e.class=1 where c.name={0} order by a.column_id",
                         new Object[]{TableConvert.getV(tableName.toLowerCase())});
@@ -275,7 +275,7 @@ public class DbReadTableUtil {
             if (n > 0) {
                 ColumnVo columnt = new ColumnVo();
 
-                if (CodeConfigProperties.DB_FILED_CONVERT) {
+                if (AutoCodeConfigProperties.DB_FILED_CONVERT) {
                     columnt.setFieldName(formatField(rs.getString(1).toLowerCase()));
                 } else {
                     columnt.setFieldName(rs.getString(1).toLowerCase());
@@ -302,7 +302,7 @@ public class DbReadTableUtil {
                 while (rs.previous()) {
                     ColumnVo po = new ColumnVo();
 
-                    if (CodeConfigProperties.DB_FILED_CONVERT) {
+                    if (AutoCodeConfigProperties.DB_FILED_CONVERT) {
                         po.setFieldName(formatField(rs.getString(1).toLowerCase()));
                     } else {
                         po.setFieldName(rs.getString(1).toLowerCase());
@@ -360,31 +360,31 @@ public class DbReadTableUtil {
     public static boolean checkTableExist(String tableName) {
         String sql = null;
         try {
-            log.info("数据库驱动：" + CodeConfigProperties.diverName);
-            Class.forName(CodeConfigProperties.diverName);
-            conn = DriverManager.getConnection(CodeConfigProperties.url, CodeConfigProperties.username,
-                    CodeConfigProperties.password);
+            log.info("数据库驱动：" + AutoCodeConfigProperties.diverName);
+            Class.forName(AutoCodeConfigProperties.diverName);
+            conn = DriverManager.getConnection(AutoCodeConfigProperties.url, AutoCodeConfigProperties.username,
+                    AutoCodeConfigProperties.password);
             stmt = conn.createStatement(1005, 1007);
             String databaseName = conn.getCatalog();
 
             log.info("connect databaseName :" + databaseName);
-            if (CodeConfigProperties.databaseType.equals("mysql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("mysql")) {
                 sql = "select column_name,data_type,column_comment,0,0 from information_schema.columns where table_name = '"
-                        + tableName.toUpperCase() + "' and table_schema = '" + CodeConfigProperties.databaseName + "'";
+                        + tableName.toUpperCase() + "' and table_schema = '" + AutoCodeConfigProperties.databaseName + "'";
             }
 
-            if (CodeConfigProperties.databaseType.equals("oracle")) {
+            if (AutoCodeConfigProperties.databaseType.equals("oracle")) {
 
                 sql = "select colstable.column_name column_name, colstable.data_type data_type, commentstable.comments column_comment from user_tab_cols colstable  inner join user_col_comments commentstable  on colstable.column_name = commentstable.column_name  where colstable.table_name = commentstable.table_name  and colstable.table_name = '"
                         + tableName.toUpperCase() + "'";
             }
 
-            if (CodeConfigProperties.databaseType.equals("postgresql")) {
+            if (AutoCodeConfigProperties.databaseType.equals("postgresql")) {
                 sql = MessageFormat.format(
                         "SELECT a.attname AS  field,t.typname AS type,col_description(a.attrelid,a.attnum) as comment,null as column_precision,null as column_scale,null as Char_Length,a.attnotnull  FROM pg_class c,pg_attribute  a,pg_type t  WHERE c.relname = {0} and a.attnum > 0  and a.attrelid = c.oid and a.atttypid = t.oid  ORDER BY a.attnum ",
                         new Object[]{TableConvert.getV(tableName.toLowerCase())});
             }
-            if (CodeConfigProperties.databaseType.equals("sqlserver")) {
+            if (AutoCodeConfigProperties.databaseType.equals("sqlserver")) {
                 sql = MessageFormat.format(
                         "select distinct cast(a.name as varchar(50)) column_name,  cast(b.name as varchar(50)) data_type,  cast(e.value as varchar(200)) comment,  cast(ColumnProperty(a.object_id,a.Name,'''Precision''') as int) num_precision,  cast(ColumnProperty(a.object_id,a.Name,'''Scale''') as int) num_scale,  a.max_length,  (case when a.is_nullable=1 then '''y''' else '''n''' end) nullable,column_id   from sys.columns a left join sys.types b on a.user_type_id=b.user_type_id left join (select top 1 * from sys.objects where type = '''U''' and name ={0}  order by name) c on a.object_id=c.object_id left join sys.extended_properties e on e.major_id=c.object_id and e.minor_id=a.column_id and e.class=1 where c.name={0} order by a.column_id",
                         new Object[]{TableConvert.getV(tableName.toLowerCase())});

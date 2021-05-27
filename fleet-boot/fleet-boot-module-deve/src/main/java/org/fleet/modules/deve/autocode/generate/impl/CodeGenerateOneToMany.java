@@ -1,7 +1,7 @@
 package org.fleet.modules.deve.autocode.generate.impl;
 
 import org.apache.commons.lang.StringUtils;
-import org.fleet.modules.deve.autocode.config.CodeConfigProperties;
+import org.fleet.modules.deve.autocode.config.AutoCodeConfigProperties;
 import org.fleet.modules.deve.autocode.database.DbReadTableUtil;
 import org.fleet.modules.deve.autocode.generate.IGenerate;
 import org.fleet.modules.deve.autocode.generate.config.CreateFileConfig;
@@ -54,7 +54,7 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
     public HashMap<String, Object> initData() throws Exception {
         HashMap<String, Object> data = new HashMap<>();
 
-        data.put("bussiPackage", CodeConfigProperties.bussiPackage);
+        data.put("bussiPackage", AutoCodeConfigProperties.bussiPackage);
 
         data.put("entityPackage", this.mainTableVo.getEntityPackage());
 
@@ -62,16 +62,16 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
 
         data.put("tableName", this.mainTableVo.getTableName());
 
-        data.put("primaryKeyField", CodeConfigProperties.DB_TABLE_ID);
+        data.put("primaryKeyField", AutoCodeConfigProperties.DB_TABLE_ID);
 
         if (mainTableVo.getFieldRequiredNum() == null) {
-            mainTableVo.setFieldRequiredNum(Integer.valueOf(StringUtils.isNotEmpty(CodeConfigProperties.PAGE_FIELD_REQUIRED_NUM) ? Integer.parseInt(CodeConfigProperties.PAGE_FIELD_REQUIRED_NUM) : -1));
+            mainTableVo.setFieldRequiredNum(Integer.valueOf(StringUtils.isNotEmpty(AutoCodeConfigProperties.PAGE_FIELD_REQUIRED_NUM) ? Integer.parseInt(AutoCodeConfigProperties.PAGE_FIELD_REQUIRED_NUM) : -1));
         }
         if (mainTableVo.getSearchFieldNum() == null) {
-            this.mainTableVo.setSearchFieldNum(StringUtils.isNotEmpty(CodeConfigProperties.PAGE_FIELD_SEARCH_NUM) ? Integer.parseInt(CodeConfigProperties.PAGE_FIELD_SEARCH_NUM) : -1);
+            this.mainTableVo.setSearchFieldNum(StringUtils.isNotEmpty(AutoCodeConfigProperties.PAGE_FIELD_SEARCH_NUM) ? Integer.parseInt(AutoCodeConfigProperties.PAGE_FIELD_SEARCH_NUM) : -1);
         }
         if (mainTableVo.getFieldRowNum() == null) {
-            this.mainTableVo.setSearchFieldNum(Integer.parseInt(CodeConfigProperties.FIELD_ROW_NUM));
+            this.mainTableVo.setSearchFieldNum(Integer.parseInt(AutoCodeConfigProperties.FIELD_ROW_NUM));
         }
 
         data.put("tableVo", this.mainTableVo);
@@ -91,7 +91,7 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
 
 
             for (ColumnVo c : originaMainColumns) {
-                if (c.getFieldName().toLowerCase().equals(CodeConfigProperties.DB_TABLE_ID.toLowerCase())) {
+                if (c.getFieldName().toLowerCase().equals(AutoCodeConfigProperties.DB_TABLE_ID.toLowerCase())) {
                     data.put("primary_key_type", c.getFieldType());
                 }
             }
@@ -131,15 +131,15 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
 
         log.info("----fleet---Code----Generation----[单表模型:" + this.mainTableVo.getTableName() + "]------- 生成中。。。");
 
-        String projectPath = CodeConfigProperties.projectPath;
+        String projectPath = AutoCodeConfigProperties.projectPath;
 
         Map<String, Object> templateData = initData();
 
-        String templatePath = CodeConfigProperties.templatePath;
+        String templatePath = AutoCodeConfigProperties.templatePath;
 
         if (trimSomeString(templatePath, "/").equals("fleet/code-template")) {
             templatePath = "/" + trimSomeString(templatePath, "/") + "/onetomany";
-            CodeConfigProperties.setTemplatePath(templatePath);
+            AutoCodeConfigProperties.setTemplatePath(templatePath);
         }
 
         CreateFileConfig createFileConfig = new CreateFileConfig(templatePath);
@@ -157,9 +157,9 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
     @Override
     public List<String> generateCodeFile(String projectPath, String templatePath, String stylePath) throws Exception {
         if (projectPath != null && !"".equals(projectPath))
-            CodeConfigProperties.setProjectPath(projectPath);
+            AutoCodeConfigProperties.setProjectPath(projectPath);
         if (templatePath != null && !"".equals(templatePath))
-            CodeConfigProperties.setTemplatePath(templatePath);
+            AutoCodeConfigProperties.setTemplatePath(templatePath);
 
         generateCodeFile(stylePath);
 
