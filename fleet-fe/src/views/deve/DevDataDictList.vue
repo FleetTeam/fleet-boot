@@ -27,11 +27,13 @@
               <a-input placeholder="请输入元数据字典描述" v-model="queryParam.unitDataDesc"></a-input>
             </a-form-item>
           </a-col>
-          <a-col :xl="6" :lg="7" :md="8" :sm="24">
+          <!-- <a-col :xl="6" :lg="7" :md="8" :sm="24">
             <a-form-item label="参考字典">
-              <a-input placeholder="请输入参考字典" v-model="queryParam.refDict"></a-input>
+              <f-select-ref-dict placeholder="请入参考字典" v-model="queryParam.refDict">
+              <f-select-ref-dict :buttons="false" v-model="formData.selectRefDict" />
+
             </a-form-item>
-          </a-col>
+          </a-col> -->
           <!-- </template> -->
           <a-col :xl="6" :lg="7" :md="8" :sm="24">
             <span style="float: left;overflow: hidden;" class="table-page-search-submitButtons">
@@ -117,7 +119,7 @@
     name: "DevDataDictList",
     mixins:[JeecgListMixin],
     components: {
-      DevDataDictModal
+      DevDataDictModal       
     },
     data () {
       return {

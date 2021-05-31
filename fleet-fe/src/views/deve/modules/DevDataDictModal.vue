@@ -24,8 +24,9 @@
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="unitDataDesc" label="元数据字典描述">
           <a-input placeholder="请输入元数据字典描述" v-model="model.unitDataDesc" />
         </a-form-model-item>
+        <!-- 参考字典 -->
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="refDict" label="参考字典">
-          <a-input placeholder="请输入参考字典" v-model="model.refDict" />
+          <f-select-ref-dict :buttons="false" v-model="model.refDict" />
         </a-form-model-item>
         <!-- <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="status" label="状态">
           <a-input placeholder="请输入状态" v-model="model.status" />
@@ -36,9 +37,9 @@
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="optionGroup" label="选项组别">
           <a-input placeholder="请输入选项组别" v-model="model.optionGroup" />
         </a-form-model-item>
-        <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="optionVer" label="选项版本">
+        <!-- <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="optionVer" label="选项版本">
           <a-input placeholder="请输入选项版本" v-model="model.optionVer" />
-        </a-form-model-item>
+        </a-form-model-item> -->
         <!-- <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="ctrlStatus" label="控制状态">
           <a-input placeholder="请输入控制状态" v-model="model.ctrlStatus" />
         </a-form-model-item>
@@ -51,6 +52,7 @@
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="checkUser" label="检出用户">
           <a-input placeholder="请输入检出用户" v-model="model.checkUser" />
         </a-form-model-item> -->
+
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="remark" label="备注">
           <a-input placeholder="请输入备注" v-model="model.remark" />
         </a-form-model-item>
@@ -63,9 +65,14 @@
 <script>
   import { httpAction } from '@/api/manage'
   import moment from "moment"
+  import FSelectRefDict from '@/components/deve/FSelectRefDict'
+
 
   export default {
     name: "DevDataDictModal",
+    components: {
+      FSelectRefDict
+    },
     data () {
       return {
         title:"操作",
