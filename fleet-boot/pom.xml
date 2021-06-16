@@ -4,7 +4,7 @@
   <artifactId>fleet-boot-parent</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  
+
   	<parent>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
@@ -52,10 +52,10 @@
         <module>fleet-boot-module-demo</module>
         <module>fleet-boot-module-system</module>
         <module>fleet-boot-module-deve</module>
-
         <!-- 需要微服务，请打开注释
         <module>fleet-boot-starter</module>
-         <module>fleet-cloud-module</module>-->
+        <module>fleet-cloud-module</module>
+		-->
     </modules>
 
 	<distributionManagement>

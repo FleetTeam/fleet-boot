@@ -14,3 +14,6 @@ fleet-boot/fleet-boot-module-demo/src/main/.DS_Store
 .DS_Store
 .gitignore
 fleet-boot/.DS_Store
+
+# Mac OS
+**/.DS_Store
