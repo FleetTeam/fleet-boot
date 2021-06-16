@@ -2,7 +2,7 @@ package org.fleet.modules.deve.autocode.generate.impl.base;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import org.fleet.modules.deve.autocode.config.CodeConfigProperties;
+import org.fleet.modules.deve.autocode.config.AutoCodeConfigProperties;
 import org.fleet.modules.deve.autocode.generate.config.CreateFileConfig;
 import org.fleet.modules.deve.autocode.generate.util.FileHelper;
 import org.fleet.modules.deve.autocode.generate.util.FreemarkerHelper;
@@ -36,9 +36,9 @@ public class BaseCodeGenerate {
             throw new IllegalStateException("'templateRootDir' must be not null");
         log.info("-------------------load template from templateRootDir = '" + templateRootDir.getAbsolutePath()
                 + "' outJavaRootDir:"
-                + (new File(CodeConfigProperties.sourceRootPackage.replace(".", File.separator))).getAbsolutePath()
+                + (new File(AutoCodeConfigProperties.sourceRootPackage.replace(".", File.separator))).getAbsolutePath()
                 + "' outWebappRootDir:"
-                + (new File(CodeConfigProperties.webRootPackage.replace(".", File.separator))).getAbsolutePath());
+                + (new File(AutoCodeConfigProperties.webRootPackage.replace(".", File.separator))).getAbsolutePath());
 
         List<File> srcFiles = FileHelper.searchAllNotIgnoreFile(templateRootDir);
         log.info("----srcFiles----size-----------" + srcFiles.size());
@@ -64,7 +64,7 @@ public class BaseCodeGenerate {
             log.debug("-------outputFilepath--" + outputFilepath);
             if (outputFilepath.startsWith("java")) {
                 String path = projectPath + File.separator
-                        + CodeConfigProperties.sourceRootPackage.replace(".", File.separator);
+                        + AutoCodeConfigProperties.sourceRootPackage.replace(".", File.separator);
 
                 String soure = path;
                 outputFilepath = outputFilepath.substring("java".length());
@@ -73,7 +73,7 @@ public class BaseCodeGenerate {
                 generateNewFileOrInsertIntoFile(templateFile, outputFilepath, templateData, createFileConfig);
             } else if (outputFilepath.startsWith("webapp")) {
                 String path = projectPath + File.separator
-                        + CodeConfigProperties.webRootPackage.replace(".", File.separator);
+                        + AutoCodeConfigProperties.webRootPackage.replace(".", File.separator);
 
                 String soure = path;
                 outputFilepath = outputFilepath.substring("webapp".length());
