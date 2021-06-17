@@ -1,11 +1,10 @@
 package org.fleet.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.modules.system.entity.SysUserRole;
 import org.fleet.modules.system.mapper.SysUserRoleMapper;
 import org.fleet.modules.system.service.ISysUserRoleService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * <p>

@@ -1,8 +1,8 @@
 package org.fleet.common.system.api.factory;
 
 import feign.hystrix.FallbackFactory;
-import org.fleet.common.system.api.fallback.SysBaseAPIFallback;
 import org.fleet.common.system.api.ISysBaseAPI;
+import org.fleet.common.system.api.fallback.SysBaseAPIFallback;
 import org.springframework.stereotype.Component;
 
 @Component

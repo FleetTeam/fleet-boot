@@ -1,8 +1,5 @@
 package org.fleet.modules.system.entity;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,6 +7,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.fleet.common.aspect.annotation.Dict;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>

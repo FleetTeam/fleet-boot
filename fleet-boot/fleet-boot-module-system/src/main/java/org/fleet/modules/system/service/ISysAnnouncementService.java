@@ -1,9 +1,8 @@
 package org.fleet.modules.system.service;
 
-import org.fleet.modules.system.entity.SysAnnouncement;
-
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.system.entity.SysAnnouncement;
 
 /**
  * @Description: 系统通告表

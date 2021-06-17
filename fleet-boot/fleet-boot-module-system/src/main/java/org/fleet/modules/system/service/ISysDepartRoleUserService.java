@@ -1,7 +1,7 @@
 package org.fleet.modules.system.service;
 
-import org.fleet.modules.system.entity.SysDepartRoleUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.system.entity.SysDepartRoleUser;
 
 import java.util.List;
 

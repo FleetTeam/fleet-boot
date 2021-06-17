@@ -1,42 +1,24 @@
 package org.fleet.modules.deve.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.fleet.common.api.vo.Result;
-import org.fleet.common.system.query.QueryGenerator;
-import org.fleet.common.aspect.annotation.AutoLog;
-import org.fleet.common.util.oConvertUtils;
-import org.fleet.modules.deve.entity.DevDataDict;
-import org.fleet.modules.deve.service.IDevDataDictService;
-
-import java.util.Date;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.extern.slf4j.Slf4j;
-import org.fleet.common.system.base.controller.FleetController;
-import org.jeecgframework.poi.excel.ExcelImportUtil;
-import org.jeecgframework.poi.excel.def.NormalExcelConstants;
-import org.jeecgframework.poi.excel.entity.ExportParams;
-import org.jeecgframework.poi.excel.entity.ImportParams;
-import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
-import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.fleet.common.api.vo.Result;
+import org.fleet.common.aspect.annotation.AutoLog;
+import org.fleet.common.system.base.controller.FleetController;
+import org.fleet.common.system.query.QueryGenerator;
+import org.fleet.modules.deve.entity.DevDataDict;
+import org.fleet.modules.deve.service.IDevDataDictService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 /**
  * @Description: 数据字典

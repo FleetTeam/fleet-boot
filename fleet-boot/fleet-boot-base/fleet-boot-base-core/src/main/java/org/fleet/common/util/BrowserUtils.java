@@ -1,11 +1,10 @@
 package org.fleet.common.util;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author fleet-team
@@ -40,9 +39,8 @@ public class BrowserUtils {
 
     // 判断是否是IE
     public static boolean isIE(HttpServletRequest request) {
-        return (request.getHeader("USER-AGENT").toLowerCase().indexOf("msie") > 0 || request
-                .getHeader("USER-AGENT").toLowerCase().indexOf("rv:11.0") > 0) ? true
-                : false;
+        return request.getHeader("USER-AGENT").toLowerCase().indexOf("msie") > 0 || request
+                .getHeader("USER-AGENT").toLowerCase().indexOf("rv:11.0") > 0;
     }
 
     /**

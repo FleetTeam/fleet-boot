@@ -1,7 +1,7 @@
 package org.fleet.modules.system.mapper;
 
-import org.fleet.modules.system.entity.SysThirdAccount;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.system.entity.SysThirdAccount;
 
 /**
  * @Description: 第三方登录账号表

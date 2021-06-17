@@ -1,13 +1,12 @@
 package org.fleet.modules.system.service;
 
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.fleet.common.exception.FleetBootException;
 import org.fleet.modules.system.entity.SysCategory;
 import org.fleet.modules.system.model.TreeSelectModel;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 分类字典

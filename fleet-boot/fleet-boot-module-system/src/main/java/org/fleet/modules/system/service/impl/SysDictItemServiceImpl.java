@@ -1,9 +1,9 @@
 package org.fleet.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.modules.system.entity.SysDictItem;
 import org.fleet.modules.system.mapper.SysDictItemMapper;
 import org.fleet.modules.system.service.ISysDictItemService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

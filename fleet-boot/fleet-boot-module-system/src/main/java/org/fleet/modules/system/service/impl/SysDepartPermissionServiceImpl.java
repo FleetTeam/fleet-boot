@@ -2,6 +2,7 @@ package org.fleet.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.common.util.oConvertUtils;
 import org.fleet.modules.system.entity.SysDepartPermission;
 import org.fleet.modules.system.entity.SysDepartRole;
@@ -13,8 +14,6 @@ import org.fleet.modules.system.mapper.SysDepartRolePermissionMapper;
 import org.fleet.modules.system.mapper.SysPermissionDataRuleMapper;
 import org.fleet.modules.system.service.ISysDepartPermissionService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;

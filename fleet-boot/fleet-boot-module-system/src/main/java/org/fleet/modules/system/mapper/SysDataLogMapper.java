@@ -1,9 +1,8 @@
 package org.fleet.modules.system.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.fleet.modules.system.entity.SysDataLog;
-
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 public interface SysDataLogMapper extends BaseMapper<SysDataLog> {
     /**

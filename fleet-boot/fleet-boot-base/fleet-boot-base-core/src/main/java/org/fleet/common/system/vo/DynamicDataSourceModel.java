@@ -38,9 +38,11 @@ public class DynamicDataSourceModel {
      * 密码
      */
     private java.lang.String dbPassword;
+
     public DynamicDataSourceModel() {
 
     }
+
     public DynamicDataSourceModel(Object dbSource) {
         if (dbSource != null) {
             BeanUtils.copyProperties(dbSource, this);

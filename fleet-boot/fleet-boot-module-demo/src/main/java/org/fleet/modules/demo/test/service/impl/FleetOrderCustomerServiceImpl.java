@@ -1,14 +1,13 @@
 package org.fleet.modules.demo.test.service.impl;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.modules.demo.test.entity.FleetOrderCustomer;
 import org.fleet.modules.demo.test.mapper.FleetOrderCustomerMapper;
 import org.fleet.modules.demo.test.service.IFleetOrderCustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.List;
 
 /**
  * @Description: 订单客户

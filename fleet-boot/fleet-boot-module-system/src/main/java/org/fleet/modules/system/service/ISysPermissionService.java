@@ -1,12 +1,11 @@
 package org.fleet.modules.system.service;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.fleet.common.exception.FleetBootException;
 import org.fleet.modules.system.entity.SysPermission;
 import org.fleet.modules.system.model.TreeModel;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 
 /**
  * <p>

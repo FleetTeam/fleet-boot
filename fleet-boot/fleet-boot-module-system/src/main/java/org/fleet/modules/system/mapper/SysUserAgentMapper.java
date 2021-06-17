@@ -1,7 +1,7 @@
 package org.fleet.modules.system.mapper;
 
-import org.fleet.modules.system.entity.SysUserAgent;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.system.entity.SysUserAgent;
 
 /**
  * @Description: 用户代理人设置

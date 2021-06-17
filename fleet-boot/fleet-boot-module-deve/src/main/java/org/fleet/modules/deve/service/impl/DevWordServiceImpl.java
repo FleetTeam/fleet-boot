@@ -1,11 +1,10 @@
 package org.fleet.modules.deve.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.modules.deve.entity.DevWord;
 import org.fleet.modules.deve.mapper.DevWordMapper;
 import org.fleet.modules.deve.service.IDevWordService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * @Description: 词汇定义

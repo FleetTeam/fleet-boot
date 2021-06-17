@@ -1,13 +1,12 @@
 package org.fleet.modules.demo.test.vo;
 
-import java.util.List;
-
+import lombok.Data;
 import org.fleet.modules.demo.test.entity.FleetOrderCustomer;
 import org.fleet.modules.demo.test.entity.FleetOrderTicket;
 import org.jeecgframework.poi.excel.annotation.Excel;
 import org.jeecgframework.poi.excel.annotation.ExcelCollection;
 
-import lombok.Data;
+import java.util.List;
 
 @Data
 public class FleetOrderMainPage {

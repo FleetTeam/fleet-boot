@@ -1,8 +1,7 @@
 package org.fleet.modules.system.service;
 
-import org.fleet.modules.system.entity.SysDataLog;
-
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.system.entity.SysDataLog;
 
 public interface ISysDataLogService extends IService<SysDataLog> {
 

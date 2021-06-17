@@ -1,7 +1,7 @@
 package org.fleet.modules.deve.service;
 
-import org.fleet.modules.deve.entity.DevWord;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.deve.entity.DevWord;
 
 /**
  * @Description: 词汇定义

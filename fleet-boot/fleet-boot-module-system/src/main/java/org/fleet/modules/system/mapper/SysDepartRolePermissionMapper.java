@@ -1,7 +1,7 @@
 package org.fleet.modules.system.mapper;
 
-import org.fleet.modules.system.entity.SysDepartRolePermission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.system.entity.SysDepartRolePermission;
 
 /**
  * @Description: 部门角色权限

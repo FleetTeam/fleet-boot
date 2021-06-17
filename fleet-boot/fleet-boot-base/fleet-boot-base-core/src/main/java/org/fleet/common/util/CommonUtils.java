@@ -1,10 +1,10 @@
 package org.fleet.common.util;
 
 import lombok.extern.slf4j.Slf4j;
-import org.fleet.common.util.oss.OssBootUtil;
 import org.fleet.common.constant.CommonConstant;
 import org.fleet.common.constant.DataBaseConstant;
 import org.fleet.common.exception.FleetBootException;
+import org.fleet.common.util.oss.OssBootUtil;
 import org.jeecgframework.poi.util.PoiPublicUtil;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;

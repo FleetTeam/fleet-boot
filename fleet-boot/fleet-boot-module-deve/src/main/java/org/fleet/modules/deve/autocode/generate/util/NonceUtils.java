@@ -1,12 +1,12 @@
 package org.fleet.modules.deve.autocode.generate.util;
 
+import org.apache.commons.lang.RandomStringUtils;
+
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
-
-import org.apache.commons.lang.RandomStringUtils;
 
 public class NonceUtils {
     private static final SimpleDateFormat INTERNATE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");

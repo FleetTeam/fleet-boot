@@ -1,21 +1,18 @@
 package org.fleet.modules.system.service.impl;
 
-import java.util.*;
-
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.common.util.IPUtils;
 import org.fleet.common.util.SpringContextUtils;
 import org.fleet.common.util.oConvertUtils;
 import org.fleet.modules.system.entity.SysRolePermission;
 import org.fleet.modules.system.mapper.SysRolePermissionMapper;
 import org.fleet.modules.system.service.ISysRolePermissionService;
-
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * <p>

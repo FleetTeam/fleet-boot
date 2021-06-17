@@ -1,10 +1,7 @@
 package org.fleet.modules.demo.test.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-import org.fleet.modules.demo.test.entity.FleetOrderMain;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.demo.test.entity.FleetOrderMain;
 
 /**
  * @Description: 订单

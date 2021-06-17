@@ -1,9 +1,9 @@
 package org.fleet.modules.system.util;
 
-import java.util.List;
-
 import org.fleet.common.util.oConvertUtils;
 import org.fleet.modules.system.entity.SysPermission;
+
+import java.util.List;
 
 /**
  * @Author: fleet-team

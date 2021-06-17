@@ -1,13 +1,11 @@
 package org.fleet.modules.message.entity;
 
-import org.fleet.common.system.base.entity.FleetEntity;
-import org.jeecgframework.poi.excel.annotation.Excel;
-
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.fleet.common.system.base.entity.FleetEntity;
+import org.jeecgframework.poi.excel.annotation.Excel;
 
 /**
  * @Description: 消息模板

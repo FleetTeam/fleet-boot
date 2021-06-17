@@ -1,6 +1,7 @@
 package org.fleet.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.common.constant.CommonConstant;
 import org.fleet.common.util.PasswordUtil;
 import org.fleet.common.util.UUIDGenerator;
@@ -16,8 +17,6 @@ import org.fleet.modules.system.mapper.SysUserRoleMapper;
 import org.fleet.modules.system.service.ISysThirdAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 /**
  * @Description: 第三方登录账号表

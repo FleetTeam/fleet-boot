@@ -1,13 +1,12 @@
 package org.fleet.common.util.jsonschema.validate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSONObject;
 import org.fleet.common.system.vo.DictModel;
 import org.fleet.common.util.jsonschema.CommonProperty;
 
-import com.alibaba.fastjson.JSONObject;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class StringProperty extends CommonProperty {
 

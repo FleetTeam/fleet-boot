@@ -1,7 +1,7 @@
 package org.fleet.modules.system.mapper;
 
-import org.fleet.modules.system.entity.SysDepartRoleUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.system.entity.SysDepartRoleUser;
 
 /**
  * @Description: 部门角色人员信息

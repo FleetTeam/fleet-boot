@@ -1,8 +1,8 @@
 package org.fleet.common.system.vo;
 
-import java.util.List;
-
 import org.fleet.common.util.DateUtils;
+
+import java.util.List;
 
 public class SysUserCacheInfo {
 

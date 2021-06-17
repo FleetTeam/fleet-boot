@@ -1,10 +1,10 @@
 package org.fleet.modules.system.model;
 
+import org.fleet.modules.system.entity.SysDepart;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.fleet.modules.system.entity.SysDepart;
 
 /**
  * <p>

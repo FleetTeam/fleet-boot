@@ -1,7 +1,7 @@
 package org.fleet.modules.deve.service;
 
-import org.fleet.modules.deve.entity.DevRefDict;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.deve.entity.DevRefDict;
 
 /**
  * @Description: 参考字典

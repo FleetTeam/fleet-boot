@@ -1,6 +1,7 @@
 package org.fleet.config.shiro.filters;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.InvalidRequestFilter;
 import org.apache.shiro.web.filter.mgt.DefaultFilter;
@@ -9,7 +10,6 @@ import org.apache.shiro.web.filter.mgt.FilterChainResolver;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
-import org.apache.shiro.mgt.SecurityManager;
 import org.springframework.beans.factory.BeanInitializationException;
 
 import javax.servlet.Filter;

@@ -1,10 +1,6 @@
 package org.fleet.modules.demo.test.service.impl;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.modules.demo.test.entity.FleetOrderCustomer;
 import org.fleet.modules.demo.test.entity.FleetOrderMain;
 import org.fleet.modules.demo.test.entity.FleetOrderTicket;
@@ -16,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description: 订单

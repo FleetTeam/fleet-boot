@@ -1,12 +1,10 @@
 package org.fleet.modules.system.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.common.constant.FillRuleConstant;
 import org.fleet.common.exception.FleetBootException;
 import org.fleet.common.util.FillRuleUtil;
@@ -16,10 +14,11 @@ import org.fleet.modules.system.mapper.SysCategoryMapper;
 import org.fleet.modules.system.model.TreeSelectModel;
 import org.fleet.modules.system.service.ISysCategoryService;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 分类字典

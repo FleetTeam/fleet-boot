@@ -1,7 +1,6 @@
 package org.fleet.common.base;
 
 import cn.hutool.core.util.ObjectUtil;
-
 import org.apache.commons.beanutils.ConvertUtils;
 
 import java.math.BigDecimal;

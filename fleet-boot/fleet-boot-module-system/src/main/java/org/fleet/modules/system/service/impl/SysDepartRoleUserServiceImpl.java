@@ -1,6 +1,7 @@
 package org.fleet.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.common.util.oConvertUtils;
 import org.fleet.modules.system.entity.SysDepartRole;
 import org.fleet.modules.system.entity.SysDepartRoleUser;
@@ -9,8 +10,6 @@ import org.fleet.modules.system.mapper.SysDepartRoleUserMapper;
 import org.fleet.modules.system.service.ISysDepartRoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;

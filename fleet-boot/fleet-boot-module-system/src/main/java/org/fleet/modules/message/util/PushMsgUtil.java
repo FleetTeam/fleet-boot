@@ -1,5 +1,6 @@
 package org.fleet.modules.message.util;
 
+import com.alibaba.fastjson.JSONObject;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -10,8 +11,6 @@ import org.fleet.modules.message.service.ISysMessageService;
 import org.fleet.modules.message.service.ISysMessageTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
 import java.io.StringWriter;

@@ -1,9 +1,8 @@
 package org.fleet.modules.demo.test.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.fleet.common.system.base.service.FleetService;
 import org.fleet.modules.demo.test.entity.FleetDemo;
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
 
 /**
  * @Description: fleet 测试demo

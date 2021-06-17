@@ -1,7 +1,7 @@
 package org.fleet.modules.system.service;
 
-import org.fleet.modules.system.entity.SysDepartPermission;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.system.entity.SysDepartPermission;
 import org.fleet.modules.system.entity.SysPermissionDataRule;
 
 import java.util.List;

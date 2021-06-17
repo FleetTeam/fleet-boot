@@ -1,9 +1,9 @@
 package org.fleet.modules.demo.test.controller;
 
-import java.util.Arrays;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.fleet.common.api.vo.Result;
 import org.fleet.common.system.query.QueryGenerator;
 import org.fleet.modules.demo.test.entity.FleetOrderCustomer;
@@ -15,20 +15,10 @@ import org.fleet.modules.demo.test.service.IFleetOrderTicketService;
 import org.fleet.modules.demo.test.vo.FleetOrderMainPage;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 /**
  * @Description: 一对多示例（ERP TAB风格）

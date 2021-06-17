@@ -1,11 +1,11 @@
 package org.fleet.modules.monitor.service;
 
+import com.alibaba.fastjson.JSONArray;
+import org.fleet.modules.monitor.domain.RedisInfo;
+import org.fleet.modules.monitor.exception.RedisConnectException;
+
 import java.util.List;
 import java.util.Map;
-
-import com.alibaba.fastjson.JSONArray;
-import org.fleet.modules.monitor.exception.RedisConnectException;
-import org.fleet.modules.monitor.domain.RedisInfo;
 
 public interface RedisService {
 

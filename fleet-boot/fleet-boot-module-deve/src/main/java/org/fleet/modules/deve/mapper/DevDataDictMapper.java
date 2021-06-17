@@ -1,10 +1,7 @@
 package org.fleet.modules.deve.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-import org.fleet.modules.deve.entity.DevDataDict;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.deve.entity.DevDataDict;
 
 /**
  * @Description: 数据字典

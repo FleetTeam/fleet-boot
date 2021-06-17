@@ -1,16 +1,18 @@
 package org.fleet.modules.system.controller;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.fleet.common.api.vo.Result;
-import org.fleet.common.system.query.QueryGenerator;
 import org.fleet.common.aspect.annotation.AutoLog;
+import org.fleet.common.system.base.controller.FleetController;
+import org.fleet.common.system.query.QueryGenerator;
 import org.fleet.common.system.vo.LoginUser;
 import org.fleet.common.util.oConvertUtils;
 import org.fleet.modules.system.entity.SysDepartRole;
@@ -18,19 +20,17 @@ import org.fleet.modules.system.entity.SysDepartRolePermission;
 import org.fleet.modules.system.entity.SysDepartRoleUser;
 import org.fleet.modules.system.entity.SysPermissionDataRule;
 import org.fleet.modules.system.service.*;
-import org.fleet.modules.system.entity.*;
-import org.fleet.modules.system.service.*;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.extern.slf4j.Slf4j;
-import org.fleet.common.system.base.controller.FleetController;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @Description: 部门角色

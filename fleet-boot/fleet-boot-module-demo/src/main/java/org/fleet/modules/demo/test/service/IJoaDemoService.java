@@ -1,8 +1,7 @@
 package org.fleet.modules.demo.test.service;
 
-import org.fleet.modules.demo.test.entity.JoaDemo;
-
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.demo.test.entity.JoaDemo;
 
 /**
  * @Description: 流程测试

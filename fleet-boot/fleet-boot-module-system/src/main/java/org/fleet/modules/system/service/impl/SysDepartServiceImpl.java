@@ -1,16 +1,15 @@
 package org.fleet.modules.system.service.impl;
 
-import java.util.*;
-
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.fleet.common.constant.CacheConstant;
 import org.fleet.common.constant.CommonConstant;
 import org.fleet.common.constant.FillRuleConstant;
 import org.fleet.common.util.FillRuleUtil;
 import org.fleet.common.util.YouBianCodeUtil;
-import org.fleet.modules.system.entity.*;
-import org.fleet.modules.system.mapper.*;
 import org.fleet.modules.system.entity.*;
 import org.fleet.modules.system.mapper.*;
 import org.fleet.modules.system.model.DepartIdModel;
@@ -22,10 +21,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
-import io.netty.util.internal.StringUtil;
+import java.util.*;
 
 /**
  * <p>

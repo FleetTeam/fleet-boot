@@ -21,7 +21,6 @@ import org.fleet.modules.system.service.ISysDepartPermissionService;
 import org.fleet.modules.system.service.ISysPermissionDataRuleService;
 import org.fleet.modules.system.service.ISysPermissionService;
 import org.fleet.modules.system.service.ISysRolePermissionService;
-import org.fleet.modules.system.service.*;
 import org.fleet.modules.system.util.PermissionDataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,12 +1,12 @@
 package org.fleet.common.system.api;
 
 import com.alibaba.fastjson.JSONObject;
-import org.fleet.common.api.dto.message.*;
-import org.fleet.common.system.api.factory.SysBaseAPIFallbackFactory;
 import org.fleet.common.api.CommonAPI;
 import org.fleet.common.api.dto.OnlineAuthDTO;
-import org.fleet.common.system.vo.*;
+import org.fleet.common.api.dto.message.*;
 import org.fleet.common.constant.ServiceNameConstants;
+import org.fleet.common.system.api.factory.SysBaseAPIFallbackFactory;
+import org.fleet.common.system.vo.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;

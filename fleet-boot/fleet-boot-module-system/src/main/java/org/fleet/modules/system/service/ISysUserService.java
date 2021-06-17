@@ -1,21 +1,19 @@
 package org.fleet.modules.system.service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.fleet.common.api.vo.Result;
 import org.fleet.common.system.vo.SysUserCacheInfo;
 import org.fleet.modules.system.entity.SysUser;
-
-import com.baomidou.mybatisplus.extension.service.IService;
 import org.fleet.modules.system.model.SysUserSysDepartModel;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>

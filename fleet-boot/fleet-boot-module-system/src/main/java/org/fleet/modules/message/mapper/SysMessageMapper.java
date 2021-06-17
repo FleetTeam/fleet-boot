@@ -1,7 +1,7 @@
 package org.fleet.modules.message.mapper;
 
-import org.fleet.modules.message.entity.SysMessage;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.message.entity.SysMessage;
 
 /**
  * @Description: 消息

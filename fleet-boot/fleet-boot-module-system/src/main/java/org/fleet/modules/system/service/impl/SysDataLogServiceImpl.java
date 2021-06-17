@@ -1,11 +1,11 @@
 package org.fleet.modules.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.fleet.modules.system.entity.SysDataLog;
 import org.fleet.modules.system.mapper.SysDataLogMapper;
 import org.fleet.modules.system.service.ISysDataLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 @Service
 public class SysDataLogServiceImpl extends ServiceImpl<SysDataLogMapper, SysDataLog> implements ISysDataLogService {

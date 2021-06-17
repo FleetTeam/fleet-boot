@@ -1,7 +1,7 @@
 package org.fleet.modules.system.service;
 
-import org.fleet.modules.system.entity.SysThirdAccount;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.system.entity.SysThirdAccount;
 import org.fleet.modules.system.entity.SysUser;
 
 /**

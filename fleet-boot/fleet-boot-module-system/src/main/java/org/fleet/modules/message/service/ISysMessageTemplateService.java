@@ -1,9 +1,9 @@
 package org.fleet.modules.message.service;
 
-import java.util.List;
-
 import org.fleet.common.system.base.service.FleetService;
 import org.fleet.modules.message.entity.SysMessageTemplate;
+
+import java.util.List;
 
 /**
  * @Description: 消息模板

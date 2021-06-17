@@ -1,8 +1,8 @@
 package org.fleet.modules.message.entity;
 
-import java.io.Serializable;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 发送消息实体

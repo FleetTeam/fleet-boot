@@ -1,12 +1,11 @@
 package org.fleet.modules.system.service;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.fleet.modules.system.entity.SysUser;
 import org.fleet.modules.system.entity.SysUserDepart;
 import org.fleet.modules.system.model.DepartIdModel;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 
 /**
  * <p>

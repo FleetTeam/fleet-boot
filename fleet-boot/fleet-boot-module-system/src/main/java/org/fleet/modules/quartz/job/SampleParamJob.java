@@ -1,11 +1,10 @@
 package org.fleet.modules.quartz.job;
 
+import lombok.extern.slf4j.Slf4j;
 import org.fleet.common.util.DateUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 示例带参定时任务

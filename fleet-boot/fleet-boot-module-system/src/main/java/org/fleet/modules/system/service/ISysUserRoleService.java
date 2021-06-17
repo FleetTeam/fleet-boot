@@ -1,8 +1,7 @@
 package org.fleet.modules.system.service;
 
-import org.fleet.modules.system.entity.SysUserRole;
-
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fleet.modules.system.entity.SysUserRole;
 
 /**
  * <p>

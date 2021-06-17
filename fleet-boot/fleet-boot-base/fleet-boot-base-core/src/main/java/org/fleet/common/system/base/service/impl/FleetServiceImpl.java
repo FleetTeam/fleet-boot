@@ -1,11 +1,10 @@
 package org.fleet.common.system.base.service.impl;
 
-import org.fleet.common.system.base.entity.FleetEntity;
-import org.fleet.common.system.base.service.FleetService;
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.fleet.common.system.base.entity.FleetEntity;
+import org.fleet.common.system.base.service.FleetService;
 
 /**
  * @Description: ServiceImpl基类

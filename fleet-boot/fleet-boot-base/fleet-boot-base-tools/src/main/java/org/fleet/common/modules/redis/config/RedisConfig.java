@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-
-import org.fleet.common.modules.redis.receiver.RedisReceiver;
-import org.fleet.common.modules.redis.writer.FleetRedisCacheWriter;
 import org.fleet.common.constant.CacheConstant;
 import org.fleet.common.constant.GlobalConstants;
-
+import org.fleet.common.modules.redis.receiver.RedisReceiver;
+import org.fleet.common.modules.redis.writer.FleetRedisCacheWriter;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;

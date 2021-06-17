@@ -1,8 +1,5 @@
 package org.fleet.modules.system.service.impl;
 
-import java.util.HashMap;
-import java.util.ArrayList;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -17,7 +14,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.fleet.common.api.dto.OnlineAuthDTO;
 import org.fleet.common.api.dto.message.*;
-import org.fleet.common.system.vo.*;
 import org.fleet.common.aspect.UrlMatchEnum;
 import org.fleet.common.constant.CacheConstant;
 import org.fleet.common.constant.CommonConstant;
@@ -26,12 +22,10 @@ import org.fleet.common.constant.WebsocketConst;
 import org.fleet.common.exception.FleetBootException;
 import org.fleet.common.system.api.ISysBaseAPI;
 import org.fleet.common.system.query.QueryGenerator;
+import org.fleet.common.system.vo.*;
 import org.fleet.common.util.SysAnnmentTypeEnum;
 import org.fleet.common.util.YouBianCodeUtil;
 import org.fleet.common.util.oConvertUtils;
-import org.fleet.modules.system.entity.*;
-import org.fleet.modules.system.mapper.*;
-import org.fleet.modules.system.service.*;
 import org.fleet.modules.message.entity.SysMessageTemplate;
 import org.fleet.modules.message.handle.impl.EmailSendMsgHandle;
 import org.fleet.modules.message.service.ISysMessageTemplateService;

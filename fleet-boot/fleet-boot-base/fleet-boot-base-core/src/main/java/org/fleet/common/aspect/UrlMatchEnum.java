@@ -20,6 +20,7 @@ public enum UrlMatchEnum {
      * 菜单路由 URL前缀 (对应菜单路径)
      */
     private String match_url;
+
     UrlMatchEnum(String url, String match_url) {
         this.url = url;
         this.match_url = match_url;

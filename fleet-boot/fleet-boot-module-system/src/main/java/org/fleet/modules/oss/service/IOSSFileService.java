@@ -1,10 +1,10 @@
 package org.fleet.modules.oss.service;
 
-import java.io.IOException;
-
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.fleet.modules.oss.entity.OSSFile;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface IOSSFileService extends IService<OSSFile> {
 

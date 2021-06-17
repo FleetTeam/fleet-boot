@@ -1,14 +1,13 @@
 package org.fleet.modules.system.mapper;
 
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.fleet.modules.system.entity.SysCategory;
 import org.fleet.modules.system.model.TreeSelectModel;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 分类字典

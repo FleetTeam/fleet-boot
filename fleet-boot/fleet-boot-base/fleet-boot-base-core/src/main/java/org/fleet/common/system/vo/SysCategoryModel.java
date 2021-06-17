@@ -1,7 +1,5 @@
 package org.fleet.common.system.vo;
 
-import org.jeecgframework.poi.excel.annotation.Excel;
-
 /**
  * @Author fleet-team
  * @Date 2021-04-19

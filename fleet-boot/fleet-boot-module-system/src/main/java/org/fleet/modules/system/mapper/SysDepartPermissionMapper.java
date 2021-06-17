@@ -1,7 +1,7 @@
 package org.fleet.modules.system.mapper;
 
-import org.fleet.modules.system.entity.SysDepartPermission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.fleet.modules.system.entity.SysDepartPermission;
 
 /**
  * @Description: 部门权限表
