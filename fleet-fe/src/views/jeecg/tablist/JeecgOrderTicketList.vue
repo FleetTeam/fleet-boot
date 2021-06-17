@@ -123,7 +123,7 @@
           this.ipagination.current = 1;
         }
         var params = this.getQueryParams();
-        //update-begin--Author:kangxiaolin  Date:20190905 for：[442]主子表分开维护，生成的代码子表的分页改为真实的分页--------------------
+        // update-begin--Author:kangxiaolin  Date:20190905 for：[442]主子表分开维护，生成的代码子表的分页改为真实的分页--------------------
         getAction(this.url.list, {orderId: params.mainId ,pageNo : this.ipagination.current,
           pageSize :this.ipagination.pageSize}).then((res) => {
           if (res.success) {
@@ -133,7 +133,7 @@
             this.dataSource = null;
           }
         })
-        //update-end--Author:kangxiaolin  Date:20190905 for：[442]主子表分开维护，生成的代码子表的分页改为真实的分页--------------------
+        // update-end--Author:kangxiaolin  Date:20190905 for：[442]主子表分开维护，生成的代码子表的分页改为真实的分页--------------------
       },
       getOrderMain(orderId) {
         this.queryParam.mainId = orderId;

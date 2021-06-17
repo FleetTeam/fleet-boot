@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 /**
  * @Description: 用户代理人设置
  * @Author: fleet-boot
- * @Date:  2021-04-19
+ * @Date: 2021-04-19
  * @Version: V1.0
  */
 @Service

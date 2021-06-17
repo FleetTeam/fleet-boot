@@ -4,11 +4,11 @@
       <a-card :bordered="false">
         <div style="background: #fff;padding-left:16px;height: 100%; margin-top: 5px">
           <a-input-search @search="onSearch" style="width:100%;margin-top: 10px" placeholder="请输入部门名称"/>
-          <!-- 树-->
+          <!-- 树 -->
 
           <template v-if="userIdentity === '2' && departTree.length>0">
 
-            <!--组织机构-->
+            <!-- 组织机构 -->
             <a-tree
               showLine
               :selectedKeys="selectedKeys"
@@ -101,7 +101,7 @@
     },
     methods: {
       callback(key) {
-        //console.log(key)
+        // console.log(key)
       },
       loadData() {
         this.refresh();
@@ -132,10 +132,10 @@
         })
       },
       setThisExpandedKeys(node) {
-        //只展开一级目录
+        // 只展开一级目录
         if (node.children && node.children.length > 0) {
           this.iExpandedKeys.push(node.key)
-          //下方代码放开注释则默认展开所有节点
+          // 下方代码放开注释则默认展开所有节点
           /**
           for (let a = 0; a < node.children.length; a++) {
             this.setThisExpandedKeys(node.children[a])

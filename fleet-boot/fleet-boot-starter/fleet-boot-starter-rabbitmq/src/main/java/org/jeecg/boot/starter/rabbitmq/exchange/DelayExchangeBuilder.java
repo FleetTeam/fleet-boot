@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * 延迟交换器构造器
+ *
  * @author: zyf
  * @date: 2019/3/8 13:31
  * @description:
@@ -15,14 +16,15 @@ public class DelayExchangeBuilder {
     /**
      * 默认延迟消息交换器
      */
-    public final static  String DEFAULT_DELAY_EXCHANGE = "jeecg.delayed.exchange";
+    public final static String DEFAULT_DELAY_EXCHANGE = "jeecg.delayed.exchange";
     /**
      * 普通交换器
      */
-    public final static  String DELAY_EXCHANGE = "jeecg.direct.exchange";
+    public final static String DELAY_EXCHANGE = "jeecg.direct.exchange";
 
     /**
      * 构建延迟消息交换器
+     *
      * @return
      */
     public static CustomExchange buildExchange() {

@@ -209,8 +209,8 @@
       add() {
         // 默认新增一条数据
         this.getAllTable().then(editableTables => {
-          //editableTables[0].add()
-          //editableTables[1].add()
+          // editableTables[0].add()
+          // editableTables[1].add()
         })
         this.edit({})
       },
@@ -234,7 +234,7 @@
         })
         this.$emit('close')
       },
-      /** 查询某个tab的数据 */
+      // 查询某个tab的数据
       requestTableData(url, params, tab) {
         tab.loading = true
         getAction(url, params).then(res => {
@@ -249,17 +249,17 @@
       handleCancel() {
         this.close()
       },
-      /** ATab 选项卡切换事件 */
+      // ATab 选项卡切换事件
       handleChangeTabs(key) {
         getRefPromise(this, `editableTable${key}`).then(editableTable => {
           editableTable.resetScrollTop()
         })
       },
 
-      /** 触发表单验证 */
+      // 触发表单验证
       validateFields() {
         this.getAllTable().then(tables => {
-          /** 一次性验证主表和所有的次表 */
+          // 一次性验证主表和所有的次表
           return validateFormModelAndTables(this.$refs.form,this.model, tables)
         }).then(allValues => {
           let formData = this.classifyIntoFormData(allValues)
@@ -274,7 +274,7 @@
           }
         })
       },
-      /** 整理成formData */
+      // 整理成formData
       classifyIntoFormData(allValues) {
         let orderMain = Object.assign(this.model, allValues.formValue)
         return {
@@ -283,7 +283,7 @@
           jeecgOrderTicketList: allValues.tablesValue[1].tableData
         }
       },
-      /** 发起新增或修改的请求 */
+      // 发起新增或修改的请求
       requestAddOrEdit(formData) {
         let url = this.url.add, method = 'post'
         if (this.model.id) {

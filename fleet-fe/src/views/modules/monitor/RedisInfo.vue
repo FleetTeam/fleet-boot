@@ -95,7 +95,7 @@
     },
     methods: {
 
-      /** 开启定时器 */
+      // 开启定时器
       openTimer() {
         this.loadData()
         this.closeTimer()
@@ -106,12 +106,12 @@
         }, this.millisec)
       },
 
-      /** 关闭定时器 */
+      // 关闭定时器
       closeTimer() {
         if (this.timer) clearInterval(this.timer)
       },
 
-      /** 查询数据 */
+      // 查询数据
       loadData() {
         Promise.all([
           getAction(this.url.keysSize),

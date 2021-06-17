@@ -7,25 +7,28 @@ import org.fleet.modules.system.entity.SysGatewayRoute;
 /**
  * @Description: gateway路由管理
  * @Author: fleet-team
- * @Date:   2021-04-19
+ * @Date: 2021-04-19
  * @Version: V1.0
  */
 public interface ISysGatewayRouteService extends IService<SysGatewayRoute> {
 
     /**
      * 添加所有的路由信息到redis
+     *
      * @param key
      */
-     void addRoute2Redis(String key);
+    void addRoute2Redis(String key);
 
     /**
      * 删除路由
+     *
      * @param id
      */
-     void deleteById(String id);
+    void deleteById(String id);
 
     /**
      * 保存路由配置
+     *
      * @param array
      */
     void updateAll(JSONObject array);

@@ -71,7 +71,7 @@
     /* update_end author:wuxianquan date:20190828 for: 关闭当前tab页，供子页面调用->望菜单能配置外链，直接弹出新页面而不是嵌入iframe #428 */
     computed: {
       multipage() {
-        //判断如果是手机模式，自动切换为单页面模式
+        // 判断如果是手机模式，自动切换为单页面模式
         if (this.isMobile()) {
           return false
         } else {
@@ -101,14 +101,14 @@
     },
     watch: {
       '$route': function(newRoute) {
-        //console.log("新的路由",newRoute)
+        // console.log("新的路由",newRoute)
         this.activePage = newRoute.fullPath
         if (!this.multipage) {
           this.linkList = [newRoute.fullPath]
           this.pageList = [Object.assign({},newRoute)]
         // update-begin-author:taoyan date:20200211 for: TASK #3368 【路由缓存】首页的缓存设置有问题，需要根据后台的路由配置来实现是否缓存
         } else if(indexKey==newRoute.fullPath) {
-          //首页时 判断是否缓存 没有缓存 刷新之
+          // 首页时 判断是否缓存 没有缓存 刷新之
           if (newRoute.meta.keepAlive === false) {
             this.routeReload()
           }
@@ -116,11 +116,11 @@
         }else if (this.linkList.indexOf(newRoute.fullPath) < 0) {
           this.linkList.push(newRoute.fullPath)
           this.pageList.push(Object.assign({},newRoute))
-          //// update-begin-author:sunjianlei date:20200103 for: 如果新增的页面配置了缓存路由，那么就强制刷新一遍 #842
+          // // update-begin-author:sunjianlei date:20200103 for: 如果新增的页面配置了缓存路由，那么就强制刷新一遍 #842
           // if (newRoute.meta.keepAlive) {
           //   this.routeReload()
           // }
-          //// update-end-author:sunjianlei date:20200103 for: 如果新增的页面配置了缓存路由，那么就强制刷新一遍 #842
+          // // update-end-author:sunjianlei date:20200103 for: 如果新增的页面配置了缓存路由，那么就强制刷新一遍 #842
         } else if (this.linkList.indexOf(newRoute.fullPath) >= 0) {
           let oldIndex = this.linkList.indexOf(newRoute.fullPath)
           let oldPositionRoute = this.pageList[oldIndex]
@@ -186,12 +186,12 @@
       },
       tabCallBack() {
         this.$nextTick(() => {
-          //update-begin-author:taoyan date: 20201211 for:【新版】online报错 JT-100
+          // update-begin-author:taoyan date: 20201211 for:【新版】online报错 JT-100
          setTimeout(()=>{
-           //省市区组件里面给window绑定了个resize事件 导致切换页面的时候触发了他的resize，但是切换页面，省市区组件还没被销毁前就触发了该事件，导致控制台报错，加个延迟
+           // 省市区组件里面给window绑定了个resize事件 导致切换页面的时候触发了他的resize，但是切换页面，省市区组件还没被销毁前就触发了该事件，导致控制台报错，加个延迟
            triggerWindowResizeEvent()
          },20)
-          //update-end-author:taoyan date: 20201211 for:【新版】online报错 JT-100
+          // update-end-author:taoyan date: 20201211 for:【新版】online报错 JT-100
         })
       },
       editPage(key, action) {
@@ -214,8 +214,8 @@
         index = index >= this.linkList.length ? this.linkList.length - 1 : index
         this.activePage = this.linkList[index]
 
-        //update-begin--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
-        //关闭页面则从缓存cache_included_routes中删除路由，下次点击菜单会重新加载页面
+        // update-begin--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
+        // 关闭页面则从缓存cache_included_routes中删除路由，下次点击菜单会重新加载页面
         let cacheRouterArray = Vue.ls.get(CACHE_INCLUDED_ROUTES) || []
         if (removeRoute && removeRoute[0]) {
           let componentName = removeRoute[0].meta.componentName
@@ -226,7 +226,7 @@
             Vue.ls.set(CACHE_INCLUDED_ROUTES, cacheRouterArray)
           }
         }
-        //update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
+        // update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
 
       },
       onContextmenu(e) {
@@ -307,7 +307,7 @@
           this.activePage = this.linkList[this.linkList.length - 1]
         }
       },
-      //update-begin-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
+      // update-begin-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
       dynamicRouterShow(key,title){
         let keyIndex = this.linkList.indexOf(key)
         if(keyIndex>=0){
@@ -319,9 +319,9 @@
           }
         }
       },
-      //update-end-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
+      // update-end-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
 
-      //update-begin-author:taoyan date:20191008 for:路由刷新
+      // update-begin-author:taoyan date:20191008 for:路由刷新
       routeReload(){
         this.reloadFlag = false
         let ToggleMultipage = "ToggleMultipage"
@@ -331,8 +331,8 @@
           this.reloadFlag = true
         })
       },
-      //update-end-author:taoyan date:20191008 for:路由刷新
-      //新增一个返回方法
+      // update-end-author:taoyan date:20191008 for:路由刷新
+      // 新增一个返回方法
       excuteCallback(callback){
         callback()
       },
@@ -421,6 +421,5 @@
       border-color: @primary-color!important;
     }
   }
-
 
 </style>

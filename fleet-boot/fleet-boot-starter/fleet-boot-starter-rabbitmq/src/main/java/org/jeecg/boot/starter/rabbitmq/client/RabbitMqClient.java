@@ -1,6 +1,5 @@
 package org.jeecg.boot.starter.rabbitmq.client;
 
-
 import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.boot.starter.rabbitmq.event.EventObj;
@@ -41,20 +40,22 @@ public class RabbitMqClient {
     private final RabbitAdmin rabbitAdmin;
 
     private final RabbitTemplate rabbitTemplate;
-
-
-    @Resource
-    private SimpleMessageListenerContainer messageListenerContainer;
-
     @Resource
     BusProperties busProperties;
     @Resource
+    private SimpleMessageListenerContainer messageListenerContainer;
+    @Resource
     private ApplicationEventPublisher publisher;
-
 
     @Resource
     private ApplicationContext applicationContext;
+    private Map sentObj = new HashMap<>();
 
+    @Autowired
+    public RabbitMqClient(RabbitAdmin rabbitAdmin, RabbitTemplate rabbitTemplate) {
+        this.rabbitAdmin = rabbitAdmin;
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
     @Bean
     public void initQueue() {
@@ -62,7 +63,7 @@ public class RabbitMqClient {
         Class<? extends Object> clazz = null;
         for (Map.Entry<String, Object> entry : beansWithRqbbitComponentMap.entrySet()) {
             log.info("初始化队列............");
-            //获取到实例对象的class信息
+            // 获取到实例对象的class信息
             clazz = entry.getValue().getClass();
             Method[] methods = clazz.getMethods();
             RabbitListener rabbitListener = clazz.getAnnotation(RabbitListener.class);
@@ -87,7 +88,7 @@ public class RabbitMqClient {
     private void createQueue(RabbitListener rabbitListener) {
         String[] queues = rabbitListener.queues();
         DirectExchange directExchange = createExchange(DelayExchangeBuilder.DELAY_EXCHANGE);
-        //创建交换机
+        // 创建交换机
         rabbitAdmin.declareExchange(directExchange);
         if (ObjectUtil.isNotEmpty(queues)) {
             for (String queueName : queues) {
@@ -99,17 +100,6 @@ public class RabbitMqClient {
             }
         }
     }
-
-
-    private Map sentObj = new HashMap<>();
-
-
-    @Autowired
-    public RabbitMqClient(RabbitAdmin rabbitAdmin, RabbitTemplate rabbitTemplate) {
-        this.rabbitAdmin = rabbitAdmin;
-        this.rabbitTemplate = rabbitTemplate;
-    }
-
 
     /**
      * 发送远程事件
@@ -161,7 +151,6 @@ public class RabbitMqClient {
         rabbitTemplate.convertAndSend(topicExchange.getName(), msg);
     }
 
-
     /**
      * 发送消息
      *
@@ -188,7 +177,6 @@ public class RabbitMqClient {
         this.send(queueName, this.sentObj, 0);
         this.sentObj.clear();
     }
-
 
     public RabbitMqClient put(String key, Object value) {
         this.sentObj.put(key, value);
@@ -233,7 +221,6 @@ public class RabbitMqClient {
         });
     }
 
-
     /**
      * 给queue发送消息
      *
@@ -276,7 +263,6 @@ public class RabbitMqClient {
     public boolean deleteExchange(String exchangeName) {
         return rabbitAdmin.deleteExchange(exchangeName);
     }
-
 
     /**
      * 声明其名称自动命名的队列。它是用exclusive=true、autoDelete=true和 durable = false

@@ -76,7 +76,7 @@
     </a-layout>
 
     <!-- update-start---- author:os_chengtgen -- date:20190830 --  for:issues/463 -编译主题颜色已生效，但还一直转圈，显示主题 正在编译 ---- -->
-    <!--<setting-drawer></setting-drawer>-->
+    <!-- <setting-drawer></setting-drawer> -->
     <!-- update-end---- author:os_chengtgen -- date:20190830 --  for:issues/463 -编译主题颜色已生效，但还一直转圈，显示主题 正在编译 ---- -->
   </a-layout>
 </template>
@@ -128,20 +128,20 @@
       }
     },
     created() {
-      //--update-begin----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
-      //this.menus = this.mainRouters.find((item) => item.path === '/').children;
+      // --update-begin----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
+      // this.menus = this.mainRouters.find((item) => item.path === '/').children;
       this.menus = this.permissionMenuList
-      
-      //--update-begin----author:liusq---date:20210223------for:关于测边菜单遮挡内容问题详细说明 #2255
+
+      // --update-begin----author:liusq---date:20210223------for:关于测边菜单遮挡内容问题详细说明 #2255
       this.collapsed=!this.sidebarOpened;
-      //--update-begin----author:liusq---date:20210223------for:关于测边菜单遮挡内容问题详细说明 #2255
-  
+      // --update-begin----author:liusq---date:20210223------for:关于测边菜单遮挡内容问题详细说明 #2255
+
       // 根据后台配置菜单，重新排序加载路由信息
-      //console.log('----加载菜单逻辑----')
-      //console.log(this.mainRouters)
-      //console.log(this.permissionMenuList)
-      //console.log('----navTheme------'+this.navTheme)
-      //--update-end----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
+      // console.log('----加载菜单逻辑----')
+      // console.log(this.mainRouters)
+      // console.log(this.permissionMenuList)
+      // console.log('----navTheme------'+this.navTheme)
+      // --update-end----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
     },
     methods: {
       ...mapActions(['setSidebar']),
@@ -155,9 +155,9 @@
           this.collapsed = false
         }
       },
-      //update-begin-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
+      // update-begin-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
       myMenuSelect(value){
-        //此处触发动态路由被点击事件
+        // 此处触发动态路由被点击事件
         this.findMenuBykey(this.menus,value.key)
         this.$emit("dynamicRouterShow",value.key,this.activeMenu.meta.title)
         // update-begin-author:sunjianlei date:20191223 for: 修复刷新后菜单Tab名字显示异常
@@ -174,7 +174,7 @@
           }
         }
       }
-      //update-end-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
+      // update-end-author:taoyan date:20190430 for:动态路由title显示配置的菜单title而不是其对应路由的title
     }
   }
 

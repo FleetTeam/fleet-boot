@@ -17,7 +17,6 @@ public class SqlUtils {
     public static final String DATABSE_TYPE_ORACLE = "oracle";
     public static final String DATABSE_TYPE_SQLSERVER = "sqlserver";
 
-
     /**
      * 分页SQL
      */

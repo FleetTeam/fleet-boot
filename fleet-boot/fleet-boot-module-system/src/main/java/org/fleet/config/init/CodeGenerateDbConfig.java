@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Description: 代码生成器,自定义DB配置
+ * @Description: 代码生成器, 自定义DB配置
  * 【加了此类，则online模式DB连接，使用平台的配置，fleet_database.properties配置无效;
- *  但是使用GUI模式代码生成，还是走fleet_database.properties配置】
+ * 但是使用GUI模式代码生成，还是走fleet_database.properties配置】
  * @author: fleet-team
  * @date: 2021-04-19
  */
@@ -26,11 +26,10 @@ public class CodeGenerateDbConfig {
     @Value("${spring.datasource.dynamic.datasource.master.driver-class-name:}")
     private String driverClassName;
 
-
     @Bean
     public CodeGenerateDbConfig initCodeGenerateDbConfig() {
-        if(StringUtils.isNotBlank(url)){
-            CodegenDatasourceConfig.initDbConfig(driverClassName,url, username, password);
+        if (StringUtils.isNotBlank(url)) {
+            CodegenDatasourceConfig.initDbConfig(driverClassName, url, username, password);
             log.info(" 代码生成器数据库连接，使用application.yml的DB配置 ###################");
         }
         return null;

@@ -29,7 +29,7 @@
         default: 'YYYY-MM-DD',
         required: false
       },
-      //此属性可以被废弃了
+      // 此属性可以被废弃了
       triggerChange:{
         type: Boolean,
         required: false,
@@ -77,7 +77,7 @@
         this.$emit('change', dateStr);
       }
     },
-    //2.2新增 在组件内定义 指定父组件调用时候的传值属性和事件类型 这个牛逼
+    // 2.2新增 在组件内定义 指定父组件调用时候的传值属性和事件类型 这个牛逼
     model: {
       prop: 'value',
       event: 'change'

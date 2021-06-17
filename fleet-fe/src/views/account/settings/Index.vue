@@ -113,7 +113,7 @@
         let routes = this.$route.matched.concat()
         this.defaultSelectedKeys = [ routes.pop().path ]
       },
-      //update-begin--Author:wangshuai  Date:20200729 for：聚合路由错误 issues#1441--------------------
+      // update-begin--Author:wangshuai  Date:20200729 for：聚合路由错误 issues#1441--------------------
       settingsClick(){
         this.security=false
         this.custom=false
@@ -154,7 +154,7 @@
         this.custom=true;
         this.title="个性化"
       }
-      //update-end--Author:wangshuai  Date:20200729 for：聚合路由错误 issues#1441--------------------
+      // update-end--Author:wangshuai  Date:20200729 for：聚合路由错误 issues#1441--------------------
     },
   }
 </script>

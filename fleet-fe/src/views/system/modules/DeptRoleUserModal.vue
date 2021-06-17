@@ -125,7 +125,7 @@
         let  httpurl = this.url.add;
         let  method = 'post';
         let formData = Object.assign(this.model, {});
-        //时间格式化
+        // 时间格式化
         formData.userId = this.userId;
         formData.newRoleId=this.newRoleId;
         formData.oldRoleId=this.oldRoleId;
@@ -164,7 +164,7 @@
         this.designNameValue=[];
         this.newRoleId="";
       },
-      /** 加载desform */
+      // 加载desform
       loadDesformList() {
         getAction(this.url.getDeptRoleList, { departId: this.currentDeptId, userId:this.userId }).then((res) => {
           if (res.success) {

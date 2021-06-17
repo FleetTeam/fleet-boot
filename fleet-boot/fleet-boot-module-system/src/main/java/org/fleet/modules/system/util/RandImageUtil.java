@@ -47,6 +47,7 @@ public class RandImageUtil {
 
     /**
      * 直接通过response 返回图片
+     *
      * @param response
      * @param resultCode
      * @throws IOException
@@ -59,6 +60,7 @@ public class RandImageUtil {
 
     /**
      * 生成base64字符串
+     *
      * @param resultCode
      * @return
      * @throws IOException
@@ -67,21 +69,21 @@ public class RandImageUtil {
         BufferedImage image = getImageBuffer(resultCode);
 
         ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-        //写入流中
+        // 写入流中
         ImageIO.write(image, IMG_FORMAT, byteStream);
-        //转换成字节
+        // 转换成字节
         byte[] bytes = byteStream.toByteArray();
-        //转换成base64串
+        // 转换成base64串
         String base64 = Base64.getEncoder().encodeToString(bytes).trim();
-        base64 = base64.replaceAll("\n", "").replaceAll("\r", "");//删除 \r\n
+        base64 = base64.replaceAll("\n", "").replaceAll("\r", ""); // 删除 \r\n
 
-        //写到指定位置
-        //ImageIO.write(bufferedImage, "png", new File(""));
+        // 写到指定位置
+        // ImageIO.write(bufferedImage, "png", new File(""));
 
-        return BASE64_PRE+base64;
+        return BASE64_PRE + base64;
     }
 
-    private static BufferedImage getImageBuffer(String resultCode){
+    private static BufferedImage getImageBuffer(String resultCode) {
         // 在内存中创建图象
         final BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // 获取图形上下文
@@ -90,7 +92,7 @@ public class RandImageUtil {
         graphics.setColor(Color.WHITE); // ---1
         graphics.fillRect(0, 0, width, height);
         // 设定边框颜色
-//		graphics.setColor(getRandColor(100, 200)); // ---2
+        // graphics.setColor(getRandColor(100, 200)); // ---2
         graphics.drawRect(0, 0, width - 1, height - 1);
 
         final Random random = new Random();
@@ -112,7 +114,7 @@ public class RandImageUtil {
             // 设置字体颜色
             graphics.setColor(Color.BLACK);
             // 设置字体样式
-//			graphics.setFont(new Font("Arial Black", Font.ITALIC, 18));
+            // graphics.setFont(new Font("Arial Black", Font.ITALIC, 18));
             graphics.setFont(new Font("Times New Roman", Font.BOLD, 24));
             // 设置字符，字符间距，上边距
             graphics.drawString(String.valueOf(resultCode.charAt(i)), (23 * i) + 8, 26);

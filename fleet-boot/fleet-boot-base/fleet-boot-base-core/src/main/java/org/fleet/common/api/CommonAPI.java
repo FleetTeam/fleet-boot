@@ -9,14 +9,15 @@ public interface CommonAPI {
 
     /**
      * 1查询用户角色信息
+     *
      * @param username
      * @return
      */
     Set<String> queryUserRoles(String username);
 
-
     /**
      * 2查询用户权限信息
+     *
      * @param username
      * @return
      */
@@ -40,14 +41,15 @@ public interface CommonAPI {
 
     /**
      * 5根据用户账号查询用户信息
+     *
      * @param username
      * @return
      */
     public LoginUser getUserByName(String username);
 
-
     /**
      * 6字典表的 翻译
+     *
      * @param table
      * @param text
      * @param code
@@ -58,6 +60,7 @@ public interface CommonAPI {
 
     /**
      * 7普通字典的翻译
+     *
      * @param code
      * @param key
      * @return
@@ -66,13 +69,14 @@ public interface CommonAPI {
 
     /**
      * 8查询数据权限
+     *
      * @return
      */
     List<SysPermissionDataRuleModel> queryPermissionDataRule(String component, String requestPath, String username);
 
-
     /**
      * 9查询用户信息
+     *
      * @param username
      * @return
      */
@@ -80,6 +84,7 @@ public interface CommonAPI {
 
     /**
      * 10获取数据字典
+     *
      * @param code
      * @return
      */
@@ -87,6 +92,7 @@ public interface CommonAPI {
 
     /**
      * 13获取表数据字典
+     *
      * @param table
      * @param text
      * @param code

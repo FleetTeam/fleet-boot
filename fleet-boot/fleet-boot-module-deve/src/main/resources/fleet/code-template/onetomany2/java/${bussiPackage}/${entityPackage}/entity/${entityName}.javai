@@ -22,22 +22,22 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value="${tableName}对象", description="${tableVo.ftlDescription}")
 public class ${entityName} implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     <#list originalColumns as po>
-	/**${po.filedComment}*/
-	<#if po.fieldName == primaryKeyField>
-	@TableId(type = IdType.ASSIGN_ID)
-	</#if>
+    // ${po.filedComment}
+    <#if po.fieldName == primaryKeyField>
+    @TableId(type = IdType.ASSIGN_ID)
+    </#if>
   <#if po.fieldType =='java.util.Date'>
-	<#if po.fieldDbType =='date'>
-	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    <#if po.fieldDbType =='date'>
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern="yyyy-MM-dd")
-	<#elseif po.fieldDbType =='datetime'>
-	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
+    <#elseif po.fieldDbType =='datetime'>
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	</#if>
+    </#if>
   </#if>
-	@ApiModelProperty(value = "${po.filedComment}")
-	private <#if po.fieldType=='java.sql.Blob'>byte[]<#else>${po.fieldType}</#if> ${po.fieldName};
-	</#list>
+    @ApiModelProperty(value = "${po.filedComment}")
+    private <#if po.fieldType=='java.sql.Blob'>byte[]<#else>${po.fieldType}</#if> ${po.fieldName};
+    </#list>
 }

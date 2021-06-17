@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>fleet-cloud-module</artifactId>
@@ -11,7 +11,7 @@
 
     <artifactId>fleet-cloud-gateway</artifactId>
     <dependencies>
-        <!-- fleet 微服务基础依赖-->
+        <!-- fleet 微服务基础依赖 -->
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-starter-cloud</artifactId>
@@ -22,12 +22,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- spring-cloud网关-->
+        <!-- spring-cloud网关 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        <!--Spring Webflux-->
+        <!-- Spring Webflux -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -41,7 +41,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!--健康监控-->
+        <!-- 健康监控 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -52,12 +52,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
         </dependency>
-        <!--springboot2.X默认使用lettuce连接池，需要引入commons-pool2-->
+        <!-- springboot2.X默认使用lettuce连接池，需要引入commons-pool2 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
-        <!--server-api-->
+        <!-- server-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

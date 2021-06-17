@@ -28,7 +28,7 @@ public class RateLimiterConfiguration {
      */
     @Bean
     public KeyResolver userKeyResolver() {
-        //使用这种方式限流，请求Header中必须携带X-Access-Token参数
+        // 使用这种方式限流，请求Header中必须携带X-Access-Token参数
         return exchange -> Mono.just(exchange.getRequest().getHeaders().getFirst(GlobalAccessTokenFilter.X_ACCESS_TOKEN));
     }
 

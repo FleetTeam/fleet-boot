@@ -12,10 +12,10 @@ import { ACCESS_TOKEN, TENANT_ID } from "@/store/mutation-types"
  * @type {*|string}
  */
 let apiBaseUrl = window._CONFIG['domianURL'] || "/fleet-boot";
-//console.log("apiBaseUrl= ",apiBaseUrl)
+// console.log("apiBaseUrl= ",apiBaseUrl)
 // 创建 axios 实例
 const service = axios.create({
-  //baseURL: '/jeecg-boot',
+  // baseURL: '/jeecg-boot',
   baseURL: apiBaseUrl, // api base_url
   timeout: 9000 // 请求超时时间
 })
@@ -39,7 +39,7 @@ const err = (error) => {
           break;
         }
         // update-end- --- author:liusq ------ date:20200910 ---- for:处理Blob情况----
-        //notification.error({ message: '系统提示', description:'Token失效，请重新登录!',duration: 4})
+        // notification.error({ message: '系统提示', description:'Token失效，请重新登录!',duration: 4})
         if(token && data.message.includes("Token失效")){
           // update-begin- --- author:scott ------ date:20190225 ---- for:Token失效采用弹框模式，不直接跳转----
           Modal.error({
@@ -99,13 +99,13 @@ service.interceptors.request.use(config => {
   if (token) {
     config.headers[ 'X-Access-Token' ] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
   }
-  //update-begin-author:taoyan date:2020707 for:多租户
+  // update-begin-author:taoyan date:2020707 for:多租户
   let tenantid = Vue.ls.get(TENANT_ID)
   if (!tenantid) {
     tenantid = 0;
   }
   config.headers[ 'tenant-id' ] = tenantid
-  //update-end-author:taoyan date:2020707 for:多租户
+  // update-end-author:taoyan date:2020707 for:多租户
   if(config.method=='get'){
     if(config.url.indexOf("sys/dict/getDictItems")<0){
       config.params = {

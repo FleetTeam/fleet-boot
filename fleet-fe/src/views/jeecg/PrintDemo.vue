@@ -7,7 +7,7 @@
       <div style="text-align: center">
         <p style="font-size: 24px;font-weight: 800">打印测试表单</p>
       </div>
-      <!--签字-->
+      <!-- 签字 -->
       <a-col :md="24" :sm="24">
       <div class="sign" style="text-align: left;height: inherit">
         <a-col :span="24">
@@ -50,7 +50,7 @@
       </a-col>
     </section>
   </a-card>
-  <!--</page-layout>-->
+  <!-- </page-layout> -->
 </template>
 <script>
   import ACol from "ant-design-vue/es/grid/Col";

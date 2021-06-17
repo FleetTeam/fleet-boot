@@ -134,42 +134,42 @@
               return parseInt(index)+1;
             }
            },
-		  //  {
-      //       title: '版本',
-      //       align:"center",
-      //       dataIndex: 'ver'
-      //      },
-		  //  {
-      //       title: '系统标识',
-      //       align:"center",
-      //       dataIndex: 'sysId'
-      //      },
-		   {
+      // {
+      //      title: '版本',
+      //      align:"center",
+      //      dataIndex: 'ver'
+      //     },
+      // {
+      //      title: '系统标识',
+      //      align:"center",
+      //      dataIndex: 'sysId'
+      //     },
+       {
             title: '词汇代码',
             align:"center",
             dataIndex: 'wordCode'
            },
-		   {
+       {
             title: '词汇描述',
             align:"center",
             dataIndex: 'wordDesc'
            },
-		   {
+       {
             title: '英文描述',
             align:"center",
             dataIndex: 'englishDesc'
            },
-		   {
+       {
             title: '词汇缩写',
             align:"center",
             dataIndex: 'abbreviate'
            },
-		  //  {
-      //       title: '状态',
-      //       align:"center",
-      //       dataIndex: 'status'
-      //      },
-		   {
+      // {
+      //      title: '状态',
+      //      align:"center",
+      //      dataIndex: 'status'
+      //     },
+       {
             title: '备注',
             align:"center",
             dataIndex: 'remark'
@@ -181,7 +181,7 @@
             scopedSlots: { customRender: 'action' },
           }
         ],
-		url: {
+    url: {
           list: "/deve/devWord/list",
           delete: "/deve/devWord/delete",
           deleteBatch: "/deve/devWord/deleteBatch",
@@ -196,7 +196,7 @@
     }
   },
     methods: {
-     
+
     }
   }
 </script>

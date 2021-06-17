@@ -7,7 +7,6 @@ package org.fleet.common.constant;
  */
 public class WebsocketConst {
 
-
     /**
      * 消息json key:cmd
      */

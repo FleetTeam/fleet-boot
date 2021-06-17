@@ -89,7 +89,7 @@
     data() {
       return {
         headerBarFixed: false,
-        //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
+        // update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
         topMenuStyle: {
           headerIndexLeft: {},
           topNavHeader: {},
@@ -100,27 +100,27 @@
       }
     },
     watch: {
-      /** 监听设备变化 */
+      // 监听设备变化
       device() {
         if (this.mode === 'topmenu') {
           this.buildTopMenuStyle()
         }
       },
-      /** 监听导航栏模式变化 */
+      // 监听导航栏模式变化
       mode(newVal) {
         if (newVal === 'topmenu') {
           this.buildTopMenuStyle()
         }
       }
     },
-    //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
+    // update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     mounted() {
       window.addEventListener('scroll', this.handleScroll)
-      //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
+      // update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
       if (this.mode === 'topmenu') {
         this.buildTopMenuStyle()
       }
-      //update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
+      // update-end--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     },
     methods: {
       handleScroll() {
@@ -138,7 +138,7 @@
       toggle() {
         this.$emit('toggle')
       },
-      //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
+      // update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
       buildTopMenuStyle() {
         if (this.mode === 'topmenu') {
           if (this.device === 'mobile') {
@@ -156,7 +156,7 @@
           }
         }
       }
-      //update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
+      // update-begin--author:sunjianlei---date:20190508------for: 顶部导航栏过长时显示更多按钮-----
     }
   }
 </script>

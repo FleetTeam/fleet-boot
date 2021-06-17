@@ -23,6 +23,9 @@ public class DemoLockTest {
     @Autowired
     RabbitMqClient rabbitMqClient;
 
+    public DemoLockTest() {
+    }
+
     /**
      * 测试分布式锁【注解方式】
      */
@@ -35,19 +38,16 @@ public class DemoLockTest {
         Map map = new BaseMap();
         map.put("orderId", "BJ0001");
         rabbitMqClient.sendMessage(CloudConstant.MQ_JEECG_PLACE_ORDER, map);
-        //延迟10秒发送
+        // 延迟10秒发送
         map.put("orderId", "NJ0002");
         rabbitMqClient.sendMessage(CloudConstant.MQ_JEECG_PLACE_ORDER, map, 10000);
         log.info("execute任务结束，休眠三秒");
     }
 
-    public DemoLockTest() {
-    }
-
     /**
      * 测试分布式锁【编码方式】
      */
-    //@Scheduled(cron = "0/5 * * * * ?")
+    // @Scheduled(cron = "0/5 * * * * ?")
     public void execute2() throws InterruptedException {
         if (redissonLock.tryLock(CloudConstant.REDISSON_DEMO_LOCK_KEY2, -1, 6000)) {
             log.info("执行任务execute2开始，休眠十秒");

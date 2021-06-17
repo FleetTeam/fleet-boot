@@ -16,7 +16,7 @@ public class ImportFileServiceImpl implements ImportFileServiceI {
     @Value("${fleet.path.upload}")
     private String upLoadPath;
 
-    @Value(value="${fleet.uploadType}")
+    @Value(value = "${fleet.uploadType}")
     private String uploadType;
 
     @Override

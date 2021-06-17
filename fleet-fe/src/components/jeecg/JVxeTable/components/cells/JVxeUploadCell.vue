@@ -29,9 +29,9 @@
             </a-tooltip>
 
             <a-menu slot="overlay">
-              <!-- <a-menu-item @click="handleClickPreviewFile">-->
-              <!--  <span><a-icon type="eye"/>&nbsp;预览</span>-->
-              <!-- </a-menu-item>-->
+              <!-- <a-menu-item @click="handleClickPreviewFile"> -->
+              <!--  <span><a-icon type="eye"/>&nbsp;预览</span> -->
+              <!-- </a-menu-item> -->
               <a-menu-item v-if="originColumn.allowDownload !== false" @click="handleClickDownloadFile">
                 <span><a-icon type="download"/>&nbsp;下载</span>
               </a-menu-item>
@@ -75,7 +75,7 @@
       }
     },
     computed: {
-      /** upload headers */
+      // upload headers
       uploadHeaders() {
         let {originColumn: col} = this
         let headers = {}

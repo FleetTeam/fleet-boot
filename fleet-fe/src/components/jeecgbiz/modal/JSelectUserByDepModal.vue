@@ -13,7 +13,7 @@
     <a-row :gutter="10" style="background-color: #ececec; padding: 10px; margin: -10px">
       <a-col :md="6" :sm="24">
         <a-card :bordered="false">
-          <!--组织机构-->
+          <!-- 组织机构 -->
           <a-directory-tree
             selectable
             :selectedKeys="selectedDepIds"
@@ -36,7 +36,7 @@
             @search="onSearch"
           ></a-input-search>
           <a-button @click="searchReset(1)" style="margin-left: 20px" icon="redo">重置</a-button>
-          <!--用户列表-->
+          <!-- 用户列表 -->
           <a-table
             ref="table"
             :scroll="scrollTrigger"
@@ -186,7 +186,7 @@
           await this.initQueryUserByDepId(this.selectedDepIds)
         } else {
           this.loading = true
-          let params = this.getQueryParams()//查询条件
+          let params = this.getQueryParams() // 查询条件
           await getUserList(params).then((res) => {
             if (res.success) {
               this.dataSource = res.result.records
@@ -242,7 +242,7 @@
         this.visible = false;
       },
       handleTableChange(pagination, filters, sorter) {
-        //TODO 筛选
+        // TODO 筛选
         if (Object.keys(sorter).length > 0) {
           this.isorter.column = sorter.field;
           this.isorter.order = 'ascend' === sorter.order ? 'asc' : 'desc';
@@ -257,7 +257,7 @@
         that.searchReset(0)
         that.close();
       },
-      //获取选择用户信息
+      // 获取选择用户信息
       getSelectUserRows(rowId) {
         let dataSource = this.dataSource;
         let userIds = "";

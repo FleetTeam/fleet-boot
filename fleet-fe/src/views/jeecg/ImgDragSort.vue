@@ -40,7 +40,7 @@
       return {
         description: '图片拖拽排序',
         spinning: false,
-        //数据集
+        // 数据集
         dataSource: [
           {id:'000',sort: 0,filePath: 'https://static.jeecg.com/upload/test/1_1588149743473.jpg'},
           {id:'111',sort: 1,filePath: 'https://static.jeecg.com/upload/test/u27356337152749454924fm27gp0_1588149731821.jpg'},

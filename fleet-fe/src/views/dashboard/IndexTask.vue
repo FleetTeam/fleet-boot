@@ -196,11 +196,11 @@
     restDay:9
   }]
 
-  //4-7天
+  // 4-7天
   const tip_green = "rgba(0, 255, 0, 1)"
-  //1-3天
+  // 1-3天
   const tip_yellow = "rgba(255, 255, 0, 1)"
-  //超期
+  // 超期
   const tip_red = "rgba(255, 0, 0, 1)"
 
   export default {
@@ -270,7 +270,7 @@
       },
       goPage(){
         this.$message.success("请根据具体业务跳转页面")
-        //this.$router.push({ path: '/comp/mytask' })
+        // this.$router.push({ path: '/comp/mytask' })
       },
       mock(){
         this.dataSource1=tempSs1
@@ -296,9 +296,6 @@
         this.$message.success("办理完成")
       }
 
-
-
-
     }
   }
 </script>
@@ -323,7 +320,6 @@
    .index-container-ty .ant-card-actions li {margin:2px 0;}
    .index-container-ty .ant-card-actions > li > span{width: 100%}*/
 
-
   .index-container-ty .ant-table-footer{text-align: right;padding:6px 12px 6px 6px;background: #fff;border-top: 2px solid #f7f1f1;}
 
   .index-md-title{
@@ -346,7 +342,6 @@
     /*border-right:1px solid #90aeff;
     border-bottom:1px solid #90aeff;*/
   }
-
 
   .index-container-ty .ant-table-thead > tr > th,
   .index-container-ty .ant-table-tbody > tr > td{

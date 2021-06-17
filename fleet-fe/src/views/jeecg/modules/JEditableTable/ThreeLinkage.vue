@@ -91,7 +91,7 @@
         return this.mockData.filter(i => i.parent === parentId)
       },
 
-      /** 当选项被改变时，联动其他组件 */
+      // 当选项被改变时，联动其他组件
       handleValueChange(event) {
         const { type, row, column, value, target } = event
 

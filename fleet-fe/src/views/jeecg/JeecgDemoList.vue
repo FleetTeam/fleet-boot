@@ -13,7 +13,7 @@
           </a-col>
           <a-col :xl="6" :lg="7" :md="8" :sm="24">
             <a-form-item label="年龄">
-             <!-- <a-input placeholder="请输入名称查询" v-model="queryParam.age"></a-input>-->
+              <!-- <a-input placeholder="请输入名称查询" v-model="queryParam.age"></a-input> -->
               <a-input placeholder="最小年龄" type="ge" v-model="queryParam.age_begin" style="width:calc(50% - 15px);"></a-input>
               <span class="group-query-strig">~</span>
               <a-input placeholder="最大年龄" type="le" v-model="queryParam.age_end" style="width:calc(50% - 15px);"></a-input>
@@ -169,7 +169,7 @@
   import Vue from 'vue'
   import { filterObj } from '@/utils/util';
 
-  //高级查询modal需要参数
+  // 高级查询modal需要参数
   const superQueryFieldList=[
     {
       type: "string",
@@ -197,14 +197,14 @@
     data() {
       return {
         description: '单表示例列表',
-        //字典数组缓存
+        // 字典数组缓存
         sexDictOptions: [],
         importExcelUrl:`${window._CONFIG['domianURL']}/test/jeecgDemo/importExcel`,
-        //表头
+        // 表头
         columns:[],
-        //列设置
+        // 列设置
         settingColumns:[],
-        //列定义
+        // 列定义
         defColumns: [
           {
             title: '#',
@@ -236,7 +236,7 @@
             align: "center",
             dataIndex: 'sex',
             customRender: (text) => {
-              //字典值替换通用方法
+              // 字典值替换通用方法
               return filterDictTextByCache('sex', text);
             }
           },
@@ -281,7 +281,7 @@
     },
     methods: {
       getQueryParams(){
-        //高级查询器
+        // 高级查询器
         let sqp = {}
         if(this.superQueryParams){
           sqp['superQueryParams']=encodeURI(this.superQueryParams)
@@ -292,12 +292,12 @@
         param.field = this.getQueryField();
         param.pageNo = this.ipagination.current;
         param.pageSize = this.ipagination.pageSize;
-        delete param.birthdayRange; //范围参数不传递后台
+        delete param.birthdayRange; // 范围参数不传递后台
         return filterObj(param);
       },
       initDictConfig() {
         console.log("--我才是真的方法!--")
-        //初始化字典 - 性别
+        // 初始化字典 - 性别
         initDictOptions('sex').then((res) => {
           if (res.success) {
             this.sexDictOptions = res.result;
@@ -308,7 +308,7 @@
         this.$refs.jeecgDemoTabsModal.add();
         this.$refs.jeecgDemoTabsModal.title = "编辑";
       },
-      //跳转单据页面
+      // 跳转单据页面
       jump() {
         this.$router.push({path: '/jeecg/helloworld'})
       },
@@ -317,7 +317,7 @@
         this.queryParam.birthday_begin=dateString[0];
         this.queryParam.birthday_end=dateString[1];
       },
-      //列设置更改事件
+      // 列设置更改事件
       onColSettingsChange (checkedValues) {
         var key = this.$route.name+":colsettings";
         Vue.ls.set(key, checkedValues, 7 * 24 * 60 * 60 * 1000)
@@ -334,8 +334,8 @@
         this.columns =  cols;
       },
       initColumns(){
-        //权限过滤（列权限控制时打开，修改第二个参数为授权码前缀）
-        //this.defColumns = colAuthFilter(this.defColumns,'testdemo:');
+        // 权限过滤（列权限控制时打开，修改第二个参数为授权码前缀）
+        // this.defColumns = colAuthFilter(this.defColumns,'testdemo:');
 
         var key = this.$route.name+":colsettings";
         let colSettings= Vue.ls.get(key);

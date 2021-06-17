@@ -1,4 +1,4 @@
-/** init domain config */
+// init domain config
 import './config'
 
 import Vue from 'vue'
@@ -15,7 +15,7 @@ import Antd, { version } from 'ant-design-vue'
 console.log('ant-design-vue version:', version)
 
 import Viser from 'viser-vue'
-import 'ant-design-vue/dist/antd.less';  // or 'ant-design-vue/dist/antd.less'
+import 'ant-design-vue/dist/antd.less'; // or 'ant-design-vue/dist/antd.less'
 
 import '@/permission' // permission control
 import '@/utils/filter' // base filter
@@ -46,7 +46,7 @@ import '@/assets/less/JAreaLinkage.less'
 import VueAreaLinkage from 'vue-area-linkage'
 import '@/components/jeecg/JVxeTable/install'
 import '@/components/JVxeCells/install'
-//表单验证
+// 表单验证
 import { rules } from '@/utils/rules'
 Vue.prototype.rules = rules
 Vue.config.productionTip = false

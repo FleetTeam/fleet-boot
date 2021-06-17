@@ -61,8 +61,8 @@
           // 新增时子表默认添加几行空数据
           addDefaultRowNum: 1,
           model: {
-          //设置默认值
-           },
+            // 设置默认值
+          },
           validatorRules: {
   <#list columns as po>
     <#if po.fieldName !='id'>
@@ -117,7 +117,7 @@
         }
       },
       methods: {
-        /** 调用完edit()方法之后会自动调用此方法 */
+        // 调用完edit()方法之后会自动调用此方法
         editAfter() {
           // 加载子表数据
           if (this.model.id) {
@@ -128,7 +128,7 @@
           }
         },
 
-        /** 整理成formData */
+        // 整理成formData
         classifyIntoFormData(allValues) {
           let main = Object.assign(this.model, allValues.formValue)
           return {

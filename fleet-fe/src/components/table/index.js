@@ -112,9 +112,9 @@ export default {
             pageSize: (pagination && pagination.pageSize) ||
               this.localPagination.pageSize
           });
-          //update--begin--autor:wangshuai-----date:20200724------for：判断showPagination是否为false------
+          // update--begin--autor:wangshuai-----date:20200724------for：判断showPagination是否为false------
           (!this.showPagination || !r.totalCount && this.showPagination === 'auto') && (this.localPagination = false)
-          //update--end--autor:wangshuai-----date:20200724------for：判断showPagination是否为false-----
+          // update--end--autor:wangshuai-----date:20200724------for：判断showPagination是否为false-----
           this.localDataSource = r.data; // 返回结果中的数组数据
           this.localLoading = false
         });
@@ -221,7 +221,6 @@ export default {
       }
       return props[k] = _vm[k];
     })
-
 
     // 显示信息提示
     if (this.showAlertInfo) {

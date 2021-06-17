@@ -145,7 +145,6 @@
           })
           this.dataSource = info
 
-
         }).catch((e) => {
           console.error(e)
           this.$message.error('获取JVM信息失败')

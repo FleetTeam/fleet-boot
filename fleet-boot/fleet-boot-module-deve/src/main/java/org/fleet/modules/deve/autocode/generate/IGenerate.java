@@ -11,5 +11,3 @@ public interface IGenerate {
 
     List<String> generateCodeFile(String projectPath, String templatePath, String stylePath) throws Exception;
 }
-
-

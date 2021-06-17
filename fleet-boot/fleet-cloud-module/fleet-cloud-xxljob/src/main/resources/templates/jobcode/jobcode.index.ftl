@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  	<#import "../common/common.macro.ftl" as netCommon>
-	<@netCommon.commonStyle />
-	<link rel="stylesheet" href="${request.contextPath}/static/plugins/codemirror/lib/codemirror.css">
-	<link rel="stylesheet" href="${request.contextPath}/static/plugins/codemirror/addon/hint/show-hint.css">
+    <#import "../common/common.macro.ftl" as netCommon>
+    <@netCommon.commonStyle />
+    <link rel="stylesheet" href="${request.contextPath}/static/plugins/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="${request.contextPath}/static/plugins/codemirror/addon/hint/show-hint.css">
     <title>${I18n.admin_name}</title>
-	<style type="text/css">
-		.CodeMirror {
-      		font-size:16px;
+    <style type="text/css">
+        .CodeMirror {
+              font-size:16px;
             width: 100%;
-      		height: 100%;
+              height: 100%;
             /*bottom: 0;
             top: 0px;*/
             position: absolute;
-		}
+        }
     </style>
 </head>
 <body class="skin-blue fixed layout-top-nav">
 
-	<div class="wrapper">
+    <div class="wrapper">
 
         <header class="main-header">
             <nav class="navbar navbar-static-top">
                 <div class="container">
-					<#-- icon -->
+                    <#-- icon -->
                     <div class="navbar-header">
                         <a class="navbar-brand"><b>Web</b>IDE</a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -43,7 +43,7 @@
                         </ul>
                     </div>
 
-					<#-- right nav -->
+                    <#-- right nav -->
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
@@ -55,24 +55,24 @@
                                         </a>
                                     </li>
                                     <textarea id="version_now" style="display:none;" >${jobInfo.glueSource}</textarea>
-									<#if jobLogGlues?exists && jobLogGlues?size gt 0 >
-										<#list jobLogGlues as glue>
+                                    <#if jobLogGlues?exists && jobLogGlues?size gt 0 >
+                                        <#list jobLogGlues as glue>
                                             <li>
                                                 <a href="javascript:;" class="source_version" version="version_${glue.id}" glueType="${glue.glueType}" >
                                                     <#list GlueTypeEnum as item><#if item == glue.glueType>${item.desc}</#if></#list>： ${glue.glueRemark}
                                                 </a>
                                             </li>
                                             <textarea id="version_${glue.id}" style="display:none;" >${glue.glueSource}</textarea>
-										</#list>
-									</#if>
+                                        </#list>
+                                    </#if>
                                 </ul>
                             </li>
                             <li id="save" >
-								<a href="javascript:;" >
-									<i class="fa fa-fw fa-save" ></i>
+                                <a href="javascript:;" >
+                                    <i class="fa fa-fw fa-save" ></i>
                                     ${I18n.system_save}
-								</a>
-							</li>
+                                </a>
+                            </li>
                             <li>
                                 <a href="javascript:window.close();" >
                                     <i class="fa fa-fw fa-close" ></i>
@@ -86,11 +86,11 @@
             </nav>
         </header>
 
-		<div class="content-wrapper" id="ideWindow" ></div>
+        <div class="content-wrapper" id="ideWindow" ></div>
 
-		<!-- footer -->
-		<#--<@netCommon.commonFooter />-->
-	</div>
+        <!-- footer -->
+        <#-- <@netCommon.commonFooter /> -->
+    </div>
 
     <!-- 保存.模态框 -->
     <div class="modal fade" id="saveModal" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -117,9 +117,8 @@
             </div>
         </div>
     </div>
-	
-<@netCommon.commonScript />
 
+<@netCommon.commonScript />
 
     <#assign glueTypeModeSrc = "${request.contextPath}/static/plugins/codemirror/mode/clike/clike.js" />
     <#assign glueTypeIdeMode = "text/x-java" />
@@ -144,7 +143,6 @@
         <#assign glueTypeModeSrc = "${request.contextPath}/static/plugins/codemirror/mode/powershell/powershell.js" />
         <#assign glueTypeIdeMode = "powershell" />
     </#if>
-
 
 <script src="${request.contextPath}/static/plugins/codemirror/lib/codemirror.js"></script>
 <script src="${glueTypeModeSrc}"></script>

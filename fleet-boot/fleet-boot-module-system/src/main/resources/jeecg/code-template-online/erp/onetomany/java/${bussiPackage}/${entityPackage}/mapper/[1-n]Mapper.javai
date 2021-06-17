@@ -15,9 +15,9 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ${subTab.entityName}Mapper extends BaseMapper<${subTab.entityName}> {
 
-	public boolean deleteByMainId(@Param("mainId") String mainId);
-    
-	public List<${subTab.entityName}> selectByMainId(@Param("mainId") String mainId);
+    public boolean deleteByMainId(@Param("mainId") String mainId);
+
+    public List<${subTab.entityName}> selectByMainId(@Param("mainId") String mainId);
 
 }
 </#list>

@@ -147,10 +147,10 @@ public class FleetDemoController extends FleetController<FleetDemo, IFleetDemoSe
     @RequestMapping(value = "/exportXls")
     @PermissionData(pageComponent = "jeecg/JeecgDemoList")
     public ModelAndView exportXls(HttpServletRequest request, FleetDemo fleetDemo) {
-        //获取导出表格字段
+        // 获取导出表格字段
         String exportFields = fleetDemoService.getExportFields();
-        //分sheet导出表格字段
-        return super.exportXlsSheet(request, fleetDemo, FleetDemo.class, "单表模型",exportFields,500);
+        // 分sheet导出表格字段
+        return super.exportXlsSheet(request, fleetDemo, FleetDemo.class, "单表模型", exportFields, 500);
     }
 
     /**
@@ -235,7 +235,6 @@ public class FleetDemoController extends FleetController<FleetDemo, IFleetDemoSe
         return modelAndView;
     }
 
-
     // ==========================================动态表单 JSON接收测试===========================================
     @PostMapping(value = "/testOnlineAdd")
     public Result<?> testOnlineAdd(@RequestBody JSONObject json) {
@@ -258,7 +257,7 @@ public class FleetDemoController extends FleetController<FleetDemo, IFleetDemoSe
     public Result<?> loadMpPermissonList(@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo, @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
                                          HttpServletRequest req) {
         QueryWrapper<FleetDemo> queryWrapper = new QueryWrapper<FleetDemo>();
-        //编程方式，给queryWrapper装载数据权限规则
+        // 编程方式，给queryWrapper装载数据权限规则
         QueryGenerator.installAuthMplus(queryWrapper, FleetDemo.class);
         Page<FleetDemo> page = new Page<FleetDemo>(pageNo, pageSize);
         IPage<FleetDemo> pageList = fleetDemoService.page(page, queryWrapper);

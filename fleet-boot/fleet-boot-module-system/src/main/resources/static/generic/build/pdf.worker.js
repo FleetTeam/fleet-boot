@@ -463,7 +463,6 @@ var XRefParseException = (function XRefParseExceptionClosure() {
   return XRefParseException;
 })();
 
-
 function bytesToString(bytes) {
   assert(bytes !== null && typeof bytes === 'object' &&
          bytes.length !== undefined, 'Invalid argument for bytesToString');
@@ -835,19 +834,19 @@ var PageViewport = PDFJS.PageViewport = (function PageViewportClosure() {
     rotation = rotation % 360;
     rotation = rotation < 0 ? rotation + 360 : rotation;
     switch (rotation) {
-      case 180:
-        rotateA = -1; rotateB = 0; rotateC = 0; rotateD = 1;
-        break;
-      case 90:
-        rotateA = 0; rotateB = 1; rotateC = 1; rotateD = 0;
-        break;
-      case 270:
-        rotateA = 0; rotateB = -1; rotateC = -1; rotateD = 0;
-        break;
-      //case 0:
-      default:
-        rotateA = 1; rotateB = 0; rotateC = 0; rotateD = -1;
-        break;
+    case 180:
+      rotateA = -1; rotateB = 0; rotateC = 0; rotateD = 1;
+      break;
+    case 90:
+      rotateA = 0; rotateB = 1; rotateC = 1; rotateD = 0;
+      break;
+    case 270:
+      rotateA = 0; rotateB = -1; rotateC = -1; rotateD = 0;
+      break;
+    // case 0:
+    default:
+      rotateA = 1; rotateB = 0; rotateC = 0; rotateD = -1;
+      break;
     }
 
     if (dontFlip) {
@@ -1607,9 +1606,6 @@ function loadJpegStream(id, imageUrl, objs) {
   img.src = imageUrl;
 }
 
-
-
-
 var NetworkManager = (function NetworkManagerClosure() {
 
   var OK_RESPONSE = 200;
@@ -1843,7 +1839,6 @@ var NetworkManager = (function NetworkManagerClosure() {
 
   return NetworkManager;
 })();
-
 
 var ChunkedStream = (function ChunkedStreamClosure() {
   function ChunkedStream(length, chunkSize, manager) {
@@ -2383,7 +2378,6 @@ var ChunkedStreamManager = (function ChunkedStreamManagerClosure() {
   return ChunkedStreamManager;
 })();
 
-
 // The maximum number of bytes fetched per range request
 var RANGE_CHUNK_SIZE = 65536;
 
@@ -2587,7 +2581,6 @@ var NetworkPdfManager = (function NetworkPdfManagerClosure() {
 
   return NetworkPdfManager;
 })();
-
 
 var Page = (function PageClosure() {
 
@@ -3096,7 +3089,6 @@ var PDFDocument = (function PDFDocumentClosure() {
 
   return PDFDocument;
 })();
-
 
 var Name = (function NameClosure() {
   function Name(name) {
@@ -4783,7 +4775,6 @@ var ObjectLoader = (function() {
   return ObjectLoader;
 })();
 
-
 var ISOAdobeCharset = [
   '.notdef', 'space', 'exclam', 'quotedbl', 'numbersign', 'dollar',
   'percent', 'ampersand', 'quoteright', 'parenleft', 'parenright',
@@ -4883,7 +4874,6 @@ var ExpertSubsetCharset = [
   'eightinferior', 'nineinferior', 'centinferior', 'dollarinferior',
   'periodinferior', 'commainferior'
 ];
-
 
 var DEFAULT_ICON_SIZE = 22; // px
 var SUPPORTED_TYPES = ['Link', 'Text', 'Widget'];
@@ -5365,7 +5355,7 @@ var LinkAnnotation = (function LinkAnnotationClosure() {
         if (!isValidUrl(url, false)) {
           url = '';
         }
-        // According to ISO 32000-1:2008, section 12.6.4.7, 
+        // According to ISO 32000-1:2008, section 12.6.4.7,
         // URI should to be encoded in 7-bit ASCII.
         // Some bad PDFs may have URIs in UTF-8 encoding, see Bugzilla 1122280.
         try {
@@ -5415,7 +5405,6 @@ var LinkAnnotation = (function LinkAnnotationClosure() {
 
   return LinkAnnotation;
 })();
-
 
 var PDFFunction = (function PDFFunctionClosure() {
   var CONSTRUCT_SAMPLED = 0;
@@ -5478,15 +5467,15 @@ var PDFFunction = (function PDFFunctionClosure() {
     fromIR: function PDFFunction_fromIR(IR) {
       var type = IR[0];
       switch (type) {
-        case CONSTRUCT_SAMPLED:
-          return this.constructSampledFromIR(IR);
-        case CONSTRUCT_INTERPOLATED:
-          return this.constructInterpolatedFromIR(IR);
-        case CONSTRUCT_STICHED:
-          return this.constructStichedFromIR(IR);
-        //case CONSTRUCT_POSTSCRIPT:
-        default:
-          return this.constructPostScriptFromIR(IR);
+      case CONSTRUCT_SAMPLED:
+        return this.constructSampledFromIR(IR);
+      case CONSTRUCT_INTERPOLATED:
+        return this.constructInterpolatedFromIR(IR);
+      case CONSTRUCT_STICHED:
+        return this.constructStichedFromIR(IR);
+      // case CONSTRUCT_POSTSCRIPT:
+      default:
+        return this.constructPostScriptFromIR(IR);
       }
     },
 
@@ -5587,7 +5576,7 @@ var PDFFunction = (function PDFFunctionClosure() {
         var samples = IR[5];
         var size = IR[6];
         var n = IR[7];
-        //var mask = IR[8];
+        // var mask = IR[8];
         var range = IR[9];
 
         // Building the cube vertices: its part and sample index
@@ -5610,7 +5599,7 @@ var PDFFunction = (function PDFFunctionClosure() {
                             domain_2i_1);
 
           // e_i = Interpolate(x_i', Domain_2i, Domain_2i+1,
-          //                   Encode_2i, Encode_2i+1)
+          // Encode_2i, Encode_2i+1)
           var e = interpolate(xi, domain_2i, domain_2i_1,
                               encode[i][0], encode[i][1]);
 
@@ -5646,7 +5635,7 @@ var PDFFunction = (function PDFFunctionClosure() {
           }
 
           // r_j' = Interpolate(r_j, 0, 2^BitsPerSample - 1,
-          //                    Decode_2j, Decode_2j+1)
+          // Decode_2j, Decode_2j+1)
           rj = interpolate(rj, 0, 1, decode[j][0], decode[j][1]);
 
           // y_j = min(max(r_j, range_2j), range_2j+1)
@@ -6528,7 +6517,6 @@ var PostScriptCompiler = (function PostScriptCompilerClosure() {
 
   return PostScriptCompiler;
 })();
-
 
 var ColorSpace = (function ColorSpaceClosure() {
   // Constructor should define this.numComps, this.defaultColor, this.name
@@ -7756,7 +7744,6 @@ var LabCS = (function LabCSClosure() {
   return LabCS;
 })();
 
-
 var ARCFourCipher = (function ARCFourCipherClosure() {
   function ARCFourCipher(key) {
     this.a = 0;
@@ -8608,11 +8595,11 @@ var AES128Cipher = (function AES128CipherClosure() {
     }
 
     for (i = 1; i < 10; i++) {
-      //SubBytes
+      // SubBytes
       for (j = 0; j < 16; ++j) {
         state[j] = s[state[j]];
       }
-      //ShiftRows
+      // ShiftRows
       v = state[1];
       state[1] = state[5];
       state[5] = state[9];
@@ -8631,7 +8618,7 @@ var AES128Cipher = (function AES128CipherClosure() {
       state[7] = v;
       state[11] = u;
       state[15] = t;
-      //MixColumns
+      // MixColumns
       for (var j = 0; j < 16; j += 4) {
         var s0 = state[j + 0], s1 = state[j + 1];
         var s2 = state[j + 2], s3 = state[j + 3];
@@ -8641,17 +8628,17 @@ var AES128Cipher = (function AES128CipherClosure() {
         state[j + 2] ^= t ^ mixCol[s2 ^ s3];
         state[j + 3] ^= t ^ mixCol[s3 ^ s0];
       }
-      //AddRoundKey
+      // AddRoundKey
       for (j = 0, k = i * 16; j < 16; ++j, ++k) {
         state[j] ^= key[k];
       }
     }
 
-    //SubBytes
+    // SubBytes
     for (j = 0; j < 16; ++j) {
       state[j] = s[state[j]];
     }
-    //ShiftRows
+    // ShiftRows
     v = state[1];
     state[1] = state[5];
     state[5] = state[9];
@@ -8670,7 +8657,7 @@ var AES128Cipher = (function AES128CipherClosure() {
     state[7] = v;
     state[11] = u;
     state[15] = t;
-    //AddRoundKey
+    // AddRoundKey
     for (j = 0, k = 160; j < 16; ++j, ++k) {
       state[j] ^= key[k];
     }
@@ -9054,11 +9041,11 @@ var AES256Cipher = (function AES256CipherClosure() {
     }
 
     for (i = 1; i < 14; i++) {
-      //SubBytes
+      // SubBytes
       for (j = 0; j < 16; ++j) {
         state[j] = s[state[j]];
       }
-      //ShiftRows
+      // ShiftRows
       v = state[1];
       state[1] = state[5];
       state[5] = state[9];
@@ -9077,7 +9064,7 @@ var AES256Cipher = (function AES256CipherClosure() {
       state[7] = v;
       state[11] = u;
       state[15] = t;
-      //MixColumns
+      // MixColumns
       for (var j = 0; j < 16; j += 4) {
         var s0 = state[j + 0], s1 = state[j + 1];
         var s2 = state[j + 2], s3 = state[j + 3];
@@ -9087,17 +9074,17 @@ var AES256Cipher = (function AES256CipherClosure() {
         state[j + 2] ^= t ^ mixCol[s2 ^ s3];
         state[j + 3] ^= t ^ mixCol[s3 ^ s0];
       }
-      //AddRoundKey
+      // AddRoundKey
       for (j = 0, k = i * 16; j < 16; ++j, ++k) {
         state[j] ^= key[k];
       }
     }
 
-    //SubBytes
+    // SubBytes
     for (j = 0; j < 16; ++j) {
       state[j] = s[state[j]];
     }
-    //ShiftRows
+    // ShiftRows
     v = state[1];
     state[1] = state[5];
     state[5] = state[9];
@@ -9116,7 +9103,7 @@ var AES256Cipher = (function AES256CipherClosure() {
     state[7] = v;
     state[11] = u;
     state[15] = t;
-    //AddRoundKey
+    // AddRoundKey
     for (j = 0, k = 224; j < 16; ++j, ++k) {
       state[j] ^= key[k];
     }
@@ -9200,7 +9187,7 @@ var AES256Cipher = (function AES256CipherClosure() {
           buffer[bufferLength] = data[i];
         }
         if (bufferLength < 16) {
-          //need more data
+          // need more data
           this.bufferLength = bufferLength;
           return new Uint8Array([]);
         }
@@ -9313,7 +9300,7 @@ var PDF17 = (function PDF17Closure() {
       var hashData = new Uint8Array(password.length + 8);
       hashData.set(password, 0);
       hashData.set(userKeySalt, password.length);
-      //key is the decryption key for the UE string
+      // key is the decryption key for the UE string
       var key = calculateSHA256(hashData, 0, hashData.length);
       var cipher = new AES256Cipher(key);
       return cipher.decryptBlock(userEncryption,
@@ -9334,7 +9321,7 @@ var PDF20 = (function PDF20Closure() {
   }
 
   function calculatePDF20Hash(password, input, userBytes) {
-    //This refers to Algorithm 2.B as defined in ISO 32000-2
+    // This refers to Algorithm 2.B as defined in ISO 32000-2
     var k = calculateSHA256(input, 0, input.length).subarray(0, 32);
     var e = [0];
     var i = 0;
@@ -9347,16 +9334,16 @@ var PDF20 = (function PDF20Closure() {
       for (var j = 0, pos = 0; j < 64; j++, pos += arrayLength) {
         k1.set(array, pos);
       }
-      //AES128 CBC NO PADDING with
-      //first 16 bytes of k as the key and the second 16 as the iv.
+      // AES128 CBC NO PADDING with
+      // first 16 bytes of k as the key and the second 16 as the iv.
       var cipher = new AES128Cipher(k.subarray(0, 16));
       e = cipher.encrypt(k1, k.subarray(16, 32));
-      //Now we have to take the first 16 bytes of an unsigned
-      //big endian integer... and compute the remainder
-      //modulo 3.... That is a fairly large number and
-      //JavaScript isn't going to handle that well...
-      //So we're using a trick that allows us to perform
-      //modulo math byte by byte
+      // Now we have to take the first 16 bytes of an unsigned
+      // big endian integer... and compute the remainder
+      // modulo 3.... That is a fairly large number and
+      // JavaScript isn't going to handle that well...
+      // So we're using a trick that allows us to perform
+      // modulo math byte by byte
       var remainder = 0;
       for (var z = 0; z < 16; z++) {
         remainder *= (256 % 3);
@@ -9435,7 +9422,7 @@ var PDF20 = (function PDF20Closure() {
       var hashData = new Uint8Array(password.length + 8);
       hashData.set(password, 0);
       hashData.set(userKeySalt, password.length);
-      //key is the decryption key for the UE string
+      // key is the decryption key for the UE string
       var key = calculatePDF20Hash(password, hashData, []);
       var cipher = new AES256Cipher(key);
       return cipher.decryptBlock(userEncryption,
@@ -9787,7 +9774,6 @@ var CipherTransformFactory = (function CipherTransformFactoryClosure() {
 
   return CipherTransformFactory;
 })();
-
 
 var PatternType = {
   FUNCTION_BASED: 1,
@@ -10571,7 +10557,6 @@ function getTilingPatternIR(operatorList, dict, args) {
     paintType, tilingType
   ];
 }
-
 
 var PartialEvaluator = (function PartialEvaluatorClosure() {
   function PartialEvaluator(pdfManager, xref, handler, pageIndex,
@@ -13237,7 +13222,6 @@ var QueueOptimizer = (function QueueOptimizerClosure() {
   return QueueOptimizer;
 })();
 
-
 var BUILT_IN_CMAPS = [
 // << Start unicode maps.
 'Adobe-GB1-UCS2',
@@ -14205,7 +14189,6 @@ var CMapFactory = (function CMapFactoryClosure() {
     }
   };
 })();
-
 
 // Unicode Private Use Area
 var PRIVATE_USE_OFFSET_START = 0xE000;
@@ -16301,7 +16284,7 @@ var NormalizedUnicodes = {
 
 function reverseIfRtl(chars) {
   var charsLength = chars.length;
-  //reverse an arabic ligature
+  // reverse an arabic ligature
   if (charsLength <= 1 || !isRTLRangeFor(chars.charCodeAt(0))) {
     return chars;
   }
@@ -17356,7 +17339,7 @@ var Font = (function FontClosure() {
         if (tag === 'head') {
           // clearing checksum adjustment
           data[8] = data[9] = data[10] = data[11] = 0;
-          data[17] |= 0x20; //Set font optimized for cleartype flag
+          data[17] |= 0x20; // Set font optimized for cleartype flag
         }
 
         return {
@@ -21489,7 +21472,6 @@ var CFFCompiler = (function CFFCompilerClosure() {
   }
 })();
 
-
 var FontRendererFactory = (function FontRendererFactoryClosure() {
   function getLong(data, offset) {
     return (data[offset] << 24) | (data[offset + 1] << 16) |
@@ -22140,7 +22122,6 @@ var FontRendererFactory = (function FontRendererFactoryClosure() {
     }
   });
 
-
   return {
     create: function FontRendererFactory_create(font) {
       var data = new Uint8Array(font.data);
@@ -22181,7 +22162,6 @@ var FontRendererFactory = (function FontRendererFactoryClosure() {
     }
   };
 })();
-
 
 var GlyphsUnicode = {
   A: 0x0041,
@@ -26596,7 +26576,6 @@ var DingbatsGlyphsUnicode = {
   '.notdef': 0x0000
 };
 
-
 var PDFImage = (function PDFImageClosure() {
   /**
    * Decode the image in the main thread if it supported. Resovles the promise
@@ -27244,7 +27223,6 @@ var PDFImage = (function PDFImageClosure() {
   };
   return PDFImage;
 })();
-
 
 // The Metrics object contains glyph widths (in glyph space units).
 // As per PDF spec, for most fonts (Type 3 being an exception) a glyph
@@ -30188,7 +30166,6 @@ var Metrics = {
   }
 };
 
-
 var EOF = {};
 
 function isEOF(v) {
@@ -31214,7 +31191,6 @@ var Linearization = {
   }
 };
 
-
 var PostScriptParser = (function PostScriptParserClosure() {
   function PostScriptParser(lexer) {
     this.lexer = lexer;
@@ -31417,7 +31393,6 @@ var PostScriptLexer = (function PostScriptLexerClosure() {
   };
   return PostScriptLexer;
 })();
-
 
 var Stream = (function StreamClosure() {
   function Stream(arrayBuffer, start, length, dict) {
@@ -33866,7 +33841,6 @@ var NullStream = (function NullStreamClosure() {
   return NullStream;
 })();
 
-
 var WorkerMessageHandler = PDFJS.WorkerMessageHandler = {
   setup: function wphSetup(handler) {
     var pdfManager;
@@ -34324,7 +34298,6 @@ var workerConsole = {
   }
 };
 
-
 // Worker thread?
 if (typeof window === 'undefined') {
   if (!('console' in globalScope)) {
@@ -34342,7 +34315,6 @@ if (typeof window === 'undefined') {
   var handler = new MessageHandler('worker_processor', this);
   WorkerMessageHandler.setup(handler);
 }
-
 
 /* This class implements the QM Coder decoding as defined in
  *   JPEG 2000 Part I Final Committee Draft Version 1.0
@@ -34510,7 +34482,6 @@ var ArithmeticDecoder = (function ArithmeticDecoderClosure() {
 
   return ArithmeticDecoder;
 })();
-
 
 var JpegImage = (function jpegImage() {
   var dctZigZag = new Uint8Array([
@@ -35173,7 +35144,7 @@ var JpegImage = (function jpegImage() {
                   z = dctZigZag[j];
                   tableData[z] = data[offset++];
                 }
-              } else if ((quantizationTableSpec >> 4) === 1) { //16 bit
+              } else if ((quantizationTableSpec >> 4) === 1) { // 16 bit
                 for (j = 0; j < 64; j++) {
                   z = dctZigZag[j];
                   tableData[z] = readUint16();
@@ -35516,7 +35487,6 @@ var JpegImage = (function jpegImage() {
 
   return constructor;
 })();
-
 
 var JpxImage = (function JpxImageClosure() {
   // Table E.1
@@ -37713,7 +37683,6 @@ var JpxImage = (function JpxImageClosure() {
   return JpxImage;
 })();
 
-
 var Jbig2Image = (function Jbig2ImageClosure() {
   // Utility data structures
   function ContextCache() {}
@@ -38125,13 +38094,13 @@ var Jbig2Image = (function Jbig2ImageClosure() {
           if (numberOfInstances > 1) {
             bitmap = decodeTextRegion(huffman, refinement,
                                       currentWidth, currentHeight, 0,
-                                      numberOfInstances, 1, //strip size
+                                      numberOfInstances, 1, // strip size
                                       symbols.concat(newSymbols),
                                       symbolCodeLength,
-                                      0, //transposed
-                                      0, //ds offset
-                                      1, //top left 7.4.3.1.1
-                                      0, //OR operator
+                                      0, // transposed
+                                      0, // ds offset
+                                      1, // top left 7.4.3.1.1
+                                      0, // OR operator
                                       huffmanTables,
                                       refinementTemplateIndex, refinementAt,
                                       decodingContext);
@@ -38782,7 +38751,6 @@ var Jbig2Image = (function Jbig2ImageClosure() {
   return Jbig2Image;
 })();
 
-
 var bidi = PDFJS.bidi = (function bidiClosure() {
   // Character types for symbols from 0000 to 00FF.
   var baseTypes = [
@@ -39355,7 +39323,6 @@ var MurmurHash3_64 = (function MurmurHash3_64Closure (seed) {
   return MurmurHash3_64;
 })();
 
-
 }).call((typeof window === 'undefined') ? this : window);
 
 if (!PDFJS.workerSrc && typeof document !== 'undefined') {
@@ -39368,5 +39335,4 @@ if (!PDFJS.workerSrc && typeof document !== 'undefined') {
     return pdfjsSrc && pdfjsSrc.replace(/\.js$/i, '.worker.js');
   })();
 }
-
 

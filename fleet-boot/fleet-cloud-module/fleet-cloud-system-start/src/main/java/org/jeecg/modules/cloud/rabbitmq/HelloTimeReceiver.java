@@ -22,7 +22,7 @@ public class HelloTimeReceiver extends BaseRabbiMqHandler<BaseMap> {
         super.onMessage(baseMap, deliveryTag, channel, new MqListener<BaseMap>() {
             @Override
             public void handler(BaseMap map, Channel channel) {
-                //业务处理
+                // 业务处理
                 String orderId = map.get("orderId").toString();
                 log.info("Time Receiver1，orderId : " + orderId);
             }

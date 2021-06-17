@@ -21,7 +21,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 /**
  * @Description: 订单
  * @Author: Fleet-boot
- * @Date:  2019-02-15
+ * @Date: 2019-02-15
  * @Version: V1.0
  */
 @Service
@@ -57,11 +57,11 @@ public class FleetOrderMainServiceImpl extends ServiceImpl<FleetOrderMainMapper,
     public void updateMain(FleetOrderMain fleetOrderMain, List<FleetOrderCustomer> fleetOrderCustomerList, List<FleetOrderTicket> fleetOrderTicketList) {
         fleetOrderMainMapper.updateById(fleetOrderMain);
 
-        //1.先删除子表数据
+        // 1.先删除子表数据
         fleetOrderTicketMapper.deleteTicketsByMainId(fleetOrderMain.getId());
         fleetOrderCustomerMapper.deleteCustomersByMainId(fleetOrderMain.getId());
 
-        //2.子表数据重新插入
+        // 2.子表数据重新插入
         if (fleetOrderCustomerList != null) {
             for (FleetOrderCustomer entity : fleetOrderCustomerList) {
                 entity.setOrderId(fleetOrderMain.getId());
@@ -78,6 +78,7 @@ public class FleetOrderMainServiceImpl extends ServiceImpl<FleetOrderMainMapper,
 
     /**
      * 一对多维护逻辑改造  LOWCOD-315
+     *
      * @param fleetOrderMain
      * @param fleetOrderCustomerList
      * @param fleetOrderTicketList
@@ -88,31 +89,31 @@ public class FleetOrderMainServiceImpl extends ServiceImpl<FleetOrderMainMapper,
         fleetOrderMainMapper.updateById(fleetOrderMain);
 
         // 循环前台传过来的数据
-        for (FleetOrderTicket ticket:fleetOrderTicketList){
+        for (FleetOrderTicket ticket : fleetOrderTicketList) {
             // 先查询子表数据库
             FleetOrderTicket orderTicket = fleetOrderTicketMapper.selectById(ticket.getId());
-            if(orderTicket == null){
+            if (orderTicket == null) {
                 // 当传过来的id数据库不存在时，说明数据库没有，走新增逻辑
                 ticket.setOrderId(fleetOrderMain.getId());
                 fleetOrderTicketMapper.insert(ticket);
                 break;
             }
-            if(orderTicket.getId().equals(ticket.getId())){
+            if (orderTicket.getId().equals(ticket.getId())) {
                 // 传过来的id和数据库id一至时，说明数据库存在该数据，走更新逻辑
                 fleetOrderTicketMapper.updateById(ticket);
             }
         }
-        for (FleetOrderCustomer customer:fleetOrderCustomerList){
+        for (FleetOrderCustomer customer : fleetOrderCustomerList) {
             // 先查询子表数据库
             FleetOrderCustomer customers = fleetOrderCustomerMapper.selectById(customer.getId());
-            if(customers == null){
+            if (customers == null) {
                 // 当传过来的id数据库不存在时，说明数据库没有，走新增逻辑
                 customer.setOrderId(fleetOrderMain.getId());
                 fleetOrderCustomerMapper.insert(customer);
                 break;
             }
-            if(customers.getId().equals(customer.getId())){
-                //TODO 传过来的id和数据库id一至时，说明数据库存在该数据，走更新逻辑
+            if (customers.getId().equals(customer.getId())) {
+                // TODO 传过来的id和数据库id一至时，说明数据库存在该数据，走更新逻辑
                 fleetOrderCustomerMapper.updateById(customer);
             }
         }
@@ -120,12 +121,12 @@ public class FleetOrderMainServiceImpl extends ServiceImpl<FleetOrderMainMapper,
         List<FleetOrderTicket> fleetOrderTickets = fleetOrderTicketMapper.selectTicketsByMainId(fleetOrderMain.getId());
         List<FleetOrderTicket> collect = fleetOrderTickets.stream()
                 .filter(item -> !fleetOrderTicketList.stream()
-                .map(e -> e.getId())
-                .collect(Collectors.toList())
-                .contains(item.getId()))
+                        .map(e -> e.getId())
+                        .collect(Collectors.toList())
+                        .contains(item.getId()))
                 .collect(Collectors.toList());
         // for循环删除id
-        for (FleetOrderTicket ticket:collect){
+        for (FleetOrderTicket ticket : collect) {
             fleetOrderTicketMapper.deleteById(ticket.getId());
         }
 
@@ -136,27 +137,28 @@ public class FleetOrderMainServiceImpl extends ServiceImpl<FleetOrderMainMapper,
                         .collect(Collectors.toList())
                         .contains(item.getId()))
                 .collect(Collectors.toList());
-        //TODO for循环删除id
-        for (FleetOrderCustomer c:customersCollect){
+        // TODO for循环删除id
+        for (FleetOrderCustomer c : customersCollect) {
             fleetOrderCustomerMapper.deleteById(c.getId());
         }
     }
-	@Override
-	@Transactional
-	public void delMain(String id) {
-		fleetOrderMainMapper.deleteById(id);
-		fleetOrderTicketMapper.deleteTicketsByMainId(id);
-		fleetOrderCustomerMapper.deleteCustomersByMainId(id);
-	}
 
-	@Override
-	@Transactional
-	public void delBatchMain(Collection<? extends Serializable> idList) {
-		for(Serializable id:idList) {
-			fleetOrderMainMapper.deleteById(id);
-			fleetOrderTicketMapper.deleteTicketsByMainId(id.toString());
-			fleetOrderCustomerMapper.deleteCustomersByMainId(id.toString());
-		}
-	}
+    @Override
+    @Transactional
+    public void delMain(String id) {
+        fleetOrderMainMapper.deleteById(id);
+        fleetOrderTicketMapper.deleteTicketsByMainId(id);
+        fleetOrderCustomerMapper.deleteCustomersByMainId(id);
+    }
+
+    @Override
+    @Transactional
+    public void delBatchMain(Collection<? extends Serializable> idList) {
+        for (Serializable id : idList) {
+            fleetOrderMainMapper.deleteById(id);
+            fleetOrderTicketMapper.deleteTicketsByMainId(id.toString());
+            fleetOrderCustomerMapper.deleteCustomersByMainId(id.toString());
+        }
+    }
 
 }

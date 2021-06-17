@@ -90,7 +90,7 @@
     methods: {
       add(dictId) {
         this.dictId = dictId;
-        //初始化默认值
+        // 初始化默认值
         this.edit({sortOrder:1,status:1});
       },
       edit(record) {
@@ -168,7 +168,7 @@
           if(reg.test(value)){
             callback("数据值不能包含特殊字符！")
           }else{
-            //update--begin--autor:lvdandan-----date:20201203------for：JT-27【数据字典】字典 - 数据值可重复
+            // update--begin--autor:lvdandan-----date:20201203------for：JT-27【数据字典】字典 - 数据值可重复
             getAction("/sys/dictItem/dictItemCheck",param).then((res)=>{
               if(res.success){
                 callback()
@@ -176,7 +176,7 @@
                 callback(res.message);
               }
             });
-            //update--end--autor:lvdandan-----date:20201203------for：JT-27【数据字典】字典 - 数据值可重复
+            // update--end--autor:lvdandan-----date:20201203------for：JT-27【数据字典】字典 - 数据值可重复
           }
         }else{
           callback()

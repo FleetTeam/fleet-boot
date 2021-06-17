@@ -32,11 +32,11 @@
         let url = this.$route.meta.url
         let id = this.$route.path
         this.id = id
-        //url = "http://www.baidu.com"
+        // url = "http://www.baidu.com"
         console.log("------url------"+url)
         if (url !== null && url !== undefined) {
           this.url = url;
-          //window.open(this.url);
+          // window.open(this.url);
         }
       }
     }

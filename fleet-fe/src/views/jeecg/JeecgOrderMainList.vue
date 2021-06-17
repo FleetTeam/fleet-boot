@@ -159,7 +159,7 @@
           }
         ],
 
-		url: {
+    url: {
           list: "/test/jeecgOrderMain/list",
           delete: "/test/jeecgOrderMain/delete",
           deleteBatch: "/test/jeecgOrderMain/deleteBatch",

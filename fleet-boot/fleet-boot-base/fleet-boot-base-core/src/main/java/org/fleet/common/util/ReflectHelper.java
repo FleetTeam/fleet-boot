@@ -42,6 +42,115 @@ public class ReflectHelper {
     }
 
     /**
+     * 把map中的内容全部注入到obj中
+     *
+     * @param o
+     * @param data
+     * @return
+     */
+    public static Object setAll(Object o, Map<String, Object> data) {
+        ReflectHelper reflectHelper = new ReflectHelper(o);
+        reflectHelper.setAll(data);
+        return o;
+    }
+
+    /**
+     * 把map中的内容全部注入到新实例中
+     *
+     * @param clazz
+     * @param data
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T setAll(Class<T> clazz, Map<String, Object> data) {
+        T o = null;
+        try {
+            o = clazz.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+            o = null;
+            return o;
+        }
+        return (T) setAll(o, data);
+    }
+
+    /**
+     * 根据传入的class将mapList转换为实体类list
+     *
+     * @param mapist
+     * @param clazz
+     * @return
+     */
+    public static <T> List<T> transList2Entrys(List<Map<String, Object>> mapist, Class<T> clazz) {
+        List<T> list = new ArrayList<T>();
+        if (mapist != null && mapist.size() > 0) {
+            for (Map<String, Object> data : mapist) {
+                list.add(ReflectHelper.setAll(clazz, data));
+            }
+        }
+        return list;
+    }
+
+    /**
+     * 根据属性名获取属性值
+     */
+    public static Object getFieldValueByName(String fieldName, Object o) {
+        try {
+            String firstLetter = fieldName.substring(0, 1).toUpperCase();
+            String getter = "get" + firstLetter + fieldName.substring(1);
+            Method method = o.getClass().getMethod(getter, new Class[]{});
+            Object value = method.invoke(o, new Object[]{});
+            return value;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 获取属性名数组
+     */
+    public static String[] getFiledName(Object o) {
+        Field[] fields = o.getClass().getDeclaredFields();
+        String[] fieldNames = new String[fields.length];
+        for (int i = 0; i < fields.length; i++) {
+            // log.info(fields[i].getType());
+            fieldNames[i] = fields[i].getName();
+        }
+        return fieldNames;
+    }
+
+    /**
+     * 获取属性类型(type)，属性名(name)，属性值(value)的map组成的list
+     */
+    public static List<Map> getFiledsInfo(Object o) {
+        Field[] fields = o.getClass().getDeclaredFields();
+        String[] fieldNames = new String[fields.length];
+        List<Map> list = new ArrayList<Map>();
+        Map<String, Object> infoMap = null;
+        for (int i = 0; i < fields.length; i++) {
+            infoMap = new HashMap<String, Object>();
+            infoMap.put("type", fields[i].getType().toString());
+            infoMap.put("name", fields[i].getName());
+            infoMap.put("value", getFieldValueByName(fields[i].getName(), o));
+            list.add(infoMap);
+        }
+        return list;
+    }
+
+    /**
+     * 获取对象的所有属性值，返回一个对象数组
+     */
+    public static Object[] getFiledValues(Object o) {
+        String[] fieldNames = getFiledName(o);
+        Object[] value = new Object[fieldNames.length];
+        for (int i = 0; i < fieldNames.length; i++) {
+            value[i] = getFieldValueByName(fieldNames[i], o);
+        }
+        return value;
+    }
+
+    /**
      * @desc 初始化
      */
     public void initMethods() {
@@ -124,115 +233,6 @@ public class ReflectHelper {
             this.setMethodValue(entry.getKey(), entry.getValue());
         }
         return obj;
-    }
-
-    /**
-     * 把map中的内容全部注入到obj中
-     *
-     * @param o
-     * @param data
-     * @return
-     */
-    public static Object setAll(Object o, Map<String, Object> data) {
-        ReflectHelper reflectHelper = new ReflectHelper(o);
-        reflectHelper.setAll(data);
-        return o;
-    }
-
-    /**
-     * 把map中的内容全部注入到新实例中
-     *
-     * @param clazz
-     * @param data
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    public static <T> T setAll(Class<T> clazz, Map<String, Object> data) {
-        T o = null;
-        try {
-            o = clazz.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-            o = null;
-            return o;
-        }
-        return (T) setAll(o, data);
-    }
-
-    /**
-     * 根据传入的class将mapList转换为实体类list
-     *
-     * @param mapist
-     * @param clazz
-     * @return
-     */
-    public static <T> List<T> transList2Entrys(List<Map<String, Object>> mapist, Class<T> clazz) {
-        List<T> list = new ArrayList<T>();
-        if (mapist != null && mapist.size() > 0) {
-            for (Map<String, Object> data : mapist) {
-                list.add(ReflectHelper.setAll(clazz, data));
-            }
-        }
-        return list;
-    }
-
-    /**
-     * 根据属性名获取属性值
-     */
-    public static Object getFieldValueByName(String fieldName, Object o) {
-        try {
-            String firstLetter = fieldName.substring(0, 1).toUpperCase();
-            String getter = "get" + firstLetter + fieldName.substring(1);
-            Method method = o.getClass().getMethod(getter, new Class[]{});
-            Object value = method.invoke(o, new Object[]{});
-            return value;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     * 获取属性名数组
-     */
-    public static String[] getFiledName(Object o) {
-        Field[] fields = o.getClass().getDeclaredFields();
-        String[] fieldNames = new String[fields.length];
-        for (int i = 0; i < fields.length; i++) {
-            //log.info(fields[i].getType());
-            fieldNames[i] = fields[i].getName();
-        }
-        return fieldNames;
-    }
-
-    /**
-     * 获取属性类型(type)，属性名(name)，属性值(value)的map组成的list
-     */
-    public static List<Map> getFiledsInfo(Object o) {
-        Field[] fields = o.getClass().getDeclaredFields();
-        String[] fieldNames = new String[fields.length];
-        List<Map> list = new ArrayList<Map>();
-        Map<String, Object> infoMap = null;
-        for (int i = 0; i < fields.length; i++) {
-            infoMap = new HashMap<String, Object>();
-            infoMap.put("type", fields[i].getType().toString());
-            infoMap.put("name", fields[i].getName());
-            infoMap.put("value", getFieldValueByName(fields[i].getName(), o));
-            list.add(infoMap);
-        }
-        return list;
-    }
-
-    /**
-     * 获取对象的所有属性值，返回一个对象数组
-     */
-    public static Object[] getFiledValues(Object o) {
-        String[] fieldNames = getFiledName(o);
-        Object[] value = new Object[fieldNames.length];
-        for (int i = 0; i < fieldNames.length; i++) {
-            value[i] = getFieldValueByName(fieldNames[i], o);
-        }
-        return value;
     }
 
 }

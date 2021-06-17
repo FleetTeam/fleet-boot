@@ -16,7 +16,6 @@ public class FleetRedisClient {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
-
     /**
      * 发送消息
      *
@@ -27,6 +26,5 @@ public class FleetRedisClient {
         params.put(GlobalConstants.HANDLER_NAME, handlerName);
         redisTemplate.convertAndSend(GlobalConstants.REDIS_TOPIC_NAME, params);
     }
-
 
 }

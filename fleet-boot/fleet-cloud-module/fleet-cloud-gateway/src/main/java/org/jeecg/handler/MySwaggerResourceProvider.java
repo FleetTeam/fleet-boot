@@ -54,8 +54,8 @@ public class MySwaggerResourceProvider implements SwaggerResourcesProvider {
                 SwaggerResource swaggerResource = new SwaggerResource();
                 swaggerResource.setUrl(url);
                 swaggerResource.setName(instance);
-                //Swagger排除监控
-                if(instance.indexOf("jeecg-cloud-monitor")==-1){
+                // Swagger排除监控
+                if (instance.indexOf("jeecg-cloud-monitor") == -1) {
                     resources.add(swaggerResource);
                 }
             }

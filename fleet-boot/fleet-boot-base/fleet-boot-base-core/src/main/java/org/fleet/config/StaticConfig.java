@@ -20,7 +20,6 @@ public class StaticConfig {
     @Value(value = "${spring.mail.username}")
     private String emailFrom;
 
-
     /*@Bean
     public void initStatic() {
        DySmsHelper.setAccessKeyId(accessKeyId);

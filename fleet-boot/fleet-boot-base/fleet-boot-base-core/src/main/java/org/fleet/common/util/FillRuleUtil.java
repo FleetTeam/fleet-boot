@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.fleet.common.handler.IFillRuleHandler;
 
-
 /**
  * 规则值自动生成工具类
  *

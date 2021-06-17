@@ -13,22 +13,22 @@
         <detail-list-item term="联系电话">18100000000</detail-list-item>
         <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>
         <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路18号</detail-list-item>
-        <detail-list-item term="备注">	无</detail-list-item>
+        <detail-list-item term="备注">无</detail-list-item>
       </detail-list>
       <a-divider style="margin-bottom: 32px"/>
 
       <div class="title">退货商品</div>
       <s-table
-        style="margin-bottom: 24px" 
-        :columns="goodsColumns" 
+        style="margin-bottom: 24px"
+        :columns="goodsColumns"
         :data="loadGoodsData">
 
       </s-table>
 
       <div class="title">退货进度</div>
       <s-table
-        style="margin-bottom: 24px" 
-        :columns="scheduleColumns" 
+        style="margin-bottom: 24px"
+        :columns="scheduleColumns"
         :data="loadScheduleData">
 
         <template

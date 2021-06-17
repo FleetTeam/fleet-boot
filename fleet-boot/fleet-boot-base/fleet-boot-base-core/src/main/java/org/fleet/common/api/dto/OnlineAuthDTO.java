@@ -13,7 +13,6 @@ import java.util.List;
 public class OnlineAuthDTO implements Serializable {
     private static final long serialVersionUID = 1771827545416418203L;
 
-
     /**
      * 用户名
      */
@@ -29,11 +28,11 @@ public class OnlineAuthDTO implements Serializable {
      */
     private String onlineFormUrl;
 
-    public OnlineAuthDTO(){
+    public OnlineAuthDTO() {
 
     }
 
-    public OnlineAuthDTO(String username, List<String> possibleUrl, String onlineFormUrl){
+    public OnlineAuthDTO(String username, List<String> possibleUrl, String onlineFormUrl) {
         this.username = username;
         this.possibleUrl = possibleUrl;
         this.onlineFormUrl = onlineFormUrl;

@@ -8,9 +8,10 @@ public interface BaseCommonMapper {
 
     /**
      * 保存日志
+     *
      * @param dto
      */
-    @SqlParser(filter=true)
-    void saveLog(@Param("dto")LogDTO dto);
+    @SqlParser(filter = true)
+    void saveLog(@Param("dto") LogDTO dto);
 
 }

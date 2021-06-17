@@ -18,7 +18,6 @@ public class LoderRouderHandler implements JeecgRedisListerer {
     @Resource
     private DynamicRouteLoader dynamicRouteLoader;
 
-
     @Override
     public void onMessage(BaseMap message) {
         dynamicRouteLoader.refresh();

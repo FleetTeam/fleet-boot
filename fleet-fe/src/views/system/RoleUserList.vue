@@ -33,7 +33,7 @@
         <!-- 操作按钮区域 -->
         <div class="table-operator" style="margin: 5px 0 10px 2px">
           <a-button @click="handleAdd" type="primary" icon="plus">新建角色</a-button>
-          <!--<a-button @click="handleEdit(model1)" type="primary" icon="plus">角色编辑</a-button>-->
+          <!-- <a-button @click="handleEdit(model1)" type="primary" icon="plus">角色编辑</a-button> -->
           <a-upload name="file" :showUploadList="false" :multiple="false" :headers="tokenHeader" :action="importExcelUrl" @change="handleImportExcel">
             <a-button type="primary" icon="import">导入</a-button>
           </a-upload>
@@ -117,7 +117,7 @@
         <!-- 操作按钮区域 -->
         <div class="table-operator" :md="24" :sm="24">
           <a-button @click="handleAdd2" type="primary" icon="plus" style="margin-top: 16px">新增用户</a-button>
-          <!--<a-button @click="handleEdit2" type="primary" icon="edit" style="margin-top: 16px">用户编辑</a-button>-->
+          <!-- <a-button @click="handleEdit2" type="primary" icon="edit" style="margin-top: 16px">用户编辑</a-button> -->
           <a-button @click="handleAddUserRole" type="primary" icon="plus" style="margin-top: 16px">已有用户</a-button>
 
           <a-dropdown v-if="selectedRowKeys2.length > 0">
@@ -354,7 +354,7 @@
       },
 
       getQueryParams2() {
-        //获取查询条件
+        // 获取查询条件
         let sqp = {}
         if (this.superQueryParams2) {
           sqp['superQueryParams'] = encodeURI(this.superQueryParams2)
@@ -367,7 +367,7 @@
         return filterObj(param)
       },
       getQueryField2() {
-        //TODO 字段权限控制
+        // TODO 字段权限控制
         var str = 'id,'
         this.columns2.forEach(function(value) {
           str += ',' + value.dataIndex
@@ -397,12 +397,12 @@
           this.$message.error('请设置url.list2属性!')
           return
         }
-        //加载数据 若传入参数1则加载第一页的内容
+        // 加载数据 若传入参数1则加载第一页的内容
         if (arg === 1) {
           this.ipagination2.current = 1
         }
         if (this.currentRoleId === '') return
-        let params = this.getQueryParams2()//查询条件
+        let params = this.getQueryParams2() // 查询条件
         params.roleId = this.currentRoleId
         this.loading2 = true
         getAction(this.url.list2, params).then((res) => {
@@ -517,8 +517,8 @@
         this.loadData2(1)
       },
       handleTableChange2(pagination, filters, sorter) {
-        //分页、排序、筛选变化时触发
-        //TODO 筛选
+        // 分页、排序、筛选变化时触发
+        // TODO 筛选
         if (Object.keys(sorter).length > 0) {
           this.isorter2.column = sorter.field
           this.isorter2.order = 'ascend' == sorter.order ? 'asc' : 'desc'
@@ -527,7 +527,7 @@
         this.loadData2()
       },
       hideUserList(){
-        //this.rightcolval = 0
+        // this.rightcolval = 0
         this.selectedRowKeys1 = []
       },
       handlePerssion(roleId){

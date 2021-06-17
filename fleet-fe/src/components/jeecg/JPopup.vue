@@ -1,6 +1,6 @@
 <template>
   <div class="components-input-demo-presuffix" v-if="avalid">
-    <!---->
+    <!-- -->
     <a-input @click="openModal" :placeholder="placeholder" v-model="showText" readOnly :disabled="disabled">
       <a-icon slot="prefix" type="cluster" :title="title"/>
       <a-icon v-if="showText" slot="suffix" type="close-circle" @click="handleEmpty" title="清空"/>
@@ -76,7 +76,7 @@
         required: false,
         default: false
       },
-      //popup动态参数 支持系统变量语法
+      // popup动态参数 支持系统变量语法
       param:{
         type: Object,
         required: false,
@@ -87,7 +87,7 @@
         required: false,
         default: ','
       },
-      /** 分组ID，用于将多个popup的请求合并到一起，不传不分组 */
+      // 分组ID，用于将多个popup的请求合并到一起，不传不分组
       groupId: String
 
     },
@@ -188,10 +188,10 @@
           // update--end--autor:lvdandan-----date:20200630------for：多选时未带回多个值------
         }
         if (this.triggerChange) {
-          //v-dec时即triggerChange为true时 将整个对象给form页面 让他自己setFieldsValue
+          // v-dec时即triggerChange为true时 将整个对象给form页面 让他自己setFieldsValue
           this.$emit('callback', res)
         } else {
-          //v-model时 需要传一个参数field 表示当前这个字段 从而根据这个字段的顺序找到原始值
+          // v-model时 需要传一个参数field 表示当前这个字段 从而根据这个字段的顺序找到原始值
           // this.$emit("input",row[orgFieldsArr[destFieldsArr.indexOf(this.field)]])
           let str = ''
           if(this.showText){

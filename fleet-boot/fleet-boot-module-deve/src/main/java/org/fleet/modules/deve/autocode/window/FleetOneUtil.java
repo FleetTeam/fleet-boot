@@ -1,6 +1,4 @@
-
 package org.fleet.modules.deve.autocode.window;
-
 
 import org.fleet.modules.deve.autocode.generate.impl.CodeGenerateOne;
 import org.fleet.modules.deve.autocode.generate.pojo.TableVo;

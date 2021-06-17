@@ -9,10 +9,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 /**
  * @Description: 订单客户
  * @Author: fleet-team
- * @Date:  2019-02-15
+ * @Date: 2019-02-15
  * @Version: V1.0
  */
 public interface IFleetOrderCustomerService extends IService<FleetOrderCustomer> {
-	
-	public List<FleetOrderCustomer> selectCustomersByMainId(String mainId);
+
+    public List<FleetOrderCustomer> selectCustomersByMainId(String mainId);
 }

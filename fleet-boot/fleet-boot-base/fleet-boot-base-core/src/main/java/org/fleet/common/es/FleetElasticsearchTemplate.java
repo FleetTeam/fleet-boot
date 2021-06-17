@@ -23,12 +23,13 @@ import java.util.*;
 @Slf4j
 @Component
 public class FleetElasticsearchTemplate {
-    /** es服务地址 */
-    private String baseUrl;
-    private final String FORMAT_JSON = "format=json";
-
     // ElasticSearch 最大可返回条目数
     public static final int ES_MAX_SIZE = 10000;
+    private final String FORMAT_JSON = "format=json";
+    /**
+     * es服务地址
+     */
+    private String baseUrl;
 
     public FleetElasticsearchTemplate(@Value("${fleet.elasticsearch.cluster-nodes}") String baseUrl, @Value("${fleet.elasticsearch.check-enabled}") boolean checkEnabled) {
         log.debug("FleetElasticsearchTemplate BaseURL：" + baseUrl);
@@ -76,7 +77,6 @@ public class FleetElasticsearchTemplate {
     public JSONArray getIndices() {
         return getIndices(null);
     }
-
 
     /**
      * 查询单个索引
@@ -303,14 +303,14 @@ public class FleetElasticsearchTemplate {
             List<String> emptyKeys = new ArrayList<>(keys.size());
             for (String key : keys) {
                 String value = data.getString(key);
-                //1、剔除空值
+                // 1、剔除空值
                 if (oConvertUtils.isEmpty(value) || "[]".equals(value)) {
                     emptyKeys.add(key);
                 }
-                //2、剔除上传控件值(会导致ES同步失败，报异常failed to parse field [ge_pic] of type [text] )
-                if (oConvertUtils.isNotEmpty(value) && value.indexOf("[{")!=-1) {
+                // 2、剔除上传控件值(会导致ES同步失败，报异常failed to parse field [ge_pic] of type [text] )
+                if (oConvertUtils.isNotEmpty(value) && value.indexOf("[{") != -1) {
                     emptyKeys.add(key);
-                    log.info("-------剔除上传控件字段------------key: "+ key);
+                    log.info("-------剔除上传控件字段------------key: " + key);
                 }
             }
             for (String key : emptyKeys) {
@@ -324,7 +324,7 @@ public class FleetElasticsearchTemplate {
             return "created".equals(result) || "updated".equals(result);
         } catch (Exception e) {
             log.error(e.getMessage() + "\n-- url: " + url + "\n-- data: " + data.toJSONString());
-            //TODO 打印接口返回异常json
+            // TODO 打印接口返回异常json
             return false;
         }
     }
@@ -395,7 +395,6 @@ public class FleetElasticsearchTemplate {
             }
         }
     }
-
 
     /* = = = 以下关于查询和查询条件的方法 = = =*/
 

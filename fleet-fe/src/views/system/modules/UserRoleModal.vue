@@ -122,7 +122,7 @@
         this.checkedKeys = this.allTreeKeys
       },
       cancelCheckALL () {
-        //this.checkedKeys = this.defaultCheckedKeys
+        // this.checkedKeys = this.defaultCheckedKeys
         this.checkedKeys = []
       },
       switchCheckStrictly (v) {

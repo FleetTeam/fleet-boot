@@ -74,7 +74,7 @@
       }
     },
     created() {
-      //Step.2 加载用户数据
+      // Step.2 加载用户数据
       getUserList().then((res) => {
         if (res.success) {
           this.dataSource = res.result.records;
@@ -86,7 +86,7 @@
       open() {
         this.visible = true;
 
-        //Step.1 清空选中用户
+        // Step.1 清空选中用户
         this.selectedRowKeys = []
         this.selectedRows = []
       },

@@ -7,7 +7,7 @@
       @ok="ok"
       cancelText="取消"
       @cancel="close">
-      <!--style="top: 20px;"-->
+      <!-- style="top: 20px;" -->
       <j-upload :file-type="fileType" :value="filePath" @change="handleChange" :disabled="disabled" :number="number"></j-upload>
     </a-modal>
   </div>

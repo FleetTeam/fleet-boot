@@ -64,9 +64,9 @@ public class SysDataSourceController extends FleetController<SysDataSource, ISys
         IPage<SysDataSource> pageList = sysDataSourceService.page(page, queryWrapper);
         try {
             List<SysDataSource> records = pageList.getRecords();
-            records.forEach(item->{
+            records.forEach(item -> {
                 String dbPassword = item.getDbPassword();
-                if(StringUtils.isNotBlank(dbPassword)){
+                if (StringUtils.isNotBlank(dbPassword)) {
                     String decodedStr = SecurityUtil.jiemi(dbPassword);
                     item.setDbPassword(decodedStr);
                 }
@@ -104,7 +104,7 @@ public class SysDataSourceController extends FleetController<SysDataSource, ISys
     public Result<?> add(@RequestBody SysDataSource sysDataSource) {
         try {
             String dbPassword = sysDataSource.getDbPassword();
-            if(StringUtils.isNotBlank(dbPassword)){
+            if (StringUtils.isNotBlank(dbPassword)) {
                 String encrypt = SecurityUtil.jiami(dbPassword);
                 sysDataSource.setDbPassword(encrypt);
             }
@@ -129,7 +129,7 @@ public class SysDataSourceController extends FleetController<SysDataSource, ISys
             SysDataSource d = sysDataSourceService.getById(sysDataSource.getId());
             DataSourceCachePool.removeCache(d.getCode());
             String dbPassword = sysDataSource.getDbPassword();
-            if(StringUtils.isNotBlank(dbPassword)){
+            if (StringUtils.isNotBlank(dbPassword)) {
                 String encrypt = SecurityUtil.jiami(dbPassword);
                 sysDataSource.setDbPassword(encrypt);
             }
@@ -167,7 +167,7 @@ public class SysDataSourceController extends FleetController<SysDataSource, ISys
     @DeleteMapping(value = "/deleteBatch")
     public Result<?> deleteBatch(@RequestParam(name = "ids") String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
-        idList.forEach(item->{
+        idList.forEach(item -> {
             SysDataSource sysDataSource = sysDataSourceService.getById(item);
             DataSourceCachePool.removeCache(sysDataSource.getCode());
         });

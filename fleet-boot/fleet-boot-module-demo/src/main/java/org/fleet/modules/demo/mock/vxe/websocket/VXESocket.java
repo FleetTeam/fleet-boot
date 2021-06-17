@@ -25,6 +25,17 @@ import java.util.Map;
 public class VXESocket {
 
     /**
+     * 用户连接池，包含单个用户的所有socket连接；
+     * 因为一个用户可能打开多个页面，多个页面就会有多个连接；
+     * key是userId，value是Map对象；子Map的key是pageId，value是VXESocket对象
+     */
+    private static Map<String, Map<String, VXESocket>> userPool = new HashMap<>();
+    /**
+     * 连接池，包含所有WebSocket连接；
+     * key是socketId，value是VXESocket对象
+     */
+    private static Map<String, VXESocket> socketPool = new HashMap<>();
+    /**
      * 当前 session
      */
     private Session session;
@@ -42,35 +53,10 @@ public class VXESocket {
     private String socketId;
 
     /**
-     * 用户连接池，包含单个用户的所有socket连接；
-     * 因为一个用户可能打开多个页面，多个页面就会有多个连接；
-     * key是userId，value是Map对象；子Map的key是pageId，value是VXESocket对象
-     */
-    private static Map<String, Map<String, VXESocket>> userPool = new HashMap<>();
-    /**
-     * 连接池，包含所有WebSocket连接；
-     * key是socketId，value是VXESocket对象
-     */
-    private static Map<String, VXESocket> socketPool = new HashMap<>();
-
-    /**
      * 获取某个用户所有的页面
      */
     public static Map<String, VXESocket> getUserPool(String userId) {
         return userPool.computeIfAbsent(userId, k -> new HashMap<>());
-    }
-
-    /**
-     * 向当前用户发送消息
-     *
-     * @param message 消息内容
-     */
-    public void sendMessage(String message) {
-        try {
-            this.session.getAsyncRemote().sendText(message);
-        } catch (Exception e) {
-            log.error("【vxeSocket】消息发送失败：" + e.getMessage());
-        }
     }
 
     /**
@@ -141,6 +127,19 @@ public class VXESocket {
     }
 
     /**
+     * 向当前用户发送消息
+     *
+     * @param message 消息内容
+     */
+    public void sendMessage(String message) {
+        try {
+            this.session.getAsyncRemote().sendText(message);
+        } catch (Exception e) {
+            log.error("【vxeSocket】消息发送失败：" + e.getMessage());
+        }
+    }
+
+    /**
      * websocket 开启连接
      */
     @OnOpen
@@ -200,7 +199,6 @@ public class VXESocket {
                 log.warn("【vxeSocket】收到不识别的消息类型:" + type);
                 break;
         }
-
 
     }
 

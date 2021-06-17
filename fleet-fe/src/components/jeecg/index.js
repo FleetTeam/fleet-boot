@@ -27,7 +27,7 @@ import JSwitch from './JSwitch.vue'
 import JTime from './JTime.vue'
 import JTreeTable from './JTreeTable.vue'
 
-//jeecgbiz
+// jeecgbiz
 import JSelectDepart from '../jeecgbiz/JSelectDepart.vue'
 import JSelectMultiUser from '../jeecgbiz/JSelectMultiUser.vue'
 import JSelectPosition from '../jeecgbiz/JSelectPosition.vue'
@@ -65,7 +65,7 @@ export default {
     Vue.component('JTreeTable', JTreeTable)
     Vue.component('JUpload', JUpload)
 
-    //jeecgbiz
+    // jeecgbiz
     Vue.component('JSelectDepart', JSelectDepart)
     Vue.component('JSelectMultiUser', JSelectMultiUser)
     Vue.component('JSelectPosition', JSelectPosition)

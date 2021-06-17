@@ -27,4 +27,3 @@ export function httpGroupRequest(getPromise, groupId, expire = 1000 * 30) {
   })
 }
 
-

@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * @Description: 系统通告表
  * @Author: fleet-team
- * @Date:  2021-04-19
+ * @Date: 2021-04-19
  * @Version: V1.0
  */
 @Data
@@ -62,7 +62,7 @@ public class SysAnnouncement implements Serializable {
     @Excel(name = "优先级", width = 15, dicCode = "priority")
     @Dict(dicCode = "priority")
     private java.lang.String priority;
-    
+
     /**
      * 消息类型1:通知公告2:系统消息
      */

@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  	<#import "../common/common.macro.ftl" as netCommon>
-	<@netCommon.commonStyle />
-	<!-- DataTables -->
-  	<link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  	<!-- daterangepicker -->
-  	<link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <#import "../common/common.macro.ftl" as netCommon>
+    <@netCommon.commonStyle />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- daterangepicker -->
+    <link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <title>${I18n.admin_name}</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini <#if cookieMap?exists && cookieMap["xxljob_adminlte_settings"]?exists && "off" == cookieMap["xxljob_adminlte_settings"].value >sidebar-collapse</#if> ">
 <div class="wrapper">
-	<!-- header -->
-	<@netCommon.commonHeader />
-	<!-- left -->
-	<@netCommon.commonLeft "joblog" />
-	
-	<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<section class="content-header">
-			<h1>${I18n.joblog_name}</h1>
-		</section>
-		
-		<!-- Main content -->
-	    <section class="content">
-	    	<div class="row">
-	    		<div class="col-xs-2">
- 					<div class="input-group">
-	                	<span class="input-group-addon">${I18n.jobinfo_field_jobgroup}</span>
-                		<select class="form-control" id="jobGroup"  paramVal="<#if jobInfo?exists>${jobInfo.jobGroup}</#if>" >
+    <!-- header -->
+    <@netCommon.commonHeader />
+    <!-- left -->
+    <@netCommon.commonLeft "joblog" />
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>${I18n.joblog_name}</h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-2">
+                     <div class="input-group">
+                        <span class="input-group-addon">${I18n.jobinfo_field_jobgroup}</span>
+                        <select class="form-control" id="jobGroup"  paramVal="<#if jobInfo?exists>${jobInfo.jobGroup}</#if>" >
                             <#if Request["XXL_JOB_LOGIN_IDENTITY"].role == 1>
                                 <option value="0" >${I18n.system_all}</option>  <#-- 仅管理员支持查询全部；普通用户仅支持查询有权限的 jobGroup -->
                             </#if>
-                			<#list JobGroupList as group>
-                				<option value="${group.id}" >${group.title}</option>
-                			</#list>
-	                  	</select>
-	              	</div>
-	            </div>
-	            <div class="col-xs-2">
-	              	<div class="input-group">
-	                	<span class="input-group-addon">${I18n.jobinfo_job}</span>
+                            <#list JobGroupList as group>
+                                <option value="${group.id}" >${group.title}</option>
+                            </#list>
+                          </select>
+                      </div>
+                </div>
+                <div class="col-xs-2">
+                      <div class="input-group">
+                        <span class="input-group-addon">${I18n.jobinfo_job}</span>
                         <select class="form-control" id="jobId" paramVal="<#if jobInfo?exists>${jobInfo.id}</#if>" >
                             <option value="0" >${I18n.system_all}</option>
-						</select>
-	              	</div>
-	            </div>
+                        </select>
+                      </div>
+                </div>
 
                 <div class="col-xs-2">
                     <div class="input-group">
@@ -60,57 +60,59 @@
                     </div>
                 </div>
 
-	            <div class="col-xs-4">
-              		<div class="input-group">
-                		<span class="input-group-addon">
-	                  		${I18n.joblog_field_triggerTime}
-	                	</span>
-	                	<input type="text" class="form-control" id="filterTime" readonly >
-	              	</div>
-	            </div>
+                <div class="col-xs-4">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                              ${I18n.joblog_field_triggerTime}
+                        </span>
+                        <input type="text" class="form-control" id="filterTime" readonly >
+                      </div>
+                </div>
 
                 <div class="col-xs-1">
                     <button class="btn btn-block btn-info" id="searchBtn">${I18n.system_search}</button>
                 </div>
 
-	            <div class="col-xs-1">
+                <div class="col-xs-1">
                     <button class="btn btn-block btn-nomal" id="clearLog">${I18n.joblog_clean}</button>
-	            </div>
-          	</div>
-			
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="box">
-			            <#--<div class="box-header hide"><h3 class="box-title">调度日志</h3></div>-->
-			            <div class="box-body">
-			              	<table id="joblog_list" class="table table-bordered table-striped display" width="100%" >
-				                <thead>
-					            	<tr>
+                </div>
+              </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <#-- <div class="box-header hide"><h3 class="box-title">调度日志</h3></div> -->
+                        <div class="box-body">
+                              <table id="joblog_list" class="table table-bordered table-striped display" width="100%" >
+                                <thead>
+                                    <tr>
                                         <th name="jobId" >${I18n.jobinfo_field_id}</th>
                                         <th name="jobGroup" >jobGroup</th>
-										<#--<th name="executorAddress" >执行器地址</th>
-										<th name="glueType" >运行模式</th>
-                                      	<th name="executorParam" >任务参数</th>-->
+                                        <#--
+                                        <th name="executorAddress" >执行器地址</th>
+                                        <th name="glueType" >运行模式</th>
+                                        <th name="executorParam" >任务参数</th>
+                                        -->
                                         <th name="triggerTime" >${I18n.joblog_field_triggerTime}</th>
                                         <th name="triggerCode" >${I18n.joblog_field_triggerCode}</th>
                                         <th name="triggerMsg" >${I18n.joblog_field_triggerMsg}</th>
-					                  	<th name="handleTime" >${I18n.joblog_field_handleTime}</th>
-					                  	<th name="handleCode" >${I18n.joblog_field_handleCode}</th>
-					                  	<th name="handleMsg" >${I18n.joblog_field_handleMsg}</th>
-					                  	<th name="handleMsg" >${I18n.system_opt}</th>
-					                </tr>
-				                </thead>
-				                <tbody></tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-	    </section>
-	</div>
-	
-	<!-- footer -->
-	<@netCommon.commonFooter />
+                                          <th name="handleTime" >${I18n.joblog_field_handleTime}</th>
+                                          <th name="handleCode" >${I18n.joblog_field_handleCode}</th>
+                                          <th name="handleMsg" >${I18n.joblog_field_handleMsg}</th>
+                                          <th name="handleMsg" >${I18n.system_opt}</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- footer -->
+    <@netCommon.commonFooter />
 </div>
 
 <!-- 日志清理.模态框 -->
@@ -126,8 +128,8 @@
                         <label class="col-sm-3 control-label"">${I18n.jobinfo_field_jobgroup}：</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control jobGroupText" readonly >
-							<input type="hidden" name="jobGroup" >
-						</div>
+                            <input type="hidden" name="jobGroup" >
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -135,7 +137,7 @@
                         <div class="col-sm-9">
                             <input type="text" class="form-control jobIdText" readonly >
                             <input type="hidden" name="jobId" >
-						</div>
+                        </div>
                     </div>
 
                     <div class="form-group">

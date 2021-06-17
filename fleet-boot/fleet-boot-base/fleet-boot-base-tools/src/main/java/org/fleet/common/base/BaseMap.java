@@ -1,6 +1,5 @@
 package org.fleet.common.base;
 
-
 import cn.hutool.core.util.ObjectUtil;
 
 import org.apache.commons.beanutils.ConvertUtils;
@@ -19,7 +18,6 @@ public class BaseMap extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
-
     public BaseMap() {
 
     }
@@ -28,6 +26,11 @@ public class BaseMap extends HashMap<String, Object> {
         this.putAll(map);
     }
 
+    public static BaseMap toBaseMap(Map<String, Object> obj) {
+        BaseMap map = new BaseMap();
+        map.putAll(obj);
+        return map;
+    }
 
     @Override
     public BaseMap put(String key, Object value) {
@@ -94,7 +97,6 @@ public class BaseMap extends HashMap<String, Object> {
         }
     }
 
-
     public Integer getInt(String key, Integer def) {
         Object v = get(key);
         if (ObjectUtil.isNotEmpty(v)) {
@@ -121,7 +123,6 @@ public class BaseMap extends HashMap<String, Object> {
         return new BigDecimal("0");
     }
 
-
     @SuppressWarnings("unchecked")
     public <T> T get(String key, T def) {
         Object obj = super.get(key);
@@ -130,12 +131,5 @@ public class BaseMap extends HashMap<String, Object> {
         }
         return (T) obj;
     }
-
-    public static BaseMap toBaseMap(Map<String, Object> obj) {
-        BaseMap map = new BaseMap();
-        map.putAll(obj);
-        return map;
-    }
-
 
 }

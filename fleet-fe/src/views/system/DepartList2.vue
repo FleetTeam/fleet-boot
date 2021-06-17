@@ -124,7 +124,7 @@
         description: 'jeecg 生成SysDepart代码管理页面',
         // 查询条件
         queryParam: {},
-        //数据集
+        // 数据集
         factories: '',
         dataSource: [],
         columns: columns,
@@ -170,7 +170,7 @@
       },
 
       getQueryField() {
-        //TODO 字段权限控制
+        // TODO 字段权限控制
         var str = "id,";
         for (var a = 0; a < this.columns.length; a++) {
           str += "," + this.columns[a].dataIndex;
@@ -185,7 +185,7 @@
         this.selectedRowKeys = [];
         this.selectionRows = [];
       },
-//TODO getQueryParams
+      // TODO getQueryParams
       handleDelete: function (id) {
         var that = this;
         deleteAction(that.url.delete, {id: id}).then((res) => {
@@ -238,9 +238,9 @@
         this.$refs.sysDepartModal.title = "新增";
       },
       handleTableChange(pagination, filters, sorter) {
-        //分页、排序、筛选变化时触发
+        // 分页、排序、筛选变化时触发
         console.log(sorter);
-        //TODO 筛选
+        // TODO 筛选
         if (Object.keys(sorter).length > 0) {
           this.isorter.column = sorter.field;
           this.isorter.order = "ascend" == sorter.order ? "asc" : "desc"

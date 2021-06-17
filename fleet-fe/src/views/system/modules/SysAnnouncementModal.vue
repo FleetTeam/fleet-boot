@@ -215,7 +215,7 @@
           this.userIds = record.userIds;
           getAction(this.url.queryByIds,{userIds:this.userIds}).then((res)=>{
             if(res.success){
-              //update--begin--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
+              // update--begin--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
               var userList=[];
               for(var i=0;i<res.result.length;i++){
                 var user={};
@@ -224,7 +224,7 @@
                 userList.push(user);
               }
               this.selectedUser=userList;
-              //update--begin--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
+              // update--begin--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
               this.$refs.UserListModal.edit(res.result,this.userIds);
             }
           });
@@ -238,7 +238,7 @@
       },
       handleOk () {
         const that = this;
-        //当设置指定用户类型，但用户为空时，后台报错
+        // 当设置指定用户类型，但用户为空时，后台报错
         if(this.userType &&!(this.userIds!=null && this.userIds.length >0)){
             this.$message.warning('指定用户不能为空！')
             return;
@@ -271,7 +271,7 @@
               that.confirmLoading = false;
               that.close();
             })
-            
+
           }else{
             return false;
           }
@@ -307,12 +307,12 @@
         this.selectedUser = [];
         this.userIds = [];
         for(var i=0;i<userList.length;i++){
-          //update--begin--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
+          // update--begin--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
           var user={};
           user.label =userList[i].realname;
           user.key=userList[i].id;
           this.selectedUser.push(user);
-          //update--end--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
+          // update--end--autor:wangshuai-----date:20200601------for：系统公告选人后，不能删除------
           this.userIds += userList[i].id+","
         }
       },

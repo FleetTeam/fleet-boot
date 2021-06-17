@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Component(CloudConstant.MQ_DEMO_BUS_EVENT)
 public class DemoBusEvent implements JeecgBusEventHandler {
 
-
     @Override
     public void onMessage(EventObj obj) {
         if (ObjectUtil.isNotEmpty(obj)) {

@@ -67,7 +67,7 @@
       return {
         description: '图片预览页面',
         spinning:false,
-        //数据集
+        // 数据集
         dataSource: [{
           key:0,
           fileDetails:[

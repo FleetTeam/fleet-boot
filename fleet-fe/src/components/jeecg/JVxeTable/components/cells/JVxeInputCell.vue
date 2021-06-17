@@ -18,7 +18,7 @@
     mixins: [JVxeCellMixins],
     methods: {
 
-      /** 处理change事件 */
+      // 处理change事件
       handleChange(event) {
         let {$type} = this
         let {target} = event
@@ -46,7 +46,7 @@
         }
       },
 
-      /** 处理blur失去焦点事件 */
+      // 处理blur失去焦点事件
       handleBlur(event) {
         let {$type} = this
         let {target} = event

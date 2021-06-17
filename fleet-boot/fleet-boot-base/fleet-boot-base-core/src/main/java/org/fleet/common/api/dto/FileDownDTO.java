@@ -19,9 +19,10 @@ public class FileDownDTO implements Serializable {
     private String uploadType;
     private HttpServletResponse response;
 
-    public FileDownDTO(){}
+    public FileDownDTO() {
+    }
 
-    public FileDownDTO(String filePath, String uploadpath, String uploadType,HttpServletResponse response){
+    public FileDownDTO(String filePath, String uploadpath, String uploadType, HttpServletResponse response) {
         this.filePath = filePath;
         this.uploadpath = uploadpath;
         this.uploadType = uploadType;

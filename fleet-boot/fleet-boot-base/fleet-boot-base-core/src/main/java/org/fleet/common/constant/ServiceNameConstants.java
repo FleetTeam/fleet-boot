@@ -25,14 +25,14 @@ package org.fleet.common.constant;
  */
 public interface ServiceNameConstants {
 
-	/**
-	 * 系统管理 admin
-	 */
-	String SYSTEM_SERVICE = "fleet-system";
+    /**
+     * 系统管理 admin
+     */
+    String SYSTEM_SERVICE = "fleet-system";
 
-	/**
-	 * gateway通过header传递根路径 basePath
-	 */
-	String X_GATEWAY_BASE_PATH = "X_GATEWAY_BASE_PATH";
+    /**
+     * gateway通过header传递根路径 basePath
+     */
+    String X_GATEWAY_BASE_PATH = "X_GATEWAY_BASE_PATH";
 
 }

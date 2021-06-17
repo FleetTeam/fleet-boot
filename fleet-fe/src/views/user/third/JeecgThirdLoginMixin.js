@@ -8,7 +8,7 @@ import { timeFix } from '@/utils/util'
 export const JeecgThirdLoginMixin = {
   data() {
     return {
-      //第三方登录相关信息
+      // 第三方登录相关信息
       thirdLoginInfo: '',
       thirdPasswordShow: false,
       thirdLoginPassword: '',
@@ -16,16 +16,16 @@ export const JeecgThirdLoginMixin = {
       thirdConfirmShow: false,
       thirdCreateUserLoding: false,
       thirdLoginState: false,
-      //绑定手机号弹窗
+      // 绑定手机号弹窗
       bindingPhoneModal: false,
       thirdPhone: '',
       thirdCaptcha: '',
-      //获取验证码按钮30s之内是否可点击
+      // 获取验证码按钮30s之内是否可点击
       thirdState: {
         time: 30,
         smsSendBtn: false
       },
-      //第三方用户UUID
+      // 第三方用户UUID
       thirdUserUuid: '',
       thirdType: '',
       url: {
@@ -37,7 +37,7 @@ export const JeecgThirdLoginMixin = {
   },
   methods: {
     ...mapActions(['ThirdLogin']),
-    //第三方登录
+    // 第三方登录
     onThirdLogin(source) {
       let url = window._CONFIG['domianURL'] + `/sys/thirdLogin/render/${source}`
       window.open(url, `login ${source}`, 'height=500, width=500, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no')
@@ -48,7 +48,7 @@ export const JeecgThirdLoginMixin = {
       let receiveMessage = function(event) {
         let token = event.data
         if (typeof token === 'string') {
-          //如果是字符串类型 说明是token信息
+          // 如果是字符串类型 说明是token信息
           if (token === '登录失败') {
             that.$message.warning(token)
           } else if (token.includes('绑定手机号')) {
@@ -59,7 +59,7 @@ export const JeecgThirdLoginMixin = {
             that.doThirdLogin(token)
           }
         } else if (typeof token === 'object') {
-          //对象类型 说明需要提示是否绑定现有账号
+          // 对象类型 说明需要提示是否绑定现有账号
           if (token['isObj'] === true) {
             that.thirdConfirmShow = true
             that.thirdLoginInfo = { ...token }
@@ -93,12 +93,12 @@ export const JeecgThirdLoginMixin = {
       this.thirdConfirmShow = false
       this.thirdPasswordShow = true
     },
-    //创建新账号
+    // 创建新账号
     thirdLoginUserCreate() {
       this.thirdCreateUserLoding = true
       // 账号名后面添加两位随机数
       this.thirdLoginInfo['suffix'] = parseInt(Math.random() * 98 + 1)
-      //this.thirdLoginInfo.operateCode = 123 //测试校验失败
+      // this.thirdLoginInfo.operateCode = 123 // 测试校验失败
       postAction('/sys/third/user/create', this.thirdLoginInfo).then(res => {
         if (res.success) {
           let token = res.result
@@ -114,7 +114,7 @@ export const JeecgThirdLoginMixin = {
     },
     // 核实密码
     thirdLoginCheckPassword() {
-      //this.thirdLoginInfo.operateCode = 123 //测试校验失败
+      // this.thirdLoginInfo.operateCode = 123 // 测试校验失败
       let param = Object.assign({}, this.thirdLoginInfo, { password: this.thirdLoginPassword })
       postAction('/sys/third/user/checkPassword', param).then(res => {
         if (res.success) {
@@ -131,7 +131,7 @@ export const JeecgThirdLoginMixin = {
       this.thirdLoginPassword = ''
       this.thirdLoginUser = ''
     },
-    //获取第三方验证码
+    // 获取第三方验证码
     getThirdCaptcha() {
       let that = this
       if (!this.thirdPhone) {
@@ -164,7 +164,7 @@ export const JeecgThirdLoginMixin = {
         })
       }
     },
-    //绑定手机号点击确定按钮
+    // 绑定手机号点击确定按钮
     thirdHandleOk() {
       let bingingParams = {}
       bingingParams.mobile = this.thirdPhone

@@ -16,12 +16,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class CodeGenerateOne
         extends BaseCodeGenerate
         implements IGenerate {
     private static final Logger log = LoggerFactory.getLogger(CodeGenerateOne.class);
-
 
     private TableVo tableVo;
 
@@ -39,6 +37,23 @@ public class CodeGenerateOne
         this.originalColumns = originalColumns;
     }
 
+    public static void main(String[] args) {
+        System.out.println("----fleet--------- Code------------- Generation -----[单表模型]------- 生成中。。。");
+        TableVo table = new TableVo();
+        table.setTableName("demo");
+        table.setPrimaryKeyPolicy("uuid");
+        table.setEntityPackage("test");
+        table.setEntityName("JeecgDemo");
+        table.setFtlDescription("fleet 测试demo");
+        try {
+            (new CodeGenerateOne(table)).generateCodeFile((String) null);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+        System.out.println("----fleet--------- Code------------- Generation -----[单表模型]------- 生成完成。。。");
+    }
 
     public Map<String, Object> initData() {
 
@@ -77,7 +92,6 @@ public class CodeGenerateOne
 
             }
             data.put("originalColumns", originalColumns);
-
 
             for (ColumnVo c : originalColumns) {
                 if (c.getFieldName().toLowerCase().equals(AutoCodeConfigProperties.DB_TABLE_ID.toLowerCase())) {
@@ -123,7 +137,6 @@ public class CodeGenerateOne
         return results;
     }
 
-
     @Override
     public List<String> generateCodeFile(String projectPath, String templatePath, String stylePath) throws Exception {
         if (projectPath != null && !"".equals(projectPath))
@@ -136,25 +149,4 @@ public class CodeGenerateOne
         return results;
     }
 
-    public static void main(String[] args) {
-        System.out.println("----fleet--------- Code------------- Generation -----[单表模型]------- 生成中。。。");
-        TableVo table = new TableVo();
-        table.setTableName("demo");
-        table.setPrimaryKeyPolicy("uuid");
-        table.setEntityPackage("test");
-        table.setEntityName("JeecgDemo");
-        table.setFtlDescription("fleet 测试demo");
-        try {
-            (new CodeGenerateOne(table)).generateCodeFile((String) null);
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        System.out.println("----fleet--------- Code------------- Generation -----[单表模型]------- 生成完成。。。");
-    }
-
-
 }
-
-

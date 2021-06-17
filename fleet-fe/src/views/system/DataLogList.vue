@@ -30,9 +30,9 @@
       <a-button @click="handleCompare()" type="primary" icon="plus">数据比较</a-button>
     </div>
 
-    <!--table区 -->
+    <!-- table区 -->
     <div>
-      <!--已选择的清空 -->
+      <!-- 已选择的清空 -->
       <div class="ant-alert ant-alert-info" style="margin-bottom: 16px;">
         <i class="anticon anticon-info-circle ant-alert-icon"></i>已选择&nbsp;<a style="font-weight: 600">{{ selectedRowKeys.length }}</a>项&nbsp;&nbsp;
         <a style="margin-left: 24px" @click="onClearSelected">清空</a>
@@ -49,7 +49,7 @@
         :rowSelection="{selectedRowKeys: selectedRowKeys,onChange: onSelectChange}"
         @change="handleTableChange"
       >
-        <!-- 字符串超长截取省略号显示-->
+        <!-- 字符串超长截取省略号显示 -->
         <span slot="dataContent" slot-scope="text, record">
           <j-ellipsis :value="text" :length="80" />
         </span>
@@ -74,7 +74,7 @@
     data() {
       return {
         description: '数据日志管理页面',
-        //表头
+        // 表头
         columns: [
           {
             title: '表名',

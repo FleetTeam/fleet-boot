@@ -186,7 +186,6 @@
 
         </a-tabs>
 
-
       </a-card>
     </a-row>
   </div>
@@ -314,7 +313,6 @@
     '七月','八月','九月','十月','十一月','十二月'
   ]
 
-
   const xljgData = [
     {type:'一月',"房管":1.12,"税务":1.55,"不动产":1.2},
     {type:'二月',"房管":1.65,"税务":1.32,"不动产":1.42},
@@ -385,7 +383,7 @@
           showSizeChanger: true,
           total: 0
         },
-        //数据集
+        // 数据集
         dataSource:[],
         dataSource1:[],
         dataSource2:[],
@@ -444,7 +442,7 @@
         if(arg===1){
           this.ipagination.current = 1;
         }
-        var params = this.getQueryParams();//查询条件
+        var params = this.getQueryParams(); // 查询条件
         getAction(this.url.list,params).then((res)=>{
           console.log("dsdsd",res.result)
           this.dataSource1 = res.result.data1;
@@ -693,6 +691,5 @@
   .anty-list-cust {
     .ant-list-item-content{flex:1 !important; justify-content:flex-start !important;margin-left: 20px;}
   }
-
 
 </style>

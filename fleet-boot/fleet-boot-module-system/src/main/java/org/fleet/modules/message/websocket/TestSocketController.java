@@ -19,27 +19,27 @@ public class TestSocketController {
 
     @PostMapping("/sendAll")
     public Result<String> sendAll(@RequestBody JSONObject jsonObject) {
-    	Result<String> result = new Result<String>();
-    	String message = jsonObject.getString("message");
-    	JSONObject obj = new JSONObject();
-    	obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_TOPIC);
-		obj.put(WebsocketConst.MSG_ID, "M0001");
-		obj.put(WebsocketConst.MSG_TXT, message);
-    	webSocket.sendMessage(obj.toJSONString());
+        Result<String> result = new Result<String>();
+        String message = jsonObject.getString("message");
+        JSONObject obj = new JSONObject();
+        obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_TOPIC);
+        obj.put(WebsocketConst.MSG_ID, "M0001");
+        obj.put(WebsocketConst.MSG_TXT, message);
+        webSocket.sendMessage(obj.toJSONString());
         result.setResult("群发！");
         return result;
     }
 
     @PostMapping("/sendUser")
     public Result<String> sendUser(@RequestBody JSONObject jsonObject) {
-    	Result<String> result = new Result<String>();
-    	String userId = jsonObject.getString("userId");
-    	String message = jsonObject.getString("message");
-    	JSONObject obj = new JSONObject();
-    	obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_USER);
-    	obj.put(WebsocketConst.MSG_USER_ID, userId);
-		obj.put(WebsocketConst.MSG_ID, "M0001");
-		obj.put(WebsocketConst.MSG_TXT, message);
+        Result<String> result = new Result<String>();
+        String userId = jsonObject.getString("userId");
+        String message = jsonObject.getString("message");
+        JSONObject obj = new JSONObject();
+        obj.put(WebsocketConst.MSG_CMD, WebsocketConst.CMD_USER);
+        obj.put(WebsocketConst.MSG_USER_ID, userId);
+        obj.put(WebsocketConst.MSG_ID, "M0001");
+        obj.put(WebsocketConst.MSG_TXT, message);
         webSocket.sendMessage(userId, obj.toJSONString());
         result.setResult("单发");
         return result;

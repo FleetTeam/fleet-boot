@@ -15,7 +15,7 @@ public class HTMLUtils {
      */
     public static String getInnerText(String html) {
         if (StringUtils.isNotBlank(html)) {
-            //去掉 html 的标签
+            // 去掉 html 的标签
             String content = html.replaceAll("</?[^>]+>", "");
             // 将多个空格合并成一个空格
             content = content.replaceAll("(&nbsp;)+", "&nbsp;");

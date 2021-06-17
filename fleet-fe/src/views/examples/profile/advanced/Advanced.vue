@@ -68,7 +68,7 @@
         </detail-list>
         <a-divider style="margin: 16px 0" />
         <detail-list title="组名称" size="small" :col="1">
-          <detail-list-item term="学名">	Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..</detail-list-item>
+          <detail-list-item term="学名"> Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..</detail-list-item>
         </detail-list>
         <a-divider style="margin: 16px 0" />
         <detail-list title="组名称" size="small" :col="2">

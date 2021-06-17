@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class SecurityToolsTest {
     @Test
-    public void Test(){
+    public void Test() {
         MyKeyPair mkeyPair = SecurityTools.generateKeyPair();
 
         JSONObject msg = new JSONObject();
@@ -34,16 +34,16 @@ public class SecurityToolsTest {
 
         // 验签解密部分
         SecurityReq req = new SecurityReq();
-        //对方传过来的数据一一对应
+        // 对方传过来的数据一一对应
         req.setAesKey(sign.getAesKey());
         req.setData(sign.getData());
         req.setSignData(sign.getSignData());
-        //我们的公钥
+        // 我们的公钥
         req.setPubKey(mkeyPair.getPubKey());
-        //验签方法调用
+        // 验签方法调用
         SecurityResp securityResp = SecurityTools.valid(req);
-        //解密报文data为解密报文
-        //sucess 为验签成功失败标志 true代码验签成功，false代表失败
+        // 解密报文data为解密报文
+        // success 为验签成功失败标志 true代码验签成功，false代表失败
         System.out.println(new JSONObject(securityResp).toStringPretty());
     }
 }

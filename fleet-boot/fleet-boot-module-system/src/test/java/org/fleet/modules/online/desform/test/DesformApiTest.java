@@ -20,26 +20,23 @@ import org.springframework.test.context.junit4.SpringRunner;
  * 表单设计器 API 接口单元测试
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = FleetSystemApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = FleetSystemApplication.class)
 @SuppressWarnings({"FieldCanBeLocal", "SpringJavaAutowiredMembersInspection"})
 public class DesformApiTest {
-
-    @Autowired
-    private RedisUtil redisUtil;
 
     /**
      * 测试地址：实际使用时替换成你自己的地址
      */
     private final String BASE_URL = "http://localhost:8080/fleet-boot/desform/api/";
-
     // 请实际使用时替换成你自己的用户名和密码
     private final String USERNAME = "admin";
     private final String PASSWORD = "123456";
-
     /**
      * 表单code，实际使用时可以替换成你要测试的表单code
      */
     private final String DESFORM_CODE = "qingjiadan";
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 测试用例：新增
@@ -75,7 +72,6 @@ public class DesformApiTest {
             System.out.println("查询失败");
         }
     }
-
 
     /**
      * 测试用例：修改
@@ -113,7 +109,6 @@ public class DesformApiTest {
             System.out.println("查询失败");
         }
     }
-
 
     /**
      * 测试用例：删除

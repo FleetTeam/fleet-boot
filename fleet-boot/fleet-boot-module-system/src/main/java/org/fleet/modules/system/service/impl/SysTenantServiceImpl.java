@@ -10,6 +10,5 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class SysTenantServiceImpl extends ServiceImpl<SysTenantMapper, SysTenant> implements ISysTenantService {
-	
 
 }

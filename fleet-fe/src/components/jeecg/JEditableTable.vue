@@ -43,7 +43,7 @@
             <span></span>
           </div>
           <div v-if="rowSelection" class="td td-cb" :style="style.tdLeft">
-            <!--:indeterminate="true"-->
+            <!-- :indeterminate="true" -->
             <a-checkbox
               :checked="getSelectAll"
               :indeterminate="getSelectIndeterminate"
@@ -69,7 +69,6 @@
 
       <div class="scroll-view" ref="scrollView" :style="{'max-height':maxHeight+'px'}">
 
-
         <!-- 渲染主体 body -->
         <div :id="`${caseId}tbody`" class="tbody" :style="tbodyStyle">
           <!-- 扩展高度 -->
@@ -78,7 +77,7 @@
           <div v-if="rows.length===0" class="tr-nodata">
             <span>暂无数据</span>
           </div>
-          <!-- v-model="rows"-->
+          <!-- v-model="rows" -->
           <draggable
             :value="rows"
             handle=".td-ds-icons"
@@ -624,7 +623,6 @@
             </template>
           </draggable>
 
-
           <!-- 统计行 -->
           <div
             v-if="showStatisticsRow"
@@ -803,11 +801,11 @@
         slotValues: {},
         // file 信息
         uploadValues: {},
-        //popup信息
+        // popup信息
         popupValues: {},
-        //部门组件信息
+        // 部门组件信息
         departCompValues:{},
-        //用户组件信息
+        // 用户组件信息
         userCompValues: {},
 
         radioValues: {},
@@ -835,7 +833,7 @@
         // 上次push数据的事件，用于判断是否点击过快
         lastPushTimeMap: new Map(),
         number:0,
-        //不显示的按钮编码
+        // 不显示的按钮编码
         excludeCode:[]
       }
     },
@@ -945,7 +943,7 @@
       columns: {
         immediate: true,
         handler(columns) {
-          //列改变的时候重新设置按钮权限信息
+          // 列改变的时候重新设置按钮权限信息
           this.loadExcludeCode()
           // 兼容IE
           this.getElementPromise('tbody').then(() => {
@@ -979,7 +977,7 @@
     },
     mounted() {
       let vm = this
-      /** 监听滚动条事件 */
+      // 监听滚动条事件
       this.getElement('inputTable').onscroll = function (event) {
         vm.syncScrollBar(event.target.scrollLeft)
       }
@@ -1023,7 +1021,7 @@
         })
       },
 
-      /** 初始化列表 */
+      // 初始化列表
       initialize() {
         this.visibleTrEls = []
         // 判断是否是首次进入该方法，如果是就不清空行，防止删除了预添加的数据
@@ -1033,7 +1031,7 @@
           this.isFirst = false
         }
       },
-      /**清空行*/
+      // 清空行
       clearRow(){
         // inputValues：用来存储input表单的值
         // 数组里的每项都是一个对象，对象里每个key都是input的rowKey，值就是input的值，其中有个id的字段来区分
@@ -1068,12 +1066,12 @@
           this.getElement('tbody').scrollTop = 0
         })
       },
-      /** 同步滚动条状态 */
+      // 同步滚动条状态
       syncScrollBar(scrollLeft) {
         // this.style.tbody.left = `${scrollLeft}px`
         // this.getElement('tbody').scrollLeft = scrollLeft
       },
-      /** 重置滚动条位置，参数留空则滚动到上次记录的位置 */
+      // 重置滚动条位置，参数留空则滚动到上次记录的位置
       resetScrollTop(top) {
         let { scrollView } = this.$refs
         if (top != null && typeof top === 'number') {
@@ -1082,7 +1080,7 @@
           scrollView.scrollTop = this.scrollTop
         }
       },
-      /** 重新计算需要隐藏或显示的tr */
+      // 重新计算需要隐藏或显示的tr
       recalcTrHiddenItem(top) {
         let diff = top - this.scrollTop
         if (diff < 0) {
@@ -1097,7 +1095,7 @@
           })
         }
       },
-      /** 生成id */
+      // 生成id
       generateId(rows) {
         if (!(rows instanceof Array)) {
           rows = this.rows || []
@@ -1105,7 +1103,7 @@
         let timestamp = new Date().getTime()
         return `${this.caseId}${timestamp}${rows.length}${randomNumber(6)}${this.tempId}`
       },
-      /** push 一条数据 */
+      // push 一条数据
       push(record, update = true, rows, insertIndex = null, setDefaultValue = true) {
         return this._pushByDataSource([record], [insertIndex], update, rows, setDefaultValue)
       },
@@ -1279,12 +1277,12 @@
               this.inputValues.splice(insertIndex, 0, value)
             }
           }
-          //update-begin-author:lvdandan date:20201105 for:LOWCOD-987 【online】js增强的问题--数据对象带有id，且和现有数据一致时，替换患有数据
+          // update-begin-author:lvdandan date:20201105 for:LOWCOD-987 【online】js增强的问题--数据对象带有id，且和现有数据一致时，替换患有数据
           if(-1 !== rows.findIndex(item => item.id === row.id)){
             added = true
             this.inputValues = this.inputValues.map(item => item.id === row.id ? value : item)
           }
-          //update-begin-author:lvdandan date:20201105 for:LOWCOD-987 【online】js增强的问题--数据对象带有id，且和现有数据一致时，替换患有数据
+          // update-begin-author:lvdandan date:20201105 for:LOWCOD-987 【online】js增强的问题--数据对象带有id，且和现有数据一致时，替换患有数据
           if (!added) {
             rows.push(row)
             this.inputValues.push(value)
@@ -1323,7 +1321,7 @@
         return rows
       },
 
-      /** 获取某一数字输入框列中的最大的值 */
+      // 获取某一数字输入框列中的最大的值
       getInputNumberMaxValue(column) {
         let maxNum = 0
         this.inputValues.forEach((item, index) => {
@@ -1342,7 +1340,7 @@
         })
         return maxNum
       },
-      /** 添加一行 */
+      // 添加一行
       add(num = 1, forceScrollToBottom = false) {
         if (num < 1) return
         // let timestamp = new Date().getTime()
@@ -1414,12 +1412,12 @@
           target: this
         })
       },
-      /** 删除被选中的行 */
+      // 删除被选中的行
       removeSelectedRows() {
         this.removeRows(this.selectedRowIds)
         this.selectedRowIds = []
       },
-      /** 删除一行或多行 */
+      // 删除一行或多行
       removeRows(id) {
         let ids = id
         if (!(id instanceof Array)) {
@@ -1463,7 +1461,7 @@
         return true
       },
 
-      /** 获取表格表单里的值（异步版） */
+      // 获取表格表单里的值（异步版）
       getValuesAsync(options = {}, callback) {
         let { validate, rowIds, deleteTempId } = options
         if (typeof validate !== 'boolean') validate = true
@@ -1553,7 +1551,6 @@
               value[column.key] = this.slotValues[inputId]
             }
 
-
             // 检查表单验证
             if (validate === true) {
               const handleValidateOneInput = (results) => {
@@ -1606,12 +1603,12 @@
         return { error, values }
       },
 
-      /** 获取表格表单里的值（同步版） */
+      // 获取表格表单里的值（同步版）
       getValuesSync(options = {}) {
         return this.getValuesAsync(options)
       },
 
-      /** 获取表格表单里的值 */
+      // 获取表格表单里的值
       getValues(callback, validate = true, rowIds) {
         this.getValuesAsync({ validate, rowIds }, ({ error, values }) => {
           if (typeof callback === 'function') {
@@ -1619,7 +1616,7 @@
           }
         })
       },
-      /** getValues的Promise版 */
+      // getValues的Promise版
       getValuesPromise(validate = true, rowIds, deleteTempId) {
         return new Promise((resolve, reject) => {
           this.getValuesAsync({ validate, rowIds, deleteTempId }, ({ error, values }) => {
@@ -1631,11 +1628,11 @@
           })
         })
       },
-      /** 获取被删除项的id */
+      // 获取被删除项的id
       getDeleteIds() {
         return cloneObject(this.deleteIds)
       },
-      /** 获取所有的数据，包括values、deleteIds */
+      // 获取所有的数据，包括values、deleteIds
       getAll(validate, deleteTempId) {
         return new Promise((resolve, reject) => {
           let deleteIds = this.getDeleteIds()
@@ -1646,7 +1643,7 @@
           })
         })
       },
-      /** Sync 获取所有的数据，包括values、deleteIds */
+      // Sync 获取所有的数据，包括values、deleteIds
       getAllSync(validate, rowIds, deleteTempId) {
         let result = this.getValuesSync({ validate, rowIds, deleteTempId })
         result.deleteIds = this.getDeleteIds()
@@ -1673,7 +1670,7 @@
           searchSelectValues: this.searchSelectValues,
         })
       },
-      /** 设置某行某列的值 */
+      // 设置某行某列的值
       setValues(values) {
 
         values.forEach(item => {
@@ -1785,7 +1782,7 @@
         return null
       },
 
-      /** 跳转到指定位置 */
+      // 跳转到指定位置
       // jumpToId(id, element) {
       //   if (element == null) {
       //     element = document.getElementById(id)
@@ -1863,11 +1860,11 @@
         return [tooltips[inputId], notPassedIds]
       },
 
-      /** 验证单个表单 */
+      // 验证单个表单
       validateOneInput(value, row, column, notPassedIds, update = false, validType = 'input') {
         return this.validateOneInputAsync(value, row, column, notPassedIds, update, validType)
       },
-      /** 通过规则验证值是否正确 */
+      // 通过规则验证值是否正确
       validateValue(column, value) {
         let rules = column.validateRules
         let passed = true, message = ''
@@ -1935,7 +1932,7 @@
         return [passed, message]
       },
 
-      /** 动态更新表单的值 */
+      // 动态更新表单的值
       updateFormValues() {
         let trs = this.getElement('tbody').getElementsByClassName('tr')
         let trEls = []
@@ -1975,7 +1972,7 @@
           }
         })
       },
-      /** 强制更新FormValues */
+      // 强制更新FormValues
       forceUpdateFormValues() {
         this.visibleTrEls = []
         this.$forceUpdate()
@@ -2009,7 +2006,7 @@
         }
       },
 
-      /** 获取某个统计字段的值 */
+      // 获取某个统计字段的值
       getStatisticsValue(key) {
         if (this.hasStatisticsColumn) {
           if (this.statisticsColumns.hasOwnProperty(key)) {
@@ -2019,7 +2016,7 @@
         return null
       },
 
-      /** 全选或取消全选 */
+      // 全选或取消全选
       handleChangeCheckedAll() {
         let selectedRowIds = []
         if (!this.getSelectAll) {
@@ -2031,7 +2028,7 @@
         }
         this.selectedRowIds = selectedRowIds
       },
-      /** 左侧行选择框change事件 */
+      // 左侧行选择框change事件
       handleChangeLeftCheckbox(event) {
         let { id } = event.target
 
@@ -2059,14 +2056,14 @@
       clearSelection() {
         this.selectedRowIds = []
       },
-      /** 用于搜索下拉框中的内容 */
+      // 用于搜索下拉框中的内容
       handleSelectFilterOption(input, option, column) {
         if (column.allowSearch === true || column.allowInput === true) {
           return option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
         }
         return true
       },
-      /** select 搜索时的事件，用于动态添加options */
+      // select 搜索时的事件，用于动态添加options
       handleSearchSelect(value, id, row, col) {
         if (col.allowSearch !== true && col.allowInput === true) {
           // 是否找到了对应的项，找不到则添加这一项
@@ -2109,7 +2106,7 @@
         this.validateOneInput(value, row, col, this.notPassedIds, true, 'blur')
       },
 
-      /** 触发已拖动事件 */
+      // 触发已拖动事件
       emitDragged(oldIndex, newIndex) {
         this.$emit('dragged', { oldIndex, newIndex, target: this })
       },
@@ -2119,7 +2116,7 @@
         this.$refs.scrollView.style.overflow = 'hidden'
       },
 
-      /** 拖动结束，交换inputValue中的值 */
+      // 拖动结束，交换inputValue中的值
       handleDragMoveEnd(event) {
         this.dragging = false
         this.$refs.scrollView.style.overflow = 'auto'
@@ -2135,7 +2132,7 @@
         this.emitDragged(oldIndex, newIndex)
       },
 
-      /** 行重新排序 */
+      // 行重新排序
       rowResort(oldIndex, newIndex) {
         const sort = (array) => {
           // 存储旧数据，并删除旧项目
@@ -2153,7 +2150,7 @@
         this.forceUpdateFormValues()
       },
 
-      /** 重新计算排序字段的数值 */
+      // 重新计算排序字段的数值
       recalcSortNumber() {
         if (this.dragSort) {
           // 重置排序字段
@@ -2161,7 +2158,7 @@
         }
       },
 
-      /** 当前行向上移一位 */
+      // 当前行向上移一位
       _handleRowMoveUp(rowIndex) {
         if (rowIndex > 0) {
           let newIndex = rowIndex - 1
@@ -2170,7 +2167,7 @@
         }
       },
 
-      /** 当前行向下移一位 */
+      // 当前行向下移一位
       _handleRowMoveDown(rowIndex) {
         if (rowIndex < (this.rows.length - 1)) {
           let newIndex = rowIndex + 1
@@ -2179,7 +2176,7 @@
         }
       },
 
-      /** 在当前行下面插入一行 */
+      // 在当前行下面插入一行
       _handleRowInsertDown(rowIndex) {
         let insertIndex = (rowIndex + 1)
         this.insert(insertIndex)
@@ -2187,7 +2184,7 @@
 
       /* --- common function begin --- */
 
-      /** input事件 */
+      // input事件
       handleInputCommono(target, index, row, column) {
         let oldValue = this.inputValues[index][column.key] || ''
         let { value, dataset, selectionStart } = target
@@ -2220,7 +2217,7 @@
           this.elemValueChange(type, row, column, value)
         }
       },
-      /** slot Change */
+      // slot Change
       handleChangeSlotCommon(value, id, row, column) {
         this.slotValues = this.bindValuesChange(value, id, 'slotValues')
         // 做单个表单验证
@@ -2239,12 +2236,12 @@
           }
           target.value = value
         }
-        //update--begin--autor:lvdandan-----date:20201126------for：LOWCOD-1088 JEditableTable输入校验提示框位置偏移 #2005
+        // update--begin--autor:lvdandan-----date:20201126------for：LOWCOD-1088 JEditableTable输入校验提示框位置偏移 #2005
         setTimeout(()=>{
           // 做单个表单验证
           this.validateOneInput(value, row, column, this.notPassedIds, true, 'blur')
         }, 100)
-        //update--end--autor:lvdandan-----date:20201126------for：LOWCOD-1088 JEditableTable输入校验提示框位置偏移 #2005
+        // update--end--autor:lvdandan-----date:20201126------for：LOWCOD-1088 JEditableTable输入校验提示框位置偏移 #2005
       },
       handleChangeCheckboxCommon(event, row, column) {
         let { id, checked } = event.target
@@ -2272,14 +2269,14 @@
           this.elemValueChange(FormTypes.date, row, column, value)
         }
       },
-      //部门组件值改变
+      // 部门组件值改变
       handleChangeDepartCommon(value, id, row, column){
         this.departCompValues = this.bindValuesChange(value, id, 'departCompValues')
         this.validateOneInput(value, row, column, this.notPassedIds, true, 'change')
         // 触发valueChange 事件
         this.elemValueChange(FormTypes.sel_depart, row, column, value)
       },
-      //用户组件值改变
+      // 用户组件值改变
       handleChangeUserCommon(value, id, row, column){
         this.userCompValues = this.bindValuesChange(value, id, 'userCompValues')
         this.validateOneInput(value, row, column, this.notPassedIds, true, 'change')
@@ -2316,18 +2313,18 @@
         this.elemValueChange(column.type, row, column, value)
       },
       handleMoreOperation(id,flag,column){
-        //update-begin-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
+        // update-begin-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
         if(column.number){
           this.number = column.number;
         }else{
           this.number = 0;
         }
-        //update-end-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
+        // update-end-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
         if(column && column.fieldExtendJson){
           let json = JSON.parse(column.fieldExtendJson);
           this.number = json.uploadnum?json.uploadnum:0;
         }
-        //console.log("this.uploadValues[id]",this.uploadValues[id])
+        // console.log("this.uploadValues[id]",this.uploadValues[id])
         let path = ''
         if(this.uploadValues && this.uploadValues[id]){
           path = this.uploadValues[id].path
@@ -2368,13 +2365,13 @@
           })
         }
       },
-      /** 记录用到数据绑定的组件的值 */
+      // 记录用到数据绑定的组件的值
       bindValuesChange(value, id, key) {
         this.$set(this[key], id, value)
         return this[key]
       },
 
-      /** value 触发valueChange事件 */
+      // value 触发valueChange事件
       elemValueChange(type, rowSource, columnSource, value) {
         let column = Object.assign({}, columnSource)
         // 将caseId去除
@@ -2388,19 +2385,19 @@
         this.$emit('valueChange', { type, row, column, value, target: this })
       },
 
-      /** 获取干净的ID（不包含任何杂质的ID） */
+      // 获取干净的ID（不包含任何杂质的ID）
       getCleanId(id) {
         id = this.removeCaseId(id)
         id = this.removeTempId(id)
         return id
       },
 
-      /** 判断某个ID是否包含了caseId */
+      // 判断某个ID是否包含了caseId
       hasCaseId(id) {
         return id && id.startsWith(this.caseId)
       },
 
-      /** 将caseId去除 */
+      // 将caseId去除
       removeCaseId(id) {
         if (this.hasCaseId(id)) {
           return id.substring(this.caseId.length, id.length)
@@ -2413,7 +2410,7 @@
         return (id || '').endsWith(this.tempId)
       },
 
-      /** 将tempId去除 */
+      // 将tempId去除
       removeTempId(id) {
         if (this.isTempId(id)) {
           return id.substring(0, id.length - this.tempId.length)
@@ -2449,7 +2446,7 @@
         }
       },
 
-      /** 加载数据字典并合并到 options */
+      // 加载数据字典并合并到 options
       _loadDictConcatToOptions(column) {
         initDictOptions(column.dictCode).then((res) => {
           if (res.success) {
@@ -2472,7 +2469,7 @@
 
       /* --- 以下是辅助方法，多用于动态构造页面中的数据 --- */
 
-      /** 辅助方法：打印日志 */
+      // 辅助方法：打印日志
       log() {
         if (this.$attrs.logger) {
           console.log.apply(null, arguments)
@@ -2483,7 +2480,7 @@
         return this
       },
 
-      /** 辅助方法：动态构造Tooltip的Props，防止出现不消失的情况 */
+      // 辅助方法：动态构造Tooltip的Props，防止出现不消失的情况
       buildTooltipProps(row, col, id) {
         let {notPassedIds, tooltips} = this
         let props = {
@@ -2504,10 +2501,10 @@
         return props
       },
 
-      /** 辅助方法：指定a-select 和 j-data 的父容器 */
+      // 辅助方法：指定a-select 和 j-data 的父容器
       getParentContainer(node) {
         let element = (() => {
-          // nodeType 8	: Comment	: 注释
+          // nodeType 8 : Comment : 注释
           if (this.$el && this.$el.nodeType !== 8) {
             return this.$el
           }
@@ -2548,7 +2545,7 @@
         return (temp != null) ? temp : element
       },
 
-      /** 辅助方法：替换${...}变量 */
+      // 辅助方法：替换${...}变量
       replaceProps(col, value) {
         if (value && typeof value === 'string') {
           value = value.replace(/\${title}/g, col.title)
@@ -2558,13 +2555,13 @@
         return value
       },
 
-      /** view辅助方法：构建 tr style */
+      // view辅助方法：构建 tr style
       buildTrStyle(index) {
         return {
           'top': `${rowHeight * index}px`
         }
       },
-      /** view辅助方法：构建 td style */
+      // view辅助方法：构建 td style
       buildTdStyle(col) {
         const isEmptyWidth = (column) => (column.type === FormTypes.hidden || column.width === '0px' || column.width === '0' || column.width === 0)
 
@@ -2577,8 +2574,8 @@
         } else {
           style['width'] = '120px'
         }
-        //update-begin-author:lvdandan date:20201116 for:LOWCOD-984 默认风格功能测试附表样式问题 日期时间控件长度太大
-        //如果是时间控件设为200px
+        // update-begin-author:lvdandan date:20201116 for:LOWCOD-984 默认风格功能测试附表样式问题 日期时间控件长度太大
+        // 如果是时间控件设为200px
         if(col.type === FormTypes.datetime){
           style['width'] = '200px'
         }
@@ -2588,7 +2585,7 @@
         if(col.type === FormTypes.sel_depart && !col.width){
           style['width'] = '160px'
         }
-        //update-end-author:lvdandan date:20201116 for:LOWCOD-984 默认风格功能测试附表样式问题 日期时间控件长度太大
+        // update-end-author:lvdandan date:20201116 for:LOWCOD-984 默认风格功能测试附表样式问题 日期时间控件长度太大
 
         // checkbox 居中显示
         let isCheckbox = col.type === FormTypes.checkbox
@@ -2604,7 +2601,7 @@
         }
         return style
       },
-      /** view辅助方法：构造props */
+      // view辅助方法：构造props
       buildProps(row, col) {
         let props = {}
         // 解析props
@@ -2636,7 +2633,7 @@
         return props
       },
 
-      /** 辅助方法：防止过快点击，如果点击过快的话就返回 true */
+      // 辅助方法：防止过快点击，如果点击过快的话就返回 true
       checkTooFastClick(key = 'default', ms = 300) {
         let nowTime = Date.now()
         let lastTime = this.lastPushTimeMap.get(key)
@@ -2654,7 +2651,7 @@
         return false
       },
 
-      /** upload 辅助方法：获取 headers */
+      // upload 辅助方法：获取 headers
       uploadGetHeaders(row, column) {
         let headers = {}
         if (column.token === true) {
@@ -2662,7 +2659,7 @@
         }
         return headers
       },
-      /** 上传请求地址 */
+      // 上传请求地址
       getUploadAction(value) {
         if (!value) {
           return window._CONFIG['domianURL'] + '/sys/common/upload'
@@ -2670,7 +2667,7 @@
           return value
         }
       },
-      /** 预览图片地址 */
+      // 预览图片地址
       getCellImageView(id) {
         let currUploadObj = this.uploadValues[id] || null
         if (currUploadObj) {
@@ -2683,7 +2680,7 @@
         }
         return ''
       },
-      /** popup回调 */
+      // popup回调
       popupCallback(value, others, id, row, column, index) {
         // 存储输入的值
         let popupValue = value
@@ -2708,7 +2705,7 @@
         // 触发valueChange 事件
         this.elemValueChange('input', row, column, value)
       },
-      /** popup输入框回显 */
+      // popup输入框回显
       getPopupValue(id) {
         return this.popupValues[id]
       },
@@ -2746,7 +2743,7 @@
 
       /* --------------------------- 2020年5月18日 默认span模式 ------------------------------ */
 
-      /** 获取Select等组件翻译后的文本 */
+      // 获取Select等组件翻译后的文本
       getSelectTranslateText(value, row, col) {
         // 翻译支持单选和多选（数组、逗号分割）
         return filterDictText(col.options, value)
@@ -2825,7 +2822,7 @@
       },
       /* --------------------------- 2020年5月18日 默认span模式 ------------------------------ */
 
-      //获取没有授权的按钮编码
+      // 获取没有授权的按钮编码
       loadExcludeCode(){
         if(!this.authPre || this.authPre.length==0){
           this.excludeCode = []
@@ -2837,7 +2834,7 @@
           this.excludeCode = getNoAuthCols(pre)
         }
       },
-      //判断button是否显示
+      // 判断button是否显示
       buttonPermission(code){
         if(!this.excludeCode || this.excludeCode.length==0){
           return true
@@ -2938,7 +2935,6 @@
             }
           }
 
-
         }
 
       }
@@ -2950,7 +2946,7 @@
       overflow-x: hidden;
       border-bottom: @border;
 
-      /** 隐藏thead的滑块   */
+      // 隐藏thead的滑块
 
       &::-webkit-scrollbar-thumb {
         box-shadow: none !important;

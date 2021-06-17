@@ -9,7 +9,7 @@
     cancelText="关闭"
     wrapClassName="ant-modal-cust-warp"
     >
-    <!--部门树-->
+    <!-- 部门树 -->
     <template>
       <a-form :form="form">
       <a-form-item :labelCol="labelCol" :wrapperCol="wrapperCol" label="上级部门">
@@ -45,7 +45,7 @@
     data () {
       return {
         checkedKeys:[], // 存储选中的部门id
-        expandedKeysss:[],//展开的节点
+        expandedKeysss:[], // 展开的节点
         userId:"", // 存储用户id
         model:{}, // 存储SysUserDepartsVO表
         userDepartModel:{userId:'',departIdList:[]}, // 存储用户id一对多部门信息的对象

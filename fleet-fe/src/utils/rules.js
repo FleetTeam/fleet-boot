@@ -105,6 +105,3 @@ export const validateOrder = function(rule, value, callback) {
     callback()
   }
 }
-
-
-

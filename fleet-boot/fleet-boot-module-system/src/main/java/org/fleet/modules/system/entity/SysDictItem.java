@@ -59,9 +59,8 @@ public class SysDictItem implements Serializable {
     /**
      * 排序
      */
-    @Excel(name = "排序", width = 15,type=4)
+    @Excel(name = "排序", width = 15, type = 4)
     private Integer sortOrder;
-
 
     /**
      * 状态（1启用 0不启用）
@@ -76,6 +75,5 @@ public class SysDictItem implements Serializable {
     private String updateBy;
 
     private Date updateTime;
-
 
 }

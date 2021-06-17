@@ -45,6 +45,8 @@ public class GatewayRoutersConfiguration {
      * 路由配置文件数据获取方式yml,nacos,database
      */
     public static String DATA_TYPE;
+    @Resource
+    private HystrixFallbackHandler hystrixFallbackHandler;
 
     @Value("${spring.cloud.nacos.discovery.server-addr}")
     public void setServerAddr(String serverAddr) {
@@ -67,20 +69,23 @@ public class GatewayRoutersConfiguration {
     }
 
     @Value("${jeecg.route.config.data-type}")
-    public void setDataType(String dataType) { DATA_TYPE = dataType; }
+    public void setDataType(String dataType) {
+        DATA_TYPE = dataType;
+    }
 
     @Value("${spring.cloud.nacos.config.username}")
     public void setUsername(String username) {
         USERNAME = username;
     }
+
     @Value("${spring.cloud.nacos.config.password}")
     public void setPassword(String password) {
         PASSWORD = password;
     }
 
-
     /**
      * 路由断言
+     *
      * @return
      */
     @Bean
@@ -92,6 +97,7 @@ public class GatewayRoutersConfiguration {
 
     /**
      * 映射接口文档默认地址（通过9999端口直接访问）
+     *
      * @param indexHtml
      * @return
      */
@@ -99,8 +105,5 @@ public class GatewayRoutersConfiguration {
     public RouterFunction<ServerResponse> indexRouter(@Value("classpath:/META-INF/resources/doc.html") final org.springframework.core.io.Resource indexHtml) {
         return route(GET("/"), request -> ok().contentType(MediaType.TEXT_HTML).syncBody(indexHtml));
     }
-
-    @Resource
-    private HystrixFallbackHandler hystrixFallbackHandler;
 
 }

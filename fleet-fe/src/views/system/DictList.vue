@@ -158,13 +158,13 @@
         }
         return filterObj(param);
       },
-      //取消选择
+      // 取消选择
       cancelDict() {
         this.dict = "";
         this.visible = false;
         this.loadData();
       },
-      //编辑字典数据
+      // 编辑字典数据
       editDictItem(record) {
         this.$refs.dictItemList.edit(record);
       },
@@ -181,7 +181,7 @@
       refleshCache(){
         getAction(this.url.refleshCache).then((res) => {
           if (res.success) {
-            //重新加载缓存
+            // 重新加载缓存
             getAction(this.url.queryAllDictItems).then((res) => {
               if (res.success) {
                 Vue.ls.remove(UI_CACHE_DB_DICT_DATA)

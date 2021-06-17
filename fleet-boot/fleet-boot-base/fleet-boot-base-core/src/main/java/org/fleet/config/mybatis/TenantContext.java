@@ -10,16 +10,16 @@ public class TenantContext {
 
     private static ThreadLocal<String> currentTenant = new ThreadLocal<>();
 
+    public static String getTenant() {
+        return currentTenant.get();
+    }
+
     public static void setTenant(String tenant) {
         log.debug(" setting tenant to " + tenant);
         currentTenant.set(tenant);
     }
 
-    public static String getTenant() {
-        return currentTenant.get();
-    }
-
-    public static void clear(){
+    public static void clear() {
         currentTenant.remove();
     }
 }

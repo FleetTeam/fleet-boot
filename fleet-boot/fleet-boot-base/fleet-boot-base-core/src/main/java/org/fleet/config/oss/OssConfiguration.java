@@ -22,7 +22,6 @@ public class OssConfiguration {
     @Value("${fleet.oss.staticDomain}")
     private String staticDomain;
 
-
     @Bean
     public void initOssBootConfiguration() {
         OssBootUtil.setEndPoint(endpoint);

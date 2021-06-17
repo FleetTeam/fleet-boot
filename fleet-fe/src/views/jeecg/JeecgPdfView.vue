@@ -12,7 +12,7 @@
     </a-col>
     <!-- 中间面板 -->
     <a-col :span="2"/>
-    <!--右侧缩略图-->
+    <!-- 右侧缩略图 -->
     <a-col :span="18">
       <a-spin tip="Loading..." :spinning="spinning">
         <div v-for="(file, key) in dataSource" :key="key">
@@ -80,7 +80,7 @@
       }
     },
     created() {
-      //this.loadData();
+      // this.loadData();
     },
     methods: {
       loadData (){

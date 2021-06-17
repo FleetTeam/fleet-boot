@@ -21,6 +21,72 @@ public class BaseCodeGenerate {
 
     protected List<String> results = new ArrayList<>();
 
+    protected static String proceeForOutputFilepath(Map<String, Object> filePathModel, String templateFile,
+                                                    CreateFileConfig createFileConfig) throws Exception {
+        String outputFilePath = templateFile;
+
+        int testExpressionIndex = -1;
+        if ((testExpressionIndex = templateFile.indexOf('@')) != -1) {
+            outputFilePath = templateFile.substring(0, testExpressionIndex);
+            String testExpressionKey = templateFile.substring(testExpressionIndex + 1);
+            Object expressionValue = filePathModel.get(testExpressionKey);
+            if (expressionValue == null) {
+                System.err.println("[not-generate] WARN: test expression is null by key:[" + testExpressionKey
+                        + "] on template:[" + templateFile + "]");
+                return null;
+            }
+            if (!"true".equals(String.valueOf(expressionValue))) {
+                log.error("[not-generate]\t test expression '@" + testExpressionKey + "' is false,template:"
+                        + templateFile);
+                return null;
+            }
+        }
+        Configuration conf = FreemarkerHelper.newFreeMarkerConfiguration(createFileConfig.getTemplateRootDirs(),
+                sourceEncoding, "/");
+        outputFilePath = FreemarkerHelper.processTemplateString(outputFilePath, filePathModel, conf);
+        String stylePath = createFileConfig.getStylePath();
+        if (stylePath != null && "".equals(stylePath)) {
+            outputFilePath = outputFilePath.substring(stylePath.length() + 1);
+        }
+        String extName = outputFilePath.substring(outputFilePath.lastIndexOf("."));
+        String fileName = outputFilePath.substring(0, outputFilePath.lastIndexOf(".")).replace(".", File.separator);
+        outputFilePath = fileName + extName;
+        return outputFilePath;
+    }
+
+    protected static boolean forceDelete(File f) {
+        boolean result = false;
+        int tryCount = 0;
+        while (!result && tryCount++ < 10) {
+
+            System.gc();
+            result = f.delete();
+        }
+        return result;
+    }
+
+    protected static String trimSomeString(String sourceString, String someString) {
+        boolean bool1 = true;
+        boolean bool2 = true;
+        int from;
+        while (true) {
+            boolean bool = (sourceString.indexOf(someString) == 0) ? true : false;
+            if (bool == true) {
+                from = 1;
+            } else {
+                from = 0;
+            }
+            int i = (sourceString.lastIndexOf(someString) + 1 == sourceString.length())
+                    ? sourceString.lastIndexOf(someString)
+                    : sourceString.length();
+            sourceString = sourceString.substring(from, i);
+            bool1 = (sourceString.indexOf(someString) == 0) ? true : false;
+            bool2 = (sourceString.lastIndexOf(someString) + 1 == sourceString.length()) ? true : false;
+            if (!bool1 && !bool2)
+                return sourceString;
+        }
+    }
+
     protected void generateFileCommon(CreateFileConfig createFileConfig, String projectPath,
                                       Map<String, Object> templateData) throws Exception {
         log.debug("--------generate----projectPath--------" + projectPath);
@@ -57,7 +123,8 @@ public class BaseCodeGenerate {
         String templateFile = FileHelper.getRelativePath(templateRootDir, srcFile);
         try {
             log.debug("-------templateFile--" + templateFile);
-            if (createFileConfig.getStylePath() != null && !"".equals(createFileConfig.getStylePath()) && !templateFile.replace(File.separator, ".").startsWith(createFileConfig.getStylePath())) {
+            if (createFileConfig.getStylePath() != null && !"".equals(createFileConfig.getStylePath())
+                    && !templateFile.replace(File.separator, ".").startsWith(createFileConfig.getStylePath())) {
                 return;
             }
             String outputFilepath = proceeForOutputFilepath(templateData, templateFile, createFileConfig);
@@ -122,33 +189,33 @@ public class BaseCodeGenerate {
     protected void splitFile(File file, String splitStr) {
         InputStreamReader isr = null;
         BufferedReader br = null;
-        List<OutputStreamWriter> flist = new ArrayList<>();
+        List<OutputStreamWriter> fList = new ArrayList<>();
         try {
             isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
             br = new BufferedReader(isr);
             boolean start = false;
-            OutputStreamWriter targerFile = null;
+            OutputStreamWriter targetFile = null;
             String row;
             while ((row = br.readLine()) != null) {
                 if (row.trim().length() > 0 && row.startsWith(splitStr)) {
                     String fileName = row.substring(splitStr.length());
-                    String parant = file.getParentFile().getAbsolutePath();
-                    fileName = parant + File.separator + fileName;
+                    String parent = file.getParentFile().getAbsolutePath();
+                    fileName = parent + File.separator + fileName;
                     log.info("[generate]\t split file:" + file.getAbsolutePath() + " ==> " + fileName);
 
-                    targerFile = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8");
-                    flist.add(targerFile);
+                    targetFile = new OutputStreamWriter(new FileOutputStream(fileName), "UTF-8");
+                    fList.add(targetFile);
                     results.add("生成成功：" + fileName);
                     start = true;
                     continue;
                 }
                 if (start) {
                     log.debug("row : " + row);
-                    targerFile.append(row + "\r\n");
+                    targetFile.append(row + "\n");
                 }
             }
-            for (int i = 0; i < flist.size(); i++) {
-                ((Writer) flist.get(i)).close();
+            for (int i = 0; i < fList.size(); i++) {
+                ((Writer) fList.get(i)).close();
             }
             br.close();
             isr.close();
@@ -167,80 +234,16 @@ public class BaseCodeGenerate {
                 if (isr != null) {
                     isr.close();
                 }
-                if (flist.size() > 0) {
-                    for (int i = 0; i < flist.size(); i++) {
-                        if (flist.get(i) != null) {
-                            ((Writer) flist.get(i)).close();
+                if (fList.size() > 0) {
+                    for (int i = 0; i < fList.size(); i++) {
+                        if (fList.get(i) != null) {
+                            ((Writer) fList.get(i)).close();
                         }
                     }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    protected static String proceeForOutputFilepath(Map<String, Object> filePathModel, String templateFile,
-                                                    CreateFileConfig createFileConfig) throws Exception {
-        String outputFilePath = templateFile;
-
-        int testExpressionIndex = -1;
-        if ((testExpressionIndex = templateFile.indexOf('@')) != -1) {
-            outputFilePath = templateFile.substring(0, testExpressionIndex);
-            String testExpressionKey = templateFile.substring(testExpressionIndex + 1);
-            Object expressionValue = filePathModel.get(testExpressionKey);
-            if (expressionValue == null) {
-                System.err.println("[not-generate] WARN: test expression is null by key:[" + testExpressionKey
-                        + "] on template:[" + templateFile + "]");
-                return null;
-            }
-            if (!"true".equals(String.valueOf(expressionValue))) {
-                log.error("[not-generate]\t test expression '@" + testExpressionKey + "' is false,template:"
-                        + templateFile);
-                return null;
-            }
-        }
-        Configuration conf = FreemarkerHelper.newFreeMarkerConfiguration(createFileConfig.getTemplateRootDirs(),
-                sourceEncoding, "/");
-        outputFilePath = FreemarkerHelper.processTemplateString(outputFilePath, filePathModel, conf);
-        String stylePath = createFileConfig.getStylePath();
-        if (stylePath != null && "".equals(stylePath)) {
-            outputFilePath = outputFilePath.substring(stylePath.length() + 1);
-        }
-        String extName = outputFilePath.substring(outputFilePath.lastIndexOf("."));
-        String fileName = outputFilePath.substring(0, outputFilePath.lastIndexOf(".")).replace(".", File.separator);
-        outputFilePath = fileName + extName;
-        return outputFilePath;
-    }
-
-    protected static boolean forceDelete(File f) {
-        boolean result = false;
-        int tryCount = 0;
-        while (!result && tryCount++ < 10) {
-
-            System.gc();
-            result = f.delete();
-        }
-        return result;
-    }
-
-    protected static String trimSomeString(String sourceString, String someString) {
-        boolean bool1 = true;
-        boolean bool2 = true;
-        int from;
-        while (true) {
-            boolean bool = (sourceString.indexOf(someString) == 0) ? true : false;
-            if (bool == true) {
-                from = 1;
-            } else {
-                from = 0;
-            }
-            int i = (sourceString.lastIndexOf(someString) + 1 == sourceString.length()) ? sourceString.lastIndexOf(someString) : sourceString.length();
-            sourceString = sourceString.substring(from, i);
-            bool1 = (sourceString.indexOf(someString) == 0) ? true : false;
-            bool2 = (sourceString.lastIndexOf(someString) + 1 == sourceString.length()) ? true : false;
-            if (!bool1 && !bool2)
-                return sourceString;
         }
     }
 }

@@ -24,11 +24,11 @@
       },
       mousedownFn:function (e) {
         if(!this.confirmSuccess){
-          e.preventDefault && e.preventDefault();   //阻止文字选中等 浏览器默认事件
+          e.preventDefault && e.preventDefault(); // 阻止文字选中等 浏览器默认事件
           this.mouseMoveStata = true;
           this.beginClientX = e.clientX;
         }
-      },        //mousedoen 事件
+      }, // mousedoen 事件
       successFunction(){
         this.confirmSuccess = true
         this.confirmWords = '验证通过';
@@ -43,7 +43,7 @@
         document.getElementsByClassName('drag_bg')[0].style.width = this.maxwidth + 'px';
 
         this.$emit("onSuccess",true)
-      },                //验证成功函数
+      }, // 验证成功函数
       mouseMoveFn(e){
         if(this.mouseMoveStata){
           let width = e.clientX - this.beginClientX;
@@ -54,7 +54,7 @@
             this.successFunction();
           }
         }
-      },                   //mousemove事件
+      }, // mousemove事件
       moseUpFn(e){
         this.mouseMoveStata = false;
         var width = e.clientX - this.beginClientX;
@@ -67,7 +67,7 @@
           }
           // ---- update-end- author:sunjianlei --- date:20191009 --- for: 修复获取不到 handler 的时候报错 ----
         }
-      }                       //mouseup事件
+      } // mouseup事件
     },
     mounted(){
       this.maxwidth = this.$refs.dragDiv.clientWidth - this.$refs.moveDiv.clientWidth;

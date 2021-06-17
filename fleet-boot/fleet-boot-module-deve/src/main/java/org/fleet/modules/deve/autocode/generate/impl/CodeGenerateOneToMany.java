@@ -21,14 +21,9 @@ import java.util.Map;
 public class CodeGenerateOneToMany extends BaseCodeGenerate
         implements IGenerate {
     private static final Logger log = LoggerFactory.getLogger(CodeGenerateOneToMany.class);
-
-
-    private static String f;
-
     public static String a = "A";
-
     public static String b = "B";
-
+    private static String f;
     private MainTableVo mainTableVo;
 
     private List<ColumnVo> mainColumns;
@@ -48,7 +43,6 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
         this.mainColumns = mainColums;
         this.originaMainColumns = originalMainColumns;
     }
-
 
     @Override
     public HashMap<String, Object> initData() throws Exception {
@@ -88,7 +82,6 @@ public class CodeGenerateOneToMany extends BaseCodeGenerate
             }
 
             data.put("originalColumns", originaMainColumns);
-
 
             for (ColumnVo c : originaMainColumns) {
                 if (c.getFieldName().toLowerCase().equals(AutoCodeConfigProperties.DB_TABLE_ID.toLowerCase())) {

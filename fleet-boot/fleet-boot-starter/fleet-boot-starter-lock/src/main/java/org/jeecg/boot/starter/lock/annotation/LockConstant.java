@@ -7,6 +7,7 @@ package org.jeecg.boot.starter.lock.annotation;
 
 /**
  * 分布式锁枚举类
+ *
  * @author zyf
  */
 public enum LockConstant {

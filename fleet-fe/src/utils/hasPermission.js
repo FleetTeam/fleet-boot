@@ -2,16 +2,16 @@ import { USER_AUTH,SYS_BUTTON_AUTH } from "@/store/mutation-types"
 
 const hasPermission = {
     install (Vue, options) {
-          //console.log(options);
+          // console.log(options);
           Vue.directive('has', {
             inserted: (el, binding, vnode)=>{
-                //console.log("页面权限控制----");
-                //console.time()
-                //节点权限处理，如果命中则不进行全局权限处理
+                // console.log("页面权限控制----");
+                // console.time()
+                // 节点权限处理，如果命中则不进行全局权限处理
                 if(!filterNodePermission(el, binding, vnode)){
                   filterGlobalPermission(el, binding, vnode);
                 }
-                //console.timeEnd() //计时结束并输出时长
+                // console.timeEnd() // 计时结束并输出时长
             }
           });
     }
@@ -35,10 +35,10 @@ export function filterNodePermission(el, binding, vnode) {
       return false;
     }
   } catch (e) {
-    //console.log("页面权限异常----", e);
+    // console.log("页面权限异常----", e);
   }
   if (permissionList === null || permissionList === "" || permissionList === undefined||permissionList.length<=0) {
-    //el.parentNode.removeChild(el)
+    // el.parentNode.removeChild(el)
     return false;
   }
 
@@ -49,10 +49,10 @@ export function filterNodePermission(el, binding, vnode) {
       permissions.push(item.action);
     }
   }
-  //console.log("页面权限----"+permissions);
-  //console.log("页面权限----"+binding.value);
+  // console.log("页面权限----"+permissions);
+  // console.log("页面权限----"+binding.value);
   if (!permissions.includes(binding.value)) {
-    //el.parentNode.removeChild(el)
+    // el.parentNode.removeChild(el)
     return false;
   }else{
     for (let item2 of permissionList) {
@@ -68,27 +68,27 @@ export function filterNodePermission(el, binding, vnode) {
  * 全局权限控制
  */
 export function filterGlobalPermission(el, binding, vnode) {
-  //console.log("全局页面权限--Global--");
+  // console.log("全局页面权限--Global--");
 
   let permissionList = [];
   let allPermissionList = [];
 
-  //let authList = Vue.ls.get(USER_AUTH);
+  // let authList = Vue.ls.get(USER_AUTH);
   let authList = JSON.parse(sessionStorage.getItem(USER_AUTH) || "[]");
   for (let auth of authList) {
     if(auth.type != '2') {
       permissionList.push(auth);
     }
   }
-  //console.log("页面权限--Global--",sessionStorage.getItem(SYS_BUTTON_AUTH));
+  // console.log("页面权限--Global--",sessionStorage.getItem(SYS_BUTTON_AUTH));
   let allAuthList = JSON.parse(sessionStorage.getItem(SYS_BUTTON_AUTH) || "[]");
   for (let gauth of allAuthList) {
     if(gauth.type != '2') {
       allPermissionList.push(gauth);
     }
   }
-  //设置全局配置是否有命中
-  let invalidFlag = false;//无效命中
+  // 设置全局配置是否有命中
+  let invalidFlag = false; // 无效命中
   if(allPermissionList != null && allPermissionList != "" && allPermissionList != undefined && allPermissionList.length > 0){
     for (let itemG of allPermissionList) {
       if(binding.value === itemG.action){
@@ -108,9 +108,9 @@ export function filterGlobalPermission(el, binding, vnode) {
   }
   let permissions = [];
   for (let item of permissionList) {
-    //权限策略1显示2禁用
+    // 权限策略1显示2禁用
     if(item.type != '2'){
-      //update--begin--autor:wangshuai-----date:20200729------for：按钮权限，授权标识的提示信息是多个用逗号分隔逻辑处理 gitee#I1OUGU-------
+      // update--begin--autor:wangshuai-----date:20200729------for：按钮权限，授权标识的提示信息是多个用逗号分隔逻辑处理 gitee#I1OUGU-------
       if(item.action){
         if(item.action.includes(",")){
           let split = item.action.split(",")
@@ -124,7 +124,7 @@ export function filterGlobalPermission(el, binding, vnode) {
           permissions.push(item.action);
         }
       }
-      //update--end--autor:wangshuai-----date:20200729------for：按钮权限，授权标识的提示信息是多个用逗号分隔逻辑处理 gitee#I1OUGU------
+      // update--end--autor:wangshuai-----date:20200729------for：按钮权限，授权标识的提示信息是多个用逗号分隔逻辑处理 gitee#I1OUGU------
     }
   }
   if (!permissions.includes(binding.value)) {

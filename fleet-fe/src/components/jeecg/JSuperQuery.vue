@@ -201,10 +201,8 @@
             </a-tree>
           </a-card>
 
-
         </a-col>
       </a-row>
-
 
     </a-spin>
 
@@ -387,7 +385,7 @@
             param.val = param.val.join(',')
           }
         }
-        console.debug('---高级查询参数--->', { params, matchType })
+        console.debug('---高级查询参数 --->', { params, matchType })
         this.$emit(this.callback, params, matchType)
       },
       handleCancel() {
@@ -503,7 +501,7 @@
       },
 
       isNullArray(array) {
-        //判断是不是空数组对象
+        // 判断是不是空数组对象
         if (!array || array.length === 0) {
           return true
         }
@@ -525,16 +523,16 @@
           } else {
             if (Array.isArray(item.options)) {
               // 如果有字典属性，就不需要保存 options 了
-              //update-begin-author:taoyan date:20200819 for:【开源问题】 高级查询 下拉框作为并且选项很多多多 LOWCOD-779
+              // update-begin-author:taoyan date:20200819 for:【开源问题】 高级查询 下拉框作为并且选项很多多多 LOWCOD-779
               delete item.options
-              //update-end-author:taoyan date:20200819 for:【开源问题】 高级查询 下拉框作为并且选项很多多多 LOWCOD-779
+              // update-end-author:taoyan date:20200819 for:【开源问题】 高级查询 下拉框作为并且选项很多多多 LOWCOD-779
             }
           }
         }
         return array
       },
 
-      /** 渲染保存查询条件的 title（加个删除按钮） */
+      // 渲染保存查询条件的 title（加个删除按钮）
       renderSaveTreeData(item) {
         item.icon = this.treeIcon
         item.originTitle = item['title']
@@ -562,7 +560,7 @@
         return item
       },
 
-      /** 判断是否允许多选 */
+      // 判断是否允许多选
       allowMultiple(item) {
         return item.rule === 'in'
       },

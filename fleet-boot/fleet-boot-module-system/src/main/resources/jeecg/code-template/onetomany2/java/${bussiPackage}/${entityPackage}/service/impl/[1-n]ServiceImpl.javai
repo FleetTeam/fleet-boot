@@ -18,13 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Service
 public class ${subTab.entityName}ServiceImpl extends ServiceImpl<${subTab.entityName}Mapper, ${subTab.entityName}> implements I${subTab.entityName}Service {
-	
-	@Autowired
-	private ${subTab.entityName}Mapper ${subTab.entityName?uncap_first}Mapper;
-	
-	@Override
-	public List<${subTab.entityName}> selectByMainId(String mainId) {
-		return ${subTab.entityName?uncap_first}Mapper.selectByMainId(mainId);
-	}
+
+    @Autowired
+    private ${subTab.entityName}Mapper ${subTab.entityName?uncap_first}Mapper;
+
+    @Override
+    public List<${subTab.entityName}> selectByMainId(String mainId) {
+        return ${subTab.entityName?uncap_first}Mapper.selectByMainId(mainId);
+    }
 }
 </#list>

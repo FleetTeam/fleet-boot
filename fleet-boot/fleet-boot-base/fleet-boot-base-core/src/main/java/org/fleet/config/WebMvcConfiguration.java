@@ -23,7 +23,6 @@ import java.util.List;
  * Spring Boot 2.0 解决跨域问题
  *
  * @Author fleet-team
- *
  */
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
@@ -59,7 +58,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration corsConfiguration = new CorsConfiguration();
-        //是否允许请求带有验证信息
+        // 是否允许请求带有验证信息
         corsConfiguration.setAllowCredentials(true);
         // 允许访问的客户端域名
         corsConfiguration.addAllowedOrigin("*");
@@ -72,9 +71,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     }
 
     /**
-    * 添加Long转json精度丢失的配置
-    * @Return: void
-    */
+     * 添加Long转json精度丢失的配置
+     *
+     * @Return: void
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -92,7 +92,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      * https://blog.csdn.net/u013810234/article/details/110097201
      */
     @Bean
-    public InMemoryHttpTraceRepository getInMemoryHttpTrace(){
+    public InMemoryHttpTraceRepository getInMemoryHttpTrace() {
         return new InMemoryHttpTraceRepository();
     }
 

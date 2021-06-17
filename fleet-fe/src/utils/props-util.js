@@ -34,7 +34,6 @@ function camelize(str) {
   return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''))
 }
 
-
 function objectCamelize(obj) {
   let res = {}
   Object.keys(obj).forEach(k => (res[camelize(k)] = obj[k]))

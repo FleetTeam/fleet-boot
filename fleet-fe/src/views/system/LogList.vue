@@ -1,6 +1,6 @@
 <template>
   <a-card :bordered="false">
-    <!--导航区域-->
+    <!-- 导航区域 -->
     <div>
       <a-tabs defaultActiveKey="1" @change="callback">
         <a-tab-pane tab="登录日志" key="1"></a-tab-pane>
@@ -63,7 +63,7 @@
         <div style="margin-bottom: 5px"><a-badge status="success" style="vertical-align: middle;"/><span style="vertical-align: middle;">请求方法:{{ record.method }}</span></div>
         <div><a-badge status="processing" style="vertical-align: middle;"/><span style="vertical-align: middle;">请求参数:{{ record.requestParam }}</span></div>
       </div>
-      <!-- 字符串超长截取省略号显示-->
+      <!-- 字符串超长截取省略号显示 -->
       <span slot="logContent" slot-scope="text, record">
           <j-ellipsis :value="text" :length="40"/>
         </span>
@@ -194,7 +194,7 @@
       searchReset(){
         var that = this;
         var logType = that.queryParam.logType;
-        that.queryParam = {}; //清空查询区域参数
+        that.queryParam = {}; // 清空查询区域参数
         that.queryParam.logType = logType;
         that.loadData(this.ipagination.current);
       },

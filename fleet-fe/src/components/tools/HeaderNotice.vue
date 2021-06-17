@@ -11,7 +11,8 @@
       <a-spin :spinning="loadding">
         <a-tabs>
           <a-tab-pane :tab="msg1Title" key="1">
-            <!--<a-list>
+            <!--
+            <a-list>
               <a-list-item>
                 <a-list-item-meta title="你收到了 14 份新周报" description="一年前">
                   <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"/>
@@ -27,7 +28,8 @@
                   <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png"/>
                 </a-list-item-meta>
               </a-list-item>
-            </a-list>-->
+            </a-list>
+            -->
             <a-list>
               <a-list-item :key="index" v-for="(record, index) in announcement1">
                 <div style="margin-left: 5%;width: 80%">
@@ -82,7 +84,6 @@
   import store from '@/store/'
   import DynamicNotice from './DynamicNotice'
 
-
   export default {
     name: "HeaderNotice",
     components: {
@@ -119,7 +120,7 @@
     },
     mounted() {
       this.loadData();
-      //this.timerFun();
+      // this.timerFun();
       this.initWebSocket();
      // this.heartCheckFun();
     },
@@ -151,7 +152,7 @@
               this.msg2Title = "系统消息(" + res.result.sysMsgTotal + ")";
             }
           }).catch(error => {
-            console.log("系统消息通知异常",error);//这行打印permissionName is undefined
+            console.log("系统消息通知异常",error); // 这行打印permissionName is undefined
             this.stopTimer = true;
             console.log("清理timer");
           });
@@ -200,7 +201,7 @@
         // WebSocket与普通的请求所用协议有所不同，ws等同于http，wss等同于https
         var userId = store.getters.userInfo.id;
         var url = window._CONFIG['domianURL'].replace("https://","wss://").replace("http://","ws://")+"/websocket/"+userId;
-        //console.log(url);
+        // console.log(url);
         this.websock = new WebSocket(url);
         this.websock.onopen = this.websocketOnopen;
         this.websock.onerror = this.websocketOnerror;
@@ -209,8 +210,8 @@
       },
       websocketOnopen: function () {
         console.log("WebSocket连接成功");
-        //心跳检测重置
-        //this.heartCheck.reset().start();
+        // 心跳检测重置
+        // this.heartCheck.reset().start();
       },
       websocketOnerror: function (e) {
         console.log("WebSocket连接发生错误");
@@ -218,16 +219,16 @@
       },
       websocketOnmessage: function (e) {
         console.log("-----接收消息-------",e.data);
-        var data = eval("(" + e.data + ")"); //解析对象
+        var data = eval("(" + e.data + ")"); // 解析对象
         if(data.cmd == "topic"){
-            //系统通知
+            // 系统通知
           this.loadData();
         }else if(data.cmd == "user"){
-            //用户消息
+            // 用户消息
           this.loadData();
         }
-        //心跳检测重置
-        //this.heartCheck.reset().start();
+        // 心跳检测重置
+        // this.heartCheck.reset().start();
       },
       websocketOnclose: function (e) {
         console.log("connection closed (" + e + ")");
@@ -270,7 +271,7 @@
         var that = this;
         if(that.lockReconnect) return;
         that.lockReconnect = true;
-        //没连接上会一直重连，设置延迟避免请求过多
+        // 没连接上会一直重连，设置延迟避免请求过多
         setTimeout(function () {
           console.info("尝试重连...");
           that.initWebSocket();
@@ -279,31 +280,30 @@
       },
       heartCheckFun(){
         var that = this;
-        //心跳检测,每20s心跳一次
+        // 心跳检测,每20s心跳一次
         that.heartCheck = {
           timeout: 20000,
           timeoutObj: null,
           serverTimeoutObj: null,
           reset: function(){
             clearTimeout(this.timeoutObj);
-            //clearTimeout(this.serverTimeoutObj);
+            // clearTimeout(this.serverTimeoutObj);
             return this;
           },
           start: function(){
             var self = this;
             this.timeoutObj = setTimeout(function(){
-              //这里发送一个心跳，后端收到后，返回一个心跳消息，
-              //onmessage拿到返回的心跳就说明连接正常
+              // 这里发送一个心跳，后端收到后，返回一个心跳消息，
+              // onmessage拿到返回的心跳就说明连接正常
               that.websocketSend("HeartBeat");
               console.info("客户端发送心跳");
-              //self.serverTimeoutObj = setTimeout(function(){//如果超过一定时间还没重置，说明后端主动断开了
-              //  that.websock.close();//如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
-              //}, self.timeout)
+              // self.serverTimeoutObj = setTimeout(function(){ // 如果超过一定时间还没重置，说明后端主动断开了
+              //   that.websock.close(); // 如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
+              // }, self.timeout)
             }, this.timeout)
           }
         }
       },
-
 
       showDetail(key,data){
         this.$notification.close(key);

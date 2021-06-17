@@ -78,7 +78,7 @@
         :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}"
         @change="handleTableChange">
 
-        <!-- 字符串超长截取省略号显示-->
+        <!-- 字符串超长截取省略号显示 -->
         <span slot="esContent" slot-scope="text">
           <j-ellipsis :value="text" :length="10" />
         </span>

@@ -9,7 +9,6 @@
       @cancel="handleCancel"
       cancelText="关闭">
 
-
       <!-- 查询区域 -->
       <div class="table-page-search-wrapper">
         <a-form layout="inline"  @keyup.enter.native="searchQuery">
@@ -47,7 +46,6 @@
         </a-table>
       </div>
       <!-- table区域-end -->
-
 
     </a-modal>
   </div>
@@ -131,7 +129,7 @@
             scopedSlots: {customRender: 'action'},
           }
         ],
-        //数据集
+        // 数据集
         dataSource1: [],
         dataSource2: [],
         // 分页参数
@@ -182,11 +180,11 @@
         this.visible = true;
       },
       loadData(arg) {
-        //加载数据 若传入参数1则加载第一页的内容
+        // 加载数据 若传入参数1则加载第一页的内容
         if (arg === 1) {
           this.ipagination.current = 1;
         }
-        var params = this.getQueryParams();//查询条件
+        var params = this.getQueryParams(); // 查询条件
         getAction(this.url.list, params).then((res) => {
           if (res.success) {
             this.dataSource1 = res.result.records;
@@ -202,7 +200,7 @@
         return filterObj(param);
       },
       getQueryField() {
-        //TODO 字段权限控制
+        // TODO 字段权限控制
       },
       onSelectAll(selected, selectedRows, changeRows) {
         if (selected === true) {
@@ -221,7 +219,7 @@
           this.dataSource2.push(record);
         } else {
           var index = this.dataSource2.indexOf(record);
-          //console.log();
+          // console.log();
           if (index >= 0) {
             this.dataSource2.splice(this.dataSource2.indexOf(record), 1);
           }
@@ -240,9 +238,9 @@
         this.dataSource2.splice(this.dataSource2.indexOf(record), 1);
       },
       handleTableChange(pagination, filters, sorter) {
-        //分页、排序、筛选变化时触发
+        // 分页、排序、筛选变化时触发
         console.log(sorter);
-        //TODO 筛选
+        // TODO 筛选
         if (Object.keys(sorter).length > 0) {
           this.isorter.column = sorter.field;
           this.isorter.order = "ascend" == sorter.order ? "asc" : "desc"

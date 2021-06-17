@@ -166,7 +166,6 @@
 
         </a-tabs>
 
-
       </a-card>
     </a-row>
 
@@ -514,6 +513,5 @@
   .anty-list-cust {
     .ant-list-item-content{flex:1 !important; justify-content:flex-start !important;margin-left: 20px;}
   }
-
 
 </style>

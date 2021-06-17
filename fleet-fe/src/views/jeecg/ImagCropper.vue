@@ -58,7 +58,7 @@
           <section class="pre-item">
             <p>截图框大小</p>
             <div class="show-preview" :style="{'width': previews.w + 'px', 'height': previews.h + 'px',  'overflow': 'hidden',
-							'margin': '5px'}">
+              'margin': '5px'}">
               <div :style="previews.div">
                 <img :src="previews.url" :style="previews.img">
               </div>
@@ -275,7 +275,7 @@
         this.$refs.cropper.startCrop();
       },
       stopCrop() {
-        //  stop
+        // stop
         this.crap = false;
         this.$refs.cropper.stopCrop();
       },
@@ -394,7 +394,7 @@
       },
 
       uploadImg(e, num) {
-        //上传图片
+        // 上传图片
         // this.option.img
         var file = e.target.files[0];
         if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(e.target.value)) {

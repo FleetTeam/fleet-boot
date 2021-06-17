@@ -32,7 +32,6 @@ public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMappe
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-
     @Override
     public void addRoute2Redis(String key) {
         List<SysGatewayRoute> ls = this.list(new LambdaQueryWrapper<SysGatewayRoute>().eq(SysGatewayRoute::getStatus, 1));
@@ -83,11 +82,11 @@ public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMappe
      * 更新redis路由缓存
      */
     private void resreshRouter() {
-        //更新redis路由缓存
+        // 更新redis路由缓存
         addRoute2Redis(CacheConstant.GATEWAY_ROUTES);
         BaseMap params = new BaseMap();
         params.put(GlobalConstants.HANDLER_NAME, "loderRouderHandler");
-        //刷新网关
+        // 刷新网关
         redisTemplate.convertAndSend(GlobalConstants.REDIS_TOPIC_NAME, params);
     }
 
@@ -95,6 +94,5 @@ public class SysGatewayRouteServiceImpl extends ServiceImpl<SysGatewayRouteMappe
     public void clearRedis() {
         redisTemplate.opsForValue().set(CacheConstant.GATEWAY_ROUTES, null);
     }
-
 
 }

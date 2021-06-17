@@ -1,15 +1,12 @@
 Table 重封装组件说明
 ====
 
-
 封装说明
 ----
 
 >  基础的使用方式与 API 与 [官方版(Table)](https://vuecomponent.github.io/ant-design-vue/components/table-cn/) 本一致，在其基础上，封装了加载数据的方法。
 >
 > 你无需在你是用表格的页面进行分页逻辑处理，仅需向 Table 组件传递绑定 `:data="Promise"` 对象即可
-
-
 
 例子1
 ----
@@ -80,8 +77,6 @@ Table 重封装组件说明
 </script>
 
 ```
-
-
 
 例子2
 ----
@@ -182,8 +177,6 @@ Table 重封装组件说明
 </script>
 ```
 
-
-
 内置方法
 ----
 
@@ -193,8 +186,6 @@ Table 重封装组件说明
 
 > 注意：要调用 `refresh()` 需要给表格组件设定 `ref` 值
 
-
-
 注意事项
 ----
 
@@ -202,8 +193,6 @@ Table 重封装组件说明
 (需要注意的是，这里的修改是全局性的，意味着整个项目所有使用该 table 组件都需要遵守这个返回结果定义的字段。)
 
 修改 `@/components/table/index.js`  第 106 行起
-
-
 
 ```javascript
 result.then(r => {
@@ -283,8 +272,6 @@ result.then(r => {
   "timestamp": 1534955098193
 }
 ```
-
-
 
 更新时间
 ----

@@ -1,6 +1,6 @@
-<#---->
+<#-- -->
 <#-- freemarker 的一些工具方法 -->
-<#---->
+<#-- -->
 <#-- 驼峰转其他字符 -->
 <#-- @param str       待转换的文本 -->
 <#-- @param character 要转换成的字符 -->
@@ -15,7 +15,7 @@
         <#return text>
     </#if>
 </#function>
-<#--下划线转驼峰-->
+<#-- 下划线转驼峰 -->
 <#function dashedToCamel(str)>
     <#assign text=""/>
     <#assign strlist = str?split("_")/>
@@ -28,12 +28,12 @@
 <#function camelToDashed(str, case='normal')>
     <#return camelToChar(str, "_", case)>
 </#function>
-<#---->
+<#-- -->
 <#-- 驼峰转横线 -->
 <#function camelToHorizontal(str, case='normal')>
     <#return camelToChar(str, "-", case)>
 </#function>
-<#---->
+<#-- -->
 <#-- 获取 v-model 属性 -->
 <#function getVModel po,suffix="">
     <#return "v-model=\"queryParam.${po.fieldName}${suffix}\"">

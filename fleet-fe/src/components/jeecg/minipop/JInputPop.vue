@@ -1,6 +1,6 @@
 <template>
   <a-popover trigger="contextmenu" v-model="visible" :placement="position" overlayClassName="j-input-pop">
-    <!--"(node) => node.parentNode.parentNode"-->
+    <!-- "(node) => node.parentNode.parentNode" -->
     <div slot="title">
       <span>{{ title }}</span>
       <span style="float: right" title="关闭">

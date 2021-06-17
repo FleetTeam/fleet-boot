@@ -92,7 +92,7 @@
       })
     },
     methods: {
-      /**加载一级节点 */
+      // 加载一级节点
       loadRoot(){
         let param = {
           pid:this.pid,
@@ -116,7 +116,7 @@
         })
       },
 
-      /** 数据回显*/
+      // 数据回显
       loadItemByCode(){
         if(!this.value || this.value=="0"){
           this.treeValue = []
@@ -135,7 +135,7 @@
         }
       },
       onLoadTriggleChange(text){
-        //只有单选才会触发
+        // 只有单选才会触发
         if(!this.multiple && this.loadTriggleChange){
           this.backValue(this.value,text)
         }
@@ -234,7 +234,7 @@
         })
       }
     },
-    //2.2新增 在组件内定义 指定父组件调用时候的传值属性和事件类型 这个牛逼
+    // 2.2新增 在组件内定义 指定父组件调用时候的传值属性和事件类型 这个牛逼
     model: {
       prop: 'value',
       event: 'change'

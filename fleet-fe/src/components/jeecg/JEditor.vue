@@ -57,7 +57,7 @@
     },
     data() {
       return {
-        //初始化配置
+        // 初始化配置
         init: {
           language_url: '/tinymce/langs/zh_CN.js',
           language: 'zh_CN',
@@ -103,7 +103,7 @@
       onClick(e) {
         this.$emit('onClick', e, tinymce)
       },
-      //可以添加一些自己的自定义事件，如清空内容
+      // 可以添加一些自己的自定义事件，如清空内容
       clear() {
         this.myValue = ''
       },
@@ -128,16 +128,16 @@
               this.reload()
             }
           })
-          //update--begin--autor:liusq-----date:20210316------for：富文本编辑器tab父组件可能导致的赋值问题------
+          // update--begin--autor:liusq-----date:20210316------for：富文本编辑器tab父组件可能导致的赋值问题------
           this.reload()
-          //update--end--autor:liusq-----date:20210316------for：富文本编辑器tab父组件可能导致的赋值问题------
+          // update--end--autor:liusq-----date:20210316------for：富文本编辑器tab父组件可能导致的赋值问题------
         }else{
-          //update--begin--autor:wangshuai-----date:20200724------for：富文本编辑器切换tab无法修改------
+          // update--begin--autor:wangshuai-----date:20200724------for：富文本编辑器切换tab无法修改------
           let tabLayout = getVmParentByName(this, 'TabLayout')
           tabLayout.excuteCallback(()=>{
             this.reload()
           })
-          //update--begin--autor:wangshuai-----date:20200724------for：文本编辑器切换tab无法修改------
+          // update--begin--autor:wangshuai-----date:20200724------for：文本编辑器切换tab无法修改------
         }
       },
 

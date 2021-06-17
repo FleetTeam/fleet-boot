@@ -2,10 +2,9 @@ import Vue from 'vue'
 import { ONL_AUTH_FIELDS } from "@/store/mutation-types"
 import { getAction } from '@/api/manage'
 
-
 const online = {
   state: {
-    //存储对象属性 value,text
+    // 存储对象属性 value,text
     authFields: [],
   },
   mutations: {

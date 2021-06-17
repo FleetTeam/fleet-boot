@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>fleet-cloud-module</artifactId>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-starter-cloud</artifactId>
-            <!--system模块需要排除fleet-system-cloud-api-->
+            <!-- system模块需要排除fleet-system-cloud-api -->
             <exclusions>
                 <exclusion>
                     <groupId>org.fleetframework.boot</groupId>
@@ -30,12 +30,12 @@
             <artifactId>fleet-boot-module-system</artifactId>
         </dependency>
 
-        <!--rabbitmq消息队列-->
+        <!-- rabbitmq消息队列 -->
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-starter-rabbitmq</artifactId>
         </dependency>
-        <!--xxl-job定时任务-->
+        <!-- xxl-job定时任务 -->
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-starter-job</artifactId>

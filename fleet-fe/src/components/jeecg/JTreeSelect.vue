@@ -123,7 +123,7 @@
         }
       },
       onLoadTriggleChange(text){
-        //只有单选才会触发
+        // 只有单选才会触发
         if(!this.multiple && this.loadTriggleChange){
           this.$emit('change', this.value,text)
         }
@@ -250,7 +250,7 @@
         })
       }
     },
-    //2.2新增 在组件内定义 指定父组件调用时候的传值属性和事件类型 这个牛逼
+    // 2.2新增 在组件内定义 指定父组件调用时候的传值属性和事件类型 这个牛逼
     model: {
       prop: 'value',
       event: 'change'

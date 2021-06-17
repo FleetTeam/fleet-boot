@@ -22,12 +22,12 @@ public class EmailSendMsgHandle implements ISendMsgHandle {
         JavaMailSender mailSender = (JavaMailSender) SpringContextUtils.getBean("mailSender");
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = null;
-        //update-begin-author：taoyan date:20200811 for:配置类数据获取
-        if(oConvertUtils.isEmpty(emailFrom)){
+        // update-begin-author：taoyan date:20200811 for:配置类数据获取
+        if (oConvertUtils.isEmpty(emailFrom)) {
             StaticConfig staticConfig = SpringContextUtils.getBean(StaticConfig.class);
             setEmailFrom(staticConfig.getEmailFrom());
         }
-        //update-end-author：taoyan date:20200811 for:配置类数据获取
+        // update-end-author：taoyan date:20200811 for:配置类数据获取
         try {
             helper = new MimeMessageHelper(message, true);
             // 设置发送方邮箱地址

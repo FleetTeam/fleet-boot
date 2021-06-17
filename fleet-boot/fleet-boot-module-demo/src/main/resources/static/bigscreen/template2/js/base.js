@@ -3,25 +3,23 @@ function fnW(str) {
     str >= 10 ? num = str : num = "0" + str;
     return num;
 }
-//获取当前时间
+// 获取当前时间
 var timer = setInterval(function () {
     var date = new Date();
-    var year = date.getFullYear(); //当前年份
-    var month = date.getMonth(); //当前月份
-    var data = date.getDate(); //天
-    var hours = date.getHours(); //小时
-    var minute = date.getMinutes(); //分
-    var second = date.getSeconds(); //秒
-    var day = date.getDay(); //获取当前星期几 
+    var year = date.getFullYear(); // 当前年份
+    var month = date.getMonth(); // 当前月份
+    var data = date.getDate(); // 天
+    var hours = date.getHours(); // 小时
+    var minute = date.getMinutes(); // 分
+    var second = date.getSeconds(); // 秒
+    var day = date.getDay(); // 获取当前星期几
     var ampm = hours < 12 ? 'am' : 'pm';
     $('#time').html(fnW(hours) + ":" + fnW(minute) + ":" + fnW(second));
     $('#date').html('<span>' + year + '/' + (month + 1) + '/' + data + '</span><span>' + ampm + '</span><span>周' + day + '</span>')
 
 }, 1000)
 
-
-
-//页面地图数据
+// 页面地图数据
 var geoCoordMap = {
     '海门': [121.15, 31.89],
     '鄂尔多斯': [109.781327, 39.608266],
@@ -254,7 +252,7 @@ var geoCoordMap = {
 $('.select').on('blur', function () {
         $(this).find('.select-ul').hide();
     })
-    //下拉框点击出现下拉框内容
+    // 下拉框点击出现下拉框内容
 $('.select-div').on('click', function () {
     if ($(this).siblings('.select-ul').is(":hidden")) {
         $(this).siblings('.select-ul').show();
@@ -263,13 +261,12 @@ $('.select-div').on('click', function () {
     }
 })
 
-
 $('.select-ul').on('click', 'li', function () {
     $(this).addClass('active').siblings('li').removeClass('active').parent().hide().siblings('.select-div').html($(this).html());
     var parentDiv = $(this).parent().parent().parent();
 })
 
-//鼠标滑动到按钮，按钮内容变成白色
+// 鼠标滑动到按钮，按钮内容变成白色
 var imgName;
 $('.title-box').children('button').hover(function () {
     imgName = $(this).children('img').attr('src').split('.png')[0];
@@ -279,15 +276,12 @@ $('.title-box').children('button').hover(function () {
 
 });
 
-
 var startColor = ['#0e94eb', '#c440ef', '#efb013', '#2fda07', '#d8ef13', '#2e4af8', '#0eebc4', '#f129b1', '#17defc', '#f86363'];
 var borderStartColor = ['#0077c5', '#a819d7', '#c99002', '#24bc00', '#b6cb04', '#112ee2', '#00bd9c', '#ce078f', '#00b2cd', '#ec3c3c'];
 
-
-
-//入库量占比，带边框效果的饼图
+// 入库量占比，带边框效果的饼图
 function chart1() {
-    //data 为模拟数据
+    // data 为模拟数据
     var data = [{
         name: '顺丰',
         value: 192581,
@@ -315,7 +309,6 @@ function chart1() {
 
     $('.pie-data').append(str);
 
-
     function deepCopy(obj) {
         if (typeof obj !== 'object') {
             return obj;
@@ -332,7 +325,6 @@ function chart1() {
         xData.push(a.name);
         yData.push(a.value);
     });
-
 
     var RealData = [];
     var borderData = [];
@@ -387,7 +379,7 @@ function chart1() {
     var option = {
         tooltip: {
             trigger: 'item',
-            //            position: ['30%', '50%'],
+            // position: ['30%', '50%'],
             confine: true,
             formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
@@ -452,10 +444,10 @@ function chart1() {
 
 chart1()
 
-//----------------------派件入库量占比内容end---------------
+// ----------------------派件入库量占比内容end---------------
 
-//------------广东省寄派件数据内容---------------
-//点击筛选按钮
+// ------------广东省寄派件数据内容---------------
+// 点击筛选按钮
 $('#filBtn').on('click', function () {
         if ($('#filCon').is(":hidden")) {
             $('#filCon').attr('style', 'display:flex');
@@ -463,8 +455,7 @@ $('#filBtn').on('click', function () {
             $('#filCon').hide();
         }
     })
-    //点击筛选按钮end
-
+    // 点击筛选按钮end
 
 function chart2(chartType) {
     var data = [
@@ -628,9 +619,9 @@ function chart2(chartType) {
 }
 chart2('');
 
-//------------广东省寄派件数据内容end---------------
+// ------------广东省寄派件数据内容end---------------
 
-//cityName全国的省级行政区域数据
+// cityName全国的省级行政区域数据
 var cityName = [{
     "ProID": 1,
     "name": "北京",
@@ -890,9 +881,7 @@ $('.city-btn').on('click', 'li', function () {
         }
     }
 
-
 })
-
 
 $('#city').on('click', 'li', function () {
     $(this).addClass('active').siblings('li').removeClass('active');
@@ -914,7 +903,7 @@ $('#citys').on('click', 'li', function () {
     }
 })
 
-//寄派件选择
+// 寄派件选择
 $("#barType").on('click', 'li', function () {
     $(this).addClass('active').siblings('li').removeClass('active');
     $('#barTitle').html($(this).html() + '数据');
@@ -928,7 +917,7 @@ $("#barType").on('click', 'li', function () {
     chart4(chart4Data, $(this).data('value'), 0);
 })
 
-//寄派件选择
+// 寄派件选择
 $("#barTypes").on('click', 'li', function () {
     $(this).addClass('active').siblings('li').removeClass('active');
     $('#barTitles').html($(this).html() + '数据');
@@ -943,7 +932,6 @@ $("#barTypes").on('click', 'li', function () {
 
 })
 
-
 function chart3(type, chartType) {
     var myChart = echarts.init(document.getElementById('chart3'));
     var myCharts = echarts.init(document.getElementById('chart3s'));
@@ -952,10 +940,10 @@ function chart3(type, chartType) {
         myCharts.resize();
     });
 
-    //    设置背景阴影的参数，获取数据的最大值
+    // 设置背景阴影的参数，获取数据的最大值
 
-    var data; //横坐标数据，不动
-    var data_; //模拟数据
+    var data; // 横坐标数据，不动
+    var data_; // 模拟数据
     if (type == 1) {
         data_ = [{
                 name: "入库件",
@@ -1005,8 +993,8 @@ function chart3(type, chartType) {
                 value: 122
         }]
     }
-    var series_data; //绘制图表的数据
-    //绘制图表
+    var series_data; // 绘制图表的数据
+    // 绘制图表
     var yMax = 0;
     for (var j = 0; j < data_.length; j++) {
         if (yMax < data_[j].value) {
@@ -1174,7 +1162,6 @@ function chart3(type, chartType) {
                 data: [0, 0, 0, data_[6], 0],
             }
         ]
-
 
     } else if (type == 2) {
         data = ['入库件', '在库件', '出库件', '丢失件', '撤销件'];
@@ -1419,7 +1406,7 @@ function chart3(type, chartType) {
                     }
                 }
                 }],
-        //        color: ['#e54035'],
+        // color: ['#e54035'],
         series: series_data
     }
     if (chartType === '') {
@@ -1486,7 +1473,6 @@ $('#tabBtn').on('click', function () {
     }
 })
 
-
 $('#tabBtns').on('click', function () {
     var _this = $(this);
     if (_this.siblings('.pop-chart').is(':hidden')) {
@@ -1504,24 +1490,21 @@ $('#tabBtns').on('click', function () {
     }
 })
 
-
-
-
-//时间选择器
+// 时间选择器
 var startV = '';
 var endV = '';
 laydate.skin('danlan');
 var startTime = {
     elem: '#startTime',
     format: 'YYYY-MM-DD',
-    min: '1997-01-01', //设定最小日期为当前日期
-    max: laydate.now(), //最大日期
+    min: '1997-01-01', // 设定最小日期为当前日期
+    max: laydate.now(), // 最大日期
     istime: true,
     istoday: true,
     fixed: false,
     choose: function (datas) {
         startV = datas;
-        endTime.min = datas; //开始日选好后，重置结束日的最小日期
+        endTime.min = datas; // 开始日选好后，重置结束日的最小日期
     }
 };
 var endTime = {
@@ -1533,7 +1516,7 @@ var endTime = {
     istoday: true,
     fixed: false,
     choose: function (datas) {
-        //        startTime.max = datas; //结束日选好后，重置开始日的最大日期
+        // startTime.max = datas; // 结束日选好后，重置开始日的最大日期
         endV = datas;
     }
 };
@@ -1541,21 +1524,21 @@ var endTime = {
 laydate(startTime);
 laydate(endTime);
 
-//时间选择器
+// 时间选择器
 var startVs = '';
 var endVs = '';
 laydate.skin('danlan');
 var startTimes = {
     elem: '#startTimes',
     format: 'YYYY-MM-DD',
-    min: '1997-01-01', //设定最小日期为当前日期
-    max: '2099-06-16', //最大日期
+    min: '1997-01-01', // 设定最小日期为当前日期
+    max: '2099-06-16', // 最大日期
     istime: true,
     istoday: true,
     fixed: false,
     choose: function (datas) {
         startVs = datas;
-        endTimes.min = datas; //开始日选好后，重置结束日的最小日期
+        endTimes.min = datas; // 开始日选好后，重置结束日的最小日期
         setQgData($('#barTypes').parent().parent(), 1);
     }
 };
@@ -1568,7 +1551,7 @@ var endTimes = {
     istoday: true,
     fixed: false,
     choose: function (datas) {
-        //        startTime.max = datas; //结束日选好后，重置开始日的最大日期
+        // startTime.max = datas; // 结束日选好后，重置开始日的最大日期
         endVs = datas;
         setQgData($('#barTypes').parent().parent(), 1);
     }
@@ -1577,7 +1560,7 @@ var endTimes = {
 laydate(startTimes);
 laydate(endTimes);
 
-//点击时间选择器的时候更改样式
+// 点击时间选择器的时候更改样式
 $('#endTime').on('click', function () {
     dateCss();
 })
@@ -1586,8 +1569,7 @@ $('#end').on('click', function () {
     dateCss();
 })
 
-
-//更改日期插件的样式
+// 更改日期插件的样式
 function dateCss() {
     var arr = $('#laydate_box').attr('style').split(';');
     var cssStr =
@@ -1601,9 +1583,7 @@ function dateCss() {
     $('#laydate_box').attr('style', cssStr);
 }
 
-
-
-//chart4Data模拟数据
+// chart4Data模拟数据
 var chart4Data = [{
     'name': "天津市",
     'value': 178546
@@ -1653,7 +1633,6 @@ function chart4(data, type, chartType) {
         myChart.resize();
         myCharts.resize();
     });
-
 
     function formtGCData(geoData, data, srcNam, dest) {
         var tGeoDt = [];
@@ -1720,7 +1699,7 @@ function chart4(data, type, chartType) {
                 show: true,
                 period: 1.5,
                 trailLength: 0.1,
-                //                color: '#ffeb40',
+                // color: '#ffeb40',
                 color: '#2ef358',
                 symbol: planePath,
                 symbolSize: 6,
@@ -1746,7 +1725,7 @@ function chart4(data, type, chartType) {
                 show: true,
                 period: 1.5,
                 trailLength: 0.1,
-                //                color: '#2ef358',
+                // color: '#2ef358',
                 color: '#ffeb40',
                 symbol: planePath,
                 symbolSize: 6,
@@ -1845,7 +1824,7 @@ var time = {
     istoday: true,
     fixed: false,
     choose: function (datas) {
-        //        startTime.max = datas; //结束日选好后，重置开始日的最大日期
+        // startTime.max = datas; // 结束日选好后，重置开始日的最大日期
         workDate = datas;
     }
 };

@@ -180,9 +180,9 @@ public class FleetOrderMainController extends FleetController<FleetOrderMain, IF
     public ModelAndView exportXls(HttpServletRequest request, FleetOrderMain fleetOrderMain) {
         // Step.1 组装查询条件
         QueryWrapper<FleetOrderMain> queryWrapper = QueryGenerator.initQueryWrapper(fleetOrderMain, request.getParameterMap());
-        //Step.2 AutoPoi 导出Excel
+        // Step.2 AutoPoi 导出Excel
         ModelAndView mv = new ModelAndView(new JeecgEntityExcelView());
-        //获取当前用户
+        // 获取当前用户
         LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
 
         List<FleetOrderMainPage> pageList = new ArrayList<FleetOrderMainPage>();
@@ -223,7 +223,7 @@ public class FleetOrderMainController extends FleetController<FleetOrderMain, IF
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
         for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
-            MultipartFile file = entity.getValue();// 获取上传文件对象
+            MultipartFile file = entity.getValue(); // 获取上传文件对象
             ImportParams params = new ImportParams();
             params.setTitleRows(2);
             params.setHeadRows(2);

@@ -32,6 +32,18 @@ public enum SysAnnmentTypeEnum {
         this.openPage = openPage;
     }
 
+    public static SysAnnmentTypeEnum getByType(String type) {
+        if (oConvertUtils.isEmpty(type)) {
+            return null;
+        }
+        for (SysAnnmentTypeEnum val : values()) {
+            if (val.getType().equals(type)) {
+                return val;
+            }
+        }
+        return null;
+    }
+
     public String getType() {
         return type;
     }
@@ -54,17 +66,5 @@ public enum SysAnnmentTypeEnum {
 
     public void setOpenPage(String openPage) {
         this.openPage = openPage;
-    }
-
-    public static SysAnnmentTypeEnum getByType(String type) {
-        if (oConvertUtils.isEmpty(type)) {
-            return null;
-        }
-        for (SysAnnmentTypeEnum val : values()) {
-            if (val.getType().equals(type)) {
-                return val;
-            }
-        }
-        return null;
     }
 }

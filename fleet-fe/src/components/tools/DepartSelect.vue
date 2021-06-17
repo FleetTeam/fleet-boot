@@ -34,9 +34,8 @@
       </a-form-item>
     </a-form>
 
-
   </a-modal>
-    
+
 </template>
 
 <script>
@@ -82,7 +81,7 @@
       }
     },
     created(){
-      //this.loadDepartList()
+      // this.loadDepartList()
     },
     methods:{
       loadDepartList(){
@@ -129,13 +128,13 @@
             const userInfo = res.result.userInfo;
             Vue.ls.set(USER_INFO, userInfo, 7 * 24 * 60 * 60 * 1000);
             store.commit('SET_INFO', userInfo);
-            //console.log("---切换组织机构---userInfo-------",store.getters.userInfo.orgCode);
+            // console.log("---切换组织机构---userInfo-------",store.getters.userInfo.orgCode);
             this.departClear()
           }
         })
       },
       show(){
-        //如果组件传值username此处就不用loadDepartList了
+        // 如果组件传值username此处就不用loadDepartList了
         this.loadDepartList().then(()=>{
           this.visible=true
           if(!this.departList || this.departList.length<=0){

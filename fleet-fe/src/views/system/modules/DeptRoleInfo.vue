@@ -136,11 +136,11 @@
           this.$message.error("请设置url.list属性!")
           return
         }
-        //加载数据 若传入参数1则加载第一页的内容
+        // 加载数据 若传入参数1则加载第一页的内容
         if (arg === 1) {
           this.ipagination.current = 1;
         }
-        let params = this.getQueryParams();//查询条件
+        let params = this.getQueryParams(); // 查询条件
         params.deptId = this.currentDeptId;
         getAction(this.url.list, params).then((res) => {
           if (res.success && res.result) {

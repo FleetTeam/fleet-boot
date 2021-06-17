@@ -10,26 +10,26 @@
 <#list sub.colums as po>
 <#if po.isShow =='Y'>
 <#assign form_field_dictCode="">
-	<#if po.dictTable?default("")?trim?length gt 1 && po.dictText?default("")?trim?length gt 1 && po.dictField?default("")?trim?length gt 1>
-		<#assign form_field_dictCode="${po.dictTable},${po.dictText},${po.dictField}">
-	<#elseif po.dictField?default("")?trim?length gt 1>
-		<#assign form_field_dictCode="${po.dictField}">
-	</#if>
-	<#if po.classType =='textarea'>
+  <#if po.dictTable?default("")?trim?length gt 1 && po.dictText?default("")?trim?length gt 1 && po.dictField?default("")?trim?length gt 1>
+    <#assign form_field_dictCode="${po.dictTable},${po.dictText},${po.dictField}">
+  <#elseif po.dictField?default("")?trim?length gt 1>
+    <#assign form_field_dictCode="${po.dictField}">
+  </#if>
+  <#if po.classType =='textarea'>
         <a-col :span="24">
           <a-form-model-item label="${po.filedComment}" :labelCol="labelCol2" :wrapperCol="wrapperCol2" prop="${autoStringSuffixForModel(po)}">
-	<#else>
+  <#else>
         <a-col :xs="24" :sm="12">
           <a-form-model-item label="${po.filedComment}" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="${autoStringSuffixForModel(po)}">
-	</#if>
-	<#if po.classType =='date'>
+  </#if>
+  <#if po.classType =='date'>
             <j-date placeholder="请选择${po.filedComment}" v-model="model.${po.fieldName}" style="width: 100%"/>
-	<#elseif po.classType =='datetime'>
+  <#elseif po.classType =='datetime'>
             <j-date placeholder="请选择${po.filedComment}" v-model="model.${po.fieldName}" :show-time="true" date-format="YYYY-MM-DD HH:mm:ss" style="width: 100%"/>
-	<#elseif po.classType =='time'>
+  <#elseif po.classType =='time'>
              <j-time placeholder="请选择${po.filedComment}" v-model="model.${po.fieldName}" style="width: 100%" <#if po.readonly=='Y'>disabled</#if>/>
-	<#elseif po.classType =='popup'>
-	      <#assign form_popup=true>
+  <#elseif po.classType =='popup'>
+        <#assign form_popup=true>
             <j-popup
               v-model="model.${po.fieldName}"
               field="${po.fieldName}"
@@ -39,29 +39,29 @@
               @input="popupCallback"/>
     <#elseif po.classType =='switch'>
             <j-switch v-model="model.${po.fieldName}" <#if po.dictField!= 'is_open'>:options="${po.dictField}"</#if>></j-switch>
-	<#elseif po.classType =='sel_depart'>
+  <#elseif po.classType =='sel_depart'>
             <j-select-depart v-model="model.${po.fieldName}" />
-	<#elseif po.classType =='sel_user'>
+  <#elseif po.classType =='sel_user'>
             <j-select-user-by-dep v-model="model.${po.fieldName}" />
-	<#elseif po.classType =='textarea'>
+  <#elseif po.classType =='textarea'>
             <a-textarea v-model="model.${autoStringSuffixForModel(po)}" rows="4" placeholder="请输入${po.filedComment}"/>
-	<#elseif po.classType=='list' || po.classType=='radio'>
+  <#elseif po.classType=='list' || po.classType=='radio'>
             <j-dict-select-tag type="${po.classType}" v-model="model.${po.fieldName}"  dictCode="${form_field_dictCode}" placeholder="请选择${po.filedComment}"/>
-	<#elseif po.classType=='list_multi' || po.classType=='checkbox'>
+  <#elseif po.classType=='list_multi' || po.classType=='checkbox'>
             <j-multi-select-tag type="${po.classType}" v-model="model.${po.fieldName}"  dictCode="${form_field_dictCode}" placeholder="请选择${po.filedComment}"/>
-	<#elseif po.fieldDbType=='int' || po.fieldDbType=='double' || po.fieldDbType=='BigDecimal'>
+  <#elseif po.fieldDbType=='int' || po.fieldDbType=='double' || po.fieldDbType=='BigDecimal'>
             <a-input-number v-model="model.${po.fieldName}" placeholder="请输入${po.filedComment}" style="width: 100%"/>
-	<#elseif po.classType=='file'>
+  <#elseif po.classType=='file'>
             <j-upload v-model="model.${po.fieldName}" ></j-upload>
     <#elseif po.classType=='image'>
             <j-image-upload isMultiple v-model="model.${po.fieldName}"></j-image-upload>
-	<#else>
+  <#else>
             <a-input v-model="model.${autoStringSuffixForModel(po)}" placeholder="请输入${po.filedComment}"></a-input>
     </#if>
           </a-form-model-item>
         </a-col>
 </#if>
-</#list>    
+</#list>
       </a-row>
     </a-form-model>
  </j-form-container>
@@ -73,7 +73,7 @@
 
   export default {
     name: '${sub.entityName}Form',
-    components: { 
+    components: {
     },
     props:{
       disabled: {
@@ -108,7 +108,7 @@
       }
     },
     created () {
-    //备份model原始值
+      // 备份model原始值
       this.modelDefault = JSON.parse(JSON.stringify(this.model));
     },
     methods:{
@@ -171,7 +171,7 @@
       clearFormData(){
         this.$refs.form.clearValidate()
       }
-    
+
     }
   }
 </script>

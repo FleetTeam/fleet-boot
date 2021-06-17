@@ -211,7 +211,6 @@
         })
       },
 
-
       // 当table1左上【主表】分页参数变化时触发的事件
       handleTable1PageChange(event) {
         // 重新赋值
@@ -221,12 +220,10 @@
         this.loadTable1Data()
       },
 
-
       // table1左上【主表】当选择的行变化时触发的事件
       handleTable1SelectRowChange(event) {
         this.handleTableSelectRowChange(this.table1, event)
       },
-
 
       // 加载table2左下【子表】的数据，根据主表的id进行查询
       loadTable2Data() {
@@ -268,12 +265,10 @@
         this.loadTable2Data()
       },
 
-
       // table3右上【主表】当选择的行变化时触发的事件
       handleTable3SelectRowChange(event) {
         this.handleTableSelectRowChange(this.table3, event)
       },
-
 
       // 加载table4右下【子表】的数据，根据主表的id进行查询
       loadTable4Data() {
@@ -307,7 +302,6 @@
         })
       },
 
-
       // 当table4右下【子表】分页参数变化时触发的事件
       handleTable4PageChange(event) {
         // 重新赋值
@@ -317,7 +311,7 @@
         this.loadTable4Data()
       },
 
-      /** 公共方法：处理表格选中变化事件 */
+      // 公共方法：处理表格选中变化事件
       handleTableSelectRowChange(table, event) {
         let {row, action, selectedRows, $table} = event
         // 获取最后一个选中的

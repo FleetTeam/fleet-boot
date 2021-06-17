@@ -15,7 +15,7 @@
         </a-tree>
       </a-col>
 
-      <!--右侧缩略图-->
+      <!-- 右侧缩略图 -->
       <a-col :span="19">
         <a-row style="margin-top: 10px">
           <a-col :span="24" style="padding-left: 2%;margin-bottom: 10px">
@@ -43,7 +43,7 @@
     data() {
       return {
         description: '图片翻页',
-        //数据集
+        // 数据集
         treeData: [{
           title: '第一页',
           key: '0-0',

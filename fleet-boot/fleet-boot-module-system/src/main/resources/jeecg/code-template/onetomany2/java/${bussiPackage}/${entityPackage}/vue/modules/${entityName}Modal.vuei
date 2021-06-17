@@ -10,7 +10,7 @@
     <a-spin :spinning="confirmLoading">
       <!-- 主表单区域 -->
       <a-form :form="form">
-		<#list columns as po><#rt/>
+    <#list columns as po><#rt/>
         <#if po.fieldName !='id'><#rt/>
         <a-form-item
           :labelCol="labelCol"
@@ -84,17 +84,17 @@
       edit(record) {
         this.form.resetFields();
         this.model = Object.assign({}, record);
-        //初始化明细表数据
+        // 初始化明细表数据
         console.log(this.model.id)
         this.visible = true;
         this.$nextTick(() => {
           this.form.setFieldsValue(pick(this.model, <#list columns as col>'${col.fieldName}', </#list>))
           // 时间格式化
 <#list columns as col><#rt/>
-	<#if col.fieldName !='id' && (col.fieldType =='date' || col.fieldType =='datetime')>
+  <#if col.fieldName !='id' && (col.fieldType =='date' || col.fieldType =='datetime')>
           this.form.setFieldsValue({ ${col.fieldName}: this.model.${col.fieldName} ? moment(this.model.${col.fieldName}) : null })
-	</#if>
-</#list>  
+  </#if>
+</#list>
         });
       },
       close() {
@@ -117,7 +117,7 @@
               method = 'put';
             }
             let formData = Object.assign(this.model, values);
-            //时间格式化
+            // 时间格式化
             <#list columns as po>
             <#if po.fieldName !='id' && po.fieldType =='date'>
             formData.${po.fieldName} = formData.${po.fieldName}?formData.${po.fieldName}.format():null;

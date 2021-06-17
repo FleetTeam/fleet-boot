@@ -102,7 +102,7 @@
       },
     },
     methods: {
-      /** 触发事件 */
+      // 触发事件
       trigger(name) {
         this.$emit(name)
       },

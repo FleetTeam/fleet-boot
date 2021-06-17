@@ -134,67 +134,67 @@
               return parseInt(index)+1;
             }
            },
-		  //  {
-      //       title: '版本',
-      //       align:"center",
-      //       dataIndex: 'ver'
-      //      },
-		  //  {
-      //       title: '系统标识',
-      //       align:"center",
-      //       dataIndex: 'sysId'
-      //      },
-		   {
+      // {
+      //      title: '版本',
+      //      align:"center",
+      //      dataIndex: 'ver'
+      //     },
+      // {
+      //      title: '系统标识',
+      //      align:"center",
+      //      dataIndex: 'sysId'
+      //     },
+       {
             title: '字典代码',
             align:"center",
             dataIndex: 'dictCode'
            },
-		   {
+       {
             title: '字典描述',
             align:"center",
             dataIndex: 'dictDesc'
            },
-		   {
+       {
             title: '类型',
             align:"center",
             dataIndex: 'type'
            },
-		   {
+       {
             title: '长度',
             align:"center",
             dataIndex: 'length'
            },
-		   {
+       {
             title: '小数',
             align:"center",
             dataIndex: 'point'
            },
-		   {
+       {
             title: '字典缩写',
             align:"center",
             dataIndex: 'dictAbbr'
            },
-		  //  {
-      //       title: '状态',
-      //       align:"center",
-      //       dataIndex: 'status'
-      //      },
-		  //  {
-      //       title: '版本号',
-      //       align:"center",
-      //       dataIndex: 'verNo'
-      //      },
-		  //  {
-      //       title: '版本状态',
-      //       align:"center",
-      //       dataIndex: 'verStatus'
-      //      },
-		  //  {
-      //       title: '检出用户',
-      //       align:"center",
-      //       dataIndex: 'checkUser'
-      //      },
-		   {
+      // {
+      //      title: '状态',
+      //      align:"center",
+      //      dataIndex: 'status'
+      //     },
+      // {
+      //      title: '版本号',
+      //      align:"center",
+      //      dataIndex: 'verNo'
+      //     },
+      // {
+      //      title: '版本状态',
+      //      align:"center",
+      //      dataIndex: 'verStatus'
+      //     },
+      // {
+      //      title: '检出用户',
+      //      align:"center",
+      //      dataIndex: 'checkUser'
+      //     },
+       {
             title: '备注',
             align:"center",
             dataIndex: 'remark'
@@ -206,7 +206,7 @@
             scopedSlots: { customRender: 'action' },
           }
         ],
-		url: {
+    url: {
           list: "/deve/devRefDict/list",
           delete: "/deve/devRefDict/delete",
           deleteBatch: "/deve/devRefDict/deleteBatch",
@@ -221,7 +221,7 @@
     }
   },
     methods: {
-     
+
     }
   }
 </script>

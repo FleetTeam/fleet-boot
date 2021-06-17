@@ -127,7 +127,7 @@
           align:"center",
           scopedSlots: { customRender: 'action' },
         }],
-		    url: {
+        url: {
           list: "/sys/sysAnnouncementSend/getMyAnnouncementSend",
           editCementSend:"sys/sysAnnouncementSend/editByAnntIdAndUserId",
           readAllMsg:"sys/sysAnnouncementSend/readAll",

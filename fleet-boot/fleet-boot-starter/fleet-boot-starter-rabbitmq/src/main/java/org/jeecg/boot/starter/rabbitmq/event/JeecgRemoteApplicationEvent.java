@@ -12,10 +12,10 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 @Data
 public class JeecgRemoteApplicationEvent extends RemoteApplicationEvent {
 
+    private EventObj eventObj;
+
     private JeecgRemoteApplicationEvent() {
     }
-
-    private EventObj eventObj;
 
     public JeecgRemoteApplicationEvent(EventObj source, String originService, String destinationService) {
         super(source, originService, destinationService);

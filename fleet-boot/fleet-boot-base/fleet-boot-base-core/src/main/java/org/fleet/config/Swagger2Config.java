@@ -1,6 +1,5 @@
 package org.fleet.config;
 
-
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import io.swagger.annotations.ApiOperation;
 import org.fleet.common.constant.CommonConstant;
@@ -37,7 +36,6 @@ import java.util.List;
 public class Swagger2Config implements WebMvcConfigurer {
 
     /**
-     *
      * 显示swagger-ui.html文档展示页，还必须注入swagger资源：
      *
      * @param registry
@@ -59,16 +57,16 @@ public class Swagger2Config implements WebMvcConfigurer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                //此包路径下的类，才生成接口文档
+                // 此包路径下的类，才生成接口文档
                 .apis(RequestHandlerSelectors.basePackage("org.fleet"))
-                //加了ApiOperation注解的类，才生成接口文档
+                // 加了ApiOperation注解的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(Collections.singletonList(securityScheme()))
                 .securityContexts(securityContexts());
-                //.globalOperationParameters(setHeaderToken());
+        // .globalOperationParameters(setHeaderToken());
     }
 
     /***
@@ -81,8 +79,10 @@ public class Swagger2Config implements WebMvcConfigurer {
     SecurityScheme securityScheme() {
         return new ApiKey(CommonConstant.X_ACCESS_TOKEN, CommonConstant.X_ACCESS_TOKEN, "header");
     }
+
     /**
      * JWT token
+     *
      * @return
      */
     private List<Parameter> setHeaderToken() {
@@ -100,11 +100,11 @@ public class Swagger2Config implements WebMvcConfigurer {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                // //大标题
+                // 大标题
                 .title("Fleet-Boot 后台服务API接口文档")
                 // 版本号
                 .version("1.0")
-//				.termsOfServiceUrl("NO terms of service")
+                // .termsOfServiceUrl("NO terms of service")
                 // 描述
                 .description("后台API接口")
                 // 作者

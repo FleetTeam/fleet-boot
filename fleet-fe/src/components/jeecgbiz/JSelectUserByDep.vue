@@ -66,7 +66,7 @@
       initComp(userNames) {
         this.userNames = userNames
       },
-      //返回选中的用户信息
+      // 返回选中的用户信息
       backDeparInfo(){
         if(this.backUser===true){
           if(this.userIds && this.userIds.length>0){

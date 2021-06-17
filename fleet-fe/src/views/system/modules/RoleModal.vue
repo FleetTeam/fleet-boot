@@ -58,7 +58,7 @@
       }
     },
     created () {
-      //备份model原始值
+      // 备份model原始值
       this.modelDefault = JSON.parse(JSON.stringify(this.model));
     },
     methods: {
@@ -68,7 +68,7 @@
       edit (record) {
         this.model = Object.assign({}, record);
         this.visible = true;
-        //编辑页面禁止修改角色编码
+        // 编辑页面禁止修改角色编码
         if(this.model.id){
           this.roleDisabled = true;
         }else{

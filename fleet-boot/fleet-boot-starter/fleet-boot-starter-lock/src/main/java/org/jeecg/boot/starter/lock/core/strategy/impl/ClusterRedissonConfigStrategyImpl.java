@@ -7,7 +7,6 @@ import org.jeecg.boot.starter.lock.prop.RedissonProperties;
 import org.jeecg.boot.starter.lock.enums.GlobalConstant;
 import org.redisson.config.Config;
 
-
 /**
  * 集群方式Redisson配置
  * cluster方式至少6个节点(3主3从)

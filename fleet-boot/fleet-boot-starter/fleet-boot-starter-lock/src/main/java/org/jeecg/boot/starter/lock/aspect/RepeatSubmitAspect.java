@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Aspect
 @Component
-public class RepeatSubmitAspect extends BaseAspect{
+public class RepeatSubmitAspect extends BaseAspect {
 
     @Resource
     private RedissonLockClient redissonLockClient;
@@ -45,14 +45,14 @@ public class RepeatSubmitAspect extends BaseAspect{
      * @throws Exception
      */
     @Around("pointCut(jRepeat)")
-    public Object repeatSubmit(ProceedingJoinPoint joinPoint,JRepeat jRepeat) throws Throwable {
+    public Object repeatSubmit(ProceedingJoinPoint joinPoint, JRepeat jRepeat) throws Throwable {
         String[] parameterNames = new LocalVariableTableParameterNameDiscoverer().getParameterNames(((MethodSignature) joinPoint.getSignature()).getMethod());
         if (Objects.nonNull(jRepeat)) {
             // 获取参数
             Object[] args = joinPoint.getArgs();
             // 进行一些参数的处理，比如获取订单号，操作人id等
             StringBuffer lockKeyBuffer = new StringBuffer();
-            String key =getValueBySpEL(jRepeat.lockKey(), parameterNames, args,"RepeatSubmit").get(0);
+            String key = getValueBySpEL(jRepeat.lockKey(), parameterNames, args, "RepeatSubmit").get(0);
             // 公平加锁，lockTime后锁自动释放
             boolean isLocked = false;
             try {
@@ -75,6 +75,5 @@ public class RepeatSubmitAspect extends BaseAspect{
 
         return joinPoint.proceed();
     }
-
 
 }

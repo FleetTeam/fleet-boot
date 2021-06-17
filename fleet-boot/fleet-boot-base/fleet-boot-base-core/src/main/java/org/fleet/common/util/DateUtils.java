@@ -20,6 +20,11 @@ import org.springframework.util.StringUtils;
  */
 public class DateUtils extends PropertyEditorSupport {
 
+    // 以毫秒表示的时间
+    private static final long DAY_IN_MILLIS = 24 * 3600 * 1000;
+    private static final long HOUR_IN_MILLIS = 3600 * 1000;
+    private static final long MINUTE_IN_MILLIS = 60 * 1000;
+    private static final long SECOND_IN_MILLIS = 1000;
     public static ThreadLocal<SimpleDateFormat> date_sdf = new ThreadLocal<SimpleDateFormat>() {
         @Override
         protected SimpleDateFormat initialValue() {
@@ -63,12 +68,6 @@ public class DateUtils extends PropertyEditorSupport {
         }
     };
 
-    // 以毫秒表示的时间
-    private static final long DAY_IN_MILLIS = 24 * 3600 * 1000;
-    private static final long HOUR_IN_MILLIS = 3600 * 1000;
-    private static final long MINUTE_IN_MILLIS = 60 * 1000;
-    private static final long SECOND_IN_MILLIS = 1000;
-
     // 指定模式的时间格式
     private static SimpleDateFormat getSDFormat(String pattern) {
         return new SimpleDateFormat(pattern);
@@ -96,10 +95,10 @@ public class DateUtils extends PropertyEditorSupport {
         return cal;
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ********************
     // getDate
     // 各种方式获取的Date
-    // ////////////////////////////////////////////////////////////////////////////
+    // ********************
 
     /**
      * 当前日期
@@ -295,10 +294,10 @@ public class DateUtils extends PropertyEditorSupport {
         return buydate;
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ********************
     // getMillis
     // 各种方式获取的Millis
-    // ////////////////////////////////////////////////////////////////////////////
+    // ********************
 
     /**
      * 系统时间的毫秒数
@@ -340,10 +339,10 @@ public class DateUtils extends PropertyEditorSupport {
         return ts.getTime();
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ****************************
     // formatDate
     // 将日期按照一定的格式转化为字符串
-    // ////////////////////////////////////////////////////////////////////////////
+    // ****************************
 
     /**
      * 默认方式表示的系统当前日期，具体格式：年-月-日
@@ -432,10 +431,10 @@ public class DateUtils extends PropertyEditorSupport {
         return getSDFormat(pattern).format(date);
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ****************************
     // formatTime
     // 将日期按照一定的格式转化为字符串
-    // ////////////////////////////////////////////////////////////////////////////
+    // ****************************
 
     /**
      * 默认方式表示的系统当前日期，具体格式：年-月-日 时：分
@@ -476,10 +475,10 @@ public class DateUtils extends PropertyEditorSupport {
         return time_sdf.get().format(date);
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ****************************
     // formatShortTime
     // 将日期按照一定的格式转化为字符串
-    // ////////////////////////////////////////////////////////////////////////////
+    // ****************************
 
     /**
      * 默认方式表示的系统当前日期，具体格式：时：分
@@ -520,12 +519,12 @@ public class DateUtils extends PropertyEditorSupport {
         return short_time_sdf.get().format(date);
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ************************************
     // parseDate
     // parseCalendar
     // parseTimestamp
     // 将字符串按照一定的格式转化为日期或时间
-    // ////////////////////////////////////////////////////////////////////////////
+    // ************************************
 
     /**
      * 根据指定的格式将字符串转换成Date 如输入：2003-11-19 11:20:20将按照这个转成时间
@@ -576,10 +575,10 @@ public class DateUtils extends PropertyEditorSupport {
         return new Timestamp(date.getTime());
     }
 
-    // ////////////////////////////////////////////////////////////////////////////
+    // ********************
     // dateDiff
     // 计算两个日期之间的差值
-    // ////////////////////////////////////////////////////////////////////////////
+    // ********************
 
     /**
      * 计算两个时间之间的差值，根据标志的不同而不同
@@ -616,6 +615,12 @@ public class DateUtils extends PropertyEditorSupport {
         return 0;
     }
 
+    public static int getYear() {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(getDate());
+        return calendar.get(Calendar.YEAR);
+    }
+
     /**
      * String类型 转换为Date, 如果参数长度为10 转换格式”yyyy-MM-dd“ 如果参数长度为19 转换格式”yyyy-MM-dd
      * HH:mm:ss“ * @param text String类型的时间值
@@ -639,12 +644,6 @@ public class DateUtils extends PropertyEditorSupport {
         } else {
             setValue(null);
         }
-    }
-
-    public static int getYear() {
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(getDate());
-        return calendar.get(Calendar.YEAR);
     }
 
 }

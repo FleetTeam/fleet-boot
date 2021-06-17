@@ -28,16 +28,16 @@
     </#if>
     <#if po.isQuery=='Y'>
     <#assign query_flag=true>
-    	<#if query_field_no==2>
+      <#if query_field_no==2>
               <template v-if="toggleSearchStatus">
-    	</#if>
-    	<#assign query_field_dictCode="">
-    	<#if po.dictTable?default("")?trim?length gt 1>
-    	    <#assign query_field_dictCode="${po.dictTable},${po.dictText},${po.dictField}">
+      </#if>
+      <#assign query_field_dictCode="">
+      <#if po.dictTable?default("")?trim?length gt 1>
+          <#assign query_field_dictCode="${po.dictTable},${po.dictText},${po.dictField}">
         <#elseif po.dictField?default("")?trim?length gt 1>
             <#assign query_field_dictCode="${po.dictField}">
         </#if>
-    	<#if po.queryMode=='single'>
+      <#if po.queryMode=='single'>
           <#if query_field_no gt 1>  </#if><a-col :xl="6" :lg="7" :md="8" :sm="24">
             <#if query_field_no gt 1>  </#if><a-form-item label="${po.filedComment}">
             <#if po.classType=='sel_search'>
@@ -92,7 +92,7 @@
             </#if>
             <#if query_field_no gt 1>  </#if></a-form-item>
           <#if query_field_no gt 1>  </#if></a-col>
-    	</#if>
+      </#if>
     <#assign query_field_no=query_field_no+1>
     </#if>
     <#if !list_need_dict && po.fieldShowType!='popup' && po.dictField?default("")?trim?length gt 1>
@@ -243,9 +243,9 @@
           },
     </#if>
     </#list>
-	<#list columns as po>
-	<#if po.isShowList =='Y'>
-	<#if po.fieldDbName!=tableVo.extendParams.textField && po.fieldName!=pidFieldName>
+  <#list columns as po>
+  <#if po.isShowList =='Y'>
+  <#if po.fieldDbName!=tableVo.extendParams.textField && po.fieldName!=pidFieldName>
           {
             title:'${po.filedComment}',
             align:"left",
@@ -282,9 +282,9 @@
             dataIndex: '${po.fieldName}',
             customRender: (text, record) => (text ? record['${po.dictText}'] : '')
             </#if>
-			<#else>
+      <#else>
             dataIndex: '${po.fieldName}'
-			</#if>
+      </#if>
           },
      </#if>
      </#if>
@@ -364,7 +364,7 @@
         if (this.expandedRowKeys.length > 0) {
           return getAction(this.url.getChildListBatch,{ parentIds: this.expandedRowKeys.join(',') }).then(res=>{
             if (res.success && res.result.records.length>0) {
-              //已展开的数据批量子节点
+              // 已展开的数据批量子节点
               let records = res.result.records
               const listMap = new Map();
               for (let item of records) {
@@ -397,7 +397,7 @@
         }
       },
       getQueryParams(arg) {
-        //获取查询条件
+        // 获取查询条件
         let sqp = {}
         let param = {}
         if(this.superQueryParams){
@@ -420,7 +420,7 @@
         return filterObj(param);
       },
       searchReset() {
-        //重置
+        // 重置
         this.expandedRowKeys = []
         this.queryParam = {}
         this.loadData(1);
@@ -428,7 +428,7 @@
       getDataByResult(result){
         if(result){
           return result.map(item=>{
-            //判断是否标记了带有子节点
+            // 判断是否标记了带有子节点
             if(item[this.hasChildrenField]=='1'){
               let loadChild = { id: item.id+'_loadChild', name: 'loading...', isLoading: true }
               item.children = [loadChild]
@@ -442,7 +442,7 @@
         if (expanded) {
           this.expandedRowKeys.push(record.id)
           if (record.children.length>0 && record.children[0].isLoading === true) {
-            let params = this.getQueryParams(1);//查询条件
+            let params = this.getQueryParams(1); // 查询条件
             params[this.pidField] = record.id
             params.hasQuery = 'false'
             params.superQueryParams=""

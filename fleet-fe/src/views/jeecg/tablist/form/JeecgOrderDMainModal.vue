@@ -99,7 +99,7 @@
       edit(record) {
         this.orderMainModel = Object.assign({}, record);
         console.log(this.orderMainModel)
-        //初始化明细表数据
+        // 初始化明细表数据
         this.visible = true;
       },
       close() {
@@ -122,7 +122,7 @@
               httpurl += this.url.edit;
               method = 'put';
             }
-           
+
             httpAction(httpurl, this.orderMainModel, method).then((res) => {
               if (res.success) {
                 that.$message.success(res.message);

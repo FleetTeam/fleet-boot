@@ -23,14 +23,11 @@ public @interface JRepeat {
      */
     int lockTime();
 
-
     /**
      * redis 锁key的
      *
      * @return redis 锁key
      */
     String lockKey() default "";
-
-
 
 }

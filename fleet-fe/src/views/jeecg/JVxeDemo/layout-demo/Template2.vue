@@ -170,7 +170,6 @@
         })
       },
 
-
       // 加载table2【子表】的数据，根据主表的id进行查询
       loadTable2Data() {
         // 如果主表没有选择，则不查询
@@ -230,7 +229,7 @@
         this.loadTable2Data()
       },
 
-      /** 公共方法：处理表格选中变化事件 */
+      // 公共方法：处理表格选中变化事件
       handleTableSelectRowChange(table, event) {
         let {row, action, selectedRows, $table} = event
         // 获取最后一个选中的

@@ -24,11 +24,10 @@ import javax.servlet.http.HttpServletRequest;
 @Import(FeignClientsConfiguration.class)
 public class JeecgFeignService implements IJeecgFeignService {
 
-
-    //Feign 原生构造器
+    // Feign 原生构造器
     Feign.Builder builder;
 
-    //创建构造器
+    // 创建构造器
     public JeecgFeignService(Decoder decoder, Encoder encoder, Client client, Contract contract) {
         this.builder = Feign.builder()
                 .client(client)
@@ -43,7 +42,7 @@ public class JeecgFeignService implements IJeecgFeignService {
                 log.info("Feign request: {}", request.getRequestURI());
                 // 将token信息放入header中
                 String token = request.getHeader(CommonConstant.X_ACCESS_TOKEN);
-                if(token==null){
+                if (token == null) {
                     token = request.getParameter("token");
                 }
                 log.info("Feign request token: {}", token);
@@ -51,7 +50,6 @@ public class JeecgFeignService implements IJeecgFeignService {
             }
         });
     }
-
 
     @Override
     public <T> T newInstance(Class<T> clientClass, String serviceName) {

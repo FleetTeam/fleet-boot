@@ -209,11 +209,11 @@
         immediate: true,
         deep: true,
         handler(val) {
-          //update--begin--autor:scott-----date:20200927------for：选取职务名称出现全选 #1753-----
+          // update--begin--autor:scott-----date:20200927------for：选取职务名称出现全选 #1753-----
           if(this.innerValue){
             this.innerValue.length=0;
           }
-          //update--end--autor:scott-----date:20200927------for：选取职务名称出现全选 #1753-----
+          // update--end--autor:scott-----date:20200927------for：选取职务名称出现全选 #1753-----
           this.selectedTable.dataSource = val.map(key => {
             for (let data of this.dataSource) {
               if (data[this.rowKey] === key) {
@@ -236,7 +236,7 @@
 
     methods: {
 
-      /** 关闭弹窗 */
+      // 关闭弹窗
       close() {
         this.$emit('update:visible', false)
       },
@@ -301,21 +301,21 @@
         this.$emit('options', this.options, this.dataSourceMap)
       },
 
-      /** 完成选择 */
+      // 完成选择
       handleOk() {
         let value = this.selectedTable.dataSource.map(data => data[this.valueKey])
         this.$emit('input', value)
         this.close()
       },
-      /** 删除已选择的 */
+      // 删除已选择的
       handleDeleteSelected(record, index) {
         this.selectedRowKeys.splice(this.selectedRowKeys.indexOf(record[this.rowKey]), 1)
-        //update--begin--autor:wangshuai-----date:20200722------for：JSelectBizComponent组件切换页数值问题------
+        // update--begin--autor:wangshuai-----date:20200722------for：JSelectBizComponent组件切换页数值问题------
         this.selectedTable.dataSource.splice(this.selectedTable.dataSource.indexOf(record), 1)
         this.innerValue.splice(this.innerValue.indexOf(record[this.valueKey]), 1)
         console.log("this.selectedRowKeys:",this.selectedRowKeys)
         console.log("this.selectedTable.dataSource:",this.selectedTable.dataSource)
-        //update--begin--autor:wangshuai-----date:20200722------for：JSelectBizComponent组件切换页数值问题------
+        // update--begin--autor:wangshuai-----date:20200722------for：JSelectBizComponent组件切换页数值问题------
       },
 
       customRowFn(record) {

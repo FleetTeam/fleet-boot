@@ -1,6 +1,6 @@
 <#-- noinspection JSDuplicatedDeclaration,RequiredAttributes,NpmUsedModulesInstalled -->
 <#-- ** 引入全局工具方法 ** -->
-<#--<#include "/common/utils.ftl">-->
+<#-- <#include "/common/utils.ftl"> -->
 <#include "../../../../../../common/utils.ftl">
 <#-- ** 定义全局使用的变量 ** -->
 <#-- 是否有查询条件 -->
@@ -38,7 +38,7 @@
 <#assign query_field_index=0>
 <#list columns as po>
   <#if po.isQuery=='Y'>
-  	<#assign query_field_dictCode="">
+    <#assign query_field_dictCode="">
     <#if po.dictTable?default("")?trim?length gt 1>
       <#assign query_field_dictCode="${po.dictTable},${po.dictText},${po.dictField}">
     <#elseif po.dictField?default("")?trim?length gt 1>

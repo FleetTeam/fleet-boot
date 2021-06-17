@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 @Conditional(FleetCloudCondition.class)
 public class SystemInitListener implements ApplicationListener<ApplicationReadyEvent>, Ordered {
 
-
     @Autowired
     private ISysGatewayRouteService sysGatewayRouteService;
 

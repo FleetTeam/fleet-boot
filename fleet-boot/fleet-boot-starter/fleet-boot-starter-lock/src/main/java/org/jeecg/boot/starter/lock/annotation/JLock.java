@@ -23,16 +23,17 @@ public @interface JLock {
 
     /**
      * 如果keys有多个,如果不设置,则使用 联锁
+     *
      * @return
      */
     String[] lockKey() default {};
 
     /**
      * key的静态常量:当key的spel的值是LIST,数组时使用+号连接将会被spel认为这个变量是个字符串
+     *
      * @return
      */
     String keyConstant() default "";
-
 
     /**
      * 锁超时时间,默认30000毫秒
@@ -46,7 +47,7 @@ public @interface JLock {
      *
      * @return int
      */
-     long waitTime() default 10000L;
+    long waitTime() default 10000L;
 
     /**
      * 未取到锁时提示信息

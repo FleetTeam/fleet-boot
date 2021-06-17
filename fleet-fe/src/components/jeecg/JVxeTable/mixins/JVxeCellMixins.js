@@ -108,7 +108,7 @@ export default {
   },
   methods: {
 
-    /** 通用处理change事件 */
+    // 通用处理change事件
     handleChangeCommon(value) {
       let handle = this.enhanced.getValue.call(this, value)
       this.trigger('change', {value: handle})
@@ -122,7 +122,7 @@ export default {
         columnIndex: this.params.columnIndex,
       })
     },
-    /** 通用处理blur事件 */
+    // 通用处理blur事件
     handleBlurCommon(value) {
       this.trigger('blur', {value})
     },
@@ -149,7 +149,7 @@ export default {
     packageEvent(name, event = {}) {
       event.row = this.row
       event.column = this.column
-      //online增强参数兼容
+      // online增强参数兼容
       event.column['key'] = this.column['property']
       event.cellTarget = this
       if (!event.type) {
@@ -289,7 +289,7 @@ export function vModel(value, row, property) {
   this.$set(row, property, value)
 }
 
-/** 模拟触发事件 */
+// 模拟触发事件
 export function dispatchEvent({cell, $event}, className, handler) {
   window.setTimeout(() => {
     let element = cell.getElementsByClassName(className)

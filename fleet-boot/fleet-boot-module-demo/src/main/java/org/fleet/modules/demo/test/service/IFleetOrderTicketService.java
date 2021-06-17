@@ -9,10 +9,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 /**
  * @Description: 订单机票
  * @Author: fleet-team
- * @Date:  2019-02-15
+ * @Date: 2019-02-15
  * @Version: V1.0
  */
 public interface IFleetOrderTicketService extends IService<FleetOrderTicket> {
-	
-	public List<FleetOrderTicket> selectTicketsByMainId(String mainId);
+
+    public List<FleetOrderTicket> selectTicketsByMainId(String mainId);
 }

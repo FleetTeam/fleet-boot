@@ -56,7 +56,7 @@
         type: Object,
         default: () => ({})
       },
-      /** 是否在创建组件的时候就查询数据 */
+      // 是否在创建组件的时候就查询数据
       immediateRequest: {
         type: Boolean,
         default: true
@@ -107,7 +107,7 @@
     },
     methods: {
 
-      /** 加载数据*/
+      // 加载数据
       loadData(id = this.topValue, first = true, url = this.url) {
         this.$emit('requestBefore', { first })
 
@@ -153,7 +153,7 @@
         }).finally(() => this.$emit('requestFinally', { first }))
       },
 
-      /** 点击展开图标时触发 */
+      // 点击展开图标时触发
       handleExpand(expanded, record) {
         // 判断是否是展开状态
         if (expanded) {

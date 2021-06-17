@@ -22,11 +22,11 @@ public class MinioConfig {
     private String bucketName;
 
     @Bean
-    public void initMinio(){
-        if(!minioUrl.startsWith("http")){
+    public void initMinio() {
+        if (!minioUrl.startsWith("http")) {
             minioUrl = "http://" + minioUrl;
         }
-        if(!minioUrl.endsWith("/")){
+        if (!minioUrl.endsWith("/")) {
             minioUrl = minioUrl.concat("/");
         }
         MinioUtil.setMinioUrl(minioUrl);

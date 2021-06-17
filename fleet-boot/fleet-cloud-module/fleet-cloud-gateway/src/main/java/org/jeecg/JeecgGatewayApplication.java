@@ -13,6 +13,6 @@ public class JeecgGatewayApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(JeecgGatewayApplication.class, args);
         String userName = applicationContext.getEnvironment().getProperty("jeecg.test");
-        System.err.println("user name :" +userName);
+        System.err.println("user name :" + userName);
     }
 }

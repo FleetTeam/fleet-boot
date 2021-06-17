@@ -10,9 +10,11 @@ import org.jeecgframework.codegenerate.window.CodeWindow;
  */
 public class FleetOneGUI {
 
-	/** 详细使用手册： http://doc.fleet.com/2043919 */
+    /**
+     * 详细使用手册： http://doc.fleet.com/2043919
+     */
     public static void main(String[] args) {
-    	new CodeWindow().pack();
-	}
+        new CodeWindow().pack();
+    }
 
 }

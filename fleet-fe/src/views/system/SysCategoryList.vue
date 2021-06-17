@@ -1,6 +1,6 @@
 <template>
   <a-card :bordered="false">
-    
+
     <!-- 操作按钮区域 -->
     <div class="table-operator">
       <a-button @click="handleAdd" type="primary" icon="plus">新增</a-button>
@@ -35,7 +35,7 @@
         @change="handleTableChange"
         @expand="handleExpand"
         v-bind="tableProps">
-        
+
         <span slot="action" slot-scope="text, record">
           <a @click="handleEdit(record)">编辑</a>
           <a-divider type="vertical" />
@@ -59,7 +59,7 @@
   import { JeecgListMixin } from '@/mixins/JeecgListMixin'
   import SysCategoryModal from './modules/SysCategoryModal'
   import { deleteAction } from '@/api/manage'
-  
+
   export default {
     name: "SysCategoryList",
     mixins:[JeecgListMixin],
@@ -134,9 +134,9 @@
               if(Number(result.total)>0){
                 this.ipagination.total = Number(result.total)
                 this.dataSource = this.getDataByResult(res.result.records)
-                //update--begin--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
+                // update--begin--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
                 return this.loadDataByExpandedRows(this.dataSource)
-                //update--end--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
+                // update--end--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
               }else{
                 this.ipagination.total=0
                 this.dataSource=[]
@@ -152,7 +152,7 @@
       getDataByResult(result){
         if(result && result.length>0){
           return result.map(item=>{
-            //判断是否标记了带有子节点
+            // 判断是否标记了带有子节点
             if(item[this.hasChildrenField]=='1'){
               let loadChild = { id: item.id+'_loadChild', name: 'loading...', isLoading: true }
               item.children = [loadChild]
@@ -166,7 +166,7 @@
         if (expanded) {
           this.expandedRowKeys.push(record.id)
           if (record.children.length>0 && record.children[0].isLoading === true) {
-            let params = this.getQueryParams();//查询条件
+            let params = this.getQueryParams(); // 查询条件
             params[this.pidField] = record.id
             getAction(this.url.childList,params).then((res)=>{
               if(res.success){
@@ -227,7 +227,7 @@
           this.getFormDataById(nodeId,this.dataSource)
           let row = this.parentFormData
           this.expandedRowKeys.push(nodeId)
-          let params = this.getQueryParams();//查询条件
+          let params = this.getQueryParams(); // 查询条件
           params[this.pidField] = nodeId
           getAction(this.url.childList,params).then((res)=>{
             console.log("11111",res)
@@ -270,9 +270,9 @@
         let that = this;
         deleteAction(that.url.delete, {id: record.id}).then((res) => {
           if (res.success) {
-            //update--begin--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
+            // update--begin--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
             that.loadData();
-            //update--end--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
+            // update--end--autor:lvdandan-----date:20201204------for：JT-31 删除成功后默认展开已展开信息
           } else {
             that.$message.warning(res.message);
           }
@@ -296,7 +296,7 @@
         if (this.expandedRowKeys.length > 0) {
           return getAction(this.url.getChildListBatch,{ parentIds: this.expandedRowKeys.join(',') }).then(res=>{
             if (res.success && res.result.records.length>0) {
-              //已展开的数据批量子节点
+              // 已展开的数据批量子节点
               let records = res.result.records
               const listMap = new Map();
               for (let item of records) {
@@ -328,8 +328,7 @@
           return Promise.resolve()
         }
       },
-      
-       
+
     }
   }
 </script>

@@ -25,7 +25,7 @@ export const JEditableTableMixin = {
   },
   methods: {
 
-    /** 获取所有的editableTable实例 */
+    // 获取所有的editableTable实例
     getAllTable() {
       if (!(this.refKeys instanceof Array)) {
         throw this.throwNotArray('refKeys')
@@ -34,7 +34,7 @@ export const JEditableTableMixin = {
       return Promise.all(values)
     },
 
-    /** 遍历所有的JEditableTable实例 */
+    // 遍历所有的JEditableTable实例
     eachAllTable(callback) {
       // 开始遍历
       this.getAllTable().then(tables => {
@@ -46,9 +46,9 @@ export const JEditableTableMixin = {
       })
     },
 
-    /** 当点击新增按钮时调用此方法 */
+    // 当点击新增按钮时调用此方法
     add() {
-      //update-begin-author:lvdandan date:20201113 for:LOWCOD-1049 JEditaTable,子表默认添加一条数据，addDefaultRowNum设置无效 #1930
+      // update-begin-author:lvdandan date:20201113 for:LOWCOD-1049 JEditaTable,子表默认添加一条数据，addDefaultRowNum设置无效 #1930
       return new Promise((resolve) => {
         this.tableReset();
         resolve();
@@ -65,9 +65,9 @@ export const JEditableTableMixin = {
         if (typeof this.addAfter === 'function') this.addAfter(this.model)
         this.edit({})
       })
-      //update-end-author:lvdandan date:20201113 for:LOWCOD-1049 JEditaTable,子表默认添加一条数据，addDefaultRowNum设置无效 #1930
+      // update-end-author:lvdandan date:20201113 for:LOWCOD-1049 JEditaTable,子表默认添加一条数据，addDefaultRowNum设置无效 #1930
     },
-    /** 当点击了编辑（修改）按钮时调用此方法 */
+    // 当点击了编辑（修改）按钮时调用此方法
     edit(record) {
       if(record && '{}'!=JSON.stringify(record)){
         this.tableReset();
@@ -79,18 +79,18 @@ export const JEditableTableMixin = {
       this.model = Object.assign({}, record)
       if (typeof this.editAfter === 'function') this.editAfter(this.model)
     },
-    /** 关闭弹窗，并将所有JEditableTable实例回归到初始状态 */
+    // 关闭弹窗，并将所有JEditableTable实例回归到初始状态
     close() {
       this.visible = false
       this.$emit('close')
     },
-    //清空子表table的数据
+    // 清空子表table的数据
     tableReset(){
       this.eachAllTable((item) => {
         item.clearRow()
       })
     },
-    /** 查询某个tab的数据 */
+    // 查询某个tab的数据
     requestSubTableData(url, params, tab, success) {
       tab.loading = true
       getAction(url, params).then(res => {
@@ -109,7 +109,7 @@ export const JEditableTableMixin = {
         tab.loading = false
       })
     },
-    /** 发起请求，自动判断是执行新增还是修改操作 */
+    // 发起请求，自动判断是执行新增还是修改操作
     request(formData) {
       let url = this.url.add, method = 'post'
       if (this.model.id) {
@@ -132,22 +132,22 @@ export const JEditableTableMixin = {
 
     /* --- handle 事件 --- */
 
-    /** ATab 选项卡切换事件 */
+    // ATab 选项卡切换事件
     handleChangeTabs(key) {
       // 自动重置scrollTop状态，防止出现白屏
       getRefPromise(this, key).then(editableTable => {
         editableTable.resetScrollTop()
       })
     },
-    /** 关闭按钮点击事件 */
+    // 关闭按钮点击事件
     handleCancel() {
       this.close()
     },
-    /** 确定按钮点击事件 */
+    // 确定按钮点击事件
     handleOk() {
-      /** 触发表单验证 */
+      // 触发表单验证
       this.getAllTable().then(tables => {
-        /** 一次性验证主表和所有的次表 */
+        // 一次性验证主表和所有的次表
         return validateFormAndTables(this.form, tables)
       }).then(allValues => {
         if (typeof this.classifyIntoFormData !== 'function') {
@@ -168,12 +168,12 @@ export const JEditableTableMixin = {
 
     /* --- throw --- */
 
-    /** not a function */
+    // not a function
     throwNotFunction(name) {
       return `${name} 未定义或不是一个函数`
     },
 
-    /** not a array */
+    // not a array
     throwNotArray(name) {
       return `${name} 未定义或不是一个数组`
     }

@@ -1,6 +1,5 @@
 package org.jeecg.modules.cloud.feign.controller;
 
-
 import cn.hutool.core.util.RandomUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,13 +45,13 @@ public class JeecgTestFeignController {
     @GetMapping(value = "/rabbitmq")
     @ApiOperation(value = "测试rabbitmq", notes = "测试rabbitmq")
     public Result<?> rabbitMqClientTest(HttpServletRequest req) {
-        //rabbitmq消息队列测试
+        // rabbitmq消息队列测试
         BaseMap map = new BaseMap();
         map.put("orderId", RandomUtil.randomNumbers(10));
         rabbitMqClient.sendMessage(CloudConstant.MQ_JEECG_PLACE_ORDER, map);
-        rabbitMqClient.sendMessage(CloudConstant.MQ_JEECG_PLACE_ORDER_TIME, map,10);
+        rabbitMqClient.sendMessage(CloudConstant.MQ_JEECG_PLACE_ORDER_TIME, map, 10);
 
-        //rabbitmq消息总线测试
+        // rabbitmq消息总线测试
         BaseMap params = new BaseMap();
         params.put("orderId", "123456");
         rabbitMqClient.publishEvent(CloudConstant.MQ_DEMO_BUS_EVENT, params);

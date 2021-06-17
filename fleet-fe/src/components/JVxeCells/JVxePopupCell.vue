@@ -26,7 +26,7 @@
       },
     },
     methods: {
-      /** popup回调 */
+      // popup回调
       handlePopupInput(value, others) {
         const {row, originColumn: col} = this
         // 存储输入的值

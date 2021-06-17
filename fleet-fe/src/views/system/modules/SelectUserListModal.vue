@@ -27,7 +27,6 @@
             </a-form-item>
           </a-col>
 
-
           <template v-if="toggleSearchStatus">
             <a-col :span="6">
               <a-form-item label="邮箱">
@@ -170,7 +169,7 @@
         this.edit(selectUser,userIds);
       },
       edit(selectUser,userIds){
-        //控制台报错
+        // 控制台报错
         if(userIds&&userIds.length>0){
           this.selectedRowKeys = userIds.split(',');
         }else{
@@ -192,7 +191,7 @@
         if(arg===1){
           this.ipagination.current = 1;
         }
-        let params = this.getQueryParams();//查询条件
+        let params = this.getQueryParams(); // 查询条件
         getUserList(params).then((res)=>{
           if(res.success){
             this.dataSource = res.result.records;
@@ -203,12 +202,12 @@
       getQueryParams(){
         let param = Object.assign({}, this.queryParam,this.isorter);
         param.field = this.getQueryField();
-        //--update-begin----author:scott---date:20190818------for:新建公告时指定特定用户翻页错误SelectUserListModal #379----
+        // --update-begin----author:scott---date:20190818------for:新建公告时指定特定用户翻页错误SelectUserListModal #379----
         // param.current = this.ipagination.current;
         // param.pageSize = this.ipagination.pageSize;
         param.pageNo = this.ipagination.current;
         param.pageSize = this.ipagination.pageSize;
-        //--update-end----author:scott---date:20190818------for:新建公告时指定特定用户翻页错误SelectUserListModal #379---
+        // --update-end----author:scott---date:20190818------for:新建公告时指定特定用户翻页错误SelectUserListModal #379---
         return filterObj(param);
       },
       getQueryField(){
@@ -218,7 +217,7 @@
         }
         return str;
       },
-      //--update-begin----author:kangxiaolin---date:20190921------for:系统发送通知 用户多选失败 #513----
+      // --update-begin----author:kangxiaolin---date:20190921------for:系统发送通知 用户多选失败 #513----
       onSelectChange (selectedRowKeys) {
         this.selectedRowKeys = selectedRowKeys;
       },
@@ -232,7 +231,7 @@
             }
           })
         }
-        //--update-end----author:kangxiaolin---date:20190921------for:系统发送通知 用户多选失败 #513----
+        // --update-end----author:kangxiaolin---date:20190921------for:系统发送通知 用户多选失败 #513----
       },
 
       searchReset(){
@@ -243,7 +242,7 @@
         that.loadData(1);
       },
       handleTableChange(pagination, filters, sorter){
-        //TODO 筛选
+        // TODO 筛选
         if (Object.keys(sorter).length>0){
           this.isorter.column = sorter.field;
           this.isorter.order = "ascend"==sorter.order?"asc":"desc"

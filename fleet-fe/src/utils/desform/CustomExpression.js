@@ -13,7 +13,7 @@
 *
 */
 
-/** 字段默认值官方示例：获取地址 */
+// 字段默认值官方示例：获取地址
 export function demoFieldDefVal_getAddress(arg) {
   if (!arg) {
     arg = '朝阳区'

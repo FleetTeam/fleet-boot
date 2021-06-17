@@ -69,7 +69,7 @@
         newFileList: [],
         uploadGoOn:true,
         previewVisible: false,
-        //---------------------------- begin 图片左右换位置 -------------------------------------
+        // ---------------------------- begin 图片左右换位置 -------------------------------------
         previewImage: '',
         containerId:'',
         top:'',
@@ -78,7 +78,7 @@
         showMoverTask:false,
         moverHold:false,
         currentImg:''
-        //---------------------------- end 图片左右换位置 -------------------------------------
+        // ---------------------------- end 图片左右换位置 -------------------------------------
       }
     },
     props:{
@@ -109,7 +109,7 @@
         default: false
       },
       // update-end- --- author:wangshuai ------ date:20190929 ---- for:Jupload组件增加是否能够点击
-      //此属性被废弃了
+      // 此属性被废弃了
       triggerChange:{
         type: Boolean,
         required: false,
@@ -163,10 +163,10 @@
     },
     created(){
       const token = Vue.ls.get(ACCESS_TOKEN);
-      //---------------------------- begin 图片左右换位置 -------------------------------------
+      // ---------------------------- begin 图片左右换位置 -------------------------------------
       this.headers = {"X-Access-Token":token};
       this.containerId = 'container-ty-'+new Date().getTime();
-      //---------------------------- end 图片左右换位置 -------------------------------------
+      // ---------------------------- end 图片左右换位置 -------------------------------------
     },
 
     methods:{
@@ -193,7 +193,7 @@
       },
       initFileList(paths){
         if(!paths || paths.length==0){
-          //return [];
+          // return [];
           // update-begin- --- author:os_chengtgen ------ date:20190729 ---- for:issues:326,Jupload组件初始化bug
           this.fileList = [];
           return;
@@ -248,7 +248,7 @@
             return false;
           }
         }
-        //TODO 扩展功能验证文件大小
+        // TODO 扩展功能验证文件大小
         return true
       },
       handleChange(info) {
@@ -270,7 +270,7 @@
               return file;
             });
           }
-          //this.$message.success(`${info.file.name} 上传成功!`);
+          // this.$message.success(`${info.file.name} 上传成功!`);
         }else if (info.file.status === 'error') {
           this.$message.error(`${info.file.name} 上传失败.`);
         }else if(info.file.status === 'removed'){
@@ -278,11 +278,11 @@
         }
         this.fileList = fileList
         if(info.file.status==='done' || info.file.status === 'removed'){
-          //returnUrl为true时仅返回文件路径
+          // returnUrl为true时仅返回文件路径
           if(this.returnUrl){
             this.handlePathChange()
           }else{
-            //returnUrl为false时返回文件名称、文件路径及文件大小
+            // returnUrl为false时返回文件名称、文件路径及文件大小
             this.newFileList = [];
             for(var a=0;a<fileList.length;a++){
               // update-begin-author:lvdandan date:20200603 for:【TESTA-514】【开源issue】多个文件同时上传时，控制台报错
@@ -303,7 +303,7 @@
         }
       },
       handleDelete(file){
-        //如有需要新增 删除逻辑
+        // 如有需要新增 删除逻辑
         console.log(file)
       },
       handlePreview(file){
@@ -317,11 +317,11 @@
       handleCancel(){
         this.previewVisible = false;
       },
-      //---------------------------- begin 图片左右换位置 -------------------------------------
+      // ---------------------------- begin 图片左右换位置 -------------------------------------
       moveLast(){
-        //console.log(ev)
-        //console.log(this.fileList)
-        //console.log(this.currentImg)
+        // console.log(ev)
+        // console.log(this.fileList)
+        // console.log(this.currentImg)
         let index = this.getIndexByUrl();
         if(index==0){
           this.$message.warn('未知的操作')
@@ -384,7 +384,7 @@
           this.moveDisplay = 'none';
         });
       }
-    
+
       let picList = document.getElementById(this.containerId)?document.getElementById(this.containerId).getElementsByClassName('ant-upload-list-picture-card'):[];
       if(picList && picList.length>0){
         picList[0].addEventListener('mouseover',(ev)=>{
@@ -404,7 +404,7 @@
         picList[0].addEventListener('mouseout',(ev)=>{
           ev = ev || window.event;
           let target = ev.target || ev.srcElement;
-          //console.log('移除',target)
+          // console.log('移除',target)
           if('ant-upload-list-item-info' == target.className){
             this.showMoverTask=true
             setTimeout(()=>{
@@ -416,7 +416,7 @@
             this.moveDisplay = 'none';
           }
         })
-        //---------------------------- end 图片左右换位置 -------------------------------------
+        // ---------------------------- end 图片左右换位置 -------------------------------------
       }
     },
     model: {
@@ -437,7 +437,7 @@
     }
   }
 }
-  //---------------------------- begin 图片左右换位置 -------------------------------------
+  // ---------------------------- begin 图片左右换位置 -------------------------------------
   .uploadty-mover-mask{
     background-color: rgba(0, 0, 0, 0.5);
     opacity: .8;
@@ -445,5 +445,5 @@
     height: 28px;
     line-height: 28px;
   }
-  //---------------------------- end 图片左右换位置 -------------------------------------
+  // ---------------------------- end 图片左右换位置 -------------------------------------
 </style>

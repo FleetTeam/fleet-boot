@@ -2,18 +2,18 @@
   <a-card :bordered="false" style="height: 100%; padding-bottom: 200px">
     <div class="table-page-search-wrapper">
       <a-form layout="inline" :form="form">
-        <!--  字典下拉 -->
+        <!-- 字典下拉 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="性别">
               <j-dict-select-tag v-model="formData.sex" title="性别" dictCode="sex" placeholder="请选择性别" />
-              <!--  <j-dict-select-tag title="性别" dictCode="sex" disabled/>-->
+              <!-- <j-dict-select-tag title="性别" dictCode="sex" disabled/> -->
             </a-form-item>
           </a-col>
           <a-col :span="12">选中值：{{ formData.sex }}</a-col>
         </a-row>
 
-        <!--  字典表下拉 -->
+        <!-- 字典表下拉 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="字典表下拉">
@@ -23,7 +23,7 @@
           <a-col :span="12">选中值：{{ formData.user }}</a-col>
         </a-row>
 
-        <!--  带条件字典表下拉 -->
+        <!-- 带条件字典表下拉 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="字典表下拉(带条件)">
@@ -37,7 +37,7 @@
           <a-col :span="12">选中值：{{ formData.user2 }}</a-col>
         </a-row>
 
-        <!-- 字典搜索  -->
+        <!-- 字典搜索 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="字典搜索(同步)">
@@ -52,7 +52,7 @@
           <a-col :span="12">选中值：{{ formData.searchValue }}</a-col>
         </a-row>
 
-        <!--  字典搜索 异步加载 -->
+        <!-- 字典搜索 异步加载 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="字典搜索(异步)">
@@ -69,7 +69,7 @@
           <a-col :span="12">选中值：{{ formData.asyncSelectValue }}</a-col>
         </a-row>
 
-        <!--  JMultiSelectTag -->
+        <!-- JMultiSelectTag -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="字典下拉(多选)">
@@ -79,7 +79,7 @@
           <a-col :span="12">多选组合(v-model)：{{ formData.selMuti }}</a-col>
         </a-row>
 
-        <!--  部门选择控件 -->
+        <!-- 部门选择控件 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="选择部门 自定义返回值">
@@ -103,7 +103,7 @@
           <a-col :span="12">选中的部门ID(v-model):{{ departId }}</a-col>
         </a-row>
 
-        <!--  通过部门选择用户控件 -->
+        <!-- 通过部门选择用户控件 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="选择用户">
@@ -113,7 +113,7 @@
           <a-col :span="12">选中的用户(v-model):{{ userIds }}</a-col>
         </a-row>
 
-        <!--  用户选择控件 -->
+        <!-- 用户选择控件 -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="选择用户">
@@ -169,7 +169,7 @@
           </a-col>
           <a-col :span="12">选中值：{{ formData.selectDataDict }}</a-col>
         </a-row>
-        <!--  JCheckbox -->
+        <!-- JCheckbox -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="多选组合">
@@ -179,7 +179,7 @@
           <a-col :span="12">多选组合(v-model)：{{ jcheckbox.values }}</a-col>
         </a-row>
 
-        <!--  JCodeEditor -->
+        <!-- JCodeEditor -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="代码输入框" style="min-height: 120px">
@@ -194,7 +194,7 @@
           <a-col :span="12">代码输入框(v-model)：{{ jcodedditor.value }}</a-col>
         </a-row>
 
-        <!--  JDate -->
+        <!-- JDate -->
         <a-row :gutter="24">
           <a-col :span="12">
             <a-form-item label="日期选择框">
@@ -666,7 +666,7 @@ sayHi('hello, world!')`,
     selectReset() {
       this.selectList = []
     },
-    //通过组织机构筛选选择用户
+    // 通过组织机构筛选选择用户
     onSearchDepUser() {
       this.$refs.JSearchUserByDep.showModal()
       this.selectedDepUsers = ''

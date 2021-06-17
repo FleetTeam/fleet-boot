@@ -9,12 +9,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
  * @Description: 部门角色
  * @Author: fleet-team
- * @Date:   2021-04-19
+ * @Date: 2021-04-19
  * @Version: V1.0
  */
 public interface SysDepartRoleMapper extends BaseMapper<SysDepartRole> {
     /**
      * 根据用户id，部门id查询可授权所有部门角色
+     *
      * @param orgCode
      * @param userId
      * @return

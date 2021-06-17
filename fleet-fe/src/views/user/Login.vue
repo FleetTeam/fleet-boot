@@ -129,7 +129,7 @@
         loginBtn: false,
         requiredTwoStepCaptcha: false,
         stepCaptchaVisible: false,
-        //手机号登录用
+        // 手机号登录用
         state: {
           time: 60,
           smsSendBtn: false,
@@ -161,7 +161,7 @@
         }
         callback()
       },
-      /**刷新验证码*/
+      // 刷新验证码
       handleChangeCheckCode(){
         this.currdatetime = new Date().getTime();
         this.model.inputCode = ''
@@ -177,7 +177,7 @@
           this.requestCodeSuccess=false
         })
       },
-      /**跳转到登录页面的参数-账号获取*/
+      // 跳转到登录页面的参数-账号获取
       getRouterData(){
         this.$nextTick(() => {
           let temp = this.$route.params.username || this.$route.query.username || ''
@@ -189,7 +189,7 @@
       handleRememberMeChange(e){
         this.model.rememberMe = e.target.checked
       },
-      //登录
+      // 登录
       handleSubmit () {
         let that = this
         let loginParams = {};
@@ -226,7 +226,7 @@
           callback(err)
         })
       },
-      //账号密码登录
+      // 账号密码登录
       loginByUsername(){
         this.validateFields([ 'username', 'password', 'inputCode' ], (err)=>{
           if(!err){
@@ -248,7 +248,7 @@
           }
         })
       },
-      //手机号码登录
+      // 手机号码登录
       loginByPhone(){
         this.validateFields([ 'mobile', 'captcha' ], (err) => {
           if (!err) {
@@ -269,7 +269,7 @@
           }
         })
       },
-      //登录后台失败
+      // 登录后台失败
       requestFailed (err) {
         let description = ((err.response || {}).data || {}).message || err.message || "请求出现错误，请稍后再试"
         this.$notification[ 'error' ]({
@@ -277,7 +277,7 @@
           description: description,
           duration: 4,
         });
-        //密码错误后更新验证码
+        // 密码错误后更新验证码
         if(description.indexOf('密码错误')>0){
           this.handleChangeCheckCode();
         }
@@ -286,7 +286,7 @@
       loginSelectOk(){
         this.loginSuccess()
       },
-      //登录成功
+      // 登录成功
       loginSuccess () {
         this.$router.push({ path: "/dashboard/analysis" }).catch(()=>{
           console.log('登录跳转首页出错,这个错误从哪里来的')
@@ -303,7 +303,7 @@
           callback("您的手机号码格式不正确!");
         }
       },
-      //获取验证码
+      // 获取验证码
       getCaptcha (e) {
         e.preventDefault();
         let that = this;
@@ -358,7 +358,7 @@
           this.stepCaptchaVisible = false
         })
       },
-      //获取密码加密规则
+      // 获取密码加密规则
       getEncrypte(){
         var encryptedString = Vue.ls.get(ENCRYPTED_STRING);
         if(encryptedString == null){

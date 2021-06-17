@@ -1,36 +1,64 @@
 package org.fleet.common.system.vo;
 
 /**
- *  部门机构model
+ * 部门机构model
  */
 public class SysDepartModel {
-    /**ID*/
+    /**
+     * ID
+     */
     private String id;
-    /**父机构ID*/
+    /**
+     * 父机构ID
+     */
     private String parentId;
-    /**机构/部门名称*/
+    /**
+     * 机构/部门名称
+     */
     private String departName;
-    /**英文名*/
+    /**
+     * 英文名
+     */
     private String departNameEn;
-    /**缩写*/
+    /**
+     * 缩写
+     */
     private String departNameAbbr;
-    /**排序*/
+    /**
+     * 排序
+     */
     private Integer departOrder;
-    /**描述*/
+    /**
+     * 描述
+     */
     private String description;
-    /**机构类别 1组织机构，2岗位*/
+    /**
+     * 机构类别 1组织机构，2岗位
+     */
     private String orgCategory;
-    /**机构类型*/
+    /**
+     * 机构类型
+     */
     private String orgType;
-    /**机构编码*/
+    /**
+     * 机构编码
+     */
     private String orgCode;
-    /**手机号*/
+    /**
+     * 手机号
+     */
     private String mobile;
-    /**传真*/
+    /**
+     * 传真
+     */
     private String fax;
-    /**地址*/
+    /**
+     * 地址
+     */
     private String address;
-    /**备注*/
+    /**
+     * 备注
+     */
     private String memo;
 
     public String getId() {

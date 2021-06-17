@@ -578,16 +578,16 @@
         },
         watch:{
           data(){
-            //this.rest(this.data);
+            // this.rest(this.data);
           }
         },
         methods: {
             show(){
-              //this.rest(pick(this.data.value,'second','minute','hour','day','week','month','year'));
-              //this.rest(this.data.value);
+              // this.rest(pick(this.data.value,'second','minute','hour','day','week','month','year'));
+              // this.rest(this.data.value);
               Object.assign(this.data.value,this.result);
               console.log('data初始化',this.data);
-              //this.result = this.data.value;
+              // this.result = this.data.value;
               this.visible=true;
             },
             getValue(){
@@ -601,7 +601,7 @@
             },
             close(){
                 this.visible = false;
-                //this.$emit('close')
+                // this.$emit('close')
             },
             rest(data){
                 for(let i in data){
@@ -624,7 +624,7 @@
                 }
             },
             callback (key) {
-                //console.log(key)
+                // console.log(key)
             }
         }
     }

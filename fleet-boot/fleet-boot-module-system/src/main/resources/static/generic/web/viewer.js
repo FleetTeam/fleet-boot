@@ -44,7 +44,6 @@ PDFJS.imageResourcesPath = './images/';
 
 var mozL10n = document.mozL10n || document.webL10n;
 
-
 var CSS_UNITS = 96.0 / 72.0;
 var DEFAULT_SCALE = 'auto';
 var UNKNOWN_SCALE = 0;
@@ -89,7 +88,7 @@ var CustomStyle = (function CustomStyleClosure() {
       }
     }
 
-    //if all fails then set to undefined
+    // if all fails then set to undefined
     return (_cache[propName] = 'undefined');
   };
 
@@ -422,8 +421,6 @@ var ProgressBar = (function ProgressBarClosure() {
   return ProgressBar;
 })();
 
-
-
 var DEFAULT_PREFERENCES = {
   showPreviousViewOnLoad: true,
   defaultZoomValue: '',
@@ -438,7 +435,6 @@ var DEFAULT_PREFERENCES = {
   disableTextLayer: false,
   useOnlyCssZoom: false
 };
-
 
 var SidebarView = {
   NONE: 0,
@@ -580,8 +576,6 @@ var Preferences = {
   }
 };
 
-
-
 Preferences._writeToStorage = function (prefObj) {
   return new Promise(function (resolve) {
     localStorage.setItem('pdfjs.preferences', JSON.stringify(prefObj));
@@ -595,7 +589,6 @@ Preferences._readFromStorage = function (prefObj) {
     resolve(readPrefs);
   });
 };
-
 
 (function mozPrintCallbackPolyfillClosure() {
   if ('mozPrintCallback' in document.createElement('canvas')) {
@@ -723,8 +716,6 @@ Preferences._readFromStorage = function (prefObj) {
   }
 })();
 
-
-
 var DownloadManager = (function DownloadManagerClosure() {
 
   function download(blobUrl, filename) {
@@ -808,10 +799,6 @@ var DownloadManager = (function DownloadManagerClosure() {
   return DownloadManager;
 })();
 
-
-
-
-
 /**
  * View History - This is a utility for saving various view parameters for
  *                recently opened files.
@@ -858,8 +845,6 @@ var ViewHistory = (function ViewHistoryClosure() {
       return new Promise(function (resolve) {
         var databaseStr = JSON.stringify(this.database);
 
-
-
         localStorage.setItem('database', databaseStr);
         resolve();
       }.bind(this));
@@ -867,7 +852,6 @@ var ViewHistory = (function ViewHistoryClosure() {
 
     _readFromStorage: function ViewHistory_readFromStorage() {
       return new Promise(function (resolve) {
-
 
         resolve(localStorage.getItem('database'));
       });
@@ -901,7 +885,6 @@ var ViewHistory = (function ViewHistoryClosure() {
 
   return ViewHistory;
 })();
-
 
 /**
  * Creates a "search bar" given a set of DOM elements that act as controls
@@ -1049,7 +1032,6 @@ var PDFFindBar = (function PDFFindBarClosure() {
   };
   return PDFFindBar;
 })();
-
 
 var FindStates = {
   FIND_FOUND: 0,
@@ -1434,7 +1416,6 @@ var PDFFindController = (function PDFFindControllerClosure() {
   return PDFFindController;
 })();
 
-
 var PDFHistory = {
   initialized: false,
   initialDestination: null,
@@ -1786,7 +1767,6 @@ var PDFHistory = {
   }
 };
 
-
 var SecondaryToolbar = {
   opened: false,
   previousContainerHeight: null,
@@ -1929,7 +1909,6 @@ var SecondaryToolbar = {
     }
   }
 };
-
 
 var DELAY_BEFORE_RESETTING_SWITCH_IN_PROGRESS = 1500; // in ms
 var DELAY_BEFORE_HIDING_CONTROLS = 3000; // in ms
@@ -2307,7 +2286,6 @@ var PDFPresentationMode = (function PDFPresentationModeClosure() {
   return PDFPresentationMode;
 })();
 
-
 /* Copyright 2013 Rob Wu <gwnRob@gmail.com>
  * https://github.com/Rob--W/grab-to-pan.js
  *
@@ -2596,7 +2574,6 @@ var HandTool = {
   }
 };
 
-
 var OverlayManager = {
   overlays: {},
   active: null,
@@ -2724,7 +2701,6 @@ var OverlayManager = {
   }
 };
 
-
 var PasswordPrompt = {
   overlayName: null,
   updatePassword: null,
@@ -2786,7 +2762,6 @@ var PasswordPrompt = {
     }
   }
 };
-
 
 /**
  * @typedef {Object} PDFDocumentPropertiesOptions
@@ -2995,7 +2970,6 @@ var PDFDocumentProperties = (function PDFDocumentPropertiesClosure() {
   return PDFDocumentProperties;
 })();
 
-
 var PresentationModeState = {
   UNKNOWN: 0,
   NORMAL: 1,
@@ -3005,7 +2979,6 @@ var PresentationModeState = {
 
 var IGNORE_CURRENT_POSITION_ON_ZOOM = false;
 var DEFAULT_CACHE_SIZE = 10;
-
 
 var CLEANUP_TIMEOUT = 30000;
 
@@ -3167,7 +3140,6 @@ var PDFRenderingQueue = (function PDFRenderingQueueClosure() {
 
   return PDFRenderingQueue;
 })();
-
 
 var TEXT_LAYER_RENDER_DELAY = 200; // ms
 
@@ -3700,7 +3672,6 @@ var PDFPageView = (function PDFPageViewClosure() {
   return PDFPageView;
 })();
 
-
 var MAX_TEXT_DIVS_TO_RENDER = 100000;
 
 var NonWhitespaceRegexp = /\S/;
@@ -4102,7 +4073,6 @@ DefaultTextLayerFactory.prototype = {
   }
 };
 
-
 /**
  * @typedef {Object} AnnotationsLayerBuilderOptions
  * @property {HTMLDivElement} pageDiv
@@ -4260,7 +4230,6 @@ DefaultAnnotationsLayerFactory.prototype = {
     });
   }
 };
-
 
 /**
  * @typedef {Object} PDFViewerOptions
@@ -5009,9 +4978,7 @@ var SimpleLinkService = (function SimpleLinkServiceClosure() {
   return SimpleLinkService;
 })();
 
-
 var THUMBNAIL_SCROLL_MARGIN = -19;
-
 
 var THUMBNAIL_WIDTH = 98; // px
 var THUMBNAIL_CANVAS_BORDER_WIDTH = 1; // px
@@ -5315,7 +5282,6 @@ var PDFThumbnailView = (function PDFThumbnailViewClosure() {
 
 PDFThumbnailView.tempImageCache = null;
 
-
 /**
  * @typedef {Object} PDFThumbnailViewerOptions
  * @property {HTMLDivElement} container - The container for the thumbnail
@@ -5498,7 +5464,6 @@ var PDFThumbnailViewer = (function PDFThumbnailViewerClosure() {
   return PDFThumbnailViewer;
 })();
 
-
 /**
  * @typedef {Object} PDFOutlineViewOptions
  * @property {HTMLDivElement} container - The viewer element.
@@ -5593,7 +5558,6 @@ var PDFOutlineView = (function PDFOutlineViewClosure() {
   return PDFOutlineView;
 })();
 
-
 /**
  * @typedef {Object} PDFAttachmentViewOptions
  * @property {HTMLDivElement} container - The viewer element.
@@ -5678,7 +5642,6 @@ var PDFAttachmentView = (function PDFAttachmentViewClosure() {
 
   return PDFAttachmentView;
 })();
-
 
 var PDFViewerApplication = {
   initialBookmark: document.location.hash.substring(1),
@@ -5956,7 +5919,6 @@ var PDFViewerApplication = {
     return PDFJS.shadow(this, 'loadingBar', bar);
   },
 
-
   setTitleUsingUrl: function pdfViewSetTitleUsingUrl(url) {
     this.url = url;
     try {
@@ -5973,7 +5935,7 @@ var PDFViewerApplication = {
       // Embedded PDF viewers should not be changing their parent page's title.
       return;
     }
-    //document.title = title;
+    // document.title = title;
   },
 
   close: function pdfViewClose() {
@@ -6853,7 +6815,6 @@ var PDFViewerApplication = {
 };
 window.PDFView = PDFViewerApplication; // obsolete name, using it as an alias
 
-
 function webViewerLoad(evt) {
   PDFViewerApplication.initialize().then(webViewerInitialized);
 }
@@ -7052,7 +7013,6 @@ function webViewerInitialized() {
 
   document.getElementById('download').addEventListener('click',
     SecondaryToolbar.downloadClick.bind(SecondaryToolbar));
-
 
   if (file && file.lastIndexOf('file:', 0) === 0) {
     // file:-scheme. Load the contents in the main thread because QtWebKit
@@ -7610,5 +7570,4 @@ window.addEventListener('afterprint', function afterPrint(evt) {
     window.requestAnimationFrame(resolve);
   });
 })();
-
 

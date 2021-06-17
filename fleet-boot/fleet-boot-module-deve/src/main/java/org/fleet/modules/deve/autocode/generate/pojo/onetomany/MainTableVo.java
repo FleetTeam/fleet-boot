@@ -3,8 +3,11 @@ package org.fleet.modules.deve.autocode.generate.pojo.onetomany;
 import java.util.List;
 import java.util.Map;
 
-
 public class MainTableVo {
+    public Integer fieldRowNum;
+    public Integer searchFieldNum;
+    public Integer fieldRequiredNum;
+    List<SubTableVo> subTables;
     private String entityPackage;
     private String tableName;
     private String entityName;
@@ -12,19 +15,14 @@ public class MainTableVo {
     private String primaryKeyPolicy;
     private String sequenceCode;
     private String ftl_mode = "A";
-
-    List<SubTableVo> subTables;
-
-    public Integer fieldRowNum;
-
-    public Integer searchFieldNum;
-
-    public Integer fieldRequiredNum;
-
     private Map<?, ?> extendParams;
 
     public List<SubTableVo> getSubTables() {
         return this.subTables;
+    }
+
+    public void setSubTables(List<SubTableVo> subTables) {
+        this.subTables = subTables;
     }
 
     public Integer getFieldRowNum() {
@@ -35,36 +33,32 @@ public class MainTableVo {
         this.fieldRowNum = fieldRowNum;
     }
 
-    public void setSubTables(List<SubTableVo> subTables) {
-        this.subTables = subTables;
-    }
-
     public String getEntityPackage() {
         return this.entityPackage;
-    }
-
-    public String getTableName() {
-        return this.tableName;
-    }
-
-    public String getEntityName() {
-        return this.entityName;
-    }
-
-    public String getFtlDescription() {
-        return this.ftlDescription;
     }
 
     public void setEntityPackage(String entityPackage) {
         this.entityPackage = entityPackage;
     }
 
+    public String getTableName() {
+        return this.tableName;
+    }
+
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
 
+    public String getEntityName() {
+        return this.entityName;
+    }
+
     public void setEntityName(String entityName) {
         this.entityName = entityName;
+    }
+
+    public String getFtlDescription() {
+        return this.ftlDescription;
     }
 
     public void setFtlDescription(String ftlDescription) {
@@ -83,12 +77,12 @@ public class MainTableVo {
         return this.primaryKeyPolicy;
     }
 
-    public String getSequenceCode() {
-        return this.sequenceCode;
-    }
-
     public void setPrimaryKeyPolicy(String primaryKeyPolicy) {
         this.primaryKeyPolicy = primaryKeyPolicy;
+    }
+
+    public String getSequenceCode() {
+        return this.sequenceCode;
     }
 
     public void setSequenceCode(String sequenceCode) {
@@ -119,5 +113,3 @@ public class MainTableVo {
         this.extendParams = extendParams;
     }
 }
-
-

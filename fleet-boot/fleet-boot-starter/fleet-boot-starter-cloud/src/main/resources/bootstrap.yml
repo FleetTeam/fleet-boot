@@ -3,7 +3,7 @@ spring:
     # 当前激活环境
     active: @profile.name@
   cloud:
-    #配置Bus id(远程推送事件)
+    # 配置Bus id(远程推送事件)
     bus:
       id: ${spring.application.name}:${server.port}
     nacos:
@@ -21,11 +21,11 @@ spring:
         # 配置文件后缀
         file-extension: yaml
         prefix: @prefix.name@
-        # 支持多个共享 Data Id 的配置，优先级小于extension-configs,自定义 Data Id 配置 属性是个集合，内部由 Config POJO 组成。Config 有 3 个属性，分别是 dataId, group 以及 refresh
-        #shared-configs[0]:
-          #data-id: @prefix.name@-common.yaml # 配置文件名-Data Id
-          #group: @config.group@   # 默认为DEFAULT_GROUP
-          #refresh: false   # 是否动态刷新，默认为false
+          # 支持多个共享 Data Id 的配置，优先级小于extension-configs,自定义 Data Id 配置 属性是个集合，内部由 Config POJO 组成。Config 有 3 个属性，分别是 dataId, group 以及 refresh
+          # shared-configs[0]:
+          # data-id: @prefix.name@-common.yaml # 配置文件名-Data Id
+          # group: @config.group@   # 默认为DEFAULT_GROUP
+        # refresh: false   # 是否动态刷新，默认为false
       discovery:
         namespace: @config.namespace@
         server-addr: @config.server-addr@

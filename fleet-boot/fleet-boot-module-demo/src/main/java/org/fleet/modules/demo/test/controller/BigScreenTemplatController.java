@@ -40,6 +40,7 @@ public class BigScreenTemplatController extends FleetController<FleetDemo, IFlee
 
     /**
      * 生产销售监控模版
+     *
      * @param modelAndView
      * @return
      */
@@ -51,6 +52,7 @@ public class BigScreenTemplatController extends FleetController<FleetDemo, IFlee
 
     /**
      * 智慧物流监控模版
+     *
      * @param modelAndView
      * @return
      */

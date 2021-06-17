@@ -21,7 +21,7 @@
     </div>
     <!-- 操作按钮区域 -->
     <div class="table-operator" :md="24" :sm="24" style="margin-top: -15px">
-      <!--<a-button @click="handleEdit" type="primary" icon="edit" style="margin-top: 16px">用户编辑</a-button>-->
+      <!-- <a-button @click="handleEdit" type="primary" icon="edit" style="margin-top: 16px">用户编辑</a-button> -->
       <a-button @click="handleAddUserDepart" type="primary" icon="plus">添加已有用户</a-button>
       <a-button @click="handleAdd" type="primary" icon="plus" style="margin-top: 16px">新建用户</a-button>
 
@@ -58,8 +58,6 @@
         :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}"
         @change="handleTableChange">
 
-
-
         <span slot="action" slot-scope="text, record">
           <a @click="handleEdit(record)">编辑</a>
 
@@ -86,7 +84,6 @@
             </a-menu>
           </a-dropdown>
         </span>
-
 
       </a-table>
     </div>
@@ -173,12 +170,12 @@
           this.$message.error("请设置url.list属性!")
           return
         }
-        //加载数据 若传入参数1则加载第一页的内容
+        // 加载数据 若传入参数1则加载第一页的内容
         if (arg === 1) {
           this.ipagination.current = 1;
         }
-        //if (this.currentDeptId === '') return;
-        let params = this.getQueryParams();//查询条件
+        // if (this.currentDeptId === '') return;
+        let params = this.getQueryParams(); // 查询条件
         params.depId = this.currentDeptId;
         getAction(this.url.list, params).then((res) => {
           if (res.success && res.result) {
@@ -254,7 +251,7 @@
         });
       },
       open(record) {
-        //console.log(record);
+        // console.log(record);
         this.currentDeptId = record.id;
         this.currentDept = record;
         this.loadData(1);
@@ -288,7 +285,7 @@
           this.$message.error("请选择一个部门!")
         } else {
           this.$refs.modalForm.departDisabled = true;
-          //初始化负责部门
+          // 初始化负责部门
           this.$refs.modalForm.nextDepartOptions=[{value:this.currentDept.key,label:this.currentDept.title}]
           this.$refs.modalForm.title = "新增";
           this.$refs.modalForm.edit({activitiSync:'1',userIdentity:1,selecteddeparts:this.currentDeptId})

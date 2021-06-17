@@ -19,7 +19,6 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
         this.adminContextPath = adminServerProperties.getContextPath();
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 登录成功处理类
@@ -28,16 +27,16 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
         successHandler.setDefaultTargetUrl(adminContextPath + "/");
 
         http.authorizeRequests()
-                //静态文件允许访问
+                // 静态文件允许访问
                 .antMatchers(adminContextPath + "/assets/**").permitAll()
-                //登录页面允许访问
+                // 登录页面允许访问
                 .antMatchers(adminContextPath + "/login", "/css/**", "/js/**", "/image/*").permitAll()
-                //其他所有请求需要登录
+                // 其他所有请求需要登录
                 .anyRequest().authenticated()
                 .and()
-                //登录页面配置，用于替换security默认页面
+                // 登录页面配置，用于替换security默认页面
                 .formLogin().loginPage(adminContextPath + "/login").successHandler(successHandler).and()
-                //登出页面配置，用于替换security默认页面
+                // 登出页面配置，用于替换security默认页面
                 .logout().logoutUrl(adminContextPath + "/logout").and()
                 .httpBasic().and()
                 .csrf()

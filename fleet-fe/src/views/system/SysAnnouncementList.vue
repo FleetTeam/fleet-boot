@@ -11,11 +11,13 @@
               <a-input placeholder="请输入标题" v-model="queryParam.titile"></a-input>
             </a-form-item>
           </a-col>
-          <!--<a-col :span="6">
+          <!--
+          <a-col :span="6">
             <a-form-item label="内容">
               <a-input placeholder="请输入内容" v-model="queryParam.msgContent"></a-input>
             </a-form-item>
-          </a-col>-->
+          </a-col>
+          -->
 
           <a-col :span="8">
             <span style="float: left;overflow: hidden;" class="table-page-search-submitButtons">
@@ -254,7 +256,7 @@
       }
     },
     methods: {
-      //执行发布操作
+      // 执行发布操作
       releaseData: function (id) {
         console.log(id);
         var that = this;
@@ -267,7 +269,7 @@
           }
         });
       },
-      //执行撤销操作
+      // 执行撤销操作
       reovkeData: function (id) {
         var that = this;
         doReovkeData({id: id}).then((res) => {

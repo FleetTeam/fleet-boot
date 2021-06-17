@@ -244,7 +244,6 @@
         })
       },
 
-
       // table1【主表】当选择的行变化时触发的事件
       handleTable1SelectRowChange(event) {
         this.table1.selectedRows = event.selectedRows

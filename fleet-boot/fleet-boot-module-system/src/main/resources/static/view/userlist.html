@@ -3,19 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>iview example</title>
-    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
-    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
-    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
-	<style>
-	#app{padding: 32px;}
-	</style>
+    <link href="http://unpkg.com/iview/dist/styles/iview.css" rel="stylesheet" type="text/css">
+    <script src="http://vuejs.org/js/vue.min.js" type="text/javascript"></script>
+    <script src="http://unpkg.com/iview/dist/iview.min.js" type="text/javascript"></script>
+    <style>
+    #app{padding: 32px;}
+
+    </style>
 </head>
 <body>
 <div id="app">
-     <i-table border :columns="columns7" :data="data6"></i-table>
+    <i-table :columns="columns7" :data="data6" border></i-table>
 </div>
 <script>
-   
+
     var Main = {
         data () {
             return {
@@ -117,6 +118,7 @@
 
 var Component = Vue.extend(Main)
 new Component().$mount('#app')
+
 </script>
 </body>
 </html>

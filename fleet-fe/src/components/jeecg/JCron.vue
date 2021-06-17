@@ -37,7 +37,7 @@
       handleOK(val){
         this.cron = val;
         this.$emit("change", this.cron);
-        //this.$emit("change", Object.assign({},  this.cron));
+        // this.$emit("change", Object.assign({},  this.cron));
       },
       handleEmpty(){
         this.handleOK('')

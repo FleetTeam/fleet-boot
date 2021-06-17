@@ -2,18 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fleet.modules.demo.test.mapper.FleetDemoMapper">
 
-	<!-- 根据用户名查询 -->
-	<select id="getDemoByName" resultType="org.fleet.modules.demo.test.entity.FleetDemo">
-		select * from  demo  where name = #{name}
-	</select>
-	
-	<!-- 根据权限sql查询数据集 -->
-	<select id="queryListWithPermission" parameterType="Object" resultType="org.fleet.modules.demo.test.entity.FleetDemo">
-		select * from demo where 1=1 ${permissionSql}
-	</select>
+    <!-- 根据用户名查询 -->
+    <select id="getDemoByName" resultType="org.fleet.modules.demo.test.entity.FleetDemo">
+        select * from demo where name = #{name}
+    </select>
 
-	<!-- 查询所有符合前缀且有效字段 -->
-	<select id="queryAllAuth" resultType="java.lang.String">
+    <!-- 根据权限sql查询数据集 -->
+    <select id="queryListWithPermission" parameterType="Object"
+            resultType="org.fleet.modules.demo.test.entity.FleetDemo">
+        select * from demo where 1=1 ${permissionSql}
+    </select>
+
+    <!-- 查询所有符合前缀且有效字段 -->
+    <select id="queryAllAuth" resultType="java.lang.String">
         select perms from sys_permission
         where perms
         like concat(concat('%',#{permsPrefix}),'%')
@@ -21,8 +22,8 @@
         and status='1'
     </select>
 
-	<!-- 查询用户已授权字段 -->
-	<select id="queryUserAuth" resultType="java.lang.String">
+    <!-- 查询用户已授权字段 -->
+    <select id="queryUserAuth" resultType="java.lang.String">
         select perms from sys_user_role sur,
         sys_role_permission srp,
         sys_permission sp

@@ -11,7 +11,7 @@ const api = {
 
 export default api
 
-//post
+// post
 export function postAction(url,parameter) {
   return axios({
     url: url,
@@ -20,7 +20,7 @@ export function postAction(url,parameter) {
   })
 }
 
-//post method= {post | put}
+// post method= {post | put}
 export function httpAction(url,parameter,method) {
   return axios({
     url: url,
@@ -29,7 +29,7 @@ export function httpAction(url,parameter,method) {
   })
 }
 
-//put
+// put
 export function putAction(url,parameter) {
   return axios({
     url: url,
@@ -38,7 +38,7 @@ export function putAction(url,parameter) {
   })
 }
 
-//get
+// get
 export function getAction(url,parameter) {
   return axios({
     url: url,
@@ -47,7 +47,7 @@ export function getAction(url,parameter) {
   })
 }
 
-//deleteAction
+// deleteAction
 export function deleteAction(url,parameter) {
   return axios({
     url: url,
@@ -136,8 +136,8 @@ export function downloadFile(url, fileName, parameter) {
       link.setAttribute('download', fileName)
       document.body.appendChild(link)
       link.click()
-      document.body.removeChild(link) //下载完成移除元素
-      window.URL.revokeObjectURL(url) //释放掉blob对象
+      document.body.removeChild(link) // 下载完成移除元素
+      window.URL.revokeObjectURL(url) // 释放掉blob对象
     }
   })
 }

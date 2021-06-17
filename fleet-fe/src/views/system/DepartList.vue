@@ -12,7 +12,7 @@
             <a-button type="primary" icon="import">导入</a-button>
           </a-upload>
           <a-button title="删除多条数据" @click="batchDel" type="default">批量删除</a-button>
-          <!--<a-button @click="refresh" type="default" icon="reload" :loading="loading">刷新</a-button>-->
+          <!-- <a-button @click="refresh" type="default" icon="reload" :loading="loading">刷新</a-button> -->
         </a-row>
         <div style="background: #fff;padding-left:16px;height: 100%; margin-top: 5px">
           <a-alert type="info" :showIcon="true">
@@ -22,7 +22,7 @@
             </div>
           </a-alert>
           <a-input-search @search="onSearch" style="width:100%;margin-top: 10px" placeholder="请输入部门名称"/>
-          <!-- 树-->
+          <!-- 树 -->
           <a-col :md="10" :sm="24">
             <template>
               <a-dropdown :trigger="[this.dropTrigger]" @visibleChange="dropStatus">
@@ -41,7 +41,7 @@
               :autoExpandParent="autoExpandParent"
               @expand="onExpand"/>
                 </span>
-                <!--新增右键点击事件,和增加添加和删除功能-->
+                <!-- 新增右键点击事件,和增加添加和删除功能 -->
                 <a-menu slot="overlay">
                   <a-menu-item @click="handleAdd(3)" key="1">添加</a-menu-item>
                   <a-menu-item @click="handleDelete" key="2">删除</a-menu-item>
@@ -52,7 +52,7 @@
           </a-col>
         </div>
       </a-card>
-      <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+      <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
       <div class="drawer-bootom-button">
         <a-dropdown :trigger="['click']" placement="topCenter">
           <a-menu slot="overlay">
@@ -68,7 +68,7 @@
           </a-button>
         </a-dropdown>
       </div>
-      <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+      <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
     </a-col>
     <a-col :md="12" :sm="24">
       <a-tabs defaultActiveKey="1">
@@ -263,7 +263,7 @@
         that.departTree = []
         queryDepartTreeList().then((res) => {
           if (res.success) {
-            //部门全选后，再添加部门，选中数量增多
+            // 部门全选后，再添加部门，选中数量增多
             this.allTreeKeys = [];
             for (let i = 0; i < res.result.length; i++) {
               let temp = res.result[i]
@@ -375,13 +375,13 @@
       onCheck(checkedKeys, info) {
         console.log('onCheck', checkedKeys, info)
         this.hiding = false
-        //---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
+        // ---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
         if(this.checkStrictly){
           this.checkedKeys = checkedKeys.checked;
         }else{
           this.checkedKeys = checkedKeys
         }
-        //---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
+        // ---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
       },
       onSelect(selectedKeys, e) {
         console.log('selected', selectedKeys, e)
@@ -481,11 +481,11 @@
           onOk: function () {
             deleteByDepartId({id: that.rightClickSelectedKey}).then((resp) => {
               if (resp.success) {
-                //删除成功后，去除已选中中的数据
+                // 删除成功后，去除已选中中的数据
                 that.checkedKeys.splice(that.checkedKeys.findIndex(key => key === that.rightClickSelectedKey), 1);
                 that.$message.success('删除成功!')
                 that.loadTree()
-                //删除后同步清空右侧基本信息内容
+                // 删除后同步清空右侧基本信息内容
                 let orgCode=that.model.orgCode;
                 if(orgCode && orgCode === that.rightClickSelectedOrgCode){
                   that.onClearSelected()
@@ -518,7 +518,7 @@
           }
         }
       },
-     //---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
+     // ---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
       expandAll () {
         this.iExpandedKeys = this.allTreeKeys
       },
@@ -530,7 +530,7 @@
         this.checkedKeys = this.allTreeKeys
       },
       cancelCheckALL () {
-        //this.checkedKeys = this.defaultCheckedKeys
+        // this.checkedKeys = this.defaultCheckedKeys
         this.checkedKeys = []
       },
       switchCheckStrictly (v) {
@@ -549,8 +549,8 @@
           }
         }
       }
-      //---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
-      
+      // ---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------
+
     },
     created() {
       this.currFlowId = this.$route.params.id

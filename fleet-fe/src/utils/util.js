@@ -52,7 +52,7 @@ export function filterObj(obj) {
 export function formatDate(value, fmt) {
   let regPos = /^\d+(\.\d+)?$/;
   if(regPos.test(value)){
-    //如果是数字
+    // 如果是数字
     let getDate = new Date(value);
     let o = {
       'M+': getDate.getMonth() + 1,
@@ -73,7 +73,7 @@ export function formatDate(value, fmt) {
     }
     return fmt;
   }else{
-    //TODO
+    // TODO
     value = value.trim();
     return value.substr(0,fmt.length);
   }
@@ -84,7 +84,7 @@ export function generateIndexRouter(data) {
 let indexRouter = [{
           path: '/',
           name: 'dashboard',
-          //component: () => import('@/components/layouts/BasicLayout'),
+          // component: () => import('@/components/layouts/BasicLayout'),
           component: resolve => require(['@/components/layouts/TabLayout'], resolve),
           meta: { title: '首页' },
           redirect: '/dashboard/analysis',
@@ -143,7 +143,7 @@ function  generateChildRouters (data) {
       name: item.name,
       redirect:item.redirect,
       component: componentPath,
-      //component: resolve => require(['@/' + component+'.vue'], resolve),
+      // component: resolve => require(['@/' + component+'.vue'], resolve),
       hidden:item.hidden,
       meta: {
         title:item.meta.title ,
@@ -164,15 +164,15 @@ function  generateChildRouters (data) {
     if (item.children && item.children.length > 0) {
       menu.children = [...generateChildRouters( item.children)];
     }
-    //--update-begin----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
-    //判断是否生成路由
+    // --update-begin----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
+    // 判断是否生成路由
     if(item.route && item.route === '0'){
-      //console.log(' 不生成路由 item.route：  '+item.route);
-      //console.log(' 不生成路由 item.path：  '+item.path);
+      // console.log(' 不生成路由 item.route：  '+item.route);
+      // console.log(' 不生成路由 item.path：  '+item.path);
     }else{
       routers.push(menu);
     }
-    //--update-end----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
+    // --update-end----author:scott---date:20190320------for:根据后台菜单配置，判断是否路由菜单字段，动态选择是否生成路由（为了支持参数URL菜单）------
   }
   return routers
 }
@@ -282,14 +282,13 @@ export function cssExpand(css, id) {
   document.head.appendChild(style)
 }
 
-
-/** 用于js增强事件，运行JS代码，可以传参 */
+// 用于js增强事件，运行JS代码，可以传参
 // options 所需参数：
-//    参数名         类型            说明
-//    vm             VueComponent    vue实例
-//    event          Object          event对象
-//    jsCode         String          待执行的js代码
-//    errorMessage   String          执行出错后的提示（控制台）
+// 参数名         类型            说明
+// vm             VueComponent    vue实例
+// event          Object          event对象
+// jsCode         String          待执行的js代码
+// errorMessage   String          执行出错后的提示（控制台）
 export function jsExpand(options = {}) {
 
   // 绑定到window上的keyName
@@ -336,7 +335,6 @@ export function jsExpand(options = {}) {
   script.innerHTML = code
   document.body.appendChild(script)
 }
-
 
 /**
  * 重复值验证工具方法

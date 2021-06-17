@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  	<#import "../common/common.macro.ftl" as netCommon>
-	<@netCommon.commonStyle />
-	<!-- DataTables -->
-  	<link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <#import "../common/common.macro.ftl" as netCommon>
+    <@netCommon.commonStyle />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <title>${I18n.admin_name}</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini <#if cookieMap?exists && cookieMap["xxljob_adminlte_settings"]?exists && "off" == cookieMap["xxljob_adminlte_settings"].value >sidebar-collapse</#if> ">
 <div class="wrapper">
-	<!-- header -->
-	<@netCommon.commonHeader />
-	<!-- left -->
-	<@netCommon.commonLeft "jobgroup" />
-	
-	<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<section class="content-header">
-			<h1>${I18n.jobgroup_name}</h1>
-		</section>
+    <!-- header -->
+    <@netCommon.commonHeader />
+    <!-- left -->
+    <@netCommon.commonLeft "jobgroup" />
 
-		<!-- Main content -->
-	    <section class="content">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>${I18n.jobgroup_name}</h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
 
             <div class="row">
                 <div class="col-xs-3">
@@ -44,31 +44,31 @@
                     <button class="btn btn-block btn-success add" type="button">${I18n.jobinfo_field_add}</button>
                 </div>
             </div>
-			
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="box">
-			            <div class="box-body">
-			              	<table id="jobgroup_list" class="table table-bordered table-striped display" width="100%" >
-				                <thead>
-					            	<tr>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                              <table id="jobgroup_list" class="table table-bordered table-striped display" width="100%" >
+                                <thead>
+                                    <tr>
                                         <th name="id" >ID</th>
                                         <th name="appname" >AppName</th>
                                         <th name="title" >${I18n.jobgroup_field_title}</th>
                                         <th name="addressType" >${I18n.jobgroup_field_addressType}</th>
                                         <th name="registryList" >OnLine ${I18n.jobgroup_field_registryList}</th>
                                         <th>${I18n.system_opt}</th>
-					                </tr>
-				                </thead>
+                                    </tr>
+                                </thead>
                                 <tbody>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-	    </section>
-	</div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- 新增.模态框 -->
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -158,9 +158,9 @@
             </div>
         </div>
     </div>
-	
-	<!-- footer -->
-	<@netCommon.commonFooter />
+
+    <!-- footer -->
+    <@netCommon.commonFooter />
 </div>
 
 <@netCommon.commonScript />

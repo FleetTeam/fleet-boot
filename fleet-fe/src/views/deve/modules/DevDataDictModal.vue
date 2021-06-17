@@ -8,10 +8,10 @@
     @ok="handleOk"
     @cancel="handleCancel"
     cancelText="关闭">
-    
+
     <a-spin :spinning="confirmLoading">
       <a-form-model ref="form" :model="model" :rules="validatorRules">
-      
+
         <!-- <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="ver" label="ver">
           <a-input placeholder="请输入ver" v-model="model.ver" />
         </a-form-model-item>
@@ -56,7 +56,7 @@
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="remark" label="备注">
           <a-input placeholder="请输入备注" v-model="model.remark" />
         </a-form-model-item>
-		
+
       </a-form-model>
     </a-spin>
   </j-modal>
@@ -66,7 +66,6 @@
   import { httpAction } from '@/api/manage'
   import moment from "moment"
   import FSelectRefDict from '@/components/deve/FSelectRefDict'
-
 
   export default {
     name: "DevDataDictModal",
@@ -102,7 +101,7 @@
     },
     methods: {
       add () {
-        //初始化默认值
+        // 初始化默认值
         this.edit({});
       },
       edit (record) {
@@ -148,7 +147,6 @@
       handleCancel () {
         this.close()
       },
-
 
     }
   }

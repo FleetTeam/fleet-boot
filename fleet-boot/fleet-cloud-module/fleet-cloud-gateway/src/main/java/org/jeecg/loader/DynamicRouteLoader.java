@@ -45,7 +45,6 @@ import java.util.concurrent.Executor;
 @DependsOn({"gatewayRoutersConfiguration"})
 public class DynamicRouteLoader implements ApplicationEventPublisherAware {
 
-
     private ApplicationEventPublisher publisher;
 
     private InMemoryRouteDefinitionRepository repository;
@@ -56,98 +55,11 @@ public class DynamicRouteLoader implements ApplicationEventPublisherAware {
 
     private RedisUtil redisUtil;
 
-
     public DynamicRouteLoader(InMemoryRouteDefinitionRepository repository, DynamicRouteService dynamicRouteService, RedisUtil redisUtil) {
 
         this.repository = repository;
         this.dynamicRouteService = dynamicRouteService;
         this.redisUtil = redisUtil;
-    }
-
-    @PostConstruct
-    public void init() {
-        String dataType = GatewayRoutersConfiguration.DATA_TYPE;
-        log.info("初始化路由，dataType："+ dataType);
-        if (RouterDataType.nacos.toString().endsWith(dataType)) {
-            loadRoutesByNacos();
-        }
-        //从数据库加载路由
-        if (RouterDataType.database.toString().endsWith(dataType)) {
-            loadRoutesByRedis();
-        }
-    }
-
-
-    /**
-     * 刷新路由
-     *
-     * @return
-     */
-    public Mono<Void> refresh() {
-        String dataType = GatewayRoutersConfiguration.DATA_TYPE;
-        if (!RouterDataType.yml.toString().endsWith(dataType)) {
-            this.init();
-        }
-        return Mono.empty();
-    }
-
-
-    /**
-     * 从nacos中读取路由配置
-     *
-     * @return
-     */
-    private void loadRoutesByNacos() {
-        List<RouteDefinition> routes = Lists.newArrayList();
-        configService = createConfigService();
-        if (configService == null) {
-            log.warn("initConfigService fail");
-        }
-        try {
-            String configInfo = configService.getConfig(GatewayRoutersConfiguration.DATA_ID, GatewayRoutersConfiguration.ROUTE_GROUP, GatewayRoutersConfiguration.DEFAULT_TIMEOUT);
-            if (StringUtils.isNotBlank(configInfo)) {
-                log.info("获取网关当前配置:\r\n{}", configInfo);
-                routes = JSON.parseArray(configInfo, RouteDefinition.class);
-            }
-        } catch (NacosException e) {
-            log.error("初始化网关路由时发生错误", e);
-            e.printStackTrace();
-        }
-        for (RouteDefinition definition : routes) {
-            log.info("update route : {}", definition.toString());
-            dynamicRouteService.add(definition);
-        }
-        this.publisher.publishEvent(new RefreshRoutesEvent(this));
-        dynamicRouteByNacosListener(GatewayRoutersConfiguration.DATA_ID, GatewayRoutersConfiguration.ROUTE_GROUP);
-    }
-
-
-    /**
-     * 从redis中读取路由配置
-     *
-     * @return
-     */
-    private void loadRoutesByRedis() {
-        List<RouteDefinition> routes = Lists.newArrayList();
-        configService = createConfigService();
-        if (configService == null) {
-            log.warn("initConfigService fail");
-        }
-        Object configInfo = redisUtil.get(CacheConstant.GATEWAY_ROUTES);
-        if (ObjectUtil.isNotEmpty(configInfo)) {
-            log.info("获取网关当前配置:\r\n{}", configInfo);
-            JSONArray array = JSON.parseArray(configInfo.toString());
-            try {
-                routes = getRoutesByJson(array);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-        }
-        for (RouteDefinition definition : routes) {
-            log.info("update route : {}", definition.toString());
-            dynamicRouteService.add(definition);
-        }
-        this.publisher.publishEvent(new RefreshRoutesEvent(this));
     }
 
     /**
@@ -215,49 +127,130 @@ public class DynamicRouteLoader implements ApplicationEventPublisherAware {
         return ls;
     }
 
+    @PostConstruct
+    public void init() {
+        String dataType = GatewayRoutersConfiguration.DATA_TYPE;
+        log.info("初始化路由，dataType：" + dataType);
+        if (RouterDataType.nacos.toString().endsWith(dataType)) {
+            loadRoutesByNacos();
+        }
+        // 从数据库加载路由
+        if (RouterDataType.database.toString().endsWith(dataType)) {
+            loadRoutesByRedis();
+        }
+    }
 
-//    private void loadRoutesByDataBase() {
-//        List<GatewayRouteVo> routeList = jdbcTemplate.query(SELECT_ROUTES, new RowMapper<GatewayRouteVo>() {
-//            @Override
-//            public GatewayRouteVo mapRow(ResultSet rs, int i) throws SQLException {
-//                GatewayRouteVo result = new GatewayRouteVo();
-//                result.setId(rs.getString("id"));
-//                result.setName(rs.getString("name"));
-//                result.setUri(rs.getString("uri"));
-//                result.setStatus(rs.getInt("status"));
-//                result.setRetryable(rs.getInt("retryable"));
-//                result.setPredicates(rs.getString("predicates"));
-//                result.setStripPrefix(rs.getInt("strip_prefix"));
-//                result.setPersist(rs.getInt("persist"));
-//                return result;
-//            }
-//        });
-//        if (ObjectUtil.isNotEmpty(routeList)) {
-//            // 加载路由
-//            routeList.forEach(route -> {
-//                RouteDefinition definition = new RouteDefinition();
-//                List<PredicateDefinition> predicatesList = Lists.newArrayList();
-//                List<FilterDefinition> filtersList = Lists.newArrayList();
-//                definition.setId(route.getId());
-//                String predicates = route.getPredicates();
-//                String filters = route.getFilters();
-//                if (StringUtils.isNotEmpty(predicates)) {
-//                    predicatesList = JSON.parseArray(predicates, PredicateDefinition.class);
-//                    definition.setPredicates(predicatesList);
-//                }
-//                if (StringUtils.isNotEmpty(filters)) {
-//                    filtersList = JSON.parseArray(filters, FilterDefinition.class);
-//                    definition.setFilters(filtersList);
-//                }
-//                URI uri = UriComponentsBuilder.fromUriString(route.getUri()).build().toUri();
-//                definition.setUri(uri);
-//                this.repository.save(Mono.just(definition)).subscribe();
-//            });
-//            log.info("加载路由:{}==============", routeList.size());
-//            Mono.empty();
-//        }
-//    }
+    /**
+     * 刷新路由
+     *
+     * @return
+     */
+    public Mono<Void> refresh() {
+        String dataType = GatewayRoutersConfiguration.DATA_TYPE;
+        if (!RouterDataType.yml.toString().endsWith(dataType)) {
+            this.init();
+        }
+        return Mono.empty();
+    }
 
+    /**
+     * 从nacos中读取路由配置
+     *
+     * @return
+     */
+    private void loadRoutesByNacos() {
+        List<RouteDefinition> routes = Lists.newArrayList();
+        configService = createConfigService();
+        if (configService == null) {
+            log.warn("initConfigService fail");
+        }
+        try {
+            String configInfo = configService.getConfig(GatewayRoutersConfiguration.DATA_ID, GatewayRoutersConfiguration.ROUTE_GROUP, GatewayRoutersConfiguration.DEFAULT_TIMEOUT);
+            if (StringUtils.isNotBlank(configInfo)) {
+                log.info("获取网关当前配置:\n{}", configInfo);
+                routes = JSON.parseArray(configInfo, RouteDefinition.class);
+            }
+        } catch (NacosException e) {
+            log.error("初始化网关路由时发生错误", e);
+            e.printStackTrace();
+        }
+        for (RouteDefinition definition : routes) {
+            log.info("update route : {}", definition.toString());
+            dynamicRouteService.add(definition);
+        }
+        this.publisher.publishEvent(new RefreshRoutesEvent(this));
+        dynamicRouteByNacosListener(GatewayRoutersConfiguration.DATA_ID, GatewayRoutersConfiguration.ROUTE_GROUP);
+    }
+
+    /**
+     * 从redis中读取路由配置
+     *
+     * @return
+     */
+    private void loadRoutesByRedis() {
+        List<RouteDefinition> routes = Lists.newArrayList();
+        configService = createConfigService();
+        if (configService == null) {
+            log.warn("initConfigService fail");
+        }
+        Object configInfo = redisUtil.get(CacheConstant.GATEWAY_ROUTES);
+        if (ObjectUtil.isNotEmpty(configInfo)) {
+            log.info("获取网关当前配置:\n{}", configInfo);
+            JSONArray array = JSON.parseArray(configInfo.toString());
+            try {
+                routes = getRoutesByJson(array);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+        for (RouteDefinition definition : routes) {
+            log.info("update route : {}", definition.toString());
+            dynamicRouteService.add(definition);
+        }
+        this.publisher.publishEvent(new RefreshRoutesEvent(this));
+    }
+
+    // private void loadRoutesByDataBase() {
+    //     List<GatewayRouteVo> routeList = jdbcTemplate.query(SELECT_ROUTES, new RowMapper<GatewayRouteVo>() {
+    //         @Override
+    //         public GatewayRouteVo mapRow(ResultSet rs, int i) throws SQLException {
+    //             GatewayRouteVo result = new GatewayRouteVo();
+    //             result.setId(rs.getString("id"));
+    //             result.setName(rs.getString("name"));
+    //             result.setUri(rs.getString("uri"));
+    //             result.setStatus(rs.getInt("status"));
+    //             result.setRetryable(rs.getInt("retryable"));
+    //             result.setPredicates(rs.getString("predicates"));
+    //             result.setStripPrefix(rs.getInt("strip_prefix"));
+    //             result.setPersist(rs.getInt("persist"));
+    //             return result;
+    //         }
+    //     });
+    //     if (ObjectUtil.isNotEmpty(routeList)) {
+    //         // 加载路由
+    //         routeList.forEach(route -> {
+    //             RouteDefinition definition = new RouteDefinition();
+    //             List<PredicateDefinition> predicatesList = Lists.newArrayList();
+    //             List<FilterDefinition> filtersList = Lists.newArrayList();
+    //             definition.setId(route.getId());
+    //             String predicates = route.getPredicates();
+    //             String filters = route.getFilters();
+    //             if (StringUtils.isNotEmpty(predicates)) {
+    //                 predicatesList = JSON.parseArray(predicates, PredicateDefinition.class);
+    //                 definition.setPredicates(predicatesList);
+    //             }
+    //             if (StringUtils.isNotEmpty(filters)) {
+    //                 filtersList = JSON.parseArray(filters, FilterDefinition.class);
+    //                 definition.setFilters(filtersList);
+    //             }
+    //             URI uri = UriComponentsBuilder.fromUriString(route.getUri()).build().toUri();
+    //             definition.setUri(uri);
+    //             this.repository.save(Mono.just(definition)).subscribe();
+    //         });
+    //         log.info("加载路由:{}==============", routeList.size());
+    //         Mono.empty();
+    //     }
+    // }
 
     /**
      * 监听Nacos下发的动态路由配置
@@ -299,8 +292,8 @@ public class DynamicRouteLoader implements ApplicationEventPublisherAware {
             Properties properties = new Properties();
             properties.setProperty("serverAddr", GatewayRoutersConfiguration.SERVER_ADDR);
             properties.setProperty("namespace", GatewayRoutersConfiguration.NAMESPACE);
-            properties.setProperty("username",GatewayRoutersConfiguration.USERNAME);
-            properties.setProperty("password",GatewayRoutersConfiguration.PASSWORD);
+            properties.setProperty("username", GatewayRoutersConfiguration.USERNAME);
+            properties.setProperty("password", GatewayRoutersConfiguration.PASSWORD);
             return configService = NacosFactory.createConfigService(properties);
         } catch (Exception e) {
             log.error("创建ConfigService异常", e);

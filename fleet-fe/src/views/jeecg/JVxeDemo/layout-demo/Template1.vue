@@ -300,7 +300,7 @@
         this.loadTable3Data()
       },
 
-      /** 公共方法：处理表格选中变化事件 */
+      // 公共方法：处理表格选中变化事件
       handleTableSelectRowChange(table, event) {
         let {row, action, selectedRows, $table} = event
         // 获取最后一个选中的

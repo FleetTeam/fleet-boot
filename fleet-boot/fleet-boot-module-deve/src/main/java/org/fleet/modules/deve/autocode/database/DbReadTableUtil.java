@@ -420,7 +420,6 @@ public class DbReadTableUtil {
         return field;
     }
 
-
     public static String formatFieldCapital(String field) {
         String[] strs = field.split("_");
         field = "";

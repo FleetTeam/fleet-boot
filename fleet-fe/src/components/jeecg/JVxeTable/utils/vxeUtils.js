@@ -24,7 +24,7 @@ export function getRefPromise(vm, name) {
   })
 }
 
-/** 获取某一数字输入框列中的最大的值 */
+// 获取某一数字输入框列中的最大的值
 export function getInputNumberMaxValue(col, rowsValues) {
   let maxNum = 0
   Object.values(rowsValues).forEach((rowValue, index) => {

@@ -11,11 +11,11 @@ import org.redisson.config.Config;
  */
 public interface RedissonConfigStrategy {
 
-	/**
-	 * 根据不同的Redis配置策略创建对应的Config
-	 *
-	 * @param redissonProperties
-	 * @return Config
-	 */
-	Config createRedissonConfig(RedissonProperties redissonProperties);
+    /**
+     * 根据不同的Redis配置策略创建对应的Config
+     *
+     * @param redissonProperties
+     * @return Config
+     */
+    Config createRedissonConfig(RedissonProperties redissonProperties);
 }

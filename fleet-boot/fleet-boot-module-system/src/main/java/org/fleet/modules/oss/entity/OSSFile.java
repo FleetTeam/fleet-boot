@@ -13,12 +13,12 @@ import org.jeecgframework.poi.excel.annotation.Excel;
 @Accessors(chain = true)
 public class OSSFile extends FleetEntity {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Excel(name = "文件名称")
-	private String fileName;
+    @Excel(name = "文件名称")
+    private String fileName;
 
-	@Excel(name = "文件地址")
-	private String url;
+    @Excel(name = "文件地址")
+    private String url;
 
 }

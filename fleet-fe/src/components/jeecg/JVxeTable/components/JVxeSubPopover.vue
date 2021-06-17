@@ -43,13 +43,13 @@
 
       toggle(event) {
 
-        //update-begin-author:taoyan date:20200921 for: 弹出子表时，子表会闪一下，类似重新计算子表的位置
+        // update-begin-author:taoyan date:20200921 for: 弹出子表时，子表会闪一下，类似重新计算子表的位置
         if(document.body.clientHeight - event.$event.clientY > 350){
           this.placement = 'bottom'
         }else{
           this.placement = 'top'
         }
-        //update-end-author:taoyan date:20200921 for: 弹出子表时，子表会闪一下，类似重新计算子表的位置
+        // update-end-author:taoyan date:20200921 for: 弹出子表时，子表会闪一下，类似重新计算子表的位置
         if (this.row == null) {
           this.open(event)
         } else {
@@ -92,9 +92,9 @@
           this.$refs.div.style.height = clientHeight + 'px'
           this.overlayStyle.width = Number.parseInt((clientWidth - clientWidth * 0.04)) + 'px'
           this.overlayStyle.maxWidth = this.overlayStyle.width
-          //update-begin-author:taoyan date:20200921 for: 子表弹出位置存在现实位置问题。
-          //let realTable = getParentNodeByTagName(tr, 'table')
-          //let left = realTable.parentNode.scrollLeft
+          // update-begin-author:taoyan date:20200921 for: 子表弹出位置存在现实位置问题。
+          // let realTable = getParentNodeByTagName(tr, 'table')
+          // let left = realTable.parentNode.scrollLeft
           let h = event.$event.clientY
           if(h){
             h = h-140
@@ -107,7 +107,7 @@
               alwaysByViewport: true
             },
           })
-          //update-end-author:taoyan date:20200921 for: 子表弹出位置存在现实位置问题。
+          // update-end-author:taoyan date:20200921 for: 子表弹出位置存在现实位置问题。
           this.$nextTick(() => {
             this.visible = true
             this.$nextTick(() => {

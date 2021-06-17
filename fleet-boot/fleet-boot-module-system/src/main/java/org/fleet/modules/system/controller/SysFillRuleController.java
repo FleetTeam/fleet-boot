@@ -177,14 +177,12 @@ public class SysFillRuleController extends FleetController<SysFillRule, ISysFill
         return Result.ok(result);
     }
 
-
     /**
      * 批量通过 ruleCode 执行自定义填值规则
      *
      * @param ruleData 要执行的填值规则JSON数组：
      *                 示例： { "commonFormData": {}, rules: [ { "ruleCode": "xxx", "formData": null } ] }
      * @return 运行后的结果，返回示例： [{"ruleCode": "order_num_rule", "result": "CN2019111117212984"}]
-     *
      */
     @PutMapping("/executeRuleByCodeBatch")
     public Result executeByRuleCodeBatch(@RequestBody JSONObject ruleData) {

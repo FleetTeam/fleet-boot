@@ -9,7 +9,7 @@
 
     <a-spin :spinning="confirmLoading">
       <a-form-model ref="form" :model="model" :rules="validatorRules">
-      
+
 <#list columns as po><#rt/>
 <#if po.fieldName !='id'><#rt/>
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="${po.fieldName}" label="${po.filedComment}">
@@ -25,7 +25,7 @@
         </a-form-model-item>
 </#if>
 </#list>
-		
+
       </a-form-model>
     </a-spin>
 
@@ -64,7 +64,7 @@
         ${po.fieldName}:[{ required: true, message: '请输入${po.filedComment}!' }],
         </#if>
         </#if>
-	    </#list>
+      </#list>
         },
         url: {
           add: "/${entityPackage}/${entityName?uncap_first}/add",
@@ -76,7 +76,7 @@
     },
     methods: {
       add () {
-        //初始化默认值
+        // 初始化默认值
         this.edit({});
       },
       edit (record) {
@@ -123,19 +123,18 @@
         this.close()
       },
 
-
     }
   }
 </script>
 
 <style lang="less" scoped>
-  /**Button按钮间距*/
+  /** Button按钮间距 */
   .ant-btn {
     margin-left: 30px;
     margin-bottom: 30px;
     float: right;
   }
- /**抽屉按钮样式*/
+  /** 抽屉按钮样式 */
   .drawer-bootom-button {
     position: absolute;
     bottom: -8px;

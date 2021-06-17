@@ -89,7 +89,7 @@ const user = {
         })
       })
     },
-    //手机号登录
+    // 手机号登录
     PhoneLogin({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
           phoneLogin(userInfo).then(response => {
@@ -120,11 +120,11 @@ const user = {
           const menuData = response.result.menu;
           const authData = response.result.auth;
           const allAuthData = response.result.allAuth;
-          //Vue.ls.set(USER_AUTH,authData);
+          // Vue.ls.set(USER_AUTH,authData);
           sessionStorage.setItem(USER_AUTH,JSON.stringify(authData));
           sessionStorage.setItem(SYS_BUTTON_AUTH,JSON.stringify(allAuthData));
           if (menuData && menuData.length > 0) {
-            //update--begin--autor:qinfeng-----date:20200109------for：JEECG-63 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示------
+            // update--begin--autor:qinfeng-----date:20200109------for：JEECG-63 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示------
             menuData.forEach((item, index) => {
               if (item["children"]) {
                 let hasChildrenMenu = item["children"].filter((i) => {
@@ -135,8 +135,8 @@ const user = {
                 }
               }
             })
-            //console.log(" menu show json ", menuData)
-            //update--end--autor:qinfeng-----date:20200109------for：JEECG-63 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示------
+            // console.log(" menu show json ", menuData)
+            // update--end--autor:qinfeng-----date:20200109------for：JEECG-63 一级菜单的子菜单全部是隐藏路由，则一级菜单不显示------
             commit('SET_PERMISSIONLIST', menuData)
           } else {
             reject('getPermissionList: permissions must be a non-null array !')
@@ -159,7 +159,7 @@ const user = {
         Vue.ls.remove(USER_NAME)
         Vue.ls.remove(UI_CACHE_DB_DICT_DATA)
         Vue.ls.remove(CACHE_INCLUDED_ROUTES)
-        //console.log('logoutToken: '+ logoutToken)
+        // console.log('logoutToken: '+ logoutToken)
         logout(logoutToken).then(() => {
           if (process.env.VUE_APP_SSO == 'true') {
             let sevice = 'http://' + window.location.host + '/'
@@ -199,7 +199,6 @@ const user = {
       Vue.ls.set(TENANT_ID, id, 7 * 24 * 60 * 60 * 1000)
       commit('SET_TENANT', id)
     }
-
 
   }
 }

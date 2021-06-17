@@ -15,18 +15,18 @@ var config = {
     aniTime: 200,
     right: -232,
     api: {
-        friend: 'js/plugins/layer/layim/data/friend.json', //好友列表接口
-        group: 'js/plugins/layer/layim/data/group.json', //群组列表接口
-        chatlog: 'js/plugins/layer/layim/data/chatlog.json', //聊天记录接口
-        groups: 'js/plugins/layer/layim/data/groups.json', //群组成员接口
-        sendurl: '' //发送消息接口
+        friend: 'js/plugins/layer/layim/data/friend.json', // 好友列表接口
+        group: 'js/plugins/layer/layim/data/group.json', // 群组列表接口
+        chatlog: 'js/plugins/layer/layim/data/chatlog.json', // 聊天记录接口
+        groups: 'js/plugins/layer/layim/data/groups.json', // 群组成员接口
+        sendurl: '' // 发送消息接口
     },
-    user: { //当前用户信息
+    user: { // 当前用户信息
         name: '游客',
         face: 'img/a1.jpg'
     },
 
-    //自动回复内置文案，也可动态读取数据库配置
+    // 自动回复内置文案，也可动态读取数据库配置
     autoReplay: [
         '您好，我现在有事不在，一会再和您联系。',
         '你没发错吧？',
@@ -38,7 +38,6 @@ var config = {
         '主人正在开机自检，键盘鼠标看好机会出去凉快去了，我是他的电冰箱，我打字比较慢，你慢慢说，别急……',
         '(*^__^*) 嘻嘻，是贤心吗？'
     ],
-
 
     chating: {},
     hosts: (function(){
@@ -61,7 +60,7 @@ var config = {
     }
 }, dom = [$(window), $(document), $('html'), $('body')], xxim = {};
 
-//主界面tab
+// 主界面tab
 xxim.tabs = function(index){
     var node = xxim.node;
     node.tabs.eq(index).addClass('xxim_tabnow').siblings().removeClass('xxim_tabnow');
@@ -71,7 +70,7 @@ xxim.tabs = function(index){
     }
 };
 
-//节点
+// 节点
 xxim.renode = function(){
     var node = xxim.node = {
         tabs: $('#xxim_tabs>span'),
@@ -89,7 +88,7 @@ xxim.renode = function(){
     };
 };
 
-//主界面缩放
+// 主界面缩放
 xxim.expend = function(){
     var node = xxim.node;
     if(xxim.layimNode.attr('state') !== '1'){
@@ -116,11 +115,11 @@ xxim.expend = function(){
     }
 };
 
-//初始化窗口格局
+// 初始化窗口格局
 xxim.layinit = function(){
     var node = xxim.node;
 
-    //主界面
+    // 主界面
     try{
         /*
         if(!localStorage.layimState){
@@ -135,11 +134,11 @@ xxim.layinit = function(){
             node.xximHide.addClass('xxim_show');
         }
     }catch(e){
-        //layer.msg(e.message, 5, -1);
+        // layer.msg(e.message, 5, -1);
     }
 };
 
-//聊天窗口
+// 聊天窗口
 xxim.popchat = function(param){
     var node = xxim.node, log = {};
 
@@ -152,14 +151,14 @@ xxim.popchat = function(param){
         log.chatlist.html('<li data-id="'+ param.id +'" type="'+ param.type +'"  id="layim_user'+ param.type + param.id +'"><span>'+ param.name +'</span><em>×</em></li>')
         xxim.tabchat(param, xxim.chatbox);
 
-        //最小化聊天窗
+        // 最小化聊天窗
         xxim.chatbox.find('.layer_setmin').on('click', function(){
             var indexs = layero.attr('times');
             layero.hide();
             node.layimMin.text(xxim.nowchat.name).show();
         });
 
-        //关闭窗口
+        // 关闭窗口
         xxim.chatbox.find('.layim_close').on('click', function(){
             var indexs = layero.attr('times');
             layer.close(indexs);
@@ -168,7 +167,7 @@ xxim.popchat = function(param){
             config.chatings = 0;
         });
 
-        //关闭某个聊天
+        // 关闭某个聊天
         log.chatlist.on('mouseenter', 'li', function(){
             $(this).find('em').show();
         }).on('mouseleave', 'li', function(){
@@ -204,13 +203,13 @@ xxim.popchat = function(param){
             }
         });
 
-        //聊天选项卡
+        // 聊天选项卡
         log.chatlist.on('click', 'li', function(){
             var othis = $(this), dataType = othis.attr('type'), dataId = othis.attr('data-id');
             xxim.tabchat(config.chating[dataType + dataId]);
         });
 
-        //发送热键切换
+        // 发送热键切换
         log.sendType = $('#layim_sendtype'), log.sendTypes = log.sendType.find('span');
         $('#layim_enter').on('click', function(e){
             config.stopMP(e);
@@ -291,20 +290,20 @@ xxim.popchat = function(param){
         xxim.tabchat(param);
     }
 
-    //群组
+    // 群组
     log.chatgroup = xxim.chatbox.find('#layim_groups');
     if(param.type === 'group'){
         log.chatgroup.find('ul').removeClass('layim_groupthis');
         log.chatgroup.append('<ul class="layim_groupthis" id="layim_group'+ param.type + param.id +'"></ul>');
         xxim.getGroups(param);
     }
-    //点击群员切换聊天窗
+    // 点击群员切换聊天窗
     log.chatgroup.on('click', 'ul>li', function(){
         xxim.popchatbox($(this));
     });
 };
 
-//定位到某个聊天队列
+// 定位到某个聊天队列
 xxim.tabchat = function(param){
     var node = xxim.node, log = {}, keys = param.type + param.id;
     xxim.nowchat = param;
@@ -330,14 +329,14 @@ xxim.tabchat = function(param){
 
 };
 
-//弹出聊天窗
+// 弹出聊天窗
 xxim.popchatbox = function(othis){
     var node = xxim.node, dataId = othis.attr('data-id'), param = {
-        id: dataId, //用户ID
+        id: dataId, // 用户ID
         type: othis.attr('type'),
-        name: othis.find('.xxim_onename').text(),  //用户名
-        face: othis.find('.xxim_oneface').attr('src'),  //用户头像
-        href: 'profile.html?user=' + dataId //用户主页
+        name: othis.find('.xxim_onename').text(),  // 用户名
+        face: othis.find('.xxim_oneface').attr('src'),  // 用户头像
+        href: 'profile.html?user=' + dataId // 用户主页
     }, key = param.type + dataId;
     if(!config.chating[key]){
         xxim.popchat(param);
@@ -354,7 +353,7 @@ xxim.popchatbox = function(othis){
     }
 };
 
-//请求群员
+// 请求群员
 xxim.getGroups = function(param){
     var keys = param.type + param.id, str = '',
     groupss = xxim.chatbox.find('#layim_group'+ keys);
@@ -381,18 +380,18 @@ xxim.getGroups = function(param){
     });
 };
 
-//消息传输
+// 消息传输
 xxim.transmit = function(){
     var node = xxim.node, log = {};
     node.sendbtn = $('#layim_sendbtn');
     node.imwrite = $('#layim_write');
 
-    //发送
+    // 发送
     log.send = function(){
         var data = {
             content: node.imwrite.val(),
             id: xxim.nowchat.id,
-            sign_key: '', //密匙
+            sign_key: '', // 密匙
             _: +new Date
         };
 
@@ -400,10 +399,10 @@ xxim.transmit = function(){
             layer.tips('说点啥呗！', '#layim_write', 2);
             node.imwrite.focus();
         } else {
-            //此处皆为模拟
+            // 此处皆为模拟
             var keys = xxim.nowchat.type + xxim.nowchat.id;
 
-            //聊天模版
+            // 聊天模版
             log.html = function(param, type){
                 return '<li class="'+ (type === 'me' ? 'layim_chateme' : '') +'">'
                     +'<div class="layim_chatuser">'
@@ -461,18 +460,18 @@ xxim.transmit = function(){
     });
 };
 
-//事件
+// 事件
 xxim.event = function(){
     var node = xxim.node;
 
-    //主界面tab
+    // 主界面tab
     node.tabs.eq(0).addClass('xxim_tabnow');
     node.tabs.on('click', function(){
         var othis = $(this), index = othis.index();
         xxim.tabs(index);
     });
 
-    //列表展收
+    // 列表展收
     node.list.on('click', 'h5', function(){
         var othis = $(this), chat = othis.siblings('.xxim_chatlist'), parentss = othis.find("i");
         if(parentss.hasClass('fa-caret-down')){
@@ -484,7 +483,7 @@ xxim.event = function(){
         }
     });
 
-    //设置在线隐身
+    // 设置在线隐身
     node.online.on('click', function(e){
         config.stopMP(e);
         node.setonline.show();
@@ -505,13 +504,13 @@ xxim.event = function(){
     node.xximon.on('click', xxim.expend);
     node.xximHide.on('click', xxim.expend);
 
-    //搜索
+    // 搜索
     node.xximSearch.keyup(function(){
         var val = $(this).val().replace(/\s/g, '');
         if(val !== ''){
             node.searchMian.show();
             node.closeSearch.show();
-            //此处的搜索ajax参考xxim.getDates
+            // 此处的搜索ajax参考xxim.getDates
             node.list.eq(3).html('<li class="xxim_errormsg">没有符合条件的结果</li>');
         } else {
             node.searchMian.hide();
@@ -524,28 +523,27 @@ xxim.event = function(){
         node.xximSearch.val('').focus();
     });
 
-    //弹出聊天窗
+    // 弹出聊天窗
     config.chatings = 0;
     node.list.on('click', '.xxim_childnode', function(){
         var othis = $(this);
         xxim.popchatbox(othis);
     });
 
-    //点击最小化栏
+    // 点击最小化栏
     node.layimMin.on('click', function(){
         $(this).hide();
         $('#layim_chatbox').parents('.xubox_layer').show();
     });
 
-
-    //document事件
+    // document事件
     dom[1].on('click', function(){
         node.setonline.hide();
         $('#layim_sendtype').hide();
     });
 };
 
-//请求列表数据
+// 请求列表数据
 xxim.getDates = function(index){
     var api = [config.api.friend, config.api.group, config.api.chatlog],
         node = xxim.node, myf = node.list.eq(index);
@@ -587,7 +585,7 @@ xxim.getDates = function(index){
     });
 };
 
-//渲染骨架
+// 渲染骨架
 xxim.view = (function(){
     var xximNode = xxim.layimNode = $('<div id="xximmm" class="xxim_main">'
             +'<div class="xxim_top" id="xxim_top">'

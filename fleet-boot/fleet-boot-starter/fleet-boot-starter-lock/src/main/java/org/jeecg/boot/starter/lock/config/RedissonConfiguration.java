@@ -10,7 +10,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
 /**
  * Redisson自动化配置
  *
@@ -23,14 +22,12 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(RedissonProperties.class)
 public class RedissonConfiguration {
 
-
-
-	@Bean
-	@ConditionalOnMissingBean(RedissonClient.class)
-	public RedissonClient redissonClient(RedissonProperties redissonProperties) {
-		RedissonManager redissonManager = new RedissonManager(redissonProperties);
-		log.info("RedissonManager初始化完成,当前连接方式:" + redissonProperties.getType() + ",连接地址:" + redissonProperties.getAddress());
-		return redissonManager.getRedisson();
-	}
+    @Bean
+    @ConditionalOnMissingBean(RedissonClient.class)
+    public RedissonClient redissonClient(RedissonProperties redissonProperties) {
+        RedissonManager redissonManager = new RedissonManager(redissonProperties);
+        log.info("RedissonManager初始化完成,当前连接方式:" + redissonProperties.getType() + ",连接地址:" + redissonProperties.getAddress());
+        return redissonManager.getRedisson();
+    }
 
 }

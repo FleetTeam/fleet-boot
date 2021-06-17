@@ -5,9 +5,9 @@
 <script>
   const JINPUT_QUERY_LIKE = 'like';
   const JINPUT_QUERY_NE = 'ne';
-  const JINPUT_QUERY_GE = 'ge'; //大于等于
-  const JINPUT_QUERY_LE = 'le'; //小于等于
-  
+  const JINPUT_QUERY_GE = 'ge'; // 大于等于
+  const JINPUT_QUERY_LE = 'le'; // 小于等于
+
   export default {
     name: 'JInput',
     props:{
@@ -61,7 +61,7 @@
           let text = this.value
           switch (this.type) {
             case JINPUT_QUERY_LIKE:
-              //修复路由传参的值传送到jinput框被前后各截取了一位 #1336
+              // 修复路由传参的值传送到jinput框被前后各截取了一位 #1336
               if(text.indexOf("*") != -1){
                 text = text.substring(1,text.length-1);
               }

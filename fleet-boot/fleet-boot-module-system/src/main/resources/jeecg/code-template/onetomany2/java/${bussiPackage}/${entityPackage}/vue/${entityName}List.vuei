@@ -38,7 +38,7 @@
           <a-icon type="delete"/>删除
           </a-menu-item>
         </a-menu>
-        <a-button style="margin-left: 8px"> 批量操作 
+        <a-button style="margin-left: 8px"> 批量操作
           <a-icon type="down" />
         </a-button>
       </a-dropdown>
@@ -81,13 +81,13 @@
       </a-table>
     </div>
     <!-- table区域-end -->
-    
+
     <a-tabs defaultActiveKey="1">
     <#list subTables as sub><#rt/>
       <a-tab-pane tab="${sub.ftlDescription}" :key="refKeys[${sub_index}]" :forceRender="true">
         <${sub.entityName?uncap_first}-List ref="${sub.entityName}List"></${sub.entityName?uncap_first}-List>
       </a-tab-pane>
-	</#list>
+  </#list>
     </a-tabs>
 
     <!-- 表单区域 -->
@@ -113,7 +113,7 @@
     <#list subTables as sub><#rt/>
       ${sub.entityName}Modal,
       ${sub.entityName}List,
-	</#list>
+  </#list>
     },
     data () {
       return {
@@ -147,8 +147,8 @@
             scopedSlots: { customRender: 'action' },
           }
         ],
- 
-        //操作url
+
+        // 操作url
         type: "radio",
         url: {
           list: "/${entityPackage}/${entityName?uncap_first}/list",
@@ -165,7 +165,7 @@
       }
     },
     methods: {
-		clickThenCheck(record) {
+    clickThenCheck(record) {
         return {
           on: {
             click: () => {

@@ -85,7 +85,6 @@
       </a-col>
     </a-row>
 
-
   </div>
 </template>
 

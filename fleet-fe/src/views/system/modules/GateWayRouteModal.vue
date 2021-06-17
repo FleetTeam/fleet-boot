@@ -155,12 +155,12 @@
         this.$refs['form'].resetFields()
         this.visible = false
       },
-      //删除路由条件配置项
+      // 删除路由条件配置项
       removeTag(item, removedTag) {
         const tags = item.args.filter(tag => tag !== removedTag)
         item.args = tags
       },
-      //添加路由选项
+      // 添加路由选项
       predicatesHandleMenuClick(e) {
         this.router.predicates.push({
           args: [],
@@ -170,35 +170,35 @@
       editTag(tag,index){
         this.currentTagIndex=index
       },
-      //显示输入框
+      // 显示输入框
       showInput(item, index) {
         this.inputVisible = true
         this.currentNameIndex = index
       },
-      //路由选项输入框失去焦点事件
+      // 路由选项输入框失去焦点事件
       handleInputChange(e) {
         this.inputValue = e.target.value
       },
-      //删除路由条件
+      // 删除路由条件
       removePredicate(item, index) {
         item.predicates.splice(index, 1)
       },
-      //删除过滤器参数
+      // 删除过滤器参数
       removeFilterParams(item, index) {
         item.args.splice(index, 1)
       },
-      //删除过滤器
+      // 删除过滤器
       removeFilter(item, index) {
         item.filters.splice(index, 1)
       },
-      //添加过滤器参数
+      // 添加过滤器参数
       addFilterParams(item) {
         item.args.push({
           key: 'key' + item.args.length + 1,
           value: ''
         })
       },
-      //过滤器添加事件
+      // 过滤器添加事件
       filterHandleMenuClick(e) {
         if (e.key == 0) {
           this.router.filters.push({
@@ -230,7 +230,7 @@
           })
         }
       },
-      //输入框确认
+      // 输入框确认
       handleInputConfirm(item) {
         const inputValue = this.inputValue
         let tags = item.args
@@ -245,7 +245,7 @@
         })
         this.currentTagIndex=-1
       },
-      //输入框确认
+      // 输入框确认
       handleInputEditConfirm(item,tag,index) {
         if(this.inputValue)
         {
@@ -261,11 +261,11 @@
         this.defaultCheckedKeys = []
         this.loading = false
       },
-      //关闭弹窗
+      // 关闭弹窗
       handleCancel() {
         this.close()
       },
-      //提交路由
+      // 提交路由
       handleSubmit() {
         let { predicates, filters, ...other } = this.router
         let router = other

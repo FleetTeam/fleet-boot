@@ -8,17 +8,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class CreateFileConfig {
     private static final Logger log = LoggerFactory.getLogger(CreateFileConfig.class);
-
 
     private List<File> templateRootDirs = new ArrayList<>();
 
     private String templatePath;
 
     private String stylePath;
-
 
     public CreateFileConfig(String templatePath) {
         log.debug("----templatePath-----------------" + templatePath);
@@ -28,10 +25,6 @@ public class CreateFileConfig {
 
     private void setTemplateRootDir(File templateRootDir) {
         setTemplateRootDirs(new File[]{templateRootDir});
-    }
-
-    private void setTemplateRootDirs(File... templateRootDirs) {
-        this.templateRootDirs = Arrays.asList(templateRootDirs);
     }
 
     public String getStylePath() {
@@ -55,10 +48,13 @@ public class CreateFileConfig {
         return this.templateRootDirs;
     }
 
+    private void setTemplateRootDirs(File... templateRootDirs) {
+        this.templateRootDirs = Arrays.asList(templateRootDirs);
+    }
+
     public void setTemplateRootDirs(List<File> templateRootDirs) {
         this.templateRootDirs = templateRootDirs;
     }
-
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -70,4 +66,3 @@ public class CreateFileConfig {
         return builder.toString();
     }
 }
-

@@ -7,13 +7,13 @@ export const JVXERenderType = {
   default: 'default',
 }
 
-/** 安装所有vxe组件 */
+// 安装所有vxe组件
 export function installAllCell(VXETable) {
   // 遍历所有组件批量注册
   Object.keys(AllCells).forEach(type => installOneCell(VXETable, type))
 }
 
-/** 安装单个vxe组件 */
+// 安装单个vxe组件
 export function installOneCell(VXETable, type) {
   const switches = getEnhancedMixins(type, 'switches')
   if (switches.editRender === false) {
@@ -23,7 +23,7 @@ export function installOneCell(VXETable, type) {
   }
 }
 
-/** 注册可编辑组件 */
+// 注册可编辑组件
 export function installEditRender(VXETable, type, comp, spanComp) {
   // 获取当前组件的增强
   const enhanced = getEnhancedMixins(type)
@@ -44,7 +44,7 @@ export function installEditRender(VXETable, type, comp, spanComp) {
   })
 }
 
-/** 注册普通组件 */
+// 注册普通组件 */
 export function installCellRender(VXETable, type, comp = AllCells[JVXETypes.normal]) {
   // 获取当前组件的增强
   const enhanced = getEnhancedMixins(type)
@@ -74,7 +74,7 @@ function createRender(comp, enhanced, renderType) {
 // 已混入的组件增强
 const AllCellsMixins = new Map()
 
-/** 获取某个组件的增强 */
+// 获取某个组件的增强
 export function getEnhanced(type) {
   let cell = AllCells[type]
   if (cell && cell.enhanced) {
@@ -115,8 +115,7 @@ export function getEnhancedMixins(type, name) {
   return getByName(defEnhanced)
 }
 
-
-/** 辅助方法：替换${...}变量 */
+// 辅助方法：替换${...}变量
 export function replaceProps(col, value) {
   if (value && typeof value === 'string') {
     let text = value

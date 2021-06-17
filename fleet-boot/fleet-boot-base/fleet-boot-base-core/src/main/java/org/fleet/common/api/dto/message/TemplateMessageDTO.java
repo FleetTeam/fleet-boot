@@ -1,6 +1,7 @@
 package org.fleet.common.api.dto.message;
 
 import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Map;
 
@@ -11,7 +12,6 @@ import java.util.Map;
 public class TemplateMessageDTO extends TemplateDTO implements Serializable {
 
     private static final long serialVersionUID = 411137565170647585L;
-
 
     /**
      * 发送人(用户登录账户)
@@ -28,21 +28,18 @@ public class TemplateMessageDTO extends TemplateDTO implements Serializable {
      */
     protected String title;
 
-
-    public TemplateMessageDTO(){
+    public TemplateMessageDTO() {
 
     }
 
     /**
      * 构造器1 发模板消息用
      */
-    public TemplateMessageDTO(String fromUser, String toUser,String title, Map<String, String> templateParam, String templateCode){
+    public TemplateMessageDTO(String fromUser, String toUser, String title, Map<String, String> templateParam, String templateCode) {
         super(templateCode, templateParam);
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.title = title;
     }
-
-
 
 }

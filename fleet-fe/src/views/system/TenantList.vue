@@ -94,7 +94,6 @@
   import { JeecgListMixin } from '@/mixins/JeecgListMixin'
   import TenantModal from './modules/TenantModal'
 
-
   export default {
     name: "TenantList",
     mixins:[JeecgListMixin, mixinDevice],

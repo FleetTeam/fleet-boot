@@ -65,7 +65,6 @@
       :customRow="clickThenCheck">
     </a-table>
 
-
   </j-modal>
 </template>
 
@@ -101,7 +100,7 @@
           loading: true,
           // 表头
           columns: [],
-          //数据集
+          // 数据集
           dataSource: [],
           // 选择器
           selectedRowKeys: [],
@@ -127,7 +126,7 @@
       }
     },
     mounted() {
-      //this.loadColumnsInfo()
+      // this.loadColumnsInfo()
     },
     watch: {
       code() {
@@ -149,7 +148,7 @@
     methods:{
       loadColumnsInfo(){
         let url = `${this.url.getColumns}${this.code}`
-        //缓存key
+        // 缓存key
         let groupIdKey
         if (this.groupId) {
           groupIdKey = this.groupId + url
@@ -175,7 +174,7 @@
       },
       initQueryInfo() {
         let url = `${this.url.getQueryInfo}${this.cgRpConfigId}`
-        //缓存key
+        // 缓存key
         let groupIdKey
         if (this.groupId) {
           groupIdKey = this.groupId + url
@@ -185,17 +184,17 @@
           if (res.success) {
             this.dynamicParamHandler(res.result)
             this.queryInfo = res.result
-            //查询条件加载后再请求数据
+            // 查询条件加载后再请求数据
             this.loadData(1)
           } else {
             this.$message.warning(res.message)
           }
         })
       },
-      //处理动态参数
+      // 处理动态参数
       dynamicParamHandler(arr){
         if(arr && arr.length>0){
-          //第一次加载查询条件前 初始化queryParam为空对象
+          // 第一次加载查询条件前 初始化queryParam为空对象
           let queryTemp = {}
           for(let item of arr){
             if(item.mode==='single'){
@@ -212,7 +211,7 @@
               if(str && str.startsWith("'") && str.endsWith("'")){
                 str = str.substring(1,str.length-1)
               }
-              //如果查询条件包含参数 设置值
+              // 如果查询条件包含参数 设置值
               this.queryParam[key]=str
             }
             dynamicTemp[key] = this.param[key]
@@ -224,10 +223,10 @@
         if (arg == 1) {
           this.table.pagination.current = 1
         }
-        let params = this.getQueryParams();//查询条件
+        let params = this.getQueryParams(); // 查询条件
         this.table.loading = true
         let url = `${this.url.getData}${this.cgRpConfigId}`
-        //缓存key
+        // 缓存key
         let groupIdKey
         if (this.groupId) {
           groupIdKey = this.groupId + url + JSON.stringify(params)
@@ -248,10 +247,10 @@
       getQueryParams() {
         let paramTarget = {}
         if(this.dynamicParam){
-          //处理自定义参数
-         Object.keys(this.dynamicParam).map(key=>{
-           paramTarget['self_'+key] = this.dynamicParam[key]
-         })
+          // 处理自定义参数
+          Object.keys(this.dynamicParam).map(key=>{
+            paramTarget['self_'+key] = this.dynamicParam[key]
+          })
         }
         let param = Object.assign(paramTarget, this.queryParam, this.sorter);
         param.pageNo = this.table.pagination.current;
@@ -259,34 +258,34 @@
         return filterObj(param);
       },
       handleChangeInTableSelect(selectedRowKeys, selectionRows) {
-        //update-begin-author:taoyan date:2020902 for:【issue】开源online的几个问题 LOWCOD-844
+        // update-begin-author:taoyan date:2020902 for:【issue】开源online的几个问题 LOWCOD-844
         if(!selectedRowKeys || selectedRowKeys.length==0){
           this.table.selectionRows = []
         }else if(selectedRowKeys.length == selectionRows.length){
           this.table.selectionRows = selectionRows
         }else{
-          //当两者长度不一的时候 需要判断
+          // 当两者长度不一的时候 需要判断
           let keys = this.table.selectedRowKeys
           let rows = this.table.selectionRows;
-          //这个循环 添加新的记录
+          // 这个循环 添加新的记录
           for(let i=0;i<selectionRows.length;i++){
             let combineKey = this.combineRowKey(selectionRows[i])
             if(keys.indexOf(combineKey)<0){
-              //如果 原来的key 不包含当前记录 push
+              // 如果 原来的key 不包含当前记录 push
               rows.push(selectionRows[i])
             }
           }
-          //这个循环 移除取消选中的数据
+          // 这个循环 移除取消选中的数据
           this.table.selectionRows = rows.filter(item=>{
             let combineKey = this.combineRowKey(item)
             return selectedRowKeys.indexOf(combineKey)>=0
           })
         }
-        //update-end-author:taoyan date:2020902 for:【issue】开源online的几个问题 LOWCOD-844
+        // update-end-author:taoyan date:2020902 for:【issue】开源online的几个问题 LOWCOD-844
         this.table.selectedRowKeys = selectedRowKeys
       },
       handleChangeInTable(pagination, filters, sorter) {
-        //分页、排序、筛选变化时触发
+        // 分页、排序、筛选变化时触发
         if (Object.keys(sorter).length > 0) {
           this.sorter.column = sorter.field
           this.sorter.order = 'ascend' == sorter.order ? 'asc' : 'desc'
@@ -342,13 +341,13 @@
       combineRowKey(record){
         let res = ''
          Object.keys(record).forEach(key=>{
-           //update-begin---author:liusq   Date:20210203  for：pop选择器列主键问题 issues/I29P9Q------------
+           // update-begin---author:liusq   Date:20210203  for：pop选择器列主键问题 issues/I29P9Q------------
            if(key=='id'){
              res=record[key]+res
            }else{
              res+=record[key]
            }
-           //update-end---author:liusq     Date:20210203  for：pop选择器列主键问题 issues/I29P9Q------------
+           // update-end---author:liusq     Date:20210203  for：pop选择器列主键问题 issues/I29P9Q------------
          })
         if(res.length>50){
           res = res.substring(0,50)
@@ -381,7 +380,7 @@
           }
         }
       },
-      //防止字典中有垃圾数据
+      // 防止字典中有垃圾数据
       initDictOptionData(dictOptions){
         let obj = { }
         Object.keys(dictOptions).map(k=>{

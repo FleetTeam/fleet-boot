@@ -4,52 +4,52 @@ import java.io.Serializable;
 
 public class QueryCondition implements Serializable {
 
-	private static final long serialVersionUID = 4740166316629191651L;
-	
-	private String field;
-	private String type;
-	private String rule;
-	private String val;
-	
-	public String getField() {
-		return field;
-	}
+    private static final long serialVersionUID = 4740166316629191651L;
 
-	public void setField(String field) {
-		this.field = field;
-	}
+    private String field;
+    private String type;
+    private String rule;
+    private String val;
 
-	public String getType() {
-		return type;
-	}
+    public String getField() {
+        return field;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setField(String field) {
+        this.field = field;
+    }
 
-	public String getRule() {
-		return rule;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setRule(String rule) {
-		this.rule = rule;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public String getVal() {
-		return val;
-	}
+    public String getRule() {
+        return rule;
+    }
 
-	public void setVal(String val) {
-		this.val = val;
-	}
+    public void setRule(String rule) {
+        this.rule = rule;
+    }
 
-	@Override
-	public String toString(){
-		StringBuffer sb =new StringBuffer();
-		if(field == null || "".equals(field)){
-			return "";
-		}
-		sb.append(this.field).append(" ").append(this.rule).append(" ").append(this.type).append(" ").append(this.val);
-		return sb.toString();
-	}
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val = val;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        if (field == null || "".equals(field)) {
+            return "";
+        }
+        sb.append(this.field).append(" ").append(this.rule).append(" ").append(this.type).append(" ").append(this.val);
+        return sb.toString();
+    }
 }

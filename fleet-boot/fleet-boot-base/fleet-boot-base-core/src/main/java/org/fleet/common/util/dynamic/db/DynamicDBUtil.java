@@ -40,7 +40,7 @@ public class DynamicDBUtil {
         String dbPassword = dbSource.getDbPassword();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setUrl(url);
-        //dataSource.setValidationQuery("SELECT 1 FROM DUAL");
+        // dataSource.setValidationQuery("SELECT 1 FROM DUAL");
         dataSource.setTestWhileIdle(true);
         dataSource.setTestOnBorrow(false);
         dataSource.setTestOnReturn(false);
@@ -52,7 +52,7 @@ public class DynamicDBUtil {
 
         log.info("******************************************");
         log.info("*                                        *");
-        log.info("*====【"+dbSource.getCode()+"】=====Druid连接池已启用 ====*");
+        log.info("*====【" + dbSource.getCode() + "】=====Druid连接池已启用 ====*");
         log.info("*                                        *");
         log.info("******************************************");
         return dataSource;
@@ -65,19 +65,19 @@ public class DynamicDBUtil {
      * @return
      */
     public static DruidDataSource getDbSourceByDbKey(final String dbKey) {
-        //获取多数据源配置
+        // 获取多数据源配置
         DynamicDataSourceModel dbSource = DataSourceCachePool.getCacheDynamicDataSourceModel(dbKey);
-        //先判断缓存中是否存在数据库链接
+        // 先判断缓存中是否存在数据库链接
         DruidDataSource cacheDbSource = DataSourceCachePool.getCacheBasicDataSource(dbKey);
         if (cacheDbSource != null && !cacheDbSource.isClosed()) {
             log.debug("--------getDbSourceBydbKey------------------从缓存中获取DB连接-------------------");
             return cacheDbSource;
         } else {
             DruidDataSource dataSource = getJdbcDataSource(dbSource);
-            if(dataSource!=null && dataSource.isEnable()){
+            if (dataSource != null && dataSource.isEnable()) {
                 DataSourceCachePool.putCacheBasicDataSource(dbKey, dataSource);
-            }else{
-                throw new FleetBootException("动态数据源连接失败，dbKey："+dbKey);
+            } else {
+                throw new FleetBootException("动态数据源连接失败，dbKey：" + dbKey);
             }
             log.info("--------getDbSourceBydbKey------------------创建DB数据库连接-------------------");
             return dataSource;
@@ -102,7 +102,6 @@ public class DynamicDBUtil {
             e.printStackTrace();
         }
     }
-
 
     private static JdbcTemplate getJdbcTemplate(String dbKey) {
         DruidDataSource dataSource = getDbSourceByDbKey(dbKey);
@@ -137,7 +136,7 @@ public class DynamicDBUtil {
     public static int updateByHash(final String dbKey, String sql, HashMap<String, Object> data) {
         int effectCount;
         JdbcTemplate jdbcTemplate = getJdbcTemplate(dbKey);
-        //根据模板获取sql
+        // 根据模板获取sql
         sql = FreemarkerParseFactory.parseTemplateContent(sql, data);
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate.getDataSource());
         effectCount = namedParameterJdbcTemplate.update(sql, data);
@@ -229,14 +228,14 @@ public class DynamicDBUtil {
     public static List<Map<String, Object>> findListByHash(final String dbKey, String sql, HashMap<String, Object> data) {
         List<Map<String, Object>> list;
         JdbcTemplate jdbcTemplate = getJdbcTemplate(dbKey);
-        //根据模板获取sql
+        // 根据模板获取sql
         sql = FreemarkerParseFactory.parseTemplateContent(sql, data);
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate.getDataSource());
         list = namedParameterJdbcTemplate.queryForList(sql, data);
         return list;
     }
 
-    //此方法只能返回单列，不能返回实体类
+    // 此方法只能返回单列，不能返回实体类
     public static <T> List<T> findList(final String dbKey, String sql, Class<T> clazz, Object... param) {
         List<T> list;
         JdbcTemplate jdbcTemplate = getJdbcTemplate(dbKey);
@@ -261,7 +260,7 @@ public class DynamicDBUtil {
     public static <T> List<T> findListByHash(final String dbKey, String sql, Class<T> clazz, HashMap<String, Object> data) {
         List<T> list;
         JdbcTemplate jdbcTemplate = getJdbcTemplate(dbKey);
-        //根据模板获取sql
+        // 根据模板获取sql
         sql = FreemarkerParseFactory.parseTemplateContent(sql, data);
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate.getDataSource());
         list = namedParameterJdbcTemplate.queryForList(sql, data, clazz);

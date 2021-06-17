@@ -55,7 +55,7 @@
       }else{
         this.tagType = this.type
       }
-      //获取字典数据
+      // 获取字典数据
       // this.initDictData();
     },
     computed: {
@@ -68,16 +68,16 @@
     },
     methods: {
       initDictData() {
-        //优先从缓存中读取字典配置
+        // 优先从缓存中读取字典配置
         if(getDictItemsFromCache(this.dictCode)){
           this.dictOptions = getDictItemsFromCache(this.dictCode);
           return
         }
 
-        //根据字典Code, 初始化字典数组
+        // 根据字典Code, 初始化字典数组
         ajaxGetDictItems(this.dictCode, null).then((res) => {
           if (res.success) {
-//                console.log(res.result);
+            // console.log(res.result);
             this.dictOptions = res.result;
           }
         })

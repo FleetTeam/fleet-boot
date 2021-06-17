@@ -19,8 +19,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 
 @ConditionalOnClass(Feign.class)
 @AutoConfigureBefore(FeignAutoConfiguration.class)
@@ -37,7 +37,7 @@ public class FeignConfig {
                 log.info("Feign request: {}", request.getRequestURI());
                 // 将token信息放入header中
                 String token = request.getHeader(CommonConstant.X_ACCESS_TOKEN);
-                if(token==null){
+                if (token == null) {
                     token = request.getParameter("token");
                 }
                 log.info("Feign request token: {}", token);
@@ -45,8 +45,6 @@ public class FeignConfig {
             }
         };
     }
-
-
 
     /**
      * Feign 客户端的日志记录，默认级别为NONE
@@ -63,6 +61,7 @@ public class FeignConfig {
 
     /**
      * Feign支持文件上传
+     *
      * @param messageConverters
      * @return
      */

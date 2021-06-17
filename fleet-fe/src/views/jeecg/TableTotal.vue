@@ -87,7 +87,7 @@
       }
     },
     methods: {
-      /** 表格增加合计行 */
+      // 表格增加合计行
       tableAddTotalRow(columns, dataSource) {
         let numKey = 'rowIndex'
         let totalRow = { [numKey]: '合计' }

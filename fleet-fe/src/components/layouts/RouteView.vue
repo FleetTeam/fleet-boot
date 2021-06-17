@@ -14,12 +14,12 @@
   export default {
     name: "RouteView",
     computed: {
-      //update-begin--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
+      // update-begin--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
       includedComponents() {
         const includedRouters = Vue.ls.get(CACHE_INCLUDED_ROUTES)
         console.log("includedRouters：" + includedRouters)
 
-        //如果是缓存路由，则加入到 cache_included_routes
+        // 如果是缓存路由，则加入到 cache_included_routes
         if (this.$route.meta.keepAlive && this.$route.meta.componentName) {
           let cacheRouterArray = Vue.ls.get(CACHE_INCLUDED_ROUTES) || []
           if(!cacheRouterArray.includes(this.$route.meta.componentName)){
@@ -33,7 +33,7 @@
         }
         return includedRouters;
       },
-      //update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
+      // update-end--Author:scott  Date:20201015 for：路由缓存问题，关闭了tab页时再打开就不刷新 #842
       keepAlive () {
         return this.$route.meta.keepAlive
       }

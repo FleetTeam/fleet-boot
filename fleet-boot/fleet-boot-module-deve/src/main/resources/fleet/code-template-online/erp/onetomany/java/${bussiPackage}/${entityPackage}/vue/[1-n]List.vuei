@@ -128,9 +128,9 @@
             }
           },
     <#assign showColNum=0>
-	<#list sub.originalColumns as po>
-	<#if po.isShowList =='Y'>
-	<#assign showColNum=showColNum+1>
+  <#list sub.originalColumns as po>
+  <#if po.isShowList =='Y'>
+  <#assign showColNum=showColNum+1>
           {
             title:'${po.filedComment}',
             align:"center",
@@ -155,16 +155,16 @@
             scopedSlots: {customRender: 'imgSlot'}
             <#elseif po.classType =='list' || po.classType =='radio' || po.classType =='list_multi' || po.classType =='checkbox' || po.classType =='sel_search' || po.classType =='cat_tree' || po.classType =='sel_depart'>
             dataIndex: '${po.fieldName}_dictText',
-			<#elseif po.classType=='switch'>
+      <#elseif po.classType=='switch'>
             dataIndex: '${po.fieldName}',
             <#if po.dictField != 'is_open'>
             customRender: (text) => (!text ? "" : (text == ${po.dictField}[0] ? "是" : "否"))
             <#else>
             customRender: (text) => (!text ? "" : (text == "Y" ? "是" : "否"))
             </#if>
-			<#else>
+      <#else>
             dataIndex: '${po.fieldName}'
-			</#if>
+      </#if>
           },
      </#if>
      </#list>

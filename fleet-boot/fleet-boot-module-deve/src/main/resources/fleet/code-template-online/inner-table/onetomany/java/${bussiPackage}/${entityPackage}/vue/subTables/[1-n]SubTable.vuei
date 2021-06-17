@@ -1,4 +1,4 @@
-<#--noinspection JSDuplicatedDeclaration-->
+<#-- noinspection JSDuplicatedDeclaration -->
 <#list subTables as sub>
 #segment#${sub.entityName}SubTable.vue
 <template>

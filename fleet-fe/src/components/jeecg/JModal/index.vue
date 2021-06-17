@@ -12,7 +12,7 @@
   >
 
     <slot></slot>
-    <!--有设置标题-->
+    <!-- 有设置标题 -->
     <template v-if="!isNoTitle" slot="title">
       <a-row class="j-modal-title-row" type="flex">
         <a-col class="left">
@@ -23,7 +23,7 @@
         </a-col>
       </a-row>
     </template>
-    <!--没有设置标题-->
+    <!-- 没有设置标题 -->
     <template v-else slot="title">
       <a-row class="j-modal-title-row" type="flex">
         <a-col v-if="switchFullscreen" class="right" @click="toggleFullscreen">
@@ -158,7 +158,7 @@
         this.close()
       },
 
-      /** 切换全屏 */
+      // 切换全屏
       toggleFullscreen() {
         this.innerFullscreen = !this.innerFullscreen
         triggerWindowResizeEvent()

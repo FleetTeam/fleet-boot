@@ -41,7 +41,7 @@
         type: String,
         default: ''
       },
-      /** 是否返回 id，默认 false，返回 code */
+      // 是否返回 id，默认 false，返回 code
       returnId: {
         type: Boolean,
         default: false

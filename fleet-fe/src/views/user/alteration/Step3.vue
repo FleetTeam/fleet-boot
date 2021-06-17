@@ -26,9 +26,9 @@
   import { getAction } from '@/api/manage'
   export default {
     name: "Step3",
-//    components: {
-//      Result
-//    },
+    // components: {
+    //   Result
+    // },
     props: ['userList'],
     data () {
       return {

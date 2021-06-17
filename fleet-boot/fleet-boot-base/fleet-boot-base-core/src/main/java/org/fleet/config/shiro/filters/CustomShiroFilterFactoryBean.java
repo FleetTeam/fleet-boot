@@ -40,7 +40,7 @@ public class CustomShiroFilterFactoryBean extends ShiroFilterFactoryBean {
         }
 
         FilterChainManager manager = createFilterChainManager();
-        //Expose the constructed FilterChainManager by first wrapping it in a
+        // Expose the constructed FilterChainManager by first wrapping it in a
         // FilterChainResolver implementation. The AbstractShiroFilter implementations
         // do not know about FilterChainManagers - only resolvers:
         PathMatchingFilterChainResolver chainResolver = new PathMatchingFilterChainResolver();
@@ -49,13 +49,13 @@ public class CustomShiroFilterFactoryBean extends ShiroFilterFactoryBean {
         Map<String, Filter> filterMap = manager.getFilters();
         Filter invalidRequestFilter = filterMap.get(DefaultFilter.invalidRequest.name());
         if (invalidRequestFilter instanceof InvalidRequestFilter) {
-            //此处是关键,设置false跳过URL携带中文400，servletPath中文校验bug
+            // 此处是关键,设置false跳过URL携带中文400，servletPath中文校验bug
             ((InvalidRequestFilter) invalidRequestFilter).setBlockNonAscii(false);
         }
-        //Now create a concrete ShiroFilter instance and apply the acquired SecurityManager and built
-        //FilterChainResolver.  It doesn't matter that the instance is an anonymous inner class
-        //here - we're just using it because it is a concrete AbstractShiroFilter instance that accepts
-        //injection of the SecurityManager and FilterChainResolver:
+        // Now create a concrete ShiroFilter instance and apply the acquired SecurityManager and built
+        // FilterChainResolver.  It doesn't matter that the instance is an anonymous inner class
+        // here - we're just using it because it is a concrete AbstractShiroFilter instance that accepts
+        // injection of the SecurityManager and FilterChainResolver:
         return new MySpringShiroFilter((WebSecurityManager) securityManager, chainResolver);
     }
 

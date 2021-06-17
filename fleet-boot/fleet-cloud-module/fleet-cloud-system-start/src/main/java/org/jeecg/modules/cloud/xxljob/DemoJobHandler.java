@@ -1,6 +1,6 @@
+package org.jeecg.modules.cloud.xxljob;
 
-package org.jeecg.modules.cloud.xxljob;;
-
+;
 
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
@@ -18,14 +18,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
 
-
 /**
  * xxl-job定时任务测试
  */
 @Component
 @Slf4j
 public class DemoJobHandler {
-
 
     /**
      * 简单任务
@@ -62,7 +60,6 @@ public class DemoJobHandler {
 
         return ReturnT.SUCCESS;
     }
-
 
     /**
      * 3、命令行任务
@@ -103,7 +100,6 @@ public class DemoJobHandler {
             return new ReturnT<String>(IJobHandler.FAIL.getCode(), "command exit value(" + exitValue + ") is failed");
         }
     }
-
 
     /**
      * 4、跨平台Http任务
@@ -211,7 +207,6 @@ public class DemoJobHandler {
         }
 
     }
-
 
     /**
      * 5、生命周期任务示例：任务初始化与销毁时，支持自定义相关逻辑；

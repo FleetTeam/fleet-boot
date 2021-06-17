@@ -1,12 +1,10 @@
 package org.fleet.modules.deve.autocode.window;
 
-
 import org.fleet.modules.deve.autocode.generate.impl.CodeGenerateOneToMany;
 import org.fleet.modules.deve.autocode.generate.pojo.onetomany.MainTableVo;
 import org.fleet.modules.deve.autocode.generate.pojo.onetomany.SubTableVo;
 
 import java.util.ArrayList;
-
 
 public class FleetOneToMainUtil {
     public static void main(String[] args) {
@@ -16,7 +14,6 @@ public class FleetOneToMainUtil {
         mainTableVo.setEntityPackage("test2");
         mainTableVo.setFtlDescription("订单");
 
-
         ArrayList<SubTableVo> arrayList = new ArrayList();
 
         SubTableVo subTableVo1 = new SubTableVo();
@@ -24,7 +21,6 @@ public class FleetOneToMainUtil {
         subTableVo1.setEntityName("TestOrderCustom");
         subTableVo1.setEntityPackage("test2");
         subTableVo1.setFtlDescription("客户明细");
-
 
         subTableVo1.setForeignKeys(new String[]{"order_id"});
         arrayList.add(subTableVo1);
@@ -35,11 +31,9 @@ public class FleetOneToMainUtil {
         subTableVo2.setEntityPackage("test2");
         subTableVo2.setFtlDescription("产品明细");
 
-
         subTableVo2.setForeignKeys(new String[]{"order_id"});
         arrayList.add(subTableVo2);
         mainTableVo.setSubTables(arrayList);
-
 
         try {
             String projectPath = "/Users/wangrongpu/src";

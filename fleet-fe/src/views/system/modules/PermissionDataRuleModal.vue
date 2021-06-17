@@ -96,7 +96,7 @@
     methods: {
       add(permId) {
         this.permissionId = permId
-        //初始化默认值
+        // 初始化默认值
         this.edit({status:'1'})
       },
       edit(record) {

@@ -10,5 +10,5 @@ public class GlobalConstants {
     /**
      * redis消息通道名称
      */
-    public static final String REDIS_TOPIC_NAME="fleet_redis_topic";
+    public static final String REDIS_TOPIC_NAME = "fleet_redis_topic";
 }

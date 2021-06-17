@@ -8,10 +8,10 @@
     @ok="handleOk"
     @cancel="handleCancel"
     cancelText="关闭">
-    
+
     <a-spin :spinning="confirmLoading">
       <a-form-model ref="form" :model="model" :rules="validatorRules">
-      
+
 <#list columns as po><#rt/>
 <#if po.fieldName !='id'><#rt/>
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="${po.fieldName}" label="${po.filedComment}">
@@ -27,7 +27,7 @@
         </a-form-model-item>
 </#if>
 </#list>
-		
+
       </a-form-model>
     </a-spin>
   </j-modal>
@@ -61,7 +61,7 @@
         ${po.fieldName}:[{ required: true, message: '请输入${po.filedComment}!' }],
         </#if>
         </#if>
-	    </#list>
+      </#list>
         },
         url: {
           add: "/${entityPackage}/${entityName?uncap_first}/add",
@@ -73,7 +73,7 @@
     },
     methods: {
       add () {
-        //初始化默认值
+        // 初始化默认值
         this.edit({});
       },
       edit (record) {
@@ -119,7 +119,6 @@
       handleCancel () {
         this.close()
       },
-
 
     }
   }

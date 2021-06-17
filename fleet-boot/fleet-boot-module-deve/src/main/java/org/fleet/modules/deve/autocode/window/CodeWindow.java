@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class CodeWindow
         extends JFrame {
     private static final long b = -5324160085184088010L;
@@ -58,7 +57,6 @@ public class CodeWindow
         bg.add(tableStlye);
         bg.add(skipStlye);
 
-
         JCheckBox controlButton = new JCheckBox("Control");
         controlButton.setSelected(true);
         JCheckBox vueButton = new JCheckBox("Vue");
@@ -92,14 +90,12 @@ public class CodeWindow
         jp.add(fieldRowNumlbl);
         jp.add(fieldRowNumfld);
 
-
         jp.add(controlButton);
         jp.add(vueButton);
         jp.add(serviceIButton);
         jp.add(mapperButton);
         jp.add(daoButton);
         jp.add(entityButtong);
-
 
         jp.add(tableStlye);
         jp.add(skipStlye);
@@ -136,7 +132,6 @@ public class CodeWindow
 
                     return;
                 }
-
 
                 primaryKeyPolicy = (String) tablekeyfld.getSelectedItem();
 

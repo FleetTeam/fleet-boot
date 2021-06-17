@@ -20,7 +20,21 @@ import java.util.Map;
 @Slf4j
 public class RestUtil {
 
+    /**
+     * RestAPI 调用器
+     */
+    private final static RestTemplate RT;
+    public static String path = null;
     private static String domain = null;
+
+    static {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(3000);
+        requestFactory.setReadTimeout(3000);
+        RT = new RestTemplate(requestFactory);
+        // 解决乱码问题
+        RT.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
+    }
 
     public static String getDomain() {
         if (domain == null) {
@@ -28,8 +42,6 @@ public class RestUtil {
         }
         return domain;
     }
-
-    public static String path = null;
 
     public static String getPath() {
         if (path == null) {
@@ -42,20 +54,6 @@ public class RestUtil {
         String basepath = getDomain() + getPath();
         log.info(" RestUtil.getBaseUrl: " + basepath);
         return basepath;
-    }
-
-    /**
-     * RestAPI 调用器
-     */
-    private final static RestTemplate RT;
-
-    static {
-        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setConnectTimeout(3000);
-        requestFactory.setReadTimeout(3000);
-        RT = new RestTemplate(requestFactory);
-        // 解决乱码问题
-        RT.getMessageConverters().set(1, new StringHttpMessageConverter(StandardCharsets.UTF_8));
     }
 
     public static RestTemplate getRestTemplate() {
@@ -186,7 +184,7 @@ public class RestUtil {
      * @return ResponseEntity<responseType>
      */
     public static <T> ResponseEntity<T> request(String url, HttpMethod method, HttpHeaders headers, JSONObject variables, Object params, Class<T> responseType) {
-        log.info(" RestUtil  --- request ---  url = "+ url);
+        log.info(" RestUtil  --- request ---  url = " + url);
         if (StringUtils.isEmpty(url)) {
             throw new RuntimeException("url 不能为空");
         }

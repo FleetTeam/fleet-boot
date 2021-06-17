@@ -64,7 +64,7 @@
         <span slot="url" slot-scope="text">
           <j-ellipsis :value="text" :length="25"/>
         </span>
-        <!-- 字符串超长截取省略号显示-->
+        <!-- 字符串超长截取省略号显示 -->
         <span slot="component" slot-scope="text">
           <j-ellipsis :value="text"/>
         </span>

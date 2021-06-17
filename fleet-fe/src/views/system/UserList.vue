@@ -8,7 +8,7 @@
 
           <a-col :md="6" :sm="12">
             <a-form-item label="账号">
-              <!--<a-input placeholder="请输入账号查询" v-model="queryParam.username"></a-input>-->
+              <!-- <a-input placeholder="请输入账号查询" v-model="queryParam.username"></a-input> -->
               <j-input placeholder="输入账号模糊查询" v-model="queryParam.username"></j-input>
             </a-form-item>
           </a-col>
@@ -22,7 +22,6 @@
               </a-select>
             </a-form-item>
           </a-col>
-
 
           <template v-if="toggleSearchStatus">
             <a-col :md="6" :sm="8">
@@ -157,7 +156,6 @@
             </a-menu>
           </a-dropdown>
         </span>
-
 
       </a-table>
     </div>
@@ -349,7 +347,7 @@
       },
       handleFrozen: function (id, status, username) {
         let that = this;
-        //TODO 后台校验管理员角色
+        // TODO 后台校验管理员角色
         if ('admin' == username) {
           that.$message.warning('管理员账号不允许此操作！');
           return;
@@ -367,7 +365,7 @@
         this.$refs.passwordmodal.show(username);
       },
       passwordModalOk() {
-        //TODO 密码修改完成 不需要刷新页面，可以把datasource中的数据更新一下
+        // TODO 密码修改完成 不需要刷新页面，可以把datasource中的数据更新一下
       }
     }
 

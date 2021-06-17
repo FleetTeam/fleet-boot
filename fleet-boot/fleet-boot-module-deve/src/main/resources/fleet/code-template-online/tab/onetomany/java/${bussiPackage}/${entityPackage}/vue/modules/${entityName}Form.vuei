@@ -7,7 +7,7 @@
 <#assign form_span = 24>
 
    <a-tabs v-model="activeKey" @change="handleChangeTabs">
-   <!--主表区域 -->
+   <!-- 主表区域 -->
     <a-tab-pane tab="${tableVo.ftlDescription}" :key="refKeys[0]" :forceRender="true">
          <a-form-model ref="form" :model="model" :rules="validatorRules">
            <a-row>
@@ -105,7 +105,7 @@
               </a-form-model>
 
      </a-tab-pane>
-   <!--子表单区域 -->
+   <!-- 子表单区域 -->
 <#list subTables as sub><#rt/>
 <#if sub.foreignRelationType =='1'>
      <a-tab-pane tab="${sub.ftlDescription}" :key="refKeys[${sub_index+1}]" :forceRender="true">
@@ -386,7 +386,7 @@ export default {
      })
      </#if>
    },
-   /** 调用完edit()方法之后会自动调用此方法 */
+   // 调用完edit()方法之后会自动调用此方法
    editAfter() {
      this.$nextTick(() => {
 <#list subTables as sub><#rt/>
@@ -405,7 +405,7 @@ export default {
 </#list>
      }
    },
-   //校验所有一对一子表表单
+   // 校验所有一对一子表表单
    validateSubForm(allValues){
      return new Promise((resolve,reject)=>{
        Promise.all([
@@ -421,7 +421,7 @@ export default {
        })
      })
    },
-   /** 整理成formData */
+   // 整理成formData
    classifyIntoFormData(allValues) {
      let main = Object.assign(this.model, allValues.formValue)
      return {
@@ -437,13 +437,13 @@ export default {
 </#list>
      }
    },
-    /** 确定按钮点击事件 */
+    // 确定按钮点击事件
      handleOk() {
-       /** 触发表单验证 */
+       // 触发表单验证
        this.getAllTable().then(tables => {
           return validateFormModelAndTables(this.$refs.form,this.model, tables)
        }).then(allValues => {
-         /** 一次性验证一对一的所有子表 */
+         // 一次性验证一对一的所有子表
          return this.validateSubForm(allValues)
        }).then(allValues => {
          if (typeof this.classifyIntoFormData !== 'function') {

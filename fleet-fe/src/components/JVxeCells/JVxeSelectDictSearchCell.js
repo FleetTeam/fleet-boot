@@ -5,12 +5,12 @@ import { filterDictText } from '@/components/dict/JDictSelectUtil'
 import { ajaxGetDictItems, getDictItemsFromCache } from '@/api/api'
 import JVxeCellMixins, { dispatchEvent } from '@/components/jeecg/JVxeTable/mixins/JVxeCellMixins'
 
-/** 公共资源 */
+// 公共资源
 const common = {
-  /** value - label map，防止重复查询（刷新清空缓存） */
+  // value - label map，防止重复查询（刷新清空缓存）
   labelMap: new Map(),
 
-  /** 公共data */
+  // 公共data
   data() {
     return {
       loading: false,
@@ -18,7 +18,7 @@ const common = {
       innerOptions: [],
     }
   },
-  /** 公共计算属性 */
+  // 公共计算属性
   computed: {
     dict() {
       return this.originColumn.dict
@@ -36,7 +36,7 @@ const common = {
       return (isAsync != null && isAsync !== '') ? !!isAsync : true
     },
   },
-  /** 公共属性监听 */
+  // 公共属性监听
   watch: {
     innerValue: {
       immediate: true,
@@ -52,7 +52,7 @@ const common = {
       this.loadDataByDict()
     }
   },
-  /** 公共方法 */
+  // 公共方法
   methods: {
 
     // 根据 value 查询数据，用于回显
@@ -89,7 +89,7 @@ const common = {
               dictStr = this.dict
             }
             if (this.dict.indexOf(',') === -1) {
-              //优先从缓存中读取字典配置
+              // 优先从缓存中读取字典配置
               let cache = getDictItemsFromCache(this.dict)
               if (cache) {
                 this.innerOptions = cache
@@ -175,7 +175,7 @@ export const DictSearchInputCell = {
     ...common.watch,
   },
   created() {
-    this.loadData = debounce(this.loadData, 300)//消抖
+    this.loadData = debounce(this.loadData, 300) // 消抖
   },
   methods: {
     ...common.methods,

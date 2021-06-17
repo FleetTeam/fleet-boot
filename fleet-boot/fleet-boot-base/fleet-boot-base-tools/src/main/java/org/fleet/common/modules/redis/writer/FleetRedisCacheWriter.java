@@ -39,6 +39,14 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
         this.sleepTime = sleepTime;
     }
 
+    private static boolean shouldExpireWithin(@Nullable Duration ttl) {
+        return ttl != null && !ttl.isZero() && !ttl.isNegative();
+    }
+
+    private static byte[] createCacheLockKey(String name) {
+        return (name + "~lock").getBytes(StandardCharsets.UTF_8);
+    }
+
     public void put(String name, byte[] key, byte[] value, @Nullable Duration ttl) {
         Assert.notNull(name, "Name must not be null!");
         Assert.notNull(key, "Key must not be null!");
@@ -57,7 +65,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
     public byte[] get(String name, byte[] key) {
         Assert.notNull(name, "Name must not be null!");
         Assert.notNull(key, "Key must not be null!");
-        return (byte[])this.execute(name, (connection) -> {
+        return (byte[]) this.execute(name, (connection) -> {
             return connection.get(key);
         });
     }
@@ -66,7 +74,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
         Assert.notNull(name, "Name must not be null!");
         Assert.notNull(key, "Key must not be null!");
         Assert.notNull(value, "Value must not be null!");
-        return (byte[])this.execute(name, (connection) -> {
+        return (byte[]) this.execute(name, (connection) -> {
             if (this.isLockingCacheWriter()) {
                 this.doLock(name, connection);
             }
@@ -93,7 +101,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
 
             }
 
-            return (byte[])var7;
+            return (byte[]) var7;
         });
     }
 
@@ -102,7 +110,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
         Assert.notNull(key, "Key must not be null!");
         String keyString = new String(key);
         log.info("redis remove key:" + keyString);
-        if(keyString!=null && keyString.endsWith("*")){
+        if (keyString != null && keyString.endsWith("*")) {
             execute(name, connection -> {
                 // 获取某个前缀所拥有的所有的键，某个前缀开头，后面肯定是*
                 Set<byte[]> keys = connection.keys(key);
@@ -112,7 +120,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
                 }
                 return delNum;
             });
-        }else{
+        } else {
             this.execute(name, (connection) -> {
                 return connection.del(new byte[][]{key});
             });
@@ -131,7 +139,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
                     wasLocked = true;
                 }
 
-                byte[][] keys = (byte[][])((Set)Optional.ofNullable(connection.keys(pattern)).orElse(Collections.emptySet())).toArray(new byte[0][]);
+                byte[][] keys = (byte[][]) ((Set) Optional.ofNullable(connection.keys(pattern)).orElse(Collections.emptySet())).toArray(new byte[0][]);
                 if (keys.length > 0) {
                     connection.del(keys);
                 }
@@ -200,7 +208,7 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
     private void checkAndPotentiallyWaitUntilUnlocked(String name, RedisConnection connection) {
         if (this.isLockingCacheWriter()) {
             try {
-                while(this.doCheckLock(name, connection)) {
+                while (this.doCheckLock(name, connection)) {
                     Thread.sleep(this.sleepTime.toMillis());
                 }
 
@@ -209,13 +217,5 @@ public class FleetRedisCacheWriter implements RedisCacheWriter {
                 throw new PessimisticLockingFailureException(String.format("Interrupted while waiting to unlock cache %s", name), var4);
             }
         }
-    }
-
-    private static boolean shouldExpireWithin(@Nullable Duration ttl) {
-        return ttl != null && !ttl.isZero() && !ttl.isNegative();
-    }
-
-    private static byte[] createCacheLockKey(String name) {
-        return (name + "~lock").getBytes(StandardCharsets.UTF_8);
     }
 }

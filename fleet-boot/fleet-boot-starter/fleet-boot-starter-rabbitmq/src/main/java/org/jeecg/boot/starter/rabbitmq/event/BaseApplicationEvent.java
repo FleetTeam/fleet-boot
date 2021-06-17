@@ -16,10 +16,10 @@ public class BaseApplicationEvent implements ApplicationListener<JeecgRemoteAppl
     public void onApplicationEvent(JeecgRemoteApplicationEvent jeecgRemoteApplicationEvent) {
         EventObj eventObj = jeecgRemoteApplicationEvent.getEventObj();
         if (ObjectUtil.isNotEmpty(eventObj)) {
-            //获取业务模块消息处理器
+            // 获取业务模块消息处理器
             JeecgBusEventHandler busEventHandler = SpringContextHolder.getHandler(eventObj.getHandlerName(), JeecgBusEventHandler.class);
             if (ObjectUtil.isNotEmpty(busEventHandler)) {
-                //通知业务模块
+                // 通知业务模块
                 busEventHandler.onMessage(eventObj);
             }
         }

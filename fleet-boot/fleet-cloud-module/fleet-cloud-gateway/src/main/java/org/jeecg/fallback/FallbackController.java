@@ -14,6 +14,7 @@ public class FallbackController {
 
     /**
      * 全局熔断处理
+     *
      * @return
      */
     @RequestMapping("/fallback")
@@ -23,6 +24,7 @@ public class FallbackController {
 
     /**
      * demo熔断处理
+     *
      * @return
      */
     @RequestMapping("/demo/fallback")

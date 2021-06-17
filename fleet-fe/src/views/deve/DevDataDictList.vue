@@ -119,7 +119,7 @@
     name: "DevDataDictList",
     mixins:[JeecgListMixin],
     components: {
-      DevDataDictModal       
+      DevDataDictModal
     },
     data () {
       return {
@@ -136,72 +136,72 @@
               return parseInt(index)+1;
             }
            },
-		  //  {
-      //       title: 'ver',
-      //       align:"center",
-      //       dataIndex: 'ver'
-      //      },
-		  //  {
-      //       title: '系统标识',
-      //       align:"center",
-      //       dataIndex: 'sysId'
-      //      },
-		   {
-            title: '元数据字典代码',
-            align:"center",
-            dataIndex: 'unitDataCode'
-           },
-		   {
-            title: '元数据字典描述',
-            align:"center",
-            dataIndex: 'unitDataDesc'
-           },
-		   {
-            title: '参考字典',
-            align:"center",
-            dataIndex: 'refDict'
-           },
-		   {
-            title: '状态',
-            align:"center",
-            dataIndex: 'status'
-           },
-		   {
-            title: '选项代码',
-            align:"center",
-            dataIndex: 'optionCode'
-           },
-		   {
-            title: '选项组别',
-            align:"center",
-            dataIndex: 'optionGroup'
-           },
-		   {
-            title: '选项版本',
-            align:"center",
-            dataIndex: 'optionVer'
-           },
-		   {
-            title: '控制状态',
-            align:"center",
-            dataIndex: 'ctrlStatus'
-           },
-		  //  {
-      //       title: 'verNo',
-      //       align:"center",
-      //       dataIndex: 'verNo'
-      //      },
-		  //  {
-      //       title: '版本状态',
-      //       align:"center",
-      //       dataIndex: 'verStatus'
-      //      },
-		  //  {
-      //       title: '检出用户',
-      //       align:"center",
-      //       dataIndex: 'checkUser'
-      //      },
-		   {
+        // {
+        //      title: 'ver',
+        //      align:"center",
+        //      dataIndex: 'ver'
+        //     },
+        // {
+        //      title: '系统标识',
+        //      align:"center",
+        //      dataIndex: 'sysId'
+        //},
+        {
+             title: '元数据字典代码',
+             align:"center",
+             dataIndex: 'unitDataCode'
+            },
+        {
+             title: '元数据字典描述',
+             align:"center",
+             dataIndex: 'unitDataDesc'
+            },
+        {
+             title: '参考字典',
+             align:"center",
+             dataIndex: 'refDict'
+            },
+        {
+             title: '状态',
+             align:"center",
+             dataIndex: 'status'
+            },
+        {
+             title: '选项代码',
+             align:"center",
+             dataIndex: 'optionCode'
+            },
+        {
+             title: '选项组别',
+             align:"center",
+             dataIndex: 'optionGroup'
+            },
+        {
+             title: '选项版本',
+             align:"center",
+             dataIndex: 'optionVer'
+            },
+        {
+             title: '控制状态',
+             align:"center",
+             dataIndex: 'ctrlStatus'
+            },
+        // {
+        //      title: 'verNo',
+        //      align:"center",
+        //      dataIndex: 'verNo'
+        //     },
+        // {
+        //      title: '版本状态',
+        //      align:"center",
+        //      dataIndex: 'verStatus'
+        //     },
+        // {
+        //      title: '检出用户',
+        //      align:"center",
+        //      dataIndex: 'checkUser'
+        //     },
+        {
             title: '备注',
             align:"center",
             dataIndex: 'remark'
@@ -213,7 +213,7 @@
             scopedSlots: { customRender: 'action' },
           }
         ],
-		url: {
+    url: {
           list: "/deve/devDataDict/list",
           delete: "/deve/devDataDict/delete",
           deleteBatch: "/deve/devDataDict/deleteBatch",
@@ -228,7 +228,7 @@
     }
   },
     methods: {
-     
+
     }
   }
 </script>

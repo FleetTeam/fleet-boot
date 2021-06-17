@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>fleet-boot-parent</artifactId>
@@ -16,14 +16,15 @@
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-base-core</artifactId>
         </dependency>
-        <!--引入微服务启动依赖 starter
-      <dependency>
-          <groupId>org.fleetframework.boot</groupId>
-          <artifactId>fleet-boot-starter-cloud</artifactId>
-      </dependency>
+        <!-- 引入微服务启动依赖 starter
+        <dependency>
+            <groupId>org.fleetframework.boot</groupId>
+            <artifactId>fleet-boot-starter-cloud</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-starter-job</artifactId>
-        </dependency>-->
+        </dependency>
+        -->
     </dependencies>
 </project>

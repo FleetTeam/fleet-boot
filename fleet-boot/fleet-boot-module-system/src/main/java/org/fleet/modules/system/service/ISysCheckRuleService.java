@@ -20,7 +20,6 @@ public interface ISysCheckRuleService extends IService<SysCheckRule> {
      */
     SysCheckRule getByCode(String ruleCode);
 
-
     /**
      * 通过用户设定的自定义校验规则校验传入的值
      *

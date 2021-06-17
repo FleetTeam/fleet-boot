@@ -135,13 +135,13 @@
            },
           <#list columns as po>
            <#if po.fieldName !='id'>
-		   {
+       {
             title: '${po.filedComment}',
             align:"center",
             dataIndex: '${po.fieldName}'
            },
-		   </#if>
-		  </#list>
+       </#if>
+      </#list>
           {
             title: '操作',
             dataIndex: 'action',
@@ -149,7 +149,7 @@
             scopedSlots: { customRender: 'action' },
           }
         ],
-		url: {
+    url: {
           list: "/${entityPackage}/${entityName?uncap_first}/list",
           delete: "/${entityPackage}/${entityName?uncap_first}/delete",
           deleteBatch: "/${entityPackage}/${entityName?uncap_first}/deleteBatch",
@@ -164,7 +164,7 @@
     }
   },
     methods: {
-     
+
     }
   }
 </script>

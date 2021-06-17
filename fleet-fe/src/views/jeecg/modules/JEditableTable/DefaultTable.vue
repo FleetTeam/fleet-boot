@@ -11,7 +11,6 @@
       <a-button @click="handleTableSet" type="primary">设置值</a-button>
     </a-tooltip>
 
-
     <j-editable-table
       ref="editableTable"
       :loading="loading"
@@ -72,8 +71,8 @@
                   // type 触发校验的类型（input、change、blur）
                   // value 当前校验的值
                   // callback(flag, message) 方法必须执行且只能执行一次
-                  //          flag = 是否通过了校验，不填写或者填写 null 代表不进行任何操作
-                  //          message = 提示的类型，默认使用配置的 message
+                  // flag = 是否通过了校验，不填写或者填写 null 代表不进行任何操作
+                  // message = 提示的类型，默认使用配置的 message
                   // target 行编辑的实例对象
 
                   if (type === 'blur') {
@@ -215,7 +214,7 @@
     },
     methods: {
 
-      /** 表单验证 */
+      // 表单验证
       handleTableCheck() {
         this.$refs.editableTable.getValues((error) => {
           if (error === 0) {
@@ -225,7 +224,7 @@
           }
         })
       },
-      /** 获取值，忽略表单验证 */
+      // 获取值，忽略表单验证
       handleTableGet() {
         this.$refs.editableTable.getValues((error, values) => {
           console.log('values:', values)
@@ -235,7 +234,7 @@
         this.$message.info('获取值成功，请看控制台输出')
 
       },
-      /** 模拟加载1000条数据 */
+      // 模拟加载1000条数据
       handleTableSet() {
         this.randomData(1000, true)
       },

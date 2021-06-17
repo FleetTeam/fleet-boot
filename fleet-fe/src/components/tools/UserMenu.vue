@@ -66,7 +66,8 @@
           <a-icon type="sync"/>
           <span>清理缓存</span>
         </a-menu-item>
-       <!-- <a-menu-item key="2" disabled>
+        <!--
+        <a-menu-item key="2" disabled>
           <a-icon type="setting"/>
           <span>测试</span>
         </a-menu-item>
@@ -76,7 +77,8 @@
             <a-icon type="logout"/>
             <span>退出登录</span>
           </a>
-        </a-menu-item>-->
+        </a-menu-item>
+        -->
       </a-menu>
     </a-dropdown>
     <span class="action">
@@ -134,7 +136,7 @@
       this.searchMenuOptions=[...lists]
     },
     mounted() {
-      //如果是单点登录模式
+      // 如果是单点登录模式
       if (process.env.VUE_APP_SSO == 'true') {
         let depart = this.userInfo().orgCode
         if (!depart) {
@@ -186,7 +188,7 @@
               // update-begin author:wangshuai date:20200601 for: 退出登录跳转登录页面
               that.$router.push({ path: '/user/login' });
               // update-end author:wangshuai date:20200601 for: 退出登录跳转登录页面
-              //window.location.reload()
+              // window.location.reload()
             }).catch(err => {
               that.$message.error({
                 title: '错误',
@@ -238,7 +240,7 @@
       clearCache(){
         getAction("sys/dict/refleshCache").then((res) => {
           if (res.success) {
-            //重新加载缓存
+            // 重新加载缓存
             getAction("sys/dict/queryAllDictItems").then((res) => {
               if (res.success) {
                 Vue.ls.remove(UI_CACHE_DB_DICT_DATA)

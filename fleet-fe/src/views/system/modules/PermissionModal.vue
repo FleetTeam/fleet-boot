@@ -27,7 +27,6 @@
           <a-input placeholder="请输入菜单名称" v-model="model.name" :readOnly="disableSubmit"/>
         </a-form-model-item>
 
-
         <a-form-model-item
           v-show="model.menuType!=0"
           label="上级菜单"
@@ -89,7 +88,6 @@
           label="授权策略">
           <j-dict-select-tag  v-model="model.permsType" placeholder="请选择授权策略" :type="'radio'"  dictCode="global_perms_type"/>
 
-
         </a-form-model-item>
         <a-form-model-item
           v-show="!show"
@@ -143,7 +141,6 @@
           <a-switch checkedChildren="是" unCheckedChildren="否" v-model="model.keepAlive"/>
         </a-form-model-item>
 
-
         <a-form-model-item
           v-show="show"
           :labelCol="labelCol"
@@ -190,7 +187,7 @@
         visible: false,
         disableSubmit:false,
         model: {},
-        show:true,//根据菜单类型，动态显示隐藏表单元素
+        show:true, // 根据菜单类型，动态显示隐藏表单元素
         menuLabel:'菜单名称',
         labelCol: {
           xs: { span: 24 },
@@ -235,14 +232,14 @@
         });
       },
       add () {
-        //初始化默认值
+        // 初始化默认值
         this.edit({status:'1', permsType:'1', sortNo:1.0, route:true, menuType:0 });
       },
       edit (record) {
         this.resetScreenSize(); // 调用此方法,根据屏幕宽度自适应调整抽屉的宽度
         this.model = Object.assign({}, record);
 
-        //根据菜单类型，动态展示页面字段
+        // 根据菜单类型，动态展示页面字段
         console.log('record: ',record)
         this.show = record.menuType==2?false:true;
         this.menuLabel = record.menuType==2?'按钮/权限':'菜单名称';
@@ -303,7 +300,7 @@
       },
       validatePerms(rule, value, callback){
         if(value && value.length>0){
-          //校验授权标识是否存在
+          // 校验授权标识是否存在
           var params = {
             tableName: 'sys_permission',
             fieldName: 'perms',

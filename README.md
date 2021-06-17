@@ -46,7 +46,7 @@ public Result<IPage<JeecgDemo>> list(
     HttpServletRequest req) {
     Result<IPage<JeecgDemo>> result = new Result<IPage<JeecgDemo>>();
 
-    //调用QueryGenerator的initQueryWrapper
+    // 调用QueryGenerator的initQueryWrapper
     QueryWrapper<JeecgDemo> queryWrapper = QueryGenerator.initQueryWrapper(fleetDemo, req.getParameterMap());
 
     Page<JeecgDemo> page = new Page<JeecgDemo>(pageNo, pageSize);

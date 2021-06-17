@@ -2,24 +2,24 @@ import { getAction, deleteAction, putAction, postAction, httpAction } from '@/ap
 import Vue from 'vue'
 import {UI_CACHE_DB_DICT_DATA } from "@/store/mutation-types"
 
-//角色管理
+// 角色管理
 const addRole = (params)=>postAction("/sys/role/add",params);
 const editRole = (params)=>putAction("/sys/role/edit",params);
 const checkRoleCode = (params)=>getAction("/sys/role/checkRoleCode",params);
 const queryall = (params)=>getAction("/sys/role/queryall",params);
 
-//用户管理
+// 用户管理
 const addUser = (params)=>postAction("/sys/user/add",params);
 const editUser = (params)=>putAction("/sys/user/edit",params);
 const queryUserRole = (params)=>getAction("/sys/user/queryUserRole",params);
 const getUserList = (params)=>getAction("/sys/user/list",params);
 const frozenBatch = (params)=>putAction("/sys/user/frozenBatch",params);
-//验证用户是否存在
+// 验证用户是否存在
 const checkOnlyUser = (params)=>getAction("/sys/user/checkOnlyUser",params);
-//改变密码
+// 改变密码
 const changePassword = (params)=>putAction("/sys/user/changePassword",params);
 
-//权限管理
+// 权限管理
 const addPermission= (params)=>postAction("/sys/permission/add",params);
 const editPermission= (params)=>putAction("/sys/permission/edit",params);
 const getPermissionList = (params)=>getAction("/sys/permission/list",params);
@@ -44,7 +44,7 @@ const queryParentName   = (params)=>getAction("/sys/sysDepart/queryParentName",p
 const searchByKeywords   = (params)=>getAction("/sys/sysDepart/searchBy",params);
 const deleteByDepartId   = (params)=>deleteAction("/sys/sysDepart/delete",params);
 
-//二级部门管理
+// 二级部门管理
 const queryDepartPermission = (params)=>getAction("/sys/permission/queryDepartPermission",params);
 const saveDepartPermission = (params)=>postAction("/sys/permission/saveDepartPermission",params);
 const queryTreeListForDeptRole = (params)=>getAction("/sys/sysDepartPermission/queryTreeListForDeptRole",params);
@@ -52,32 +52,32 @@ const queryDeptRolePermission = (params)=>getAction("/sys/sysDepartPermission/qu
 const saveDeptRolePermission = (params)=>postAction("/sys/sysDepartPermission/saveDeptRolePermission",params);
 const queryMyDepartTreeList = (params)=>getAction("/sys/sysDepart/queryMyDeptTreeList",params);
 
-//日志管理
+// 日志管理
 const deleteLog = (params)=>deleteAction("/sys/log/delete",params);
 const deleteLogList = (params)=>deleteAction("/sys/log/deleteBatch",params);
 
-//数据字典
+// 数据字典
 const addDict = (params)=>postAction("/sys/dict/add",params);
 const editDict = (params)=>putAction("/sys/dict/edit",params);
 const treeList = (params)=>getAction("/sys/dict/treeList",params);
 const addDictItem = (params)=>postAction("/sys/dictItem/add",params);
 const editDictItem = (params)=>putAction("/sys/dictItem/edit",params);
 
-//字典标签专用（通过code获取字典数组）
+// 字典标签专用（通过code获取字典数组）
 export const ajaxGetDictItems = (code, params)=>getAction(`/sys/dict/getDictItems/${code}`,params);
-//从缓存中获取字典配置
+// 从缓存中获取字典配置
 function getDictItemsFromCache(dictCode) {
   if (Vue.ls.get(UI_CACHE_DB_DICT_DATA) && Vue.ls.get(UI_CACHE_DB_DICT_DATA)[dictCode]) {
     let dictItems = Vue.ls.get(UI_CACHE_DB_DICT_DATA)[dictCode];
-    //console.log("-----------getDictItemsFromCache----------dictCode="+dictCode+"---- dictItems=",dictItems)
+    // console.log("-----------getDictItemsFromCache----------dictCode="+dictCode+"---- dictItems=",dictItems)
     return dictItems;
   }
 }
 
-//系统通告
+// 系统通告
 const doReleaseData = (params)=>getAction("/sys/annountCement/doReleaseData",params);
 const doReovkeData = (params)=>getAction("/sys/annountCement/doReovkeData",params);
-//获取系统访问量
+// 获取系统访问量
 const getLoginfo = (params)=>getAction("/sys/loginfo",params);
 const getVisitInfo = (params)=>getAction("/sys/visitInfo",params);
 
@@ -89,7 +89,7 @@ const duplicateCheck = (params)=>getAction("/sys/duplicate/check",params);
 // 加载分类字典
 const loadCategoryData = (params)=>getAction("/sys/category/loadAllData",params);
 const checkRuleByCode = (params) => getAction('/sys/checkRule/checkByCode', params)
-//加载我的通告信息
+// 加载我的通告信息
 const getUserNoticeInfo= (params)=>getAction("/sys/sysAnnouncementSend/getMyAnnouncementSend",params);
 const getTransitURL = url => `/sys/common/transitRESTful?url=${encodeURIComponent(url)}`
 // 中转HTTP请求
@@ -159,6 +159,3 @@ export {
   getUserNoticeInfo,
   getDictItemsFromCache
 }
-
-
-

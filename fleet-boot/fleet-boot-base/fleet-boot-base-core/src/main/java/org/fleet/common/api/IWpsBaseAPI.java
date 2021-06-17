@@ -10,15 +10,15 @@ import org.fleet.common.api.vo.OaWpsModel;
  */
 public interface IWpsBaseAPI {
 
-  /*根据模板id获取模板信息*/
-  OaWpsModel getById(String id);
+    /*根据模板id获取模板信息*/
+    OaWpsModel getById(String id);
 
-  /*根据文件路径下载文件*/
- void downloadOosFiles(String objectName, String basePath,String fileName);
+    /*根据文件路径下载文件*/
+    void downloadOosFiles(String objectName, String basePath, String fileName);
 
- /*WPS 设置数据存储，用于逻辑判断*/
- void context(String type,String text);
+    /*WPS 设置数据存储，用于逻辑判断*/
+    void context(String type, String text);
 
- /*删除WPS模板相关信息*/
- void deleteById(String id);
+    /*删除WPS模板相关信息*/
+    void deleteById(String id);
 }

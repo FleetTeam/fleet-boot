@@ -2,6 +2,7 @@ package org.fleet.common.constant;
 
 /**
  * 规则值生成 编码常量类
+ *
  * @author: fleet-team
  * @date: 2021-04-21
  */

@@ -13,7 +13,6 @@
     </a-table>
     <!-- table区域-end -->
 
-
   </a-card>
 </template>
 
@@ -57,7 +56,7 @@
                 children: value,
                 attrs: {},
               };
-              //当前列跨行的条数
+              // 当前列跨行的条数
               var a = parseInt(this.levelNum);
               var b = parseInt(this.gridNum)*parseInt(this.boxNum);
               console.log(a);
@@ -108,7 +107,7 @@
             align: "center",
             dataIndex: 'maxNum'
           },],
-        //数据集
+        // 数据集
         dataSource: [{
           "id": "cb1dfd12cbeca3f8ba121439ee7e2411",
           "attributeId": "e62831f314e1390edbd884e9d9e6aca6",

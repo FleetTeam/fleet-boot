@@ -1,4 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   org.jeecg.boot.starter.lock.config.RedissonConfiguration
 
-

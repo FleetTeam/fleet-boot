@@ -23,12 +23,12 @@
           :labelCol="labelCol"
           :wrapperCol="wrapperCol"
           label="cron表达式">
-<!--                    <a-input placeholder="请输入cron表达式" v-decorator="['cronExpression', {'initialValue':'0/1 * * * * ?',rules: [{ required: true, message: '请输入任务类名!' }]}]" />-->
-<!--                    <a target="_blank" href="http://cron.qqe2.com/">-->
-<!--                      <a-icon type="share-alt" />-->
-<!--                      在线cron表达式生成-->
-<!--                    </a>-->
-<!--          <j-cron ref="innerVueCron" v-decorator="['cronExpression', {'initialValue':'0/1 * * * * ?',rules: [{ required: true, message: '请输入cron表达式!' }]}]"  @change="setCorn"></j-cron>-->
+          <!-- <a-input placeholder="请输入cron表达式" v-decorator="['cronExpression', {'initialValue':'0/1 * * * * ?',rules: [{ required: true, message: '请输入任务类名!' }]}]" /> -->
+          <!-- <a target="_blank" href="http://cron.qqe2.com/"> -->
+          <!--   <a-icon type="share-alt" /> -->
+          <!--   在线cron表达式生成 -->
+          <!-- </a> -->
+          <!-- <j-cron ref="innerVueCron" v-decorator="['cronExpression', {'initialValue':'0/1 * * * * ?',rules: [{ required: true, message: '请输入cron表达式!' }]}]"  @change="setCorn"></j-cron> -->
           <j-cron ref="innerVueCron" v-decorator="['cronExpression', { initialValue: '* * * * * ? *' }]" @change="setCorn"></j-cron>
         </a-form-item>
         <a-form-item
@@ -141,7 +141,7 @@
               method = 'put';
             }
             let formData = Object.assign(this.model, values);
-            //时间格式化
+            // 时间格式化
 
             console.log('提交参数',formData)
             httpAction(httpurl,formData,method).then((res)=>{

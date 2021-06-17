@@ -20,26 +20,23 @@ import org.springframework.test.context.junit4.SpringRunner;
  * online api online表单单元测试
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = FleetSystemApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = FleetSystemApplication.class)
 @SuppressWarnings({"FieldCanBeLocal", "SpringJavaAutowiredMembersInspection"})
 public class OnlineApiTest {
-    @Autowired
-    private RedisUtil redisUtil;
-
     /**
      * 测试地址：实际使用时替换成你自己的地址
      */
     private final String BASE_URL = "http://localhost:8080/fleet-boot/online/cgform/api/";
-
     // 请实际使用时替换成你自己的用户名和密码
     private final String USERNAME = "admin";
     private final String PASSWORD = "123456";
-
     /**
      * online表单code，实际使用时可以替换成你要测试的表单code
      * （测试表test_demo）
      */
     private final String ONLINE_CODE = "d35109c3632c4952a19ecc094943dd71";
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 测试用例：新增
@@ -62,7 +59,7 @@ public class OnlineApiTest {
         JSONObject params = new JSONObject();
         params.put("name", "张三");
         params.put("sex", "1");
-        params.put("age",15);
+        params.put("age", 15);
         params.put("descc", "<p>富文本编辑</p>");
 
         System.out.println("请求参数：" + params.toJSONString());
@@ -75,7 +72,6 @@ public class OnlineApiTest {
             System.out.println("查询失败");
         }
     }
-
 
     /**
      * 测试用例：修改
@@ -101,7 +97,7 @@ public class OnlineApiTest {
         params.put("id", dataId);
         params.put("name", "张三");
         params.put("sex", "1");
-        params.put("age",30);
+        params.put("age", 30);
         params.put("descc", "<p>富文本编辑，重新编辑</p>");
 
         System.out.println("请求参数：" + params.toJSONString());
@@ -114,7 +110,6 @@ public class OnlineApiTest {
             System.out.println("查询失败");
         }
     }
-
 
     /**
      * 测试用例：删除
@@ -153,7 +148,7 @@ public class OnlineApiTest {
         // 用户Token
         String token = this.getToken();
         // 请求地址
-        String url = BASE_URL + "getData/"+ ONLINE_CODE ;
+        String url = BASE_URL + "getData/" + ONLINE_CODE;
         // 请求 Header （用于传递Token）
         HttpHeaders headers = this.getHeaders(token);
         // 请求方式是 GET 代表获取数据

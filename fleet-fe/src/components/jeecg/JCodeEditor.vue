@@ -28,7 +28,7 @@
   import 'codemirror/lib/codemirror.css'
   // 引入主题后还需要在 options 中指定主题才会生效 darcula  gruvbox-dark hopscotch  monokai
   import 'codemirror/theme/panda-syntax.css'
-  //提示css
+  // 提示css
   import "codemirror/addon/hint/show-hint.css";
 
   // 需要引入具体的语法高亮库才会有对应的语法高亮效果
@@ -120,7 +120,7 @@
           // 主题，对应主题库 JS 需要提前引入
           theme: 'panda-syntax',
           line: true,
-         // extraKeys: {'Ctrl': 'autocomplete'},//自定义快捷键
+         // extraKeys: {'Ctrl': 'autocomplete'}, // 自定义快捷键
           hintOptions: {
             tables: {
               users: ['name', 'score', 'birthDate'],
@@ -273,40 +273,42 @@
         // 初始化编辑器实例，传入需要被实例化的文本域对象和默认配置
         this.coder = CodeMirror.fromTextArea(this.$refs.textarea, this.coderOptions)
         // 编辑器赋值
-        if(this.value||this.code){
-          this.hasCode=true
-          //this.coder.setValue(this.value || this.code)
+        if (this.value || this.code) {
+          this.hasCode = true
+          // this.coder.setValue(this.value || this.code)
           this.setCodeContent(this.value || this.code)
-        }else{
+        } else {
           this.coder.setValue('')
-          this.hasCode=false
+          this.hasCode = false
         }
         // 支持双向绑定
         this.coder.on('change', (coder) => {
           this.code = coder.getValue()
-          if(this.code){
-            this.hasCode=true
-          }else{
-            this.hasCode=false
+          if (this.code) {
+            this.hasCode = true
+          } else {
+            this.hasCode = false
           }
           if (this.$emit) {
             this.$emit('input', this.code)
           }
         })
         this.coder.on('focus', () => {
-          this.hasCode=true
+          this.hasCode = true
         })
         this.coder.on('blur', () => {
-          if(this.code){
-            this.hasCode=true
-          }else{
-            this.hasCode=false
+          if (this.code) {
+            this.hasCode = true
+          } else {
+            this.hasCode = false
           }
         })
 
-       /* this.coder.on('cursorActivity',()=>{
+        /*
+        this.coder.on('cursorActivity', () => {
           this.coder.showHint()
-        })*/
+        })
+        */
 
       },
       getCodeContent(){

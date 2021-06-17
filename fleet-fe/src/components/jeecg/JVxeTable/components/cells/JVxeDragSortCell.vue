@@ -5,10 +5,10 @@
       <a-icon type="align-right"/>
     </div>
 
-    <!--    <div class="j-vxe-ds-btns">-->
-    <!--      <a-button icon="caret-up" size="small" :disabled="disabledMoveUp" @click="handleRowMoveUp"/>-->
-    <!--      <a-button icon="caret-down" size="small" :disabled="disabledMoveDown" @click="handleRowMoveDown"/>-->
-    <!--    </div>-->
+    <!-- <div class="j-vxe-ds-btns"> -->
+    <!--   <a-button icon="caret-up" size="small" :disabled="disabledMoveUp" @click="handleRowMoveUp"/> -->
+    <!--   <a-button icon="caret-down" size="small" :disabled="disabledMoveDown" @click="handleRowMoveDown"/> -->
+    <!-- </div> -->
 
     <a-menu slot="overlay">
       <a-menu-item key="0" :disabled="disabledMoveUp" @click="handleRowMoveUp">向上移</a-menu-item>
@@ -38,21 +38,21 @@
       },
     },
     methods: {
-      /** 向上移 */
+      // 向上移
       handleRowMoveUp(event) {
         // event.target.blur()
         if (!this.disabledMoveUp) {
           this.trigger('rowMoveUp', this.rowIndex)
         }
       },
-      /** 向下移 */
+      // 向下移
       handleRowMoveDown(event) {
         // event.target.blur()
         if (!this.disabledMoveDown) {
           this.trigger('rowMoveDown', this.rowIndex)
         }
       },
-      /** 插入一行 */
+      // 插入一行
       handleRowInsertDown() {
         this.trigger('rowInsertDown', this.rowIndex)
       },

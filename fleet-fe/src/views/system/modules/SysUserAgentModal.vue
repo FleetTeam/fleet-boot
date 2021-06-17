@@ -114,7 +114,7 @@
 
       },
       init () {
-        var params = {userName:this.username};//查询条件
+        var params = {userName:this.username}; // 查询条件
         getAction(this.url.queryByUserName,params).then((res)=>{
           if(res.success){
             console.log("获取流程节点信息",res);
@@ -155,7 +155,7 @@
             httpAction(httpurl,formData,method).then((res)=>{
               if(res.success){
                 that.$message.success(res.message);
-                //this.init();
+                // this.init();
               }else{
                 that.$message.warning(res.message);
               }
@@ -163,8 +163,6 @@
               that.confirmLoading = false;
               that.close();
             })
-
-
 
           }
         })

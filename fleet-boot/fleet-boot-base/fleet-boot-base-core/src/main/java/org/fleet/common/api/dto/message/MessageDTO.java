@@ -38,27 +38,26 @@ public class MessageDTO implements Serializable {
      */
     protected String category;
 
-
-    public MessageDTO(){
+    public MessageDTO() {
 
     }
 
     /**
      * 构造器1 系统消息
      */
-    public MessageDTO(String fromUser,String toUser,String title, String content){
+    public MessageDTO(String fromUser, String toUser, String title, String content) {
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.title = title;
         this.content = content;
-        //默认 都是2系统消息
+        // 默认 都是2系统消息
         this.category = CommonConstant.MSG_CATEGORY_2;
     }
 
     /**
      * 构造器2 支持设置category 1:消息  2:系统消息
      */
-    public MessageDTO(String fromUser,String toUser,String title, String content, String category){
+    public MessageDTO(String fromUser, String toUser, String title, String content, String category) {
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.title = title;

@@ -16,7 +16,7 @@
       @preview="handlePreview"
       :class="[!isMultiple?'imgupload':'', (!isMultiple && picUrl)?'image-upload-single-over':'' ]">
       <div>
-        <!--<img v-if="!isMultiple && picUrl" :src="getAvatarView()" style="width:100%;height:100%"/>-->
+        <!-- <img v-if="!isMultiple && picUrl" :src="getAvatarView()" style="width:100%;height:100%"/> -->
         <div class="iconp">
           <a-icon :type="uploadLoading ? 'loading' : 'plus'" />
           <div class="ant-upload-text">{{ text }}</div>
@@ -73,23 +73,23 @@
         type:[String,Array],
         required:false
       },
-      disabled:{
-        type:Boolean,
-        required:false,
+      disabled: {
+        type: Boolean,
+        required: false,
         default: false
       },
-      isMultiple:{
-        type:Boolean,
-        required:false,
+      isMultiple: {
+        type: Boolean,
+        required: false,
         default: false
       },
-      //update-begin-author:wangshuai date:20201021 for:LOWCOD-969 新增number属性，用于判断上传数量
-      number:{
-        type:Number,
-        required:false,
-        default:0
+      // update-begin-author:wangshuai date:20201021 for:LOWCOD-969 新增number属性，用于判断上传数量
+      number: {
+        type: Number,
+        required: false,
+        default: 0
       }
-      //update-end-author:wangshuai date:20201021 for:LOWCOD-969 新增number属性，用于判断上传数量
+      // update-end-author:wangshuai date:20201021 for:LOWCOD-969 新增number属性，用于判断上传数量
     },
     watch:{
       value: {
@@ -99,23 +99,23 @@
           } else {
             this.initFileList(val)
           }
-          if(!val || val.length==0){
-            this.picUrl = false;
+          if (!val || val.length === 0) {
+            this.picUrl = false
           }
         },
-        //立刻执行handler
+        // 立刻执行handler
         immediate: true
       }
     },
-    created(){
-      const token = Vue.ls.get(ACCESS_TOKEN);
-      this.headers = {"X-Access-Token":token}
+    created() {
+      const token = Vue.ls.get(ACCESS_TOKEN)
+      this.headers = { 'X-Access-Token': token }
     },
-    methods:{
-      initFileList(paths){
-        if(!paths || paths.length==0){
-          this.fileList = [];
-          return;
+    methods: {
+      initFileList(paths) {
+        if (!paths || paths.length === 0) {
+          this.fileList = []
+          return
         }
         this.picUrl = true;
         let fileList = [];
@@ -145,11 +145,11 @@
       handleChange(info) {
         this.picUrl = false;
         let fileList = info.fileList
-        //update-begin-author:wangshuai date:20201022 for:LOWCOD-969 判断number是否大于0和是否多选，返回选定的元素。
+        // update-begin-author:wangshuai date:20201022 for:LOWCOD-969 判断number是否大于0和是否多选，返回选定的元素。
         if(this.number>0 && this.isMultiple){
           fileList = fileList.slice(-this.number);
         }
-        //update-end-author:wangshuai date:20201022 for:LOWCOD-969 判断number是否大于0和是否多选，返回选定的元素。
+        // update-end-author:wangshuai date:20201022 for:LOWCOD-969 判断number是否大于0和是否多选，返回选定的元素。
         if(info.file.status==='done'){
           if(info.file.response.success){
             this.picUrl = true;
@@ -160,7 +160,7 @@
               return file;
             });
           }
-          //this.$message.success(`${info.file.name} 上传成功!`);
+          // this.$message.success(`${info.file.name} 上传成功!`);
         }else if (info.file.status === 'error') {
           this.$message.error(`${info.file.name} 上传失败.`);
         }else if(info.file.status === 'removed'){
@@ -208,7 +208,7 @@
         this.$emit('change', path);
       },
       handleDelete(file){
-        //如有需要新增 删除逻辑
+        // 如有需要新增 删除逻辑
         console.log(file)
       },
       handleCancel() {

@@ -14,8 +14,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface ${subTab.entityName}Mapper extends BaseMapper<${subTab.entityName}> {
 
-	public boolean deleteByMainId(String mainId);
-    
-	public List<${subTab.entityName}> selectByMainId(String mainId);
+    public boolean deleteByMainId(String mainId);
+
+    public List<${subTab.entityName}> selectByMainId(String mainId);
 }
 </#list>

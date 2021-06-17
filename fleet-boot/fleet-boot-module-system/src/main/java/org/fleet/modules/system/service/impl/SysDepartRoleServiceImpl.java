@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @Description: 部门角色
  * @Author: fleet-team
- * @Date:   2021-04-19
+ * @Date: 2021-04-19
  * @Version: V1.0
  */
 @Service
@@ -20,6 +20,6 @@ public class SysDepartRoleServiceImpl extends ServiceImpl<SysDepartRoleMapper, S
 
     @Override
     public List<SysDepartRole> queryDeptRoleByDeptAndUser(String orgCode, String userId) {
-        return this.baseMapper.queryDeptRoleByDeptAndUser(orgCode,userId);
+        return this.baseMapper.queryDeptRoleByDeptAndUser(orgCode, userId);
     }
 }

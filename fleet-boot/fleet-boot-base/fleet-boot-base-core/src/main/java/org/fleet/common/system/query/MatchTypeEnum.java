@@ -18,10 +18,6 @@ public enum MatchTypeEnum {
         this.value = value;
     }
 
-    public String getValue() {
-        return value;
-    }
-
     public static MatchTypeEnum getByValue(Object value) {
         if (oConvertUtils.isEmpty(value)) {
             return null;
@@ -39,5 +35,9 @@ public enum MatchTypeEnum {
             }
         }
         return null;
+    }
+
+    public String getValue() {
+        return value;
     }
 }

@@ -112,7 +112,7 @@
       </template>
     </s-table>
     <a-modal title="新建规则" destroyOnClose :visible="visibleCreateModal" @ok="handleCreateModalOk" @cancel="handleCreateModalCancel">
-      <!---->
+      <!-- -->
       <a-form style="margin-top: 8px" :autoFormCreate="(form)=>{this.createForm = form}">
         <a-form-item :labelCol="{ span: 5 }" :wrapperCol="{ span: 15 }" label="描述" fieldDecoratorId="description" :fieldDecoratorOptions="{rules: [{ required: true, message: '请输入至少五个字符的规则描述！', min: 5 }]}">
           <a-input placeholder="请输入" />
@@ -238,7 +238,7 @@
       toggleAdvanced () {
         this.advanced = !this.advanced
       },
-      //添加逻辑
+      // 添加逻辑
       handleModalVisible(isVisible) {
         this.visibleCreateModal = isVisible;
       },

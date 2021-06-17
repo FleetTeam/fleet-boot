@@ -117,7 +117,7 @@
           // getAction('actuator/metrics/tomcat.threads.current'),
           // getAction('actuator/metrics/tomcat.threads.config.max')
           // 2.1.3.RELEASE 无此API
-          //getAction('actuator/metrics/tomcat.servlet.request'),
+          // getAction('actuator/metrics/tomcat.servlet.request'),
           // getAction('actuator/metrics/tomcat.servlet.request.max'),
         ]).then((res) => {
           let tomcatInfo = []

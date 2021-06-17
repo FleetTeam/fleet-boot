@@ -41,7 +41,6 @@
       <a-input v-decorator="['two']"></a-input>
     </a-form-item>
 
-
   </a-form >
 </template>
 

@@ -28,6 +28,7 @@ public interface ISysRoleService extends IService<SysRole> {
 
     /**
      * 删除角色
+     *
      * @param roleid
      * @return
      */
@@ -35,6 +36,7 @@ public interface ISysRoleService extends IService<SysRole> {
 
     /**
      * 批量删除角色
+     *
      * @param roleids
      * @return
      */

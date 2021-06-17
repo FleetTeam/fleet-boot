@@ -67,8 +67,8 @@
         required: false
       }
     },
-    data(){
-      this.loadData = debounce(this.loadData, 800);//消抖
+    data() {
+      this.loadData = debounce(this.loadData, 800); // 消抖
       this.lastLoad = 0;
       return {
         loading:false,
@@ -77,10 +77,10 @@
         options: [],
       }
     },
-    created(){
+    created() {
       this.initDictData();
     },
-    watch:{
+    watch: {
       "value":{
         immediate:true,
         handler(val){
@@ -151,13 +151,13 @@
         })
 
       },
-      initDictData(){
+      initDictData() {
         if(!this.async){
-          //如果字典项集合有数据
+          // 如果字典项集合有数据
           if(this.dictOptions && this.dictOptions.length>0){
             this.options = [...this.dictOptions]
           }else{
-            //根据字典Code, 初始化字典数组
+            // 根据字典Code, 初始化字典数组
             let dictStr = ''
             if(this.dict){
                 let arr = this.dict.split(',')
@@ -168,7 +168,7 @@
                   dictStr = this.dict
                 }
                 if (this.dict.indexOf(",") == -1) {
-                  //优先从缓存中读取字典配置
+                  // 优先从缓存中读取字典配置
                   if (getDictItemsFromCache(this.dictCode)) {
                     this.options = getDictItemsFromCache(this.dictCode);
                     return
@@ -181,14 +181,14 @@
                 })
             }
           }
-        }else{
-          //异步一开始也加载一点数据
-          this.loading=true
-          getAction(`/sys/dict/loadDict/${this.dict}`,{pageSize: this.pageSize, keyword:''}).then(res=>{
-            this.loading=false
-            if(res.success){
+        } else {
+          // 异步一开始也加载一点数据
+          this.loading = true
+          getAction(`/sys/dict/loadDict/${this.dict}`, {pageSize: this.pageSize, keyword:''}).then(res=>{
+            this.loading = false
+            if (res.success) {
               this.options = res.result
-            }else{
+            } else {
               this.$message.warning(res.message)
             }
           })
@@ -203,18 +203,18 @@
         this.callback()
       },
       handleAsyncChange(selectedObj){
-        //update-begin-author:scott date:20201222 for:【搜索】搜索查询组件，删除条件，默认下拉还是上次的缓存数据，不好 JT-191
-        if(selectedObj){
+        // update-begin-author:scott date:20201222 for:【搜索】搜索查询组件，删除条件，默认下拉还是上次的缓存数据，不好 JT-191
+        if (selectedObj) {
           this.selectedAsyncValue = selectedObj
           this.selectedValue = selectedObj.key
-        }else{
+        } else {
           this.selectedAsyncValue = null
           this.selectedValue = null
           this.options = null
           this.loadData("")
         }
         this.callback()
-        //update-end-author:scott date:20201222 for:【搜索】搜索查询组件，删除条件，默认下拉还是上次的缓存数据，不好 JT-191
+        // update-end-author:scott date:20201222 for:【搜索】搜索查询组件，删除条件，默认下拉还是上次的缓存数据，不好 JT-191
       },
       callback(){
         this.$emit('change', this.selectedValue);

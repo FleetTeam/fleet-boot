@@ -155,7 +155,6 @@
 
 - `返回值:` 无
 
-
 ### getValuesSync
 
 `getValues`的同步版，会直接将获取到的数据返回
@@ -386,7 +385,7 @@ validateTables(cases).then((all) => {
 /*--- 忽略部分代码片段 ---*/
 methods: {
 
-      /** 切换tab选项卡的时候重置editableTable的滚动条状态 */
+      // 切换tab选项卡的时候重置editableTable的滚动条状态
       handleChangeTab(key) {
         this.$refs[`editableTable${key}`].resetScrollTop()
       }
@@ -513,9 +512,9 @@ this.$refs.editableTable.getValues((error, values) => {
                 // props.rowId ：当前选中行的id，如果是新增行则是临时id
                 // props.column ：当前操作的列
                 // props.getValue ：这是一个function，执行后可以获取当前行的所有值（禁止在template中使用）
-                //                  例：const value = props.getValue()
+                // 例：const value = props.getValue()
                 // props.target ：触发当前事件的实例，可直接调用该实例内的方法（禁止在template中使用）
-                //                  例：target.add()
+                // 例：target.add()
 
                 // 使用实例：删除当前操作的行
                 let { rowId, target } = props
@@ -543,8 +542,8 @@ columns: [
                     // type 触发校验的类型（input、change、blur）
                     // value 当前校验的值
                     // callback(flag, message) 方法必须执行且只能执行一次
-                    //          flag = 是否通过了校验，不填写或者填写 null 代表不进行任何操作
-                    //          message = 提示的类型，默认使用配置的 message
+                    // flag = 是否通过了校验，不填写或者填写 null 代表不进行任何操作
+                    // message = 提示的类型，默认使用配置的 message
                     // target 行编辑的实例对象
 
                     if (type === 'blur') {

@@ -57,7 +57,7 @@ function validateSt(ticket,service,callback){
     service:service
   };
   store.dispatch('ValidateLogin',params).then(res => {
-    //this.departConfirm(res)
+    // this.departConfirm(res)
     if(res.success){
       loginSuccess(callback);
     }else{
@@ -67,7 +67,7 @@ function validateSt(ticket,service,callback){
     }
   }).catch((err) => {
     console.log(err);
-    //that.requestFailed(err);
+    // that.requestFailed(err);
   });
 }
 

@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *  类描述:  字典注解
+ * 类描述:  字典注解
  * 作    者： fleet-team
  * 日    期： 2021-04-21
  */

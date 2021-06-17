@@ -30,9 +30,9 @@ export const JVXETypes = {
   selectMultiple: 'select-multiple',
   // 进度条
   progress: 'progress',
-  //部门选择
+  // 部门选择
   departSelect: 'sel_depart',
-  //用户选择
+  // 用户选择
   userSelect: 'sel_user',
 
   // 拖轮Tags（暂无用）

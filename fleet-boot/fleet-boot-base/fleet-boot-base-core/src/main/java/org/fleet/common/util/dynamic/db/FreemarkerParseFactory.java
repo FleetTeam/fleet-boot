@@ -34,12 +34,10 @@ public class FreemarkerParseFactory {
      * SQL 缓存
      */
     private static final Configuration _sqlConfig = new Configuration();
-
-    private static StringTemplateLoader stringTemplateLoader = new StringTemplateLoader();
-
     // 使用内嵌的(?ms)打开单行和多行模式
     private final static Pattern p = Pattern
             .compile("(?ms)/\\*.*?\\*/|^\\s*//.*?$");
+    private static StringTemplateLoader stringTemplateLoader = new StringTemplateLoader();
 
     static {
         _tplConfig.setClassForTemplateLoading(
@@ -47,7 +45,7 @@ public class FreemarkerParseFactory {
         _tplConfig.setNumberFormat("0.#####################");
         _sqlConfig.setTemplateLoader(stringTemplateLoader);
         _sqlConfig.setNumberFormat("0.#####################");
-        //classic_compatible设置，解决报空指针错误
+        // classic_compatible设置，解决报空指针错误
         _sqlConfig.setClassicCompatible(true);
     }
 
@@ -63,13 +61,13 @@ public class FreemarkerParseFactory {
                 return false;
             }
         } catch (Exception e) {
-            //update-begin--Author:scott  Date:20180320 for：解决问题 - 错误提示sql文件不存在，实际问题是sql freemarker用法错误-----
+            // update-begin--Author:scott  Date:20180320 for：解决问题 - 错误提示sql文件不存在，实际问题是sql freemarker用法错误-----
             if (e instanceof ParseException) {
                 log.error(e.getMessage(), e.fillInStackTrace());
                 throw new Exception(e);
             }
             log.debug("----isExistTemplate----" + e.toString());
-            //update-end--Author:scott  Date:20180320 for：解决问题 - 错误提示sql文件不存在，实际问题是sql freemarker用法错误------
+            // update-end--Author:scott  Date:20180320 for：解决问题 - 错误提示sql文件不存在，实际问题是sql freemarker用法错误------
             return false;
         }
         return true;
@@ -98,8 +96,8 @@ public class FreemarkerParseFactory {
         } catch (Exception e) {
             log.error(e.getMessage(), e.fillInStackTrace());
             log.error("发送一次的模板key:{ " + tplName + " }");
-            //System.err.println(e.getMessage());
-            //System.err.println("模板名:{ "+ tplName +" }");
+            // System.err.println(e.getMessage());
+            // System.err.println("模板名:{ "+ tplName +" }");
             throw new RuntimeException("解析SQL模板异常");
         }
     }
@@ -130,8 +128,8 @@ public class FreemarkerParseFactory {
         } catch (Exception e) {
             log.error(e.getMessage(), e.fillInStackTrace());
             log.error("发送一次的模板key:{ " + tplContent + " }");
-            //System.err.println(e.getMessage());
-            //System.err.println("模板内容:{ "+ tplContent +" }");
+            // System.err.println(e.getMessage());
+            // System.err.println("模板内容:{ "+ tplContent +" }");
             throw new RuntimeException("解析SQL模板异常");
         }
     }

@@ -5,7 +5,7 @@
     :footer="null"
     @cancel="handleCancel"
     cancelText="关闭">
-    <!--table区 -->
+    <!-- table区 -->
     <div class="marginCss">
       <a-table
         ref="table"
@@ -46,10 +46,10 @@
         model: {},
         confirmLoading: false,
         headers: {},
-        //版本号
+        // 版本号
         dataVersion1Num:'',
         dataVersion2Num:'',
-        //表头
+        // 表头
         columns: [
           {
             title: '字段名',
@@ -74,7 +74,7 @@
             slots: { title: 'dataVersionTitle2' },
           }
         ],
-        //数据集
+        // 数据集
         dataSource: [],
         loading: false,
         url: {

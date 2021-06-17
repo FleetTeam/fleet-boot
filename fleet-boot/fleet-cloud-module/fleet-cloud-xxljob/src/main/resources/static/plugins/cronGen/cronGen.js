@@ -8,7 +8,7 @@
               options = {};
             }
             options = $.extend({}, $.fn.cronGen.defaultOptions, options);
-            //create top menu
+            // create top menu
             var cronContainer = $("<div/>", { id: "CronContainer", style: "display:none;width:300px;height:300px;" });
             var mainDiv = $("<div/>", { id: "CronGenMainDiv", style: "width:410px;height:300px;" });
             var topMenu = $("<ul/>", { "class": "nav nav-tabs", id: "CronGenTabs" });
@@ -21,14 +21,13 @@
             $('<li/>').html($('<a id="YearlyTab" href="#Yearly">年</a>')).appendTo(topMenu);
             $(topMenu).appendTo(mainDiv);
 
-            //create what's inside the tabs
+            // create what's inside the tabs
             var container = $("<div/>", { "class": "container-fluid", "style": "margin-top: 30px;margin-left: -14px;" });
             var row = $("<div/>", { "class": "row-fluid" });
             var span12 = $("<div/>", { "class": "span12" });
             var tabContent = $("<div/>", { "class": "tab-content", "style": "border:0px; margin-top:-20px;" });
 
-
-            //creating the secondsTab
+            // creating the secondsTab
             var secondsTab = $("<div/>", { "class": "tab-pane active", id: "Secondly" });
             var seconds1 = $("<div/>",{"class":"line"});
             $("<input/>",{type : "radio", value : "1", name : "second"}).appendTo(seconds1);
@@ -67,7 +66,7 @@
             $("<input/>",{type : "hidden", id : "secondHidden"}).appendTo(secondsTab);
             $(secondsTab).appendTo(tabContent);
 
-            //creating the minutesTab
+            // creating the minutesTab
             var minutesTab = $("<div/>", { "class": "tab-pane", id: "Minutes" });
 
             var minutes1 = $("<div/>",{"class":"line"});
@@ -107,7 +106,7 @@
             $("<input/>",{type : "hidden", id : "minHidden"}).appendTo(minutesTab);
             $(minutesTab).appendTo(tabContent);
 
-            //creating the hourlyTab
+            // creating the hourlyTab
             var hourlyTab = $("<div/>", { "class": "tab-pane", id: "Hourly" });
 
             var hourly1 = $("<div/>",{"class":"line"});
@@ -145,8 +144,7 @@
             $("<input/>",{type : "hidden", id : "hourHidden"}).appendTo(hourlyTab);
             $(hourlyTab).appendTo(tabContent);
 
-
-            //creating the dailyTab
+            // creating the dailyTab
             var dailyTab = $("<div/>", { "class": "tab-pane", id: "Daily" });
 
             var daily1 = $("<div/>",{"class":"line"});
@@ -201,8 +199,7 @@
             $("<input/>",{type : "hidden", id : "dayHidden"}).appendTo(dailyTab);
             $(dailyTab).appendTo(tabContent);
 
-
-            //creating the monthlyTab
+            // creating the monthlyTab
             var monthlyTab = $("<div/>", { "class": "tab-pane", id: "Monthly" });
 
             var monthly1 = $("<div/>",{"class":"line"});
@@ -243,7 +240,7 @@
             $("<input/>",{type : "hidden", id : "monthHidden"}).appendTo(monthlyTab);
             $(monthlyTab).appendTo(tabContent);
 
-            //creating the weeklyTab
+            // creating the weeklyTab
             var weeklyTab = $("<div/>", { "class": "tab-pane", id: "Weekly" });
 
             var weekly1 = $("<div/>",{"class":"line"});
@@ -288,7 +285,7 @@
             $("<input/>",{type : "hidden", id : "weekHidden"}).appendTo(weeklyTab);
             $(weeklyTab).appendTo(tabContent);
 
-            //creating the yearlyTab
+            // creating the yearlyTab
             var yearlyTab = $("<div/>", { "class": "tab-pane", id: "Yearly" });
 
             var yearly1 = $("<div/>",{"class":"line"});
@@ -314,7 +311,7 @@
 
             $(tabContent).appendTo(span12);
 
-            //creating the button and results input
+            // creating the button and results input
             // resultsName = $(this).prop("id");
             // $(this).prop("name", resultsName);
 
@@ -356,21 +353,20 @@
             }).on('click', function (e) {
                 e.preventDefault();
 
-                //fillDataOfMinutesAndHoursSelectOptions();
-                //fillDayWeekInMonth();
-                //fillInWeekDays();
-                //fillInMonths();
+                // fillDataOfMinutesAndHoursSelectOptions();
+                // fillDayWeekInMonth();
+                // fillInWeekDays();
+                // fillInMonths();
 
                 $.fn.cronGen.tools.cronParse(inputElement.val());
 
-                //绑定指定事件
+                // 绑定指定事件
                 $.fn.cronGen.tools.initChangeEvent();
-
 
                 $('#CronGenTabs a').click(function (e) {
                     e.preventDefault();
                     $(this).tab('show');
-                    //generate();
+                    // generate();
                 });
                 $("#CronGenMainDiv select,input").change(function (e) {
                     generate();
@@ -378,12 +374,11 @@
                 $("#CronGenMainDiv input").focus(function (e) {
                     generate();
                 });
-                //generate();
+                // generate();
             });
             return;
         }
     });
-
 
     var fillInMonths = function () {
         var days = [
@@ -475,7 +470,7 @@
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                     case "4":
-                    	$.fn.cronGen.tools.initCheckBox("second");
+                        $.fn.cronGen.tools.initCheckBox("second");
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                 }
@@ -495,7 +490,7 @@
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                     case "4":
-                    	$.fn.cronGen.tools.initCheckBox("min");
+                        $.fn.cronGen.tools.initCheckBox("min");
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                 }
@@ -515,7 +510,7 @@
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                     case "4":
-                    	$.fn.cronGen.tools.initCheckBox("hour");
+                        $.fn.cronGen.tools.initCheckBox("hour");
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                 }
@@ -547,7 +542,7 @@
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                     case "7":
-                    	$.fn.cronGen.tools.initCheckBox("day");
+                        $.fn.cronGen.tools.initCheckBox("day");
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                 }
@@ -575,7 +570,7 @@
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                     case "6":
-                    	$.fn.cronGen.tools.initCheckBox("week");
+                        $.fn.cronGen.tools.initCheckBox("week");
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                 }
@@ -599,7 +594,7 @@
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                     case "5":
-                    	$.fn.cronGen.tools.initCheckBox("month");
+                        $.fn.cronGen.tools.initCheckBox("month");
                         results = $.fn.cronGen.tools.cronResult();
                         break;
                 }
@@ -1008,7 +1003,7 @@
             }
         },
         cronParse : function(cronExpress) {
-            //获取参数中表达式的值
+            // 获取参数中表达式的值
             if (cronExpress) {
                 var regs = cronExpress.split(' ');
                 $("input[name=secondHidden]").val(regs[0]);
@@ -1030,7 +1025,7 @@
                     $.fn.cronGen.tools.initYear(regs[6]);
                 }
             }
-    	},
+        },
         cronResult : function() {
             var result;
             var second = $("#secondHidden").val();
@@ -1056,23 +1051,23 @@
             return result;
         },
         clearCheckbox : function(dom){
-        	//清除选中的checkbox
+            // 清除选中的checkbox
             var list = $("."+dom+"List").children().filter(":checked");
             if ($(list).length > 0) {
-            	$.each(list, function(index){
-            		$(this).attr("checked", false);
-            		$(this).attr("disabled", "disabled");
-            		$(this).change();
-            	});
+                $.each(list, function(index){
+                    $(this).attr("checked", false);
+                    $(this).attr("disabled", "disabled");
+                    $(this).change();
+                });
             }
         },
         initCheckBox : function(dom) {
-        	//移除checkbox禁用
+            // 移除checkbox禁用
             var list = $("."+dom+"List").children();
             if ($(list).length > 0) {
-            	$.each(list, function(index){
-            		$(this).removeAttr("disabled");
-            	});
+                $.each(list, function(index){
+                    $(this).removeAttr("disabled");
+                });
             }
         }
     };

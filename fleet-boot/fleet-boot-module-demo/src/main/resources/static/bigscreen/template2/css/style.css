@@ -105,7 +105,6 @@ pre {
     word-wrap: break-word;
 }
 
-
 /** 滚动条 **/
 
 ::-webkit-scrollbar {
@@ -134,7 +133,6 @@ pre {
 ::-webkit-scrollbar-thumb:vertical:active {
     background-color: rgba(0, 0, 0, .38);
 }
-
 
 /*下拉框*/
 
@@ -1256,7 +1254,6 @@ pre {
     top: 1.28rem;
     left: -3rem;
 }
-
 
 .set-div {
     width: 9.8rem;

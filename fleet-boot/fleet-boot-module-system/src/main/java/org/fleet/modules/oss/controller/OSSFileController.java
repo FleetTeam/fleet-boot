@@ -25,72 +25,69 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/sys/oss/file")
 public class OSSFileController {
 
-	@Autowired
-	private IOSSFileService ossFileService;
+    @Autowired
+    private IOSSFileService ossFileService;
 
-	@ResponseBody
-	@GetMapping("/list")
-	public Result<IPage<OSSFile>> queryPageList(OSSFile file,
-			@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
-			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize, HttpServletRequest req) {
-		Result<IPage<OSSFile>> result = new Result<>();
-		QueryWrapper<OSSFile> queryWrapper = QueryGenerator.initQueryWrapper(file, req.getParameterMap());
-		Page<OSSFile> page = new Page<>(pageNo, pageSize);
-		IPage<OSSFile> pageList = ossFileService.page(page, queryWrapper);
-		result.setSuccess(true);
-		result.setResult(pageList);
-		return result;
-	}
+    @ResponseBody
+    @GetMapping("/list")
+    public Result<IPage<OSSFile>> queryPageList(OSSFile file,
+                                                @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize, HttpServletRequest req) {
+        Result<IPage<OSSFile>> result = new Result<>();
+        QueryWrapper<OSSFile> queryWrapper = QueryGenerator.initQueryWrapper(file, req.getParameterMap());
+        Page<OSSFile> page = new Page<>(pageNo, pageSize);
+        IPage<OSSFile> pageList = ossFileService.page(page, queryWrapper);
+        result.setSuccess(true);
+        result.setResult(pageList);
+        return result;
+    }
 
-	@ResponseBody
-	@PostMapping("/upload")
-	//@RequiresRoles("admin")
-	public Result upload(@RequestParam("file") MultipartFile multipartFile) {
-		Result result = new Result();
-		try {
-			ossFileService.upload(multipartFile);
-			result.success("上传成功！");
-		}
-		catch (Exception ex) {
-			log.info(ex.getMessage(), ex);
-			result.error500("上传失败");
-		}
-		return result;
-	}
+    @ResponseBody
+    @PostMapping("/upload")
+    // @RequiresRoles("admin")
+    public Result upload(@RequestParam("file") MultipartFile multipartFile) {
+        Result result = new Result();
+        try {
+            ossFileService.upload(multipartFile);
+            result.success("上传成功！");
+        } catch (Exception ex) {
+            log.info(ex.getMessage(), ex);
+            result.error500("上传失败");
+        }
+        return result;
+    }
 
-	@ResponseBody
-	@DeleteMapping("/delete")
-	public Result delete(@RequestParam(name = "id") String id) {
-		Result result = new Result();
-		OSSFile file = ossFileService.getById(id);
-		if (file == null) {
-			result.error500("未找到对应实体");
-		}
-		else {
-			boolean ok = ossFileService.delete(file);
-			if (ok) {
-				result.success("删除成功!");
-			}
-		}
-		return result;
-	}
+    @ResponseBody
+    @DeleteMapping("/delete")
+    public Result delete(@RequestParam(name = "id") String id) {
+        Result result = new Result();
+        OSSFile file = ossFileService.getById(id);
+        if (file == null) {
+            result.error500("未找到对应实体");
+        } else {
+            boolean ok = ossFileService.delete(file);
+            if (ok) {
+                result.success("删除成功!");
+            }
+        }
+        return result;
+    }
 
-	/**
-	 * 通过id查询.
-	 */
-	@ResponseBody
-	@GetMapping("/queryById")
-	public Result<OSSFile> queryById(@RequestParam(name = "id") String id) {
-		Result<OSSFile> result = new Result<>();
-		OSSFile file = ossFileService.getById(id);
-		if (file == null) {
-			result.error500("未找到对应实体");
-		}
-		else {
-			result.setResult(file);
-			result.setSuccess(true);
-		}
-		return result;
-	}
+    /**
+     * 通过id查询.
+     */
+    @ResponseBody
+    @GetMapping("/queryById")
+    public Result<OSSFile> queryById(@RequestParam(name = "id") String id) {
+        Result<OSSFile> result = new Result<>();
+        OSSFile file = ossFileService.getById(id);
+        if (file == null) {
+            result.error500("未找到对应实体");
+        } else {
+            result.setResult(file);
+            result.setSuccess(true);
+        }
+        return result;
+    }
 
 }

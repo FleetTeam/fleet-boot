@@ -11,10 +11,9 @@ import javax.annotation.Resource;
 @Service
 public class LockService {
 
+    int n = 10;
     @Resource
     private RedissonLockClient redissonLockClient;
-
-    int n = 10;
 
     /**
      * 模拟秒杀(注解方式)
@@ -42,7 +41,6 @@ public class LockService {
         System.out.println(--n);
         redissonLockClient.unlock(productId);
     }
-
 
     /**
      * 测试重复提交

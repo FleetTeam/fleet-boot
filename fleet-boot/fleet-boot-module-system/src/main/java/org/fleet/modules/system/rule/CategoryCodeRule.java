@@ -42,21 +42,21 @@ public class CategoryCodeRule implements IFillRuleHandler {
          * 2.添加子节点，无兄弟元素 YouBianCodeUtil.getSubYouBianCode(parentCode,null);
          * 3.添加子节点有兄弟元素 YouBianCodeUtil.getNextYouBianCode(lastCode);
          * */
-        //找同类 确定上一个最大的code值
+        // 找同类 确定上一个最大的code值
         LambdaQueryWrapper<SysCategory> query = new LambdaQueryWrapper<SysCategory>().eq(SysCategory::getPid, categoryPid).isNotNull(SysCategory::getCode).orderByDesc(SysCategory::getCode);
         SysCategoryMapper baseMapper = (SysCategoryMapper) SpringContextUtils.getBean("sysCategoryMapper");
         List<SysCategory> list = baseMapper.selectList(query);
         if (list == null || list.size() == 0) {
             if (ROOT_PID_VALUE.equals(categoryPid)) {
-                //情况1
+                // 情况1
                 categoryCode = YouBianCodeUtil.getNextYouBianCode(null);
             } else {
-                //情况2
+                // 情况2
                 SysCategory parent = (SysCategory) baseMapper.selectById(categoryPid);
                 categoryCode = YouBianCodeUtil.getSubYouBianCode(parent.getCode(), null);
             }
         } else {
-            //情况3
+            // 情况3
             categoryCode = YouBianCodeUtil.getNextYouBianCode(list.get(0).getCode());
         }
         return categoryCode;

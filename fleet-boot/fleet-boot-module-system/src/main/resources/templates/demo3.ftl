@@ -4,10 +4,10 @@
 <title>Spring Boot FreeMarker</title>
 </head>
 <body>
-	Freemarker HTML <br><br>
-	
-	Sessionid: ${sessionid!}<br><br>
-	
+    Freemarker HTML <br><br>
+
+    Sessionid: ${sessionid!}<br><br>
+
     <font>
         <#list userList as item>
             ${item!}<br />

@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-
 public class AutoCodeConfigProperties {
     private static final Logger log = LoggerFactory.getLogger(AutoCodeConfigProperties.class);
-
 
     private static final String databaseConfigPath = "fleet/fleet_database";
 
@@ -145,6 +143,10 @@ public class AutoCodeConfigProperties {
         return config_bundle.getString("templatepath");
     }
 
+    public static void setTemplatePath(String templatePath) {
+        AutoCodeConfigProperties.templatePath = templatePath;
+    }
+
     public static final String getSourceRootPackage() {
         return config_bundle.getString("source_root_package");
     }
@@ -179,9 +181,5 @@ public class AutoCodeConfigProperties {
 
     public static void setProjectPath(String projectPath) {
         AutoCodeConfigProperties.projectPath = projectPath;
-    }
-
-    public static void setTemplatePath(String templatePath) {
-        AutoCodeConfigProperties.templatePath = templatePath;
     }
 }

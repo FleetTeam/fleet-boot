@@ -1,6 +1,5 @@
 package org.jeecg.boot.starter.lock.core;
 
-
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.boot.starter.lock.core.strategy.RedissonConfigStrategy;
@@ -12,7 +11,6 @@ import org.jeecg.boot.starter.lock.core.strategy.impl.StandaloneRedissonConfigSt
 import org.jeecg.boot.starter.lock.enums.RedisConnectionType;
 import org.redisson.Redisson;
 import org.redisson.config.Config;
-
 
 /**
  * Redisson配置管理器，用于初始化的redisson实例
@@ -31,7 +29,7 @@ public class RedissonManager {
     }
 
     public RedissonManager(RedissonProperties redissonProperties) {
-        //装配开关
+        // 装配开关
         Boolean enabled = redissonProperties.getEnabled();
         if (enabled) {
             try {
@@ -53,10 +51,10 @@ public class RedissonManager {
      */
     static class RedissonConfigFactory {
 
+        private static volatile RedissonConfigFactory factory = null;
+
         private RedissonConfigFactory() {
         }
-
-        private static volatile RedissonConfigFactory factory = null;
 
         public static RedissonConfigFactory getInstance() {
             if (factory == null) {
@@ -95,6 +93,5 @@ public class RedissonManager {
             return redissonConfigStrategy.createRedissonConfig(redissonProperties);
         }
     }
-
 
 }

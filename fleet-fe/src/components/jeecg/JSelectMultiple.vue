@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  //option {label:,value:}
+  // option {label:,value:}
   export default {
     name: 'JSelectMultiple',
     props: {

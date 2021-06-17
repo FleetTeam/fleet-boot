@@ -78,11 +78,11 @@
                 handler({cellValue, row, column}, callback, target) {
                   // cellValue 当前校验的值
                   // callback(flag, message) 方法必须执行且只能执行一次
-                  //          flag = 是否通过了校验，不填写或者填写 null 代表不进行任何操作
-                  //          message = 提示的类型，默认使用配置的 message
+                  // flag = 是否通过了校验，不填写或者填写 null 代表不进行任何操作
+                  // message = 提示的类型，默认使用配置的 message
                   // target 行编辑的实例对象
                   if (cellValue === 'abc') {
-                    callback(false, '${title}不能是abc')  // false = 未通过校验
+                    callback(false, '${title}不能是abc') // false = 未通过校验
                   } else {
                     callback(true) // true = 通过验证
                   }
@@ -220,7 +220,7 @@
         console.log('handleValueChange.event: ', event)
       },
 
-      /** 表单验证 */
+      // 表单验证
       handleTableCheck() {
         this.$refs.vTable.validateTable().then(errMap => {
           if (errMap) {
@@ -232,14 +232,14 @@
         })
       },
 
-      /** 获取值，忽略表单验证 */
+      // 获取值，忽略表单验证
       handleTableGet() {
         const values = this.$refs.vTable.getTableData()
         console.log('获取值:', {values})
         this.$message.success('获取值成功，请看控制台输出')
       },
 
-      /** 模拟加载1000条数据 */
+      // 模拟加载1000条数据
       handleTableSet() {
         this.randomPage(1, 1000, true)
       },

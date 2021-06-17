@@ -11,12 +11,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 /**
  * @Description: 系统通告表
  * @Author: fleet-team
- * @Date:  2021-04-19
+ * @Date: 2021-04-19
  * @Version: V1.0
  */
 public interface SysAnnouncementMapper extends BaseMapper<SysAnnouncement> {
 
-	
-	List<SysAnnouncement> querySysCementListByUserId(Page<SysAnnouncement> page, @Param("userId")String userId,@Param("msgCategory")String msgCategory);
+    List<SysAnnouncement> querySysCementListByUserId(Page<SysAnnouncement> page, @Param("userId") String userId, @Param("msgCategory") String msgCategory);
 
 }

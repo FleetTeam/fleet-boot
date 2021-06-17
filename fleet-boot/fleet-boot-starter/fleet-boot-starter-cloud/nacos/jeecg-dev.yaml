@@ -40,25 +40,25 @@ spring:
           password: ${MYSQL-PWD:root}
           driver-class-name: com.mysql.cj.jdbc.Driver
           # 多数据源配置
-          #multi-datasource1:
-          #url: jdbc:mysql://localhost:3306/jeecg-boot2?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
-          #username: root
-          #password: root
-          #driver-class-name: com.mysql.cj.jdbc.Driver
-  #redis 配置
+          # multi-datasource1:
+          # url: jdbc:mysql://localhost:3306/jeecg-boot2?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+          # username: root
+          # password: root
+          # driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis 配置
   redis:
     database: 0
     host: jeecg-boot-redis
     lettuce:
       pool:
-        max-active: 8   #最大连接数据库连接数,设 0 为没有限制
-        max-idle: 8     #最大等待连接中的数量,设 0 为没有限制
-        max-wait: -1ms  #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
-        min-idle: 0     #最小等待连接中的数量,设 0 为没有限制
+        max-active: 8   # 最大连接数据库连接数,设 0 为没有限制
+        max-idle: 8     # 最大等待连接中的数量,设 0 为没有限制
+        max-wait: -1ms  # 最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+        min-idle: 0     # 最小等待连接中的数量,设 0 为没有限制
       shutdown-timeout: 100ms
     password:
     port: 6379
-  #rabbitmq配置
+  # rabbitmq配置
   rabbitmq:
     host: jeecg-boot-rabbitmq
     username: guest
@@ -70,29 +70,29 @@ spring:
     listener:
       simple:
         acknowledge-mode: manual
-        #消费者的最小数量
+        # 消费者的最小数量
         concurrency: 1
-        #消费者的最大数量
+        # 消费者的最大数量
         max-concurrency: 1
-        #是否支持重试
+        # 是否支持重试
         retry:
           enabled: true
-#minidao 设置
+# minidao 设置
 minidao :
   base-package: org.jeecg.modules.jmreport.*
   db-type: mysql
-#jeecg专用配置
+# jeecg专用配置
 jeecg :
   # 本地：local\Minio：minio\阿里云：alioss
   uploadType: local
   path :
-    #文件上传根目录 设置
+    # 文件上传根目录 设置
     upload: D://opt//upFiles
-    #webapp文件路径
+    # webapp文件路径
     webapp: D://opt//webapp
   shiro:
     excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/category/**,/visual/**,/map/**,/jmreport/bigscreen2/**
-  #阿里云oss存储配置
+  # 阿里云oss存储配置
   oss:
     endpoint: oss-cn-beijing.aliyuncs.com
     accessKey: ??
@@ -118,19 +118,19 @@ jeecg :
     minio_name: ??
     minio_pass: ??
     bucketName: otatest
-  #大屏报表参数设置
+  # 大屏报表参数设置
   jmreport:
     mode: dev
-    #是否需要校验token
+    # 是否需要校验token
     is_verify_token: false
-    #必须校验方法
+    # 必须校验方法
     verify_methods: remove,delete,save,add,update
-  #Wps在线文档
+  # Wps在线文档
   wps:
     domain: https://wwo.wps.cn/office/
     appid: ??
     appsecret: ??
-  #xxl-job配置
+  # xxl-job配置
   xxljob:
     enabled: false
     adminAddresses: http://jeecg-boot-xxljob:9080/xxl-job-admin
@@ -138,26 +138,26 @@ jeecg :
     accessToken: ''
     logPath: logs/jeecg/job/jobhandler/
     logRetentionDays: 30
-   #自定义路由配置 yml nacos database
+   # 自定义路由配置 yml nacos database
   route:
     config:
       data-id: jeecg-gateway-router
       group: DEFAULT_GROUP
       data-type: yml
-  #分布式锁配置
+  # 分布式锁配置
   redisson:
     address: jeecg-boot-redis:6379
     password:
     type: STANDALONE
     enabled: true
-#Mybatis输出sql日志
+# Mybatis输出sql日志
 logging:
   level:
     org.jeecg.modules.system.mapper : info
-#cas单点登录
+# cas单点登录
 cas:
   prefixUrl: http://localhost:8888/cas
-#swagger
+# swagger
 knife4j:
   production: false
   basic:
@@ -165,7 +165,7 @@ knife4j:
     username: jeecg
     password: jeecg1314
 
-#第三方登录
+# 第三方登录
 justauth:
   enabled: true
   type:

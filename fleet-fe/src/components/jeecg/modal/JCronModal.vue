@@ -522,13 +522,13 @@
       visible:{
         handler() {
           // if(this.data){
-          //   //this. result = Object.keys(this.data.value).length>0?this.deepCopy(this.data.value):this.deepCopy(this.defaultValue);
-          //   //this.result = Object.keys(this.data.value).length>0?clone(this.data.value):clone(this.defaultValue);
-          //   //this.result = Object.keys(this.data.value).length>0?clone(JSON.parse(this.data.value)):clone(this.defaultValue);
+          //   // this. result = Object.keys(this.data.value).length>0?this.deepCopy(this.data.value):this.deepCopy(this.defaultValue);
+          //   // this.result = Object.keys(this.data.value).length>0?clone(this.data.value):clone(this.defaultValue);
+          //   // this.result = Object.keys(this.data.value).length>0?clone(JSON.parse(this.data.value)):clone(this.defaultValue);
           //   this.result = Object.keys(this.data.value).length>0?JSON.parse(this.data.value):JSON.parse(JSON.stringify(this.defaultValue));
           // }else{
-          //   //this.result = this.deepCopy(this.defaultValue);
-          //   //this.result = clone(this.defaultValue);
+          //   // this.result = this.deepCopy(this.defaultValue);
+          //   // this.result = clone(this.defaultValue);
           //   this.result = JSON.parse(JSON.stringify(this.defaultValue));
           // }
           let label = this.data;
@@ -568,7 +568,7 @@
       },
       secondsReverseExp(seconds) {
         let val =  seconds.split(" ")[0];
-        //alert(val);
+        // alert(val);
         let second = {
           cronEvery:'',
           incrementStart:3,
@@ -717,7 +717,7 @@
               break;
             case days.includes('L'):
 
-              //alert(days);
+              // alert(days);
               if(days.len == 1){
                 day.cronEvery = '6';
                 day.cronLastSpecificDomDay = '1';

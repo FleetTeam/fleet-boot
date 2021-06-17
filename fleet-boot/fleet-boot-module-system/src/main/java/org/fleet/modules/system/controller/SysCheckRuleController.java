@@ -62,7 +62,6 @@ public class SysCheckRuleController extends FleetController<SysCheckRule, ISysCh
         return Result.ok(pageList);
     }
 
-
     /**
      * 通过id查询
      *

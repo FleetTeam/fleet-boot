@@ -41,7 +41,6 @@ public class RedissonLockClient {
         return tryLock(lockName, 0, expireSeconds);
     }
 
-
     /**
      * 加锁操作
      *
@@ -64,7 +63,6 @@ public class RedissonLockClient {
         return getLock;
     }
 
-
     public boolean fairLock(String lockKey, TimeUnit unit, int leaseTime) {
         RLock fairLock = redissonClient.getFairLock(lockKey);
         try {
@@ -83,6 +81,7 @@ public class RedissonLockClient {
     public boolean existKey(String key) {
         return redisTemplate.hasKey(key);
     }
+
     /**
      * 锁lockKey
      *
@@ -108,7 +107,6 @@ public class RedissonLockClient {
         return lock;
     }
 
-
     /**
      * 解锁
      *
@@ -121,6 +119,5 @@ public class RedissonLockClient {
             log.error("解锁异常，lockName=" + lockName, e);
         }
     }
-
 
 }

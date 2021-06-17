@@ -26,7 +26,7 @@ public class MapMessageConverter implements MessageConverter {
             try {
                 ByteArrayInputStream byteInt = new ByteArrayInputStream(message.getBody());
                 objInt = new ObjectInputStream(byteInt);
-                //byte[]转map
+                // byte[]转map
                 Map map = (HashMap) objInt.readObject();
                 return map;
             } catch (Exception e) {

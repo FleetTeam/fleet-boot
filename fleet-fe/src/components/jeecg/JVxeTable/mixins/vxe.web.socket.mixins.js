@@ -45,7 +45,7 @@ const vs = {
     },
   },
 
-  /** 初始化 WebSocket */
+  // 初始化 WebSocket
   initialWebSocket() {
     if (this.ws === null) {
       const userId = store.getters.userInfo.id
@@ -77,10 +77,10 @@ const vs = {
     }
   },
 
-  /** 绑定全局VXE表格 */
+  // 绑定全局VXE表格
   tableMap: new Map(),
   CSDMap: new Map(),
-  /** 添加绑定 */
+  // 添加绑定
   addBind(map, key, value) {
     let binds = map.get(key)
     if (Array.isArray(binds)) {
@@ -89,7 +89,7 @@ const vs = {
       map.set(key, [value])
     }
   },
-  /** 移除绑定 */
+  // 移除绑定
   removeBind(map, key, value) {
     let binds = map.get(key)
     if (Array.isArray(binds)) {
@@ -116,7 +116,7 @@ const vs = {
   },
 
   lockReconnect: false,
-  /** 尝试重连 */
+  // 尝试重连
   reconnect() {
     if (this.lockReconnect) return
     this.lockReconnect = true
@@ -176,7 +176,7 @@ const vs = {
   },
 
   onVM: {
-    /** 收到更新表格的消息 */
+    // 收到更新表格的消息
     onUpdateTable(row, caseId) {
       // 判断是不是自己发的消息
       if (this.caseId !== caseId) {
@@ -227,7 +227,7 @@ export default {
   },
   methods: {
 
-    /** 发送socket消息更新行 */
+    // 发送socket消息更新行
     socketSendUpdateRow(row) {
       vs.sendMessage(vs.constants.TYPE_UVT, {
         socketKey: this.socketKey,

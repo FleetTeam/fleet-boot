@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-
 public class SubTableVo {
     private String entityPackage;
 
@@ -48,12 +47,24 @@ public class SubTableVo {
         return this.entityPackage;
     }
 
+    public void setEntityPackage(String entityPackage) {
+        this.entityPackage = entityPackage;
+    }
+
     public String getTableName() {
         return this.tableName;
     }
 
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
     public String getEntityName() {
         return this.entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
     }
 
     public String[] getOriginalForeignMainKeys() {
@@ -76,28 +87,16 @@ public class SubTableVo {
         return this.ftlDescription;
     }
 
+    public void setFtlDescription(String ftlDescription) {
+        this.ftlDescription = ftlDescription;
+    }
+
     public List<ColumnVo> getColums() {
         return this.colums;
     }
 
     public void setColums(List<ColumnVo> colums) {
         this.colums = colums;
-    }
-
-    public void setEntityPackage(String entityPackage) {
-        this.entityPackage = entityPackage;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
-    public void setEntityName(String entityName) {
-        this.entityName = entityName;
-    }
-
-    public void setFtlDescription(String ftlDescription) {
-        this.ftlDescription = ftlDescription;
     }
 
     public String[] getForeignKeys() {
@@ -112,12 +111,12 @@ public class SubTableVo {
         return this.primaryKeyPolicy;
     }
 
-    public String getSequenceCode() {
-        return this.sequenceCode;
-    }
-
     public void setPrimaryKeyPolicy(String primaryKeyPolicy) {
         this.primaryKeyPolicy = primaryKeyPolicy;
+    }
+
+    public String getSequenceCode() {
+        return this.sequenceCode;
     }
 
     public void setSequenceCode(String sequenceCode) {

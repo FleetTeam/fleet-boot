@@ -26,31 +26,31 @@ import java.util.Collection;
 @Service
 public class ${entityName}ServiceImpl extends ServiceImpl<${entityName}Mapper, ${entityName}> implements I${entityName}Service {
 
-	@Autowired
-	private ${entityName}Mapper ${entityName?uncap_first}Mapper;
-	<#list subTables as sub>
-	@Autowired
-	private ${sub.entityName}Mapper ${sub.entityName?uncap_first}Mapper;
-	</#list>
-	
-	@Override
-	@Transactional
-	public void delMain(String id) {
-		<#list subTables as sub>
-		${sub.entityName?uncap_first}Mapper.deleteByMainId(id);
-		</#list>
-		${entityName?uncap_first}Mapper.deleteById(id);
-	}
+    @Autowired
+    private ${entityName}Mapper ${entityName?uncap_first}Mapper;
+    <#list subTables as sub>
+    @Autowired
+    private ${sub.entityName}Mapper ${sub.entityName?uncap_first}Mapper;
+    </#list>
 
-	@Override
-	@Transactional
-	public void delBatchMain(Collection<? extends Serializable> idList) {
-		for(Serializable id:idList) {
-			<#list subTables as sub>
-			${sub.entityName?uncap_first}Mapper.deleteByMainId(id.toString());
-			</#list>
-			${entityName?uncap_first}Mapper.deleteById(id);
-		}
-	}
-	
+    @Override
+    @Transactional
+    public void delMain(String id) {
+        <#list subTables as sub>
+        ${sub.entityName?uncap_first}Mapper.deleteByMainId(id);
+        </#list>
+        ${entityName?uncap_first}Mapper.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void delBatchMain(Collection<? extends Serializable> idList) {
+        for(Serializable id:idList) {
+            <#list subTables as sub>
+            ${sub.entityName?uncap_first}Mapper.deleteByMainId(id.toString());
+            </#list>
+            ${entityName?uncap_first}Mapper.deleteById(id);
+        }
+    }
+
 }

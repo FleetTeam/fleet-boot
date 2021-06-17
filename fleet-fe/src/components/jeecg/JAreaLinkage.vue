@@ -94,13 +94,13 @@
     },
     methods: {
 
-      /** 重新加载组件 */
+      // 重新加载组件
       reload() {
         this.reloading = true
         this.$nextTick(() => this.reloading = false)
       },
 
-      /** 通过 value 反推 options */
+      // 通过 value 反推 options
       loadDataByValue(value) {
         if (!value || value.length === 0) {
           this.innerValue = []
@@ -111,7 +111,7 @@
         }
         this.reload()
       },
-      /** 通过地区code获取子级 */
+      // 通过地区code获取子级
       loadDataByCode(value) {
         let options = []
         let data = pcaa[value]
@@ -126,7 +126,7 @@
           return []
         }
       },
-      /** 判断是否有子节点 */
+      // 判断是否有子节点
       hasChildren(options) {
         options.forEach(option => {
           let data = this.loadDataByCode(option.value)

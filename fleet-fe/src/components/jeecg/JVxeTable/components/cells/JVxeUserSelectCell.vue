@@ -23,11 +23,13 @@
     </span>
   </div>
 
- <!-- <j-select-user-by-dep
+<!--
+<j-select-user-by-dep
     v-bind="custProps"
     @change="handleChange"
     :trigger-change="true">
-  </j-select-user-by-dep>-->
+</j-select-user-by-dep>
+-->
 </template>
 
 <script>

@@ -11,7 +11,6 @@
     <link href="${base}/bigscreen/template1/css/easyui.css" rel="stylesheet" type="text/css">
     <link href="${base}/bigscreen/template1/css/room.css" rel="stylesheet" type="text/css" />
 
-
     <script language="javascript" type="text/javascript" src="${base}/bigscreen/template1/js/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="${base}/bigscreen/template1/js/jquery.easyui.min.js"></script>
     <script language="javascript" type="text/javascript" src="${base}/bigscreen/template1/js/echarts.min.js"></script>
@@ -30,12 +29,12 @@
         </div>
         <!-- 刷新结束 -->
 
-        <!-- 进度条区域开始-->
+        <!-- 进度条区域开始 -->
         <div id="y_gauge1"></div>
         <div id="y_gauge2"></div>
         <div id="y_gauge3"></div>
         <div id="y_gauge4"></div>
-        <!-- 进度条区域结束-->
+        <!-- 进度条区域结束 -->
 
         <!-- 螺旋图开始 -->
         <div id="orderStatus"></div>
@@ -59,21 +58,21 @@
         </div>
         <!-- 业务进展图结束 -->
 
-        <!-- 生产计划展示开始-->
+        <!-- 生产计划展示开始 -->
         <div id="plan"></div>
         <div class="contentButton" style="top:1402px;left:453px">
             <a href="javascript:void(0);">&nbsp;</a>
         </div>
-        <!-- 生产计划展示结束-->
+        <!-- 生产计划展示结束 -->
 
-        <!-- 生产质量展示开始-->
+        <!-- 生产质量展示开始 -->
         <div id="quality"></div>
         <div class="contentButton" style="top:1402px;left:1532px">
             <a href="javascript:void(0);">&nbsp;</a>
         </div>
-        <!-- 生产质量展示结束-->
+        <!-- 生产质量展示结束 -->
 
-        <!-- 客服及投诉展示开始-->
+        <!-- 客服及投诉展示开始 -->
         <div id="produce">
             <table width="100%" cellpadding="6" cellspacing="0">
                 <tr class="row1">
@@ -137,16 +136,16 @@
         <div class="contentButton" style="top:1402px;left:2598px">
             <a href="javascript:void(0);">&nbsp;</a>
         </div>
-        <!-- 客服及投诉展示结束-->
+        <!-- 客服及投诉展示结束 -->
 
-        <!-- 词云展示开始-->
+        <!-- 词云展示开始 -->
         <div id="wordCloud"></div>
         <div class="contentButton" style="top:1402px;left:3679px">
             <a href="javascript:void(0);">&nbsp;</a>
         </div>
-        <!-- 词云结束-->
+        <!-- 词云结束 -->
 
-        <!-- 仪表盘区域开始-->
+        <!-- 仪表盘区域开始 -->
         <!-- <div id="gauge1"></div>
             <div class="gaugeTitle" style="left:2200px;top:480px;"><sapn id="vg1">32</sapn>&nbsp;m<sup>3</sup>/d</div>
             <div id="gauge2"></div>
@@ -157,16 +156,18 @@
             <div class="gaugeTitle" style="left:2380px;top:750px;"><sapn id="vg4">32</sapn>&nbsp;m<sup>3</sup>/m</div>
             <div id="gauge5"></div>
             <div class="gaugeTitle" style="left:2730px;top:750px;"><sapn id="vg5">32</sapn>&nbsp;t/h</div> -->
-        <!-- 仪表盘区域结束-->
+        <!-- 仪表盘区域结束 -->
 
-        <!--弹出窗口-->
-        <!--<div id="popWindow">
-                <div style="padding:20px;font-size:32px; background-color:#051E3C;color:#B7E1FF; border-bottom:1px solid #09F">弹出窗口标题</div>
-            </div>-->
-        <!--弹出窗口结束---->
+        <!-- 弹出窗口 -->
+        <!--
+        <div id="popWindow">
+            <div style="padding:20px;font-size:32px; background-color:#051E3C;color:#B7E1FF; border-bottom:1px solid #09F">弹出窗口标题</div>
+        </div>
+        -->
+        <!-- 弹出窗口结束 -->
     </div>>
 
-    <!--编辑系统用户的弹出窗口-->
+    <!-- 编辑系统用户的弹出窗口 -->
     <div id="modalDlg" class="easyui-dialog" title="弹出窗口" data-options="modal:true,closed:true,buttons:
         [{
                     text:'确定',
@@ -219,7 +220,7 @@
             </tr>
         </table>
     </div>
-    <!--编辑系统用户的弹出窗口结束-->
+    <!-- 编辑系统用户的弹出窗口结束 -->
 
 </body>
 

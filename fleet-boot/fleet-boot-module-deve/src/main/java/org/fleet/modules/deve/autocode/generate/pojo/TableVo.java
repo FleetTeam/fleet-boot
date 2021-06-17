@@ -2,49 +2,44 @@ package org.fleet.modules.deve.autocode.generate.pojo;
 
 import java.util.Map;
 
-
 public class TableVo {
+    public Integer fieldRowNum;
+    public Integer searchFieldNum;
+    public Integer fieldRequiredNum;
     private String tableName;
     private String ftlDescription;
     private String primaryKeyPolicy;
     private String sequenceCode;
     private String entityPackage;
     private String entityName;
-
-    public Integer fieldRowNum;
-
-    public Integer searchFieldNum;
-
-    public Integer fieldRequiredNum;
-
     private Map<?, ?> extendParams;
 
     public String getEntityPackage() {
         return this.entityPackage;
     }
 
-    public String getTableName() {
-        return this.tableName;
-    }
-
-    public String getEntityName() {
-        return this.entityName;
-    }
-
-    public String getFtlDescription() {
-        return this.ftlDescription;
-    }
-
     public void setEntityPackage(String entityPackage) {
         this.entityPackage = entityPackage;
+    }
+
+    public String getTableName() {
+        return this.tableName;
     }
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
 
+    public String getEntityName() {
+        return this.entityName;
+    }
+
     public void setEntityName(String entityName) {
         this.entityName = entityName;
+    }
+
+    public String getFtlDescription() {
+        return this.ftlDescription;
     }
 
     public void setFtlDescription(String ftlDescription) {
@@ -55,12 +50,12 @@ public class TableVo {
         return this.primaryKeyPolicy;
     }
 
-    public String getSequenceCode() {
-        return this.sequenceCode;
-    }
-
     public void setPrimaryKeyPolicy(String primaryKeyPolicy) {
         this.primaryKeyPolicy = primaryKeyPolicy;
+    }
+
+    public String getSequenceCode() {
+        return this.sequenceCode;
     }
 
     public void setSequenceCode(String sequenceCode) {
@@ -103,5 +98,3 @@ public class TableVo {
         return "TableVo [tableName=" + this.tableName + ", ftlDescription=" + this.ftlDescription + ", primaryKeyPolicy=" + this.primaryKeyPolicy + ", sequenceCode=" + this.sequenceCode + ", entityPackage=" + this.entityPackage + ", entityName=" + this.entityName + ", foreignKeys=" + ", fieldRowNum=" + this.fieldRowNum + ", searchFieldNum=" + this.searchFieldNum + ", fieldRequiredNum=" + this.fieldRequiredNum + "]";
     }
 }
-
-

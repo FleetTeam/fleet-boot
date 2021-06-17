@@ -18,8 +18,6 @@ v-decorator用法：
                    dictCode="sys_user,realname,id"/>
 ```
 
-
-
 # JDictSelectUtil.js 列表字典函数用法
 ----
 
@@ -30,7 +28,7 @@ v-decorator用法：
 
 - 第二步: 在created()初始化方法执行字典配置方法
 ```html
-      //初始化字典配置
+      // 初始化字典配置
       this.initDictConfig();
 ```
       
@@ -38,7 +36,7 @@ v-decorator用法：
       
 ```html
       initDictConfig() {
-        //初始化字典 - 性别
+        // 初始化字典 - 性别
         initDictOptions('sex').then((res) => {
           if (res.success) {
             this.sexDictOptions = res.result;
@@ -50,11 +48,10 @@ v-decorator用法：
 - 第四步: 实现字段的customRender方法
 ```html
      customRender: (text, record, index) => {
-       //字典值替换通用方法
+       // 字典值替换通用方法
        return filterDictText(this.sexDictOptions, text);
      }
 ```
-
 
 # JMultiSelectTag 多选组件
 下拉/checkbox
@@ -178,4 +175,3 @@ v-decorator用法：
   }
 </script>
 ```
-

@@ -51,7 +51,7 @@ export const WebsocketMixin = {
       var that = this;
       if(that.lockReconnect) return;
       that.lockReconnect = true;
-      //没连接上会一直重连，设置延迟避免请求过多
+      // 没连接上会一直重连，设置延迟避免请求过多
       setTimeout(function () {
         console.info("尝试重连...");
         that.initWebSocket();

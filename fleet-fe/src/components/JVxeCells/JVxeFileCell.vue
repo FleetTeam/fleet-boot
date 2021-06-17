@@ -79,7 +79,7 @@
       }
     },
     computed: {
-      /** upload headers */
+      // upload headers
       uploadHeaders() {
         let {originColumn: col} = this
         let headers = {}
@@ -89,7 +89,7 @@
         return headers
       },
 
-      /** 上传请求地址 */
+      // 上传请求地址
       uploadAction() {
         if (!this.originColumn.action) {
           return window._CONFIG['domianURL'] + '/sys/common/upload'
@@ -139,13 +139,13 @@
 
       // 点击更多按钮
       handleMoreOperation(originColumn) {
-        //update-begin-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
+        // update-begin-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
         if (originColumn.number) {
           this.number = originColumn.number
         } else {
           this.number = 0
         }
-        //update-end-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
+        // update-end-author:wangshuai date:20201021 for:LOWCOD-969 判断传过来的字段是否存在number，用于控制上传文件
         if(originColumn && originColumn.fieldExtendJson){
           let json = JSON.parse(originColumn.fieldExtendJson);
           this.number = json.uploadnum?json.uploadnum:0;

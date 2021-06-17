@@ -186,19 +186,19 @@
           jeecgOrderCustomerList: [{}],
           jeecgOrderTicketList: [{}]
         }, record);
-        //--------------------------------------------------------
-        //初始化明细表数据
+        // --------------------------------------------------------
+        // 初始化明细表数据
         console.log(this.orderMainModel.id)
         if(this.orderMainModel.id){
           let params = {id:this.orderMainModel.id}
-          //初始化订单机票列表
+          // 初始化订单机票列表
           getAction(this.url.orderCustomerList,params).then((res)=>{
             if(res.success){
               this.orderMainModel.jeecgOrderCustomerList = res.result;
               this.$forceUpdate()
             }
           })
-          //初始化订单客户列表
+          // 初始化订单客户列表
           getAction(this.url.orderTicketList,params).then((res)=>{
             if(res.success){
               this.orderMainModel.jeecgOrderTicketList = res.result;
@@ -268,7 +268,6 @@
         this.orderMainModel.jeecgOrderTicketList.splice(index,1);
         this.$forceUpdate();
       },
-
 
     }
   }

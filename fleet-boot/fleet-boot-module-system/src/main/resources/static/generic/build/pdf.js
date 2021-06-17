@@ -463,7 +463,6 @@ var XRefParseException = (function XRefParseExceptionClosure() {
   return XRefParseException;
 })();
 
-
 function bytesToString(bytes) {
   assert(bytes !== null && typeof bytes === 'object' &&
          bytes.length !== undefined, 'Invalid argument for bytesToString');
@@ -835,19 +834,19 @@ var PageViewport = PDFJS.PageViewport = (function PageViewportClosure() {
     rotation = rotation % 360;
     rotation = rotation < 0 ? rotation + 360 : rotation;
     switch (rotation) {
-      case 180:
-        rotateA = -1; rotateB = 0; rotateC = 0; rotateD = 1;
-        break;
-      case 90:
-        rotateA = 0; rotateB = 1; rotateC = 1; rotateD = 0;
-        break;
-      case 270:
-        rotateA = 0; rotateB = -1; rotateC = -1; rotateD = 0;
-        break;
-      //case 0:
-      default:
-        rotateA = 1; rotateB = 0; rotateC = 0; rotateD = -1;
-        break;
+    case 180:
+      rotateA = -1; rotateB = 0; rotateC = 0; rotateD = 1;
+      break;
+    case 90:
+      rotateA = 0; rotateB = 1; rotateC = 1; rotateD = 0;
+      break;
+    case 270:
+      rotateA = 0; rotateB = -1; rotateC = -1; rotateD = 0;
+      break;
+    // case 0:
+    default:
+      rotateA = 1; rotateB = 0; rotateC = 0; rotateD = -1;
+      break;
     }
 
     if (dontFlip) {
@@ -1606,7 +1605,6 @@ function loadJpegStream(id, imageUrl, objs) {
   });
   img.src = imageUrl;
 }
-
 
 /**
  * The maximum allowed image size in total pixels e.g. width * height. Images
@@ -3234,7 +3232,6 @@ var InternalRenderTask = (function InternalRenderTaskClosure() {
   return InternalRenderTask;
 })();
 
-
 var Metadata = PDFJS.Metadata = (function MetadataClosure() {
   function fixMetadata(meta) {
     return meta.replace(/>\\376\\377([^<]+)/g, function(all, codes) {
@@ -3315,7 +3312,6 @@ var Metadata = PDFJS.Metadata = (function MetadataClosure() {
   return Metadata;
 })();
 
-
 // <canvas> contexts store most of the state we need natively.
 // However, PDF needs a bit more state, which we store here.
 
@@ -3364,7 +3360,7 @@ function addContextCurrentTransform(ctx) {
       get: function getCurrentTransformInverse() {
         // Calculation done using WolframAlpha:
         // http://www.wolframalpha.com/input/?
-        //   i=Inverse+{{a%2C+c%2C+e}%2C+{b%2C+d%2C+f}%2C+{0%2C+0%2C+1}}
+        // i=Inverse+{{a%2C+c%2C+e}%2C+{b%2C+d%2C+f}%2C+{0%2C+0%2C+1}}
 
         var m = this._transformMatrix;
         var a = m[0], b = m[1], c = m[2], d = m[3], e = m[4], f = m[5];
@@ -5444,7 +5440,6 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
   return CanvasGraphics;
 })();
 
-
 var WebGLUtils = (function WebGLUtilsClosure() {
   function loadShader(gl, code, shaderType) {
     var shader = gl.createShader(shaderType);
@@ -5618,7 +5613,6 @@ var WebGLUtils = (function WebGLUtilsClosure() {
     // Create a textures
     var texture = createTexture(gl, layer, gl.TEXTURE0);
     var maskTexture = createTexture(gl, mask, gl.TEXTURE1);
-
 
     // Create a buffer and put a single clipspace rectangle in
     // it (2 triangles)
@@ -5862,7 +5856,6 @@ var WebGLUtils = (function WebGLUtilsClosure() {
   };
 })();
 
-
 var ShadingIRs = {};
 
 ShadingIRs.RadialAxial = {
@@ -6059,13 +6052,13 @@ var createMeshCanvas = (function createMeshCanvasClosure() {
 
 ShadingIRs.Mesh = {
   fromIR: function Mesh_fromIR(raw) {
-    //var type = raw[1];
+    // var type = raw[1];
     var coords = raw[2];
     var colors = raw[3];
     var figures = raw[4];
     var bounds = raw[5];
     var matrix = raw[6];
-    //var bbox = raw[7];
+    // var bbox = raw[7];
     var background = raw[8];
     return {
       type: 'Pattern',
@@ -6082,7 +6075,6 @@ ShadingIRs.Mesh = {
                      scale[1] * matrixScale[1]];
           }
         }
-
 
         // Rasterizing on the main thread since sending/queue large canvases
         // might cause OOM.
@@ -6267,7 +6259,6 @@ var TilingPattern = (function TilingPatternClosure() {
 
   return TilingPattern;
 })();
-
 
 PDFJS.disableFontFace = false;
 
@@ -6603,7 +6594,6 @@ var FontFaceObject = (function FontFaceObjectClosure() {
   return FontFaceObject;
 })();
 
-
 var ANNOT_MIN_SIZE = 10; // px
 
 var AnnotationUtils = (function AnnotationUtilsClosure() {
@@ -6830,7 +6820,6 @@ var AnnotationUtils = (function AnnotationUtilsClosure() {
   };
 })();
 PDFJS.AnnotationUtils = AnnotationUtils;
-
 
 var SVG_DEFAULTS = {
   fontStyle: 'normal',
@@ -8004,7 +7993,6 @@ var SVGGraphics = (function SVGGraphicsClosure() {
 
 PDFJS.SVGGraphics = SVGGraphics;
 
-
 }).call((typeof window === 'undefined') ? this : window);
 
 if (!PDFJS.workerSrc && typeof document !== 'undefined') {
@@ -8017,5 +8005,4 @@ if (!PDFJS.workerSrc && typeof document !== 'undefined') {
     return pdfjsSrc && pdfjsSrc.replace(/\.js$/i, '.worker.js');
   })();
 }
-
 

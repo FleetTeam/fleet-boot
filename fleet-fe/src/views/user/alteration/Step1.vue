@@ -148,7 +148,7 @@
           callback("请输入用户名和手机号！");
         }
 
-        //判断用户输入账号还是手机号码
+        // 判断用户输入账号还是手机号码
         if (reg.test(value)) {
           var params = {
             phone: value,

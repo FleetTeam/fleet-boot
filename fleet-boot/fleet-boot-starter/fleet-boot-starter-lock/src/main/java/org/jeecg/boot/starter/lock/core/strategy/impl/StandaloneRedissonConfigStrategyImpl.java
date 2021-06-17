@@ -7,7 +7,6 @@ import org.jeecg.boot.starter.lock.prop.RedissonProperties;
 import org.jeecg.boot.starter.lock.enums.GlobalConstant;
 import org.redisson.config.Config;
 
-
 /**
  * 单机方式Redisson配置
  *

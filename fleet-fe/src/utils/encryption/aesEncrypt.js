@@ -34,11 +34,10 @@ export function encryption(word, keyStr, ivStr) {
 
 }
 
-
 var CryptoJS = CryptoJS || (function (Math, undefined) {
   /*
-	     * Local polyfil of Object.create
-	     */
+   * Local polyfil of Object.create
+   */
   var create = Object.create || (function () {
     function F() {};
 
@@ -70,7 +69,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
    */
   var Base = C_lib.Base = (function () {
 
-
     return {
       /**
        * Creates a new object that inherits from this object.
@@ -84,11 +82,11 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
        * @example
        *
        *     var MyType = CryptoJS.lib.Base.extend({
-	             *         field: 'value',
-	             *
-	             *         method: function () {
-	             *         }
-	             *     });
+               *         field: 'value',
+               *
+               *         method: function () {
+               *         }
+               *     });
        */
       extend: function (overrides) {
         // Spawn
@@ -141,10 +139,10 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
        * @example
        *
        *     var MyType = CryptoJS.lib.Base.extend({
-	             *         init: function () {
-	             *             // ...
-	             *         }
-	             *     });
+               *         init: function () {
+               *             // ...
+               *         }
+               *     });
        */
       init: function () {
       },
@@ -157,8 +155,8 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
        * @example
        *
        *     MyType.mixIn({
-	             *         field: 'value'
-	             *     });
+               *         field: 'value'
+               *     });
        */
       mixIn: function (properties) {
         for (var propertyName in properties) {
@@ -773,7 +771,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   return C;
 }(Math));
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -889,7 +886,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
     return WordArray.create(words, nBytes);
   }
 }());
-
 
 (function (Math) {
   // Shortcuts
@@ -1140,7 +1136,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   C.HmacMD5 = Hasher._createHmacHelper(MD5);
 }(Math));
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -1271,7 +1266,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
    */
   C.HmacSHA1 = Hasher._createHmacHelper(SHA1);
 }());
-
 
 (function (Math) {
   // Shortcuts
@@ -1453,7 +1447,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   C.HmacSHA256 = Hasher._createHmacHelper(SHA256);
 }(Math));
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -1584,7 +1577,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   }
 }());
 
-
 (function () {
   // Check if typed arrays are supported
   if (typeof ArrayBuffer != 'function') {
@@ -1641,7 +1633,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
 
   subInit.prototype = WordArray;
 }());
-
 
 /** @preserve
  (c) 2012 by Cédric Mesnil. All rights reserved.
@@ -1743,7 +1734,7 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
           t +=  f3(bl,cl,dl) + hl[2];
         } else if (i<64) {
           t +=  f4(bl,cl,dl) + hl[3];
-        } else {// if (i<80) {
+        } else {
           t +=  f5(bl,cl,dl) + hl[4];
         }
         t = t|0;
@@ -1764,7 +1755,7 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
           t +=  f3(br,cr,dr) + hr[2];
         } else if (i<64) {
           t +=  f2(br,cr,dr) + hr[3];
-        } else {// if (i<80) {
+        } else {
           t +=  f1(br,cr,dr) + hr[4];
         }
         t = t|0;
@@ -1830,7 +1821,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
     }
   });
 
-
   function f1(x, y, z) {
     return ((x) ^ (y) ^ (z));
 
@@ -1856,7 +1846,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   function rotl(x,n) {
     return (x<<n) | (x>>>(32-n));
   }
-
 
   /**
    * Shortcut function to the hasher's object interface.
@@ -1890,7 +1879,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
    */
   C.HmacRIPEMD160 = Hasher._createHmacHelper(RIPEMD160);
 }(Math));
-
 
 (function () {
   // Shortcuts
@@ -2018,7 +2006,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   });
 }());
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -2145,7 +2132,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   };
 }());
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -2259,7 +2245,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   };
 }());
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -2320,7 +2305,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
    */
   C.HmacSHA224 = SHA256._createHmacHelper(SHA224);
 }());
-
 
 (function (undefined) {
   // Shortcuts
@@ -2606,7 +2590,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
     }
   });
 }());
-
 
 (function (Math) {
   // Shortcuts
@@ -2912,7 +2895,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   C.HmacSHA3 = Hasher._createHmacHelper(SHA3);
 }(Math));
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -3217,7 +3199,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
   C.HmacSHA512 = Hasher._createHmacHelper(SHA512);
 }());
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -3281,7 +3262,6 @@ var CryptoJS = CryptoJS || (function (Math, undefined) {
    */
   C.HmacSHA384 = SHA512._createHmacHelper(SHA384);
 }());
-
 
 /**
  * Cipher core components.
@@ -3799,16 +3779,16 @@ CryptoJS.lib.Cipher || (function (undefined) {
      * @example
      *
      *     var cipherParams = CryptoJS.lib.CipherParams.create({
-	         *         ciphertext: ciphertextWordArray,
-	         *         key: keyWordArray,
-	         *         iv: ivWordArray,
-	         *         salt: saltWordArray,
-	         *         algorithm: CryptoJS.algo.AES,
-	         *         mode: CryptoJS.mode.CBC,
-	         *         padding: CryptoJS.pad.PKCS7,
-	         *         blockSize: 4,
-	         *         formatter: CryptoJS.format.OpenSSL
-	         *     });
+           *         ciphertext: ciphertextWordArray,
+           *         key: keyWordArray,
+           *         iv: ivWordArray,
+           *         salt: saltWordArray,
+           *         algorithm: CryptoJS.algo.AES,
+           *         mode: CryptoJS.mode.CBC,
+           *         padding: CryptoJS.pad.PKCS7,
+           *         blockSize: 4,
+           *         formatter: CryptoJS.format.OpenSSL
+           *     });
      */
     init: function (cipherParams) {
       this.mixIn(cipherParams);
@@ -4146,7 +4126,6 @@ CryptoJS.lib.Cipher || (function (undefined) {
   });
 }());
 
-
 /**
  * Cipher Feedback block mode.
  */
@@ -4206,7 +4185,6 @@ CryptoJS.mode.CFB = (function () {
   return CFB;
 }());
 
-
 /**
  * Electronic Codebook block mode.
  */
@@ -4227,7 +4205,6 @@ CryptoJS.mode.ECB = (function () {
 
   return ECB;
 }());
-
 
 /**
  * ANSI X.923 padding strategy.
@@ -4259,7 +4236,6 @@ CryptoJS.pad.AnsiX923 = {
   }
 };
 
-
 /**
  * ISO 10126 padding strategy.
  */
@@ -4285,7 +4261,6 @@ CryptoJS.pad.Iso10126 = {
   }
 };
 
-
 /**
  * ISO/IEC 9797-1 Padding Method 2.
  */
@@ -4306,7 +4281,6 @@ CryptoJS.pad.Iso97971 = {
     data.sigBytes--;
   }
 };
-
 
 /**
  * Output Feedback block mode.
@@ -4343,7 +4317,6 @@ CryptoJS.mode.OFB = (function () {
   return OFB;
 }());
 
-
 /**
  * A noop padding strategy.
  */
@@ -4354,7 +4327,6 @@ CryptoJS.pad.NoPadding = {
   unpad: function () {
   }
 };
-
 
 (function (undefined) {
   // Shortcuts
@@ -4402,7 +4374,6 @@ CryptoJS.pad.NoPadding = {
     }
   };
 }());
-
 
 (function () {
   // Shortcuts
@@ -4616,7 +4587,6 @@ CryptoJS.pad.NoPadding = {
    */
   C.AES = BlockCipher._createHelper(AES);
 }());
-
 
 (function () {
   // Shortcuts
@@ -5369,7 +5339,6 @@ CryptoJS.pad.NoPadding = {
   C.TripleDES = BlockCipher._createHelper(TripleDES);
 }());
 
-
 (function () {
   // Shortcuts
   var C = CryptoJS;
@@ -5490,8 +5459,8 @@ CryptoJS.pad.NoPadding = {
   C.RC4Drop = StreamCipher._createHelper(RC4Drop);
 }());
 
-
-/** @preserve
+/**
+ * @preserve
  * Counter block mode compatible with  Dr Brian Gladman fileenc.c
  * derived from CryptoJS.mode.CTR
  * Jan Hruby jhruby.web@gmail.com
@@ -5501,7 +5470,7 @@ CryptoJS.mode.CTRGladman = (function () {
 
   function incWord(word)
   {
-    if (((word >> 24) & 0xff) === 0xff) { //overflow
+    if (((word >> 24) & 0xff) === 0xff) { // overflow
       var b1 = (word >> 16)&0xff;
       var b2 = (word >> 8)&0xff;
       var b3 = word & 0xff;
@@ -5585,9 +5554,6 @@ CryptoJS.mode.CTRGladman = (function () {
 
   return CTRGladman;
 }());
-
-
-
 
 (function () {
   // Shortcuts
@@ -5762,7 +5728,6 @@ CryptoJS.mode.CTRGladman = (function () {
   C.Rabbit = StreamCipher._createHelper(Rabbit);
 }());
 
-
 /**
  * Counter block mode.
  */
@@ -5801,7 +5766,6 @@ CryptoJS.mode.CTR = (function () {
 
   return CTR;
 }());
-
 
 (function () {
   // Shortcuts
@@ -5973,7 +5937,6 @@ CryptoJS.mode.CTR = (function () {
    */
   C.RabbitLegacy = StreamCipher._createHelper(RabbitLegacy);
 }());
-
 
 /**
  * Zero padding strategy.

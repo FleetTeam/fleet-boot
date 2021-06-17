@@ -168,7 +168,7 @@
               method = 'put';
             }
             let formData = Object.assign(this.model, values);
-            //时间格式化
+            // 时间格式化
 
             if(this.useEditor){
               formData.templateContent=this.templateEditorContent
@@ -185,7 +185,6 @@
               that.confirmLoading = false;
               that.close();
             })
-
 
           }
         })
@@ -210,7 +209,7 @@
         this.close()
       },
       handleChangeTemplateType(value){
-        //如果是邮件类型那么则改变模板内容是富文本编辑器
+        // 如果是邮件类型那么则改变模板内容是富文本编辑器
         this.useEditor = (value==2 || value==4)
       }
 

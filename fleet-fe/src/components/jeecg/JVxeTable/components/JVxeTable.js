@@ -147,7 +147,7 @@ export default {
       },
       // 允许执行刷新特效的行ID
       reloadEffectRowKeysMap: {},
-      //配置了但是没有授权的按钮和列 集合
+      // 配置了但是没有授权的按钮和列 集合
       excludeCode:[]
     }
   },
@@ -260,18 +260,18 @@ export default {
       return {
         trigger: (name, event) => this.trigger(name, event),
         valueChange: event => this.trigger('valueChange', event),
-        /** 当前行向上移一位 */
+        // 当前行向上移一位
         rowMoveUp: rowIndex => this.rowResort(rowIndex, rowIndex - 1),
-        /** 当前行向下移一位 */
+        // 当前行向下移一位
         rowMoveDown: rowIndex => this.rowResort(rowIndex, rowIndex + 1),
-        /** 在当前行下面插入一行 */
+        // 在当前行下面插入一行
         rowInsertDown: rowIndex => this.insertRows({}, rowIndex + 1),
       }
     },
   },
   watch: {
     dataSource: {
-      //   deep: true,
+      // deep: true,
       immediate: true,
       async handler() {
         let vxe = await getRefPromise(this, 'vxe')
@@ -313,7 +313,7 @@ export default {
     columns: {
       immediate: true,
       handler(columns) {
-        //获取不需要显示列
+        // 获取不需要显示列
         this.loadExcludeCode()
         let _innerColumns = []
         let _innerEditRules = {}
@@ -603,7 +603,7 @@ export default {
       getEnhancedMixins(column.own.$type, 'aopEvents').editActived.apply(this, arguments)
     },
 
-    /** 表尾数据处理方法，用于显示统计信息 */
+    // 表尾数据处理方法，用于显示统计信息
     handleFooterMethod({columns, data}) {
       const {statistics} = this
       let footers = []
@@ -640,14 +640,14 @@ export default {
       })
     },
 
-    /** 表尾单元格合并方法 */
+    // 表尾单元格合并方法
     handleFooterSpanMethod(event) {
       if (event.columnIndex === 0) {
         return {colspan: 2}
       }
     },
 
-    /*--- 外部可调用接口方法 ---*/
+    /* --- 外部可调用接口方法 --- */
 
     /**
      * 重置滚动条Top位置
@@ -681,7 +681,7 @@ export default {
       return errMap ? errMap : null
     },
 
-    /** 设置某行某列的值 */
+    // 设置某行某列的值
     setValues(values) {
       if (!Array.isArray(values)) {
         console.warn(`JVxeTable.setValues：必须传递数组`)
@@ -717,19 +717,19 @@ export default {
       })
     },
 
-    /** 获取所有的数据，包括values、deleteIds */
+    // 获取所有的数据，包括values、deleteIds
     getAll() {
       return {
         tableData: this.getTableData(),
         deleteData: this.getDeleteData()
       }
     },
-    /** 获取表格表单里的值 */
+    // 获取表格表单里的值
     getValues(callback, rowIds) {
       let tableData = this.getTableData({rowIds: rowIds})
       callback('', tableData)
     },
-    /** 获取表格数据 */
+    // 获取表格数据
     getTableData(options = {}) {
       let {rowIds} = options
       let tableData
@@ -748,18 +748,18 @@ export default {
       }
       return this.filterNewRows(tableData, false)
     },
-    /** 仅获取新增的数据 */
+    // 仅获取新增的数据
     getNewData() {
       let newData = cloneObject(this.$refs.vxe.getInsertRecords())
       newData.forEach(row => delete row.id)
       return newData
     },
-    /** 仅获取新增的数据,带有id */
+    // 仅获取新增的数据,带有id
     getNewDataWithId() {
       let newData = cloneObject(this.$refs.vxe.getInsertRecords())
       return newData
     },
-    /** 根据ID获取行，新增的行也能查出来 */
+    // 根据ID获取行，新增的行也能查出来
     getIfRowById(id) {
       let row = this.getRowById(id), isNew = false
       if (!row) {
@@ -772,7 +772,7 @@ export default {
       }
       return {row, isNew}
     },
-    /** 通过临时ID获取新增的行 */
+    // 通过临时ID获取新增的行
     getNewRowById(id) {
       let records = this.getInsertRecords()
       for (let record of records) {
@@ -782,7 +782,7 @@ export default {
       }
       return null
     },
-    /** 仅获取被删除的数据（新增又被删除的数据不会被获取到） */
+    // 仅获取被删除的数据（新增又被删除的数据不会被获取到）
     getDeleteData() {
       return cloneObject(this.$refs.vxe.getRemoveRecords())
     },
@@ -832,7 +832,7 @@ export default {
       return result
     },
 
-    /** 清空选择行 */
+    // 清空选择行
     clearSelection() {
       let event = {$table: this.$refs.vxe, target: this}
       if (this.rowSelectionType === JVXETypes.rowRadio) {
@@ -844,14 +844,14 @@ export default {
       }
     },
 
-    /** 删除一行或多行数据 */
+    // 删除一行或多行数据
     async removeRows(rows) {
       const res = await this._remove(rows)
       await this._recalcSortNumber()
       return res
     },
 
-    /** 根据id删除一行或多行 */
+    // 根据id删除一行或多行
     removeRowsById(rowId) {
       let rowIds
       if (Array.isArray(rowId)) {
@@ -878,18 +878,18 @@ export default {
       return this.$refs.vxe.getColumnByField.apply(this.$refs.vxe, arguments)
     },
 
-    /* --- 辅助方法 ---*/
+    /* --- 辅助方法 --- */
 
     // 触发事件
     trigger(name, event = {}) {
       event.$target = this
       event.$table = this.$refs.vxe
-      //online增强参数兼容
+      // online增强参数兼容
       event.target = this
       this.$emit(name, event)
     },
 
-    /** 加载数据字典并合并到 options */
+    // 加载数据字典并合并到 options
     _loadDictConcatToOptions(column) {
       initDictOptions(column.dictCode).then((res) => {
         if (res.success) {
@@ -907,7 +907,7 @@ export default {
         }
       })
     },
-    //options自定义赋值 刷新
+    // options自定义赋值 刷新
     virtualRefresh(){
       this.scrolling = true
       this.closeScrolling()
@@ -1015,7 +1015,7 @@ export default {
       })
     },
 
-    /** 行重新排序 */
+    // 行重新排序
     async rowResort(oldIndex, newIndex) {
       const xTable = this.$refs.vxe.$refs.xTable
       window.xTable = xTable
@@ -1033,7 +1033,7 @@ export default {
       await this._recalcSortNumber()
     },
 
-    /** 重新计算排序字段的数值 */
+    // 重新计算排序字段的数值
     async _recalcSortNumber() {
       const xTable = this.$refs.vxe.$refs.xTable
       if (this.dragSort) {
@@ -1240,7 +1240,7 @@ const fooPatterns = [
   {title: '金额', value: 'money', pattern: /^(([1-9][0-9]*)|([0]\.\d{0,2}|[1-9][0-9]*\.\d{0,2}))$/},
 ]
 
-/** 旧版handler转为新版Validator */
+// 旧版handler转为新版Validator
 function handlerConvertToValidator(event) {
   const {column, rule} = event
   return new Promise((resolve, reject) => {
@@ -1260,7 +1260,7 @@ function handlerConvertToValidator(event) {
   })
 }
 
-/** 唯一校验器 */
+// 唯一校验器
 function uniqueValidator(event) {
   const {cellValue, column, rule} = event
   let tableData = this.getTableData()

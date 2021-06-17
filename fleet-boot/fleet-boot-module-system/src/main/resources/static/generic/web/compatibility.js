@@ -147,7 +147,6 @@ if (typeof PDFJS === 'undefined') {
   };
 })();
 
-
 // No XMLHttpRequest#response?
 // Support: IE<11, Android <4.0
 (function checkXMLHttpRequestResponseCompatibility() {

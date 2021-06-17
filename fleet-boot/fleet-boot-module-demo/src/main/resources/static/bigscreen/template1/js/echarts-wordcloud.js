@@ -1,77 +1,64 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("echarts"));
-	else if(typeof define === 'function' && define.amd)
-		define(["echarts"], factory);
-	else if(typeof exports === 'object')
-		exports["echarts-wordcloud"] = factory(require("echarts"));
-	else
-		root["echarts-wordcloud"] = factory(root["echarts"]);
+  if(typeof exports === 'object' && typeof module === 'object')
+    module.exports = factory(require("echarts"));
+  else if(typeof define === 'function' && define.amd)
+    define(["echarts"], factory);
+  else if(typeof exports === 'object')
+    exports["echarts-wordcloud"] = factory(require("echarts"));
+  else
+    root["echarts-wordcloud"] = factory(root["echarts"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_7__) {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
-/******/ })
+  return (function(modules) { // webpackBootstrap
+    // The module cache
+    var installedModules = {};
+    // The require function
+    function __webpack_require__(moduleId) {
+      // Check if module is in cache
+      if(installedModules[moduleId]) {
+        return installedModules[moduleId].exports;
+      }
+      // Create a new module (and put it into the cache)
+      var module = installedModules[moduleId] = {
+        i: moduleId,
+        l: false,
+        exports: {}
+      };
+      // Execute the module function
+      modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+      // Flag the module as loaded
+      module.l = true;
+      // Return the exports of the module
+      return module.exports;
+    }
+    // expose the modules object (__webpack_modules__)
+    __webpack_require__.m = modules;
+    // expose the module cache
+    __webpack_require__.c = installedModules;
+    // define getter function for harmony exports
+    __webpack_require__.d = function(exports, name, getter) {
+      if(!__webpack_require__.o(exports, name)) {
+        Object.defineProperty(exports, name, {
+          configurable: false,
+          enumerable: true,
+          get: getter
+        });
+      }
+    };
+    // getDefaultExport function for compatibility with non-harmony modules
+    __webpack_require__.n = function(module) {
+      var getter = module && module.__esModule ?
+        function getDefault() { return module['default']; } :
+        function getModuleExports() { return module; };
+      __webpack_require__.d(getter, 'a', getter);
+      return getter;
+    };
+    // Object.prototype.hasOwnProperty.call
+    __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+    // __webpack_public_path__
+    __webpack_require__.p = "";
+    // Load entry module and return exports
+    return __webpack_require__(__webpack_require__.s = 25);
+  })
 /************************************************************************/
 /******/ ([
 /* 0 */
@@ -133,7 +120,6 @@ function $override(name, fn) {
  * @return {*} new
  */
 
-
 function clone(source) {
   if (source == null || typeof source != 'object') {
     return source;
@@ -179,7 +165,6 @@ function clone(source) {
  * @param {boolean} [overwrite=false]
  */
 
-
 function merge(target, source, overwrite) {
   // We should escapse that source is string
   // and enter for ... in ...
@@ -211,7 +196,6 @@ function merge(target, source, overwrite) {
  * @return {*} target
  */
 
-
 function mergeAll(targetAndSources, overwrite) {
   var result = targetAndSources[0];
 
@@ -226,7 +210,6 @@ function mergeAll(targetAndSources, overwrite) {
  * @param {*} source
  * @memberOf module:zrender/core/util
  */
-
 
 function extend(target, source) {
   for (var key in source) {
@@ -243,7 +226,6 @@ function extend(target, source) {
  * @param {boolean} [overlay=false]
  * @memberOf module:zrender/core/util
  */
-
 
 function defaults(target, source, overlay) {
   for (var key in source) {
@@ -263,7 +245,6 @@ methods.createCanvas = function () {
   return document.createElement('canvas');
 }; // FIXME
 
-
 var _ctx;
 
 function getContext() {
@@ -279,7 +260,6 @@ function getContext() {
  * 查询数组中元素的index
  * @memberOf module:zrender/core/util
  */
-
 
 function indexOf(array, value) {
   if (array) {
@@ -304,7 +284,6 @@ function indexOf(array, value) {
  * @param {Function} baseClazz 基类
  */
 
-
 function inherits(clazz, baseClazz) {
   var clazzPrototype = clazz.prototype;
 
@@ -327,7 +306,6 @@ function inherits(clazz, baseClazz) {
  * @param {boolean} overlay
  */
 
-
 function mixin(target, source, overlay) {
   target = 'prototype' in target ? target.prototype : target;
   source = 'prototype' in source ? source.prototype : source;
@@ -337,7 +315,6 @@ function mixin(target, source, overlay) {
  * Consider typed array.
  * @param {Array|TypedArray} data
  */
-
 
 function isArrayLike(data) {
   if (!data) {
@@ -357,7 +334,6 @@ function isArrayLike(data) {
  * @param {Function} cb
  * @param {*} [context]
  */
-
 
 function each(obj, cb, context) {
   if (!(obj && cb)) {
@@ -387,7 +363,6 @@ function each(obj, cb, context) {
  * @return {Array}
  */
 
-
 function map(obj, cb, context) {
   if (!(obj && cb)) {
     return;
@@ -414,7 +389,6 @@ function map(obj, cb, context) {
  * @return {Array}
  */
 
-
 function reduce(obj, cb, memo, context) {
   if (!(obj && cb)) {
     return;
@@ -438,7 +412,6 @@ function reduce(obj, cb, memo, context) {
  * @param {*} [context]
  * @return {Array}
  */
-
 
 function filter(obj, cb, context) {
   if (!(obj && cb)) {
@@ -468,7 +441,6 @@ function filter(obj, cb, context) {
  * @return {*}
  */
 
-
 function find(obj, cb, context) {
   if (!(obj && cb)) {
     return;
@@ -487,7 +459,6 @@ function find(obj, cb, context) {
  * @return {Function}
  */
 
-
 function bind(func, context) {
   var args = nativeSlice.call(arguments, 2);
   return function () {
@@ -499,7 +470,6 @@ function bind(func, context) {
  * @param {Function} func
  * @return {Function}
  */
-
 
 function curry(func) {
   var args = nativeSlice.call(arguments, 1);
@@ -513,7 +483,6 @@ function curry(func) {
  * @return {boolean}
  */
 
-
 function isArray(value) {
   return objToString.call(value) === '[object Array]';
 }
@@ -522,7 +491,6 @@ function isArray(value) {
  * @param {*} value
  * @return {boolean}
  */
-
 
 function isFunction(value) {
   return typeof value === 'function';
@@ -533,7 +501,6 @@ function isFunction(value) {
  * @return {boolean}
  */
 
-
 function isString(value) {
   return objToString.call(value) === '[object String]';
 }
@@ -542,7 +509,6 @@ function isString(value) {
  * @param {*} value
  * @return {boolean}
  */
-
 
 function isObject(value) {
   // Avoid a V8 JIT bug in Chrome 19-20.
@@ -556,7 +522,6 @@ function isObject(value) {
  * @return {boolean}
  */
 
-
 function isBuiltInObject(value) {
   return !!BUILTIN_OBJECT[objToString.call(value)];
 }
@@ -565,7 +530,6 @@ function isBuiltInObject(value) {
  * @param {*} value
  * @return {boolean}
  */
-
 
 function isDom(value) {
   return typeof value === 'object' && typeof value.nodeType === 'number' && typeof value.ownerDocument === 'object';
@@ -576,7 +540,6 @@ function isDom(value) {
  * @return {boolean}
  */
 
-
 function eqNaN(value) {
   return value !== value;
 }
@@ -586,7 +549,6 @@ function eqNaN(value) {
  * @memberOf module:zrender/core/util
  * @return {*} Final value
  */
-
 
 function retrieve(values) {
   for (var i = 0, len = arguments.length; i < len; i++) {
@@ -611,7 +573,6 @@ function retrieve3(value0, value1, value2) {
  * @return {Array}
  */
 
-
 function slice() {
   return Function.call.apply(nativeSlice, arguments);
 }
@@ -624,7 +585,6 @@ function slice() {
  * @param {number|Array.<number>} val
  * @return {Array.<number>}
  */
-
 
 function normalizeCssArray(val) {
   if (typeof val === 'number') {
@@ -649,7 +609,6 @@ function normalizeCssArray(val) {
  * @param {string} message
  */
 
-
 function assert(condition, message) {
   if (!condition) {
     throw new Error(message);
@@ -673,13 +632,11 @@ function isPrimitive(obj) {
  * @param {Object} obj Only apply `ownProperty`.
  */
 
-
 function HashMap(obj) {
   obj && each(obj, function (value, key) {
     this.set(key, value);
   }, this);
 } // Add prefix to avoid conflict with Object.prototype.
-
 
 var HASH_MAP_PREFIX = '_ec_';
 var HASH_MAP_PREFIX_LENGTH = 4;
@@ -822,7 +779,6 @@ Path.prototype = {
       }
     } // Use the gradient or pattern
 
-
     if (hasFillGradient) {
       // PENDING If may have affect the state
       ctx.fillStyle = this._fillGradient;
@@ -934,7 +890,6 @@ Path.prototype = {
         } // Consider line width
         // Line scale can't be 0;
 
-
         if (lineScale > 1e-10) {
           rectWithStroke.width += w / lineScale;
           rectWithStroke.height += w / lineScale;
@@ -942,7 +897,6 @@ Path.prototype = {
           rectWithStroke.y -= w / lineScale / 2;
         }
       } // Return rect with stroke
-
 
       return rectWithStroke;
     }
@@ -990,7 +944,6 @@ Path.prototype = {
     if (dirtyPath == null) {
       dirtyPath = true;
     } // Only mark dirty, not mark clean
-
 
     if (dirtyPath) {
       this.__dirtyPath = dirtyPath;
@@ -1076,7 +1029,6 @@ Path.extend = function (defaults) {
       this.style.extendFrom(defaults.style, false);
     } // Extend default shape
 
-
     var defaultShape = defaults.shape;
 
     if (defaultShape) {
@@ -1143,7 +1095,6 @@ function create(x, y) {
  * @return {Vector2}
  */
 
-
 function copy(out, v) {
   out[0] = v[0];
   out[1] = v[1];
@@ -1154,7 +1105,6 @@ function copy(out, v) {
  * @param {Vector2} v
  * @return {Vector2}
  */
-
 
 function clone(v) {
   var out = new ArrayCtor(2);
@@ -1170,7 +1120,6 @@ function clone(v) {
  * @return {Vector2} 结果
  */
 
-
 function set(out, a, b) {
   out[0] = a;
   out[1] = b;
@@ -1182,7 +1131,6 @@ function set(out, a, b) {
  * @param {Vector2} v1
  * @param {Vector2} v2
  */
-
 
 function add(out, v1, v2) {
   out[0] = v1[0] + v2[0];
@@ -1197,7 +1145,6 @@ function add(out, v1, v2) {
  * @param {number} a
  */
 
-
 function scaleAndAdd(out, v1, v2, a) {
   out[0] = v1[0] + v2[0] * a;
   out[1] = v1[1] + v2[1] * a;
@@ -1210,7 +1157,6 @@ function scaleAndAdd(out, v1, v2, a) {
  * @param {Vector2} v2
  */
 
-
 function sub(out, v1, v2) {
   out[0] = v1[0] - v2[0];
   out[1] = v1[1] - v2[1];
@@ -1221,7 +1167,6 @@ function sub(out, v1, v2) {
  * @param {Vector2} v
  * @return {number}
  */
-
 
 function len(v) {
   return Math.sqrt(lenSquare(v));
@@ -1259,7 +1204,6 @@ function mul(out, v1, v2) {
  * @param {Vector2} v2
  */
 
-
 function div(out, v1, v2) {
   out[0] = v1[0] / v2[0];
   out[1] = v1[1] / v2[1];
@@ -1272,7 +1216,6 @@ function div(out, v1, v2) {
  * @return {number}
  */
 
-
 function dot(v1, v2) {
   return v1[0] * v2[0] + v1[1] * v2[1];
 }
@@ -1282,7 +1225,6 @@ function dot(v1, v2) {
  * @param {Vector2} v
  * @param {number} s
  */
-
 
 function scale(out, v, s) {
   out[0] = v[0] * s;
@@ -1294,7 +1236,6 @@ function scale(out, v, s) {
  * @param {Vector2} out
  * @param {Vector2} v
  */
-
 
 function normalize(out, v) {
   var d = len(v);
@@ -1315,7 +1256,6 @@ function normalize(out, v) {
  * @param {Vector2} v2
  * @return {number}
  */
-
 
 function distance(v1, v2) {
   return Math.sqrt((v1[0] - v2[0]) * (v1[0] - v2[0]) + (v1[1] - v2[1]) * (v1[1] - v2[1]));
@@ -1353,7 +1293,6 @@ function negate(out, v) {
  * @param {number} t
  */
 
-
 function lerp(out, v1, v2, t) {
   out[0] = v1[0] + t * (v2[0] - v1[0]);
   out[1] = v1[1] + t * (v2[1] - v1[1]);
@@ -1365,7 +1304,6 @@ function lerp(out, v1, v2, t) {
  * @param {Vector2} v
  * @param {Vector2} m
  */
-
 
 function applyTransform(out, v, m) {
   var x = v[0];
@@ -1381,7 +1319,6 @@ function applyTransform(out, v, m) {
  * @param  {Vector2} v2
  */
 
-
 function min(out, v1, v2) {
   out[0] = Math.min(v1[0], v2[0]);
   out[1] = Math.min(v1[1], v2[1]);
@@ -1393,7 +1330,6 @@ function min(out, v1, v2) {
  * @param  {Vector2} v1
  * @param  {Vector2} v2
  */
-
 
 function max(out, v1, v2) {
   out[0] = Math.max(v1[0], v2[0]);
@@ -1458,7 +1394,6 @@ function BoundingRect(x, y, width, height) {
   /**
    * @type {number}
    */
-
 
   this.x = x;
   /**
@@ -1660,7 +1595,6 @@ function isNotAroundZero(val) {
  * @return {number}
  */
 
-
 function cubicAt(p0, p1, p2, p3, t) {
   var onet = 1 - t;
   return onet * onet * (onet * p0 + 3 * t * p1) + t * t * (t * p3 + 3 * onet * p2);
@@ -1675,7 +1609,6 @@ function cubicAt(p0, p1, p2, p3, t) {
  * @param  {number} t
  * @return {number}
  */
-
 
 function cubicDerivativeAt(p0, p1, p2, p3, t) {
   var onet = 1 - t;
@@ -1693,7 +1626,6 @@ function cubicDerivativeAt(p0, p1, p2, p3, t) {
  * @return {number} 有效根数目
  */
 
-
 function cubicRootAt(p0, p1, p2, p3, val, roots) {
   // Evaluate roots of cubic functions
   var a = p3 + 3 * (p1 - p2) - p0;
@@ -1709,7 +1641,7 @@ function cubicRootAt(p0, p1, p2, p3, val, roots) {
     if (isAroundZero(b)) {
       roots[0] = 0;
     } else {
-      var t1 = -c / b; //t1, t2, t3, b is not zero
+      var t1 = -c / b; // t1, t2, t3, b is not zero
 
       if (t1 >= 0 && t1 <= 1) {
         roots[n++] = t1;
@@ -1789,7 +1721,6 @@ function cubicRootAt(p0, p1, p2, p3, val, roots) {
  * @return {number} 有效数目
  */
 
-
 function cubicExtrema(p0, p1, p2, p3, extrema) {
   var b = 6 * p2 - 12 * p1 + 6 * p0;
   var a = 9 * p1 + 3 * p3 - 3 * p0 - 9 * p2;
@@ -1837,7 +1768,6 @@ function cubicExtrema(p0, p1, p2, p3, extrema) {
  * @param  {Array.<number>} out
  */
 
-
 function cubicSubdivide(p0, p1, p2, p3, t, out) {
   var p01 = (p1 - p0) * t + p0;
   var p12 = (p2 - p1) * t + p1;
@@ -1872,7 +1802,6 @@ function cubicSubdivide(p0, p1, p2, p3, t, out) {
  * @param {Array.<number>} [out] 投射点
  * @return {number}
  */
-
 
 function cubicProjectPoint(x0, y0, x1, y1, x2, y2, x3, y3, x, y, out) {
   // http://pomax.github.io/bezierinfo/#projections
@@ -1930,12 +1859,10 @@ function cubicProjectPoint(x0, y0, x1, y1, x2, y2, x3, y3, x, y, out) {
     }
   } // t
 
-
   if (out) {
     out[0] = cubicAt(x0, x1, x2, x3, t);
     out[1] = cubicAt(y0, y1, y2, y3, t);
   } // console.log(interval, i);
-
 
   return mathSqrt(d);
 }
@@ -1947,7 +1874,6 @@ function cubicProjectPoint(x0, y0, x1, y1, x2, y2, x3, y3, x, y, out) {
  * @param  {number} t
  * @return {number}
  */
-
 
 function quadraticAt(p0, p1, p2, t) {
   var onet = 1 - t;
@@ -1962,7 +1888,6 @@ function quadraticAt(p0, p1, p2, t) {
  * @return {number}
  */
 
-
 function quadraticDerivativeAt(p0, p1, p2, t) {
   return 2 * ((1 - t) * (p1 - p0) + t * (p2 - p1));
 }
@@ -1975,7 +1900,6 @@ function quadraticDerivativeAt(p0, p1, p2, t) {
  * @param  {Array.<number>} roots
  * @return {number} 有效根数目
  */
-
 
 function quadraticRootAt(p0, p1, p2, val, roots) {
   var a = p0 - 2 * p1 + p2;
@@ -2026,7 +1950,6 @@ function quadraticRootAt(p0, p1, p2, val, roots) {
  * @return {number}
  */
 
-
 function quadraticExtremum(p0, p1, p2) {
   var divider = p0 + p2 - 2 * p1;
 
@@ -2046,7 +1969,6 @@ function quadraticExtremum(p0, p1, p2) {
  * @param  {number} t
  * @param  {Array.<number>} out
  */
-
 
 function quadraticSubdivide(p0, p1, p2, t, out) {
   var p01 = (p1 - p0) * t + p0;
@@ -2075,7 +1997,6 @@ function quadraticSubdivide(p0, p1, p2, t, out) {
  * @param {Array.<number>} out 投射点
  * @return {number}
  */
-
 
 function quadraticProjectPoint(x0, y0, x1, y1, x2, y2, x, y, out) {
   // http://pomax.github.io/bezierinfo/#projections
@@ -2129,12 +2050,10 @@ function quadraticProjectPoint(x0, y0, x1, y1, x2, y2, x, y, out) {
     }
   } // t
 
-
   if (out) {
     out[0] = quadraticAt(x0, x1, x2, t);
     out[1] = quadraticAt(y0, y1, y2, t);
   } // console.log(interval, i);
-
 
   return mathSqrt(d);
 }
@@ -2184,7 +2103,6 @@ function $override(name, fn) {
  * @return {number} width
  */
 
-
 function getWidth(text, font) {
   font = font || DEFAULT_FONT;
   var key = text + ':' + font;
@@ -2221,7 +2139,6 @@ function getWidth(text, font) {
  * @param {Object} [truncate]
  * @return {Object} {x, y, width, height, lineHeight}
  */
-
 
 function getBoundingRect(text, font, textAlign, textVerticalAlign, textPadding, rich, truncate) {
   return rich ? getRichTextRect(text, font, textAlign, textVerticalAlign, textPadding, rich, truncate) : getPlainTextRect(text, font, textAlign, textVerticalAlign, textPadding, truncate);
@@ -2265,7 +2182,6 @@ function getRichTextRect(text, font, textAlign, textVerticalAlign, textPadding, 
  * @return {number} Adjusted x.
  */
 
-
 function adjustTextX(x, width, textAlign) {
   // FIXME Right to left language
   if (textAlign === 'right') {
@@ -2284,7 +2200,6 @@ function adjustTextX(x, width, textAlign) {
  * @return {number} Adjusted y.
  */
 
-
 function adjustTextY(y, height, textVerticalAlign) {
   if (textVerticalAlign === 'middle') {
     y -= height / 2;
@@ -2301,7 +2216,6 @@ function adjustTextY(y, height, textVerticalAlign) {
  * @param {number} distance
  * @return {Object} {x, y, textAlign, textVerticalAlign}
  */
-
 
 function adjustTextPositionOnRect(textPosition, rect, distance) {
   var x = rect.x;
@@ -2421,7 +2335,6 @@ function adjustTextPositionOnRect(textPosition, rect, distance) {
  * @return {string}
  */
 
-
 function truncateText(text, containerWidth, font, ellipsis, options) {
   if (!containerWidth) {
     return '';
@@ -2524,7 +2437,6 @@ function estimateLength(text, contentWidth, ascCharWidth, cnCharWidth) {
  * @return {number} line height
  */
 
-
 function getLineHeight(font) {
   // FIXME A rough approach.
   return getWidth('国', font);
@@ -2536,11 +2448,9 @@ function getLineHeight(font) {
  * @return {Object} width
  */
 
-
 function measureText(text, font) {
   return methods.measureText(text, font);
 } // Avoid assign to an exported variable, for transforming to cjs.
-
 
 methods.measureText = function (text, font) {
   var ctx = getContext();
@@ -2555,7 +2465,6 @@ methods.measureText = function (text, font) {
  * @return {Object} block: {lineHeight, lines, height, outerHeight}
  *  Notice: for performance, do not calculate outerWidth util needed.
  */
-
 
 function parsePlainText(text, font, padding, truncate) {
   text != null && (text += '');
@@ -2626,7 +2535,6 @@ function parsePlainText(text, font, padding, truncate) {
  * If styleName is undefined, it is plain text.
  */
 
-
 function parseRichText(text, style) {
   var contentBlock = {
     lines: [],
@@ -2671,7 +2579,6 @@ function parseRichText(text, style) {
     truncateWidth != null && (truncateWidth -= stlPadding[1] + stlPadding[3]);
     truncateHeight != null && (truncateHeight -= stlPadding[0] + stlPadding[2]);
   } // Calculate layout info of tokens.
-
 
   for (var i = 0; i < lines.length; i++) {
     var line = lines[i];
@@ -2877,7 +2784,8 @@ var CMD = {
   Z: 6,
   // Rect
   R: 7
-}; // var CMD_MEM_SIZE = {
+};
+// var CMD_MEM_SIZE = {
 //     M: 3,
 //     L: 3,
 //     C: 7,
@@ -2920,7 +2828,6 @@ var PathProxy = function (notSaveData) {
  * 快速计算Path包围盒（并不是最小包围盒）
  * @return {Object}
  */
-
 
 PathProxy.prototype = {
   constructor: PathProxy,
@@ -3295,7 +3202,6 @@ PathProxy.prototype = {
       ctx[idx % 2 ? 'moveTo' : 'lineTo'](dx >= 0 ? mathMin(x, x1) : mathMax(x, x1), dy >= 0 ? mathMin(y, y1) : mathMax(y, y1));
     } // Offset for next lineTo
 
-
     dx = x - x1;
     dy = y - y1;
     this._dashOffset = -mathSqrt(dx * dx + dy * dy);
@@ -3332,7 +3238,6 @@ PathProxy.prototype = {
       bezierLen += mathSqrt(dx * dx + dy * dy);
     } // Find idx after add offset
 
-
     for (; idx < nDash; idx++) {
       tmpLen += lineDash[idx];
 
@@ -3352,7 +3257,6 @@ PathProxy.prototype = {
       t += lineDash[idx] / bezierLen;
       idx = (idx + 1) % nDash;
     } // Finish the last segment and calculate the new offset
-
 
     idx % 2 !== 0 && ctx.lineTo(x3, y3);
     dx = x3 - x;
@@ -3484,11 +3388,9 @@ PathProxy.prototype = {
           break;
       } // Union
 
-
       vec2.min(min, min, min2);
       vec2.max(max, max, max2);
     } // No data
-
 
     if (i === 0) {
       min[0] = min[1] = max[0] = max[1] = 0;
@@ -3642,7 +3544,6 @@ function create() {
  * @param {Float32Array|Array.<number>} out
  */
 
-
 function identity(out) {
   out[0] = 1;
   out[1] = 0;
@@ -3657,7 +3558,6 @@ function identity(out) {
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} m
  */
-
 
 function copy(out, m) {
   out[0] = m[0];
@@ -3674,7 +3574,6 @@ function copy(out, m) {
  * @param {Float32Array|Array.<number>} m1
  * @param {Float32Array|Array.<number>} m2
  */
-
 
 function mul(out, m1, m2) {
   // Consider matrix.mul(m, m2, m);
@@ -3701,7 +3600,6 @@ function mul(out, m1, m2) {
  * @param {Float32Array|Array.<number>} v
  */
 
-
 function translate(out, a, v) {
   out[0] = a[0];
   out[1] = a[1];
@@ -3717,7 +3615,6 @@ function translate(out, a, v) {
  * @param {Float32Array|Array.<number>} a
  * @param {number} rad
  */
-
 
 function rotate(out, a, rad) {
   var aa = a[0];
@@ -3743,7 +3640,6 @@ function rotate(out, a, rad) {
  * @param {Float32Array|Array.<number>} v
  */
 
-
 function scale(out, a, v) {
   var vx = v[0];
   var vy = v[1];
@@ -3760,7 +3656,6 @@ function scale(out, a, v) {
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} a
  */
-
 
 function invert(out, a) {
   var aa = a[0];
@@ -3815,7 +3710,6 @@ function _trim(str) {
  * @return {(number|Array.<number>}
  */
 
-
 function linearMap(val, domain, range, clamp) {
   var subDomain = domain[1] - domain[0];
   var subRange = range[1] - range[0];
@@ -3827,7 +3721,6 @@ function linearMap(val, domain, range, clamp) {
   // See echarts/test/ut/spec/util/number.js#linearMap#accuracyError
   // It is a little verbose for efficiency considering this method
   // is a hotspot.
-
 
   if (clamp) {
     if (subDomain > 0) {
@@ -3863,7 +3756,6 @@ function linearMap(val, domain, range, clamp) {
  * @param {number} all
  * @return {number}
  */
-
 
 function parsePercent(percent, all) {
   switch (percent) {
@@ -3903,12 +3795,10 @@ function parsePercent(percent, all) {
  * @return {number|string}
  */
 
-
 function round(x, precision, returnStr) {
   if (precision == null) {
     precision = 10;
   } // Avoid range error
-
 
   precision = Math.min(Math.max(0, precision), 20);
   x = (+x).toFixed(precision);
@@ -3926,17 +3816,16 @@ function asc(arr) {
  * @param {number} val
  */
 
-
 function getPrecision(val) {
   val = +val;
 
   if (isNaN(val)) {
     return 0;
-  } // It is much faster than methods converting number to string as follows
-  //      var tmp = val.toString();
-  //      return tmp.length - 1 - tmp.indexOf('.');
+  }
+  // It is much faster than methods converting number to string as follows
+  //     var tmp = val.toString();
+  //     return tmp.length - 1 - tmp.indexOf('.');
   // especially when precision is low
-
 
   var e = 1;
   var count = 0;
@@ -3952,7 +3841,6 @@ function getPrecision(val) {
  * @param {string|number} val
  * @return {number}
  */
-
 
 function getPrecisionSafe(val) {
   var str = val.toString(); // Consider scientific notation: '3.4e-12' '3.4e+12'
@@ -3975,7 +3863,6 @@ function getPrecisionSafe(val) {
  * @return {number} precision
  */
 
-
 function getPixelPrecision(dataExtent, pixelExtent) {
   var log = Math.log;
   var LN10 = Math.LN10;
@@ -3996,7 +3883,6 @@ function getPixelPrecision(dataExtent, pixelExtent) {
  * @param {number} precision integer number showing digits of precision
  * @return {number} percent ranging from 0 to 100
  */
-
 
 function getPercentWithPrecision(valueList, idx, precision) {
   if (!valueList[idx]) {
@@ -4039,7 +3925,6 @@ function getPercentWithPrecision(valueList, idx, precision) {
       }
     } // Add a vote to max remainder.
 
-
     ++seats[maxId];
     remainder[maxId] = 0;
     ++currentSum;
@@ -4047,7 +3932,6 @@ function getPercentWithPrecision(valueList, idx, precision) {
 
   return seats[idx] / digits;
 } // Number.MAX_SAFE_INTEGER, ie do not support.
-
 
 var MAX_SAFE_INTEGER = 9007199254740991;
 /**
@@ -4064,7 +3948,6 @@ function remRadian(radian) {
  * @param {type} radian
  * @return {boolean}
  */
-
 
 function isRadianAroundZero(val) {
   return val > -RADIAN_EPSILON && val < RADIAN_EPSILON;
@@ -4104,7 +3987,6 @@ function parseDate(value) {
       return new Date(NaN);
     } // Use local time when no timezone offset specifed.
 
-
     if (!match[8]) {
       // match[n] can only be string or undefined.
       // But take care of '12' + 1 => '121'.
@@ -4138,7 +4020,6 @@ function parseDate(value) {
  * @return {number}
  */
 
-
 function quantity(val) {
   return Math.pow(10, quantityExponent(val));
 }
@@ -4157,7 +4038,6 @@ function quantityExponent(val) {
  * @param  {boolean} round
  * @return {number}
  */
-
 
 function nice(val, round) {
   var exponent = quantityExponent(val);
@@ -4220,7 +4100,6 @@ function nice(val, round) {
  * @return {Array.<Object>} The origin list, which has been reformed.
  */
 
-
 function reformIntervals(list) {
   list.sort(function (a, b) {
     return littleThan(a, b, 0) ? -1 : 1;
@@ -4263,7 +4142,6 @@ function reformIntervals(list) {
  * @param {*} v
  * @return {boolean}
  */
-
 
 function isNumeric(v) {
   return v - parseFloat(v) >= 0;
@@ -4318,7 +4196,6 @@ function findExistImage(newImageOrSrc) {
  * @return {HTMLImageElement|HTMLCanvasElement|Canvas} image
  */
 
-
 function createOrUpdateImage(newImageOrSrc, image, hostEl, cb, cbPayload) {
   if (!newImageOrSrc) {
     return image;
@@ -4328,7 +4205,6 @@ function createOrUpdateImage(newImageOrSrc, image, hostEl, cb, cbPayload) {
       return image;
     } // Only when there is no existent image or existent image src
     // is different, this method is responsible for load.
-
 
     var cachedImgObj = globalImageCache.get(newImageOrSrc);
     var pendingWrap = {
@@ -4453,7 +4329,6 @@ function Displayable(opts) {
   /**
    * @type {module:zrender/graphic/Style}
    */
-
 
   this.style = new Style(opts.style, this);
   this._rect = null; // Shapes for cascade clipping.
@@ -4701,7 +4576,6 @@ function addCommas(x) {
  * @return {string} str
  */
 
-
 function toCamelCase(str, upperCaseFirst) {
   str = (str || '').toLowerCase().replace(/-(.)/g, function (match, group1) {
     return group1.toUpperCase();
@@ -4732,7 +4606,6 @@ var wrapVar = function (varName, seriesIdx) {
  * @param {boolean} [encode=false]
  * @return {string}
  */
-
 
 function formatTpl(tpl, paramsList, encode) {
   if (!zrUtil.isArray(paramsList)) {
@@ -4771,7 +4644,6 @@ function formatTpl(tpl, paramsList, encode) {
  * @return {string}
  */
 
-
 function formatTplSimple(tpl, param, encode) {
   zrUtil.each(param, function (value, key) {
     tpl = tpl.replace('{' + key + '}', encode ? encodeHTML(value) : value);
@@ -4784,7 +4656,6 @@ function formatTplSimple(tpl, param, encode) {
  * @return {string}
  */
 
-
 function getTooltipMarker(color, extraCssText) {
   return color ? '<span style="display:inline-block;margin-right:5px;' + 'border-radius:10px;width:9px;height:9px;background-color:' + encodeHTML(color) + ';' + (extraCssText || '') + '"></span>' : '';
 }
@@ -4793,7 +4664,6 @@ function getTooltipMarker(color, extraCssText) {
  * @return {string}
  * @inner
  */
-
 
 var s2d = function (str) {
   return str < 10 ? '0' + str : str;
@@ -4807,7 +4677,6 @@ var s2d = function (str) {
  *           and `module:echarts/util/number#parseDate`.
  * @inner
  */
-
 
 function formatTime(tpl, value, isUTC) {
   if (tpl === 'week' || tpl === 'month' || tpl === 'quarter' || tpl === 'half-year' || tpl === 'year') {
@@ -4830,7 +4699,6 @@ function formatTime(tpl, value, isUTC) {
  * @param {string} str
  * @return {string}
  */
-
 
 function capitalFirst(str) {
   return str ? str.charAt(0).toUpperCase() + str.substr(1) : str;
@@ -4891,7 +4759,6 @@ linkedListProto.insert = function (val) {
  * @param  {module:zrender/core/LRU~Entry} entry
  */
 
-
 linkedListProto.insertEntry = function (entry) {
   if (!this.head) {
     this.head = this.tail = entry;
@@ -4908,7 +4775,6 @@ linkedListProto.insertEntry = function (entry) {
  * Remove entry.
  * @param  {module:zrender/core/LRU~Entry} entry
  */
-
 
 linkedListProto.remove = function (entry) {
   var prev = entry.prev;
@@ -4935,14 +4801,12 @@ linkedListProto.remove = function (entry) {
  * @return {number}
  */
 
-
 linkedListProto.len = function () {
   return this._len;
 };
 /**
  * Clear list
  */
-
 
 linkedListProto.clear = function () {
   this.head = this.tail = null;
@@ -4952,7 +4816,6 @@ linkedListProto.clear = function () {
  * @constructor
  * @param {} val
  */
-
 
 var Entry = function (val) {
   /**
@@ -4975,7 +4838,6 @@ var Entry = function (val) {
  * @constructor
  * @alias module:zrender/core/LRU
  */
-
 
 var LRU = function (maxSize) {
   this._list = new LinkedList();
@@ -5028,7 +4890,6 @@ LRUProto.put = function (key, value) {
  * @return {}
  */
 
-
 LRUProto.get = function (key) {
   var entry = this._map[key];
   var list = this._list;
@@ -5046,7 +4907,6 @@ LRUProto.get = function (key) {
 /**
  * Clear the cache
  */
-
 
 LRUProto.clear = function () {
   this._list.clear();
@@ -5139,7 +4999,6 @@ function detect(ua) {
   } // if (safari && (ua.match(/Safari/) || !!os.ios)) browser.safari = true;
   // if (webview) browser.webview = true;
 
-
   if (ie) {
     browser.ie = true;
     browser.version = ie[1];
@@ -5151,7 +5010,6 @@ function detect(ua) {
   } // It is difficult to detect WeChat in Win Phone precisely, because ua can
   // not be set on win phone. So we do not consider Win Phone.
 
-
   if (weChat) {
     browser.weChat = true;
   } // os.tablet = !!(ipad || playbook || (android && !ua.match(/Mobile/)) ||
@@ -5159,7 +5017,6 @@ function detect(ua) {
   // os.phone  = !!(!os.tablet && !os.ipod && (android || iphone || webos ||
   //     (chrome && ua.match(/Android/)) || (chrome && ua.match(/CriOS\/([\d.]+)/)) ||
   //     (firefox && ua.match(/Mobile/)) || (ie && ua.match(/Touch/))));
-
 
   return {
     browser: browser,
@@ -5377,7 +5234,6 @@ Element.prototype = {
       clipPath.addSelfToZr(zr);
     } // Remove previous clip path
 
-
     if (this.clipPath && this.clipPath !== clipPath) {
       this.removeClipPath();
     }
@@ -5477,7 +5333,6 @@ function isNotAroundZero(val) {
  * @constructor
  */
 
-
 var Transformable = function (opts) {
   opts = opts || {}; // If there are no given position, rotation, scale
 
@@ -5513,7 +5368,6 @@ var Transformable = function (opts) {
    * @default null
    */
 
-
   this.origin = this.origin || null;
 };
 
@@ -5547,7 +5401,6 @@ transformableProto.updateTransform = function () {
     mIdentity(m);
   } // 应用父节点变换
 
-
   if (parentHasTransform) {
     if (needLocalTransform) {
       matrix.mul(m, parent.transform, m);
@@ -5555,7 +5408,6 @@ transformableProto.updateTransform = function () {
       matrix.copy(m, parent.transform);
     }
   } // 保存这个变换矩阵
-
 
   this.transform = m;
   this.invTransform = this.invTransform || matrix.create();
@@ -5569,7 +5421,6 @@ transformableProto.getLocalTransform = function (m) {
  * 将自己的transform应用到context上
  * @param {CanvasRenderingContext2D} ctx
  */
-
 
 transformableProto.setTransform = function (ctx) {
   var m = this.transform;
@@ -5638,7 +5489,6 @@ transformableProto.decomposeTransform = function () {
  * @return {Array.<number>}
  */
 
-
 transformableProto.getGlobalScale = function () {
   var m = this.transform;
 
@@ -5667,7 +5517,6 @@ transformableProto.getGlobalScale = function () {
  * @return {Array.<number>}
  */
 
-
 transformableProto.transformCoordToLocal = function (x, y) {
   var v2 = [x, y];
   var invTransform = this.invTransform;
@@ -5685,7 +5534,6 @@ transformableProto.transformCoordToLocal = function (x, y) {
  * @param {number} y
  * @return {Array.<number>}
  */
-
 
 transformableProto.transformCoordToGlobal = function (x, y) {
   var v2 = [x, y];
@@ -5705,7 +5553,6 @@ transformableProto.transformCoordToGlobal = function (x, y) {
  * @param {Array.<number>} target.position
  * @param {Array.<number>} [m]
  */
-
 
 Transformable.getLocalTransform = function (target, m) {
   m = m || [];
@@ -5995,7 +5842,6 @@ function putToCache(colorStr, rgbaArr) {
  * @memberOf module:zrender/util/color
  */
 
-
 function parse(colorStr, rgbaArr) {
   if (!colorStr) {
     return;
@@ -6008,7 +5854,6 @@ function parse(colorStr, rgbaArr) {
     return copyRgba(rgbaArr, cached);
   } // colorStr may be not string
 
-
   colorStr = colorStr + ''; // Remove all whitespace, not compliant, but should just be more accepting.
 
   var str = colorStr.replace(/ /g, '').toLowerCase(); // Color keywords (and transparent) lookup.
@@ -6018,7 +5863,6 @@ function parse(colorStr, rgbaArr) {
     putToCache(colorStr, rgbaArr);
     return rgbaArr;
   } // #abc and #abc123 syntax.
-
 
   if (str.charAt(0) === '#') {
     if (str.length === 4) {
@@ -6112,7 +5956,6 @@ function parse(colorStr, rgbaArr) {
  * @return {Array.<number>} rgba
  */
 
-
 function hsla2rgba(hsla, rgba) {
   var h = (parseFloat(hsla[0]) % 360 + 360) % 360 / 360; // 0 .. 1
   // NOTE(deanm): According to the CSS spec s/l should only be
@@ -6136,12 +5979,10 @@ function hsla2rgba(hsla, rgba) {
  * @return {Array.<number>} hsla
  */
 
-
 function rgba2hsla(rgba) {
   if (!rgba) {
     return;
   } // RGB from 0 to 255
-
 
   var R = rgba[0] / 255;
   var G = rgba[1] / 255;
@@ -6202,7 +6043,6 @@ function rgba2hsla(rgba) {
  * @memberOf module:zrender/util/color
  */
 
-
 function lift(color, level) {
   var colorArr = parse(color);
 
@@ -6224,7 +6064,6 @@ function lift(color, level) {
  * @memberOf module:zrender/util/color
  */
 
-
 function toHex(color) {
   var colorArr = parse(color);
 
@@ -6239,7 +6078,6 @@ function toHex(color) {
  * @param {Array.<number>} [out] Mapped gba color array
  * @return {Array.<number>} will be null/undefined if input illegal.
  */
-
 
 function fastLerp(normalizedValue, colors, out) {
   if (!(colors && colors.length) || !(normalizedValue >= 0 && normalizedValue <= 1)) {
@@ -6262,7 +6100,6 @@ function fastLerp(normalizedValue, colors, out) {
 /**
  * @deprecated
  */
-
 
 var fastMapToColor = fastLerp;
 /**
@@ -6297,7 +6134,6 @@ function lerp(normalizedValue, colors, fullOutput) {
  * @deprecated
  */
 
-
 var mapToColor = lerp;
 /**
  * @param {string} color
@@ -6326,7 +6162,6 @@ function modifyHSL(color, h, s, l) {
  * @memberOf module:zrender/util/color
  */
 
-
 function modifyAlpha(color, alpha) {
   color = parse(color);
 
@@ -6340,7 +6175,6 @@ function modifyAlpha(color, alpha) {
  * @param {string} type 'rgba', 'hsva', ...
  * @return {string} Result color. (If input illegal, return undefined).
  */
-
 
 function stringify(arrColor, type) {
   if (!arrColor || !arrColor.length) {
@@ -6388,7 +6222,6 @@ if (typeof window !== 'undefined') {
  * 1 : 异常抛出，调试用
  * 2 : 控制台输出，调试用
  */
-
 
 var debugMode = 0; // retina 屏幕优化
 
@@ -6461,7 +6294,6 @@ function normalizeStyle(style) {
  * @param {Object|boolean} [rect] {x, y, width, height}
  *                  If set false, rect text is not used.
  */
-
 
 function renderText(hostEl, ctx, text, style, rect) {
   style.rich ? renderRichText(hostEl, ctx, text, style, rect) : renderPlainText(hostEl, ctx, text, style, rect);
@@ -6598,7 +6430,6 @@ function drawRichText(hostEl, ctx, contentBlock, style, rect) {
       rightIndex--;
     } // The other tokens are placed as textAlign 'center' if there is enough space.
 
-
     lineXLeft += (contentWidth - (lineXLeft - xLeft) - (xRight - lineXRight) - usedWidth) / 2;
 
     while (leftIndex <= rightIndex) {
@@ -6684,7 +6515,6 @@ function needDrawBackground(style) {
 } // style: {textBackgroundColor, textBorderWidth, textBorderColor, textBorderRadius}
 // shape: {x, y, width, height}
 
-
 function drawBackground(hostEl, ctx, style, x, y, width, height) {
   var textBackgroundColor = style.textBackgroundColor;
   var textBorderWidth = style.textBorderWidth;
@@ -6762,7 +6592,6 @@ function getBoxPosition(blockHeiht, style, rect) {
     } // textOffset is only support in RectText, otherwise
     // we have to adjust boundingRect for textOffset.
 
-
     var textOffset = style.textOffset;
 
     if (textOffset) {
@@ -6792,7 +6621,6 @@ function setCtx(ctx, prop, value) {
  * @param {string} [lineWidth] If specified, do not check style.textStroke.
  * @param {number} style
  */
-
 
 function getStroke(stroke, lineWidth) {
   return stroke == null || lineWidth <= 0 || stroke === 'transparent' || stroke === 'none' ? null // TODO pattern and gradient?
@@ -6824,7 +6652,6 @@ function getTextXForPadding(x, textAlign, textPadding) {
  * @param {module:zrender/Style} style
  * @return {boolean}
  */
-
 
 function needDrawText(text, style) {
   return text != null && (text || style.textBackgroundColor || style.textBorderWidth && style.textBorderColor || style.textPadding);
@@ -7203,7 +7030,6 @@ echarts.registerPreprocessor(function (option) {
     }
 });
 
-
 /***/ }),
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7298,7 +7124,6 @@ function boxLayout(orient, group, gap, maxWidth, maxHeight) {
  * @param {number} [height=Infinity]
  */
 
-
 var box = boxLayout;
 /**
  * VBox layouting
@@ -7368,7 +7193,6 @@ function getAvailableSize(positionInfo, containerRect, margin) {
  * @return {module:zrender/core/BoundingRect}
  */
 
-
 function getLayoutRect(positionInfo, containerRect, margin) {
   margin = formatUtil.normalizeCssArray(margin || 0);
   var containerWidth = containerRect.width;
@@ -7407,7 +7231,6 @@ function getLayoutRect(positionInfo, containerRect, margin) {
       }
     } // Calculate width or height with given aspect
 
-
     if (isNaN(width)) {
       width = aspect * height;
     }
@@ -7417,7 +7240,6 @@ function getLayoutRect(positionInfo, containerRect, margin) {
     }
   } // If left is not specified, calculate left from right and width
 
-
   if (isNaN(left)) {
     left = containerWidth - right - width - horizontalMargin;
   }
@@ -7425,7 +7247,6 @@ function getLayoutRect(positionInfo, containerRect, margin) {
   if (isNaN(top)) {
     top = containerHeight - bottom - height - verticalMargin;
   } // Align left and top
-
 
   switch (positionInfo.left || positionInfo.right) {
     case 'center':
@@ -7447,7 +7268,6 @@ function getLayoutRect(positionInfo, containerRect, margin) {
       top = containerHeight - height - verticalMargin;
       break;
   } // If something is wrong and left, top, width, height are calculated as NaN
-
 
   left = left || 0;
   top = top || 0;
@@ -7505,7 +7325,6 @@ function getLayoutRect(positionInfo, containerRect, margin) {
  *               In this mode positionInfo.width/height can only be number.
  */
 
-
 function positionElement(el, positionInfo, containerRect, margin, opt) {
   var h = !opt || !opt.hv || opt.hv[0];
   var v = !opt || !opt.hv || opt.hv[1];
@@ -7531,7 +7350,6 @@ function positionElement(el, positionInfo, containerRect, margin, opt) {
     }
   } // The real width and height can not be specified but calculated by the given el.
 
-
   positionInfo = getLayoutRect(zrUtil.defaults({
     width: rect.width,
     height: rect.height
@@ -7548,7 +7366,6 @@ function positionElement(el, positionInfo, containerRect, margin, opt) {
  * @param {Object} option Contains some of the properties in HV_NAMES.
  * @param {number} hvIdx 0: horizontal; 1: vertical.
  */
-
 
 function sizeCalculable(option, hvIdx) {
   return option[HV_NAMES[hvIdx][0]] != null || option[HV_NAMES[hvIdx][1]] != null && option[HV_NAMES[hvIdx][2]] != null;
@@ -7578,7 +7395,6 @@ function sizeCalculable(option, hvIdx) {
  * @param {boolean|Array.<boolean>} [opt.ignoreSize=false] Used for the components
  *  that width (or height) should not be calculated by left and right (or top and bottom).
  */
-
 
 function mergeLayoutParam(targetOption, newOption, opt) {
   !zrUtil.isObject(opt) && (opt = {});
@@ -7619,7 +7435,6 @@ function mergeLayoutParam(targetOption, newOption, opt) {
     // or targetOption: {right: ...} and newOption: {width: ...},
     // There is no conflict when merged only has params count
     // little than enoughParamNumber.
-
 
     if (mergedValueCount === enoughParamNumber || !newValueCount) {
       return merged;
@@ -7663,7 +7478,6 @@ function mergeLayoutParam(targetOption, newOption, opt) {
  * @return {Object} Result contains those props.
  */
 
-
 function getLayoutParams(source) {
   return copyLayoutParams({}, source);
 }
@@ -7672,7 +7486,6 @@ function getLayoutParams(source) {
  * @param {Object} source
  * @return {Object} Result contains those props.
  */
-
 
 function copyLayoutParams(target, source) {
   source && target && each(LOCATION_PARAMS, function (name) {
@@ -7753,7 +7566,6 @@ echarts.extendSeriesModel({
     }
 });
 
-
 /***/ }),
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7832,7 +7644,6 @@ function completeDimensions(sysDims, data, opt) {
     });
   } // Apply user defined dims (`name` and `type`) and init result.
 
-
   for (var i = 0; i < dimCount; i++) {
     var dimDefItem = isString(dimsDef[i]) ? {
       name: dimsDef[i]
@@ -7852,7 +7663,6 @@ function completeDimensions(sysDims, data, opt) {
 
     dimDefItem.type != null && (resultItem.type = dimDefItem.type);
   } // Set `coordDim` and `coordDimIndex` by `encodeDef` and normalize `encodeDef`.
-
 
   encodeDef.each(function (dataDims, coordDim) {
     dataDims = encodeDef.set(coordDim, normalizeToArray(dataDims).slice());
@@ -7897,7 +7707,6 @@ function completeDimensions(sysDims, data, opt) {
         availDimIdx < result.length && dataDims.push(availDimIdx++);
       }
     } // Apply templates.
-
 
     each(dataDims, function (resultDimIdx, coordDimIndex) {
       var resultItem = result[resultDimIdx];
@@ -7949,7 +7758,6 @@ function completeDimensions(sysDims, data, opt) {
   }
 } // The rule should not be complex, otherwise user might not
 // be able to known where the data is wrong.
-
 
 var guessOrdinal = completeDimensions.guessOrdinal = function (data, dimIndex) {
   for (var i = 0, len = data.length; i < len; i++) {
@@ -8019,7 +7827,6 @@ function normalizeToArray(value) {
  * @param {Array.<string>} subOpts
  */
 
-
 function defaultEmphasis(opt, subOpts) {
   if (opt) {
     var emphasisOpt = opt.emphasis = opt.emphasis || {};
@@ -8035,7 +7842,8 @@ function defaultEmphasis(opt, subOpts) {
   }
 }
 
-var TEXT_STYLE_OPTIONS = ['fontStyle', 'fontWeight', 'fontSize', 'fontFamily', 'rich', 'tag', 'color', 'textBorderColor', 'textBorderWidth', 'width', 'height', 'lineHeight', 'align', 'verticalAlign', 'baseline', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY', 'textShadowColor', 'textShadowBlur', 'textShadowOffsetX', 'textShadowOffsetY', 'backgroundColor', 'borderColor', 'borderWidth', 'borderRadius', 'padding']; // modelUtil.LABEL_OPTIONS = modelUtil.TEXT_STYLE_OPTIONS.concat([
+var TEXT_STYLE_OPTIONS = ['fontStyle', 'fontWeight', 'fontSize', 'fontFamily', 'rich', 'tag', 'color', 'textBorderColor', 'textBorderWidth', 'width', 'height', 'lineHeight', 'align', 'verticalAlign', 'baseline', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY', 'textShadowColor', 'textShadowBlur', 'textShadowOffsetX', 'textShadowOffsetY', 'backgroundColor', 'borderColor', 'borderWidth', 'borderRadius', 'padding'];
+// modelUtil.LABEL_OPTIONS = modelUtil.TEXT_STYLE_OPTIONS.concat([
 //     'position', 'offset', 'rotate', 'origin', 'show', 'distance', 'formatter',
 //     'fontStyle', 'fontWeight', 'fontSize', 'fontFamily',
 //     // FIXME: deprecated, check and remove it.
@@ -8059,7 +7867,6 @@ function getDataItemValue(dataItem) {
  * @param {string|number|Date|Array|Object} dataItem
  */
 
-
 function isDataItemOption(dataItem) {
   return isObject(dataItem) && !(dataItem instanceof Array); // // markLine data can be array
   // && !(dataItem[0] && isObject(dataItem[0]) && !(dataItem[0] instanceof Array));
@@ -8069,7 +7876,6 @@ function isDataItemOption(dataItem) {
  * @param {string|number|Date} value
  * @param {Object|string} [dimInfo] If string (like 'x'), dimType defaults 'number'.
  */
-
 
 function converDataValue(value, dimInfo) {
   // Performance sensitive.
@@ -8086,7 +7892,6 @@ function converDataValue(value, dimInfo) {
   // If dimType is not ordinal and value is null or undefined or NaN or '-',
   // parse to NaN.
 
-
   return value == null || value === '' ? NaN : +value; // If string (like '-'), using '+' parse to NaN
 }
 /**
@@ -8098,7 +7903,6 @@ function converDataValue(value, dimInfo) {
  * @param {Object} [opt.mainType]
  * @param {Object} [opt.subType]
  */
-
 
 function createDataFormatModel(data, opt) {
   var model = new Model();
@@ -8114,7 +7918,6 @@ function createDataFormatModel(data, opt) {
 
   return model;
 } // PENDING A little ugly
-
 
 var dataFormatMixin = {
   /**
@@ -8231,7 +8034,6 @@ function mappingToExists(exists, newCptOptions) {
       return;
     } // id has highest priority.
 
-
     for (var i = 0; i < result.length; i++) {
       if (!result[i].option // Consider name: two map to one.
       && cptOption.id != null && result[i].exist.id === cptOption.id + '') {
@@ -8297,7 +8099,6 @@ function mappingToExists(exists, newCptOptions) {
  * @return {Array.<Object>} The input.
  */
 
-
 function makeIdAndName(mapResult) {
   // We use this id to hash component models and view instances
   // in echarts. id can be specified by user, or auto generated.
@@ -8332,7 +8133,6 @@ function makeIdAndName(mapResult) {
     // only in that case: setOption with 'not merge mode' and view
     // instance will be recreated, which can be accepted.
 
-
     keyInfo.name = opt.name != null ? opt.name + '' : existCpt ? existCpt.name : '\0-'; // name may be displayed on screen, so use '-'.
 
     if (existCpt) {
@@ -8341,8 +8141,8 @@ function makeIdAndName(mapResult) {
       keyInfo.id = opt.id + '';
     } else {
       // Consider this situatoin:
-      //  optionA: [{name: 'a'}, {name: 'a'}, {..}]
-      //  optionB [{..}, {name: 'a'}, {name: 'a'}]
+      //   optionA: [{name: 'a'}, {name: 'a'}, {..}]
+      //   optionB [{..}, {name: 'a'}, {name: 'a'}]
       // Series with the same name between optionA and optionB
       // should be mapped.
       var idNum = 0;
@@ -8361,7 +8161,6 @@ function makeIdAndName(mapResult) {
  * @return {boolean}
  */
 
-
 function isIdInner(cptOption) {
   return isObject(cptOption) && cptOption.id && (cptOption.id + '').indexOf('\0_ec_\0') === 0;
 }
@@ -8373,7 +8172,6 @@ function isIdInner(cptOption) {
  * @param {Array.<Object>} batchB Like: [{seriesId: 2, dataIndex: [32, 4, 5]}, ...]
  * @return {Array.<Array.<Object>, Array.<Object>>} result: [resultBatchA, resultBatchB]
  */
-
 
 function compressBatches(batchA, batchB) {
   var mapA = {};
@@ -8427,7 +8225,6 @@ function compressBatches(batchA, batchB) {
  * @return {number|Array.<number>} dataIndex If not found, return undefined/null.
  */
 
-
 function queryDataIndex(data, payload) {
   if (payload.dataIndexInside != null) {
     return payload.dataIndexInside;
@@ -8455,7 +8252,6 @@ function queryDataIndex(data, payload) {
  *
  * @return {Function}
  */
-
 
 var makeGetter = function () {
   var index = 0;
@@ -8501,7 +8297,6 @@ var makeGetter = function () {
  *            ...
  *        }
  */
-
 
 function parseFinder(ecModel, finder, opt) {
   if (zrUtil.isString(finder)) {
@@ -8554,7 +8349,6 @@ function parseFinder(ecModel, finder, opt) {
  * @return {string}
  */
 
-
 function dataDimToCoordDim(data, dataDim) {
   var dimensions = data.dimensions;
   dataDim = data.getDimension(dataDim);
@@ -8574,7 +8368,6 @@ function dataDimToCoordDim(data, dataDim) {
  * @return {Array.<string>} data dimensions on the coordDim.
  */
 
-
 function coordDimToDataDim(data, coordDim) {
   var dataDim = [];
   each(data.dimensions, function (dimName) {
@@ -8593,7 +8386,6 @@ function coordDimToDataDim(data, coordDim) {
  *                        like 'label' or 'tooltip'.
  * @return {Array.<string>} data dimensions on the otherDim.
  */
-
 
 function otherDimToDataDim(data, otherDim) {
   var dataDim = [];
@@ -8798,7 +8590,6 @@ function doGet(obj, pathArr, parentModel) {
       continue;
     } // obj could be number/string/... (like 0)
 
-
     obj = obj && typeof obj === 'object' ? obj[pathArr[i]] : null;
 
     if (obj == null) {
@@ -8813,12 +8604,10 @@ function doGet(obj, pathArr, parentModel) {
   return obj;
 } // `path` can be null/undefined
 
-
 function getParent(model, path) {
   var getParentMethod = clazzUtil.get(model, 'getParent');
   return getParentMethod ? getParentMethod.call(model, path) : model.parentModel;
 } // Enable Model.extend.
-
 
 clazzUtil.enableClassExtend(Model);
 mixin(Model, lineStyleMixin);
@@ -8856,7 +8645,6 @@ function set(host, name, value) {
  * @public
  */
 
-
 function get(host, name) {
   return host[MEMBER_PRIFIX + name];
 }
@@ -8866,7 +8654,6 @@ function get(host, name) {
  * @public
  */
 
-
 function hasOwn(host, name) {
   return host.hasOwnProperty(MEMBER_PRIFIX + name);
 }
@@ -8874,7 +8661,6 @@ function hasOwn(host, name) {
  * Notice, parseClassType('') should returns {main: '', sub: ''}
  * @public
  */
-
 
 function parseClassType(componentType) {
   var ret = {
@@ -8894,14 +8680,12 @@ function parseClassType(componentType) {
  * @public
  */
 
-
 function checkClassType(componentType) {
   zrUtil.assert(/^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)?$/.test(componentType), 'componentType "' + componentType + '" illegal');
 }
 /**
  * @public
  */
-
 
 function enableClassExtend(RootClass, mandatoryMethods) {
   RootClass.$constructor = RootClass;
@@ -8932,7 +8716,6 @@ function enableClassExtend(RootClass, mandatoryMethods) {
 // class C inherits class B, do not overrides method f,
 // then when method of class C is called, dead loop occured.
 
-
 function superCall(context, methodName) {
   var args = zrUtil.slice(arguments, 2);
   return this.superClass.prototype[methodName].apply(context, args);
@@ -8947,7 +8730,6 @@ function superApply(context, methodName, args) {
  * @param {boolean} [options.registerWhenExtend]
  * @public
  */
-
 
 function enableClassManagement(entity, options) {
   options = options || {};
@@ -9017,7 +8799,6 @@ function enableClassManagement(entity, options) {
    * @return {Array.<string>} Like ['aa', 'bb'], but can not be ['aa.xx']
    */
 
-
   entity.getAllClassMainTypes = function () {
     var types = [];
     zrUtil.each(storage, function (obj, type) {
@@ -9030,7 +8811,6 @@ function enableClassManagement(entity, options) {
    * @param  {string}  mainType
    * @return {boolean}
    */
-
 
   entity.hasSubTypes = function (componentType) {
     componentType = parseClassType(componentType);
@@ -9068,8 +8848,7 @@ function enableClassManagement(entity, options) {
  * @param {string|Array.<string>} properties
  */
 
-
-function setReadOnly(obj, properties) {// FIXME It seems broken in IE8 simulation of IE11
+function setReadOnly(obj, properties) { // FIXME It seems broken in IE8 simulation of IE11
   // if (!zrUtil.isArray(properties)) {
   //     properties = properties != null ? [properties] : [];
   // }
@@ -9097,7 +8876,7 @@ exports.setReadOnly = setReadOnly;
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {// (1) The code `if (__DEV__) ...` can be removed by build tool.
+/* WEBPACK VAR INJECTION */(function(global) { // (1) The code `if (__DEV__) ...` can be removed by build tool.
 // (2) If intend to use `__DEV__`, this module should be imported. Use a global
 // variable `__DEV__` may cause that miss the declaration (see #6535), or the
 // declaration is behind of the using position (for example in `Model.extent`,
@@ -9127,16 +8906,16 @@ var g;
 
 // This works in non-strict mode
 g = (function() {
-	return this;
+  return this;
 })();
 
 try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
+  // This works if eval is allowed (see CSP)
+  g = g || Function("return this")() || (1,eval)("this");
 } catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
+  // This works if the window reference is available
+  if(typeof window === "object")
+    g = window;
 }
 
 // g can still be undefined, but nothing to do about it...
@@ -9144,7 +8923,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
 
 /***/ }),
 /* 35 */
@@ -9321,7 +9099,6 @@ function extendShape(opts) {
  * Extend path
  */
 
-
 function extendPath(pathData, opts) {
   return pathTool.extendFromString(pathData, opts);
 }
@@ -9332,7 +9109,6 @@ function extendPath(pathData, opts) {
  * @param {module:zrender/core/BoundingRect} rect
  * @param {string} [layout=cover] 'center' or 'cover'
  */
-
 
 function makePath(pathData, opts, rect, layout) {
   var path = pathTool.createFromString(pathData, opts);
@@ -9355,7 +9131,6 @@ function makePath(pathData, opts, rect, layout) {
  * @param {module:zrender/core/BoundingRect} rect constrain rect
  * @param {string} [layout=cover] 'center' or 'cover'
  */
-
 
 function makeImage(imageUrl, rect, layout) {
   var path = new Image({
@@ -9385,7 +9160,6 @@ function makeImage(imageUrl, rect, layout) {
  * @param  {Object} boundingRect constraint bounding box
  * @return {Object} element position containing x, y, width, and height
  */
-
 
 function centerGraphic(rect, boundingRect) {
   // Set rect to center, keep width / height ratio.
@@ -9440,7 +9214,6 @@ function resizePath(path, rect) {
  * @return {Object} Modified param
  */
 
-
 function subPixelOptimizeLine(param) {
   var shape = param.shape;
   var lineWidth = param.style.lineWidth;
@@ -9469,7 +9242,6 @@ function subPixelOptimizeLine(param) {
  * @return {Object} Modified param
  */
 
-
 function subPixelOptimizeRect(param) {
   var shape = param.shape;
   var lineWidth = param.style.lineWidth;
@@ -9492,7 +9264,6 @@ function subPixelOptimizeRect(param) {
  * @return {number} Optimized position.
  */
 
-
 function subPixelOptimize(position, lineWidth, positiveOrNegative) {
   // Assure that (position + lineWidth / 2) is near integer edge,
   // otherwise line will be fuzzy in canvas.
@@ -9510,7 +9281,6 @@ function liftColor(color) {
 /**
  * @private
  */
-
 
 function cacheElementStl(el) {
   if (el.__hoverStlDirty) {
@@ -9536,7 +9306,6 @@ function cacheElementStl(el) {
 /**
  * @private
  */
-
 
 function doSingleEnterHover(el) {
   if (el.__isHover) {
@@ -9593,7 +9362,6 @@ function doSingleEnterHover(el) {
  * @inner
  */
 
-
 function doSingleLeaveHover(el) {
   if (!el.__isHover) {
     return;
@@ -9616,7 +9384,6 @@ function doSingleLeaveHover(el) {
  * @inner
  */
 
-
 function doEnterHover(el) {
   el.type === 'group' ? el.traverse(function (child) {
     if (child.type !== 'group') {
@@ -9636,7 +9403,6 @@ function doLeaveHover(el) {
  * @inner
  */
 
-
 function setElementHoverStl(el, hoverStl) {
   // If element has sepcified hoverStyle, then use it instead of given hoverStyle
   // Often used when item group has a label element and it's hoverStyle is different
@@ -9651,12 +9417,10 @@ function setElementHoverStl(el, hoverStl) {
  * @inner
  */
 
-
 function onElementMouseOver(e) {
   if (this.__hoverSilentOnTouch && e.zrByTouch) {
     return;
   } // Only if element is not in emphasis status
-
 
   !this.__isEmphasis && doEnterHover(this);
 }
@@ -9664,19 +9428,16 @@ function onElementMouseOver(e) {
  * @inner
  */
 
-
 function onElementMouseOut(e) {
   if (this.__hoverSilentOnTouch && e.zrByTouch) {
     return;
   } // Only if element is not in emphasis status
-
 
   !this.__isEmphasis && doLeaveHover(this);
 }
 /**
  * @inner
  */
-
 
 function enterEmphasis() {
   this.__isEmphasis = true;
@@ -9685,7 +9446,6 @@ function enterEmphasis() {
 /**
  * @inner
  */
-
 
 function leaveEmphasis() {
   this.__isEmphasis = false;
@@ -9708,7 +9468,6 @@ function leaveEmphasis() {
  *        In this case, hoverSilentOnTouch should be used to disable hover-highlight
  *        on touch device.
  */
-
 
 function setHoverStyle(el, hoverStyle, opt) {
   el.__hoverSilentOnTouch = opt && opt.hoverSilentOnTouch;
@@ -9738,7 +9497,6 @@ function setHoverStyle(el, hoverStyle, opt) {
  * @param {Object} [normalSpecified]
  * @param {Object} [emphasisSpecified]
  */
-
 
 function setLabelStyle(normalStyle, emphasisStyle, normalModel, emphasisModel, opt, normalSpecified, emphasisSpecified) {
   opt = opt || EMPTY_OBJ;
@@ -9779,7 +9537,6 @@ function setLabelStyle(normalStyle, emphasisStyle, normalModel, emphasisModel, o
  * @param {boolean} [isEmphasis]
  */
 
-
 function setTextStyle(textStyle, textStyleModel, specifiedTextStyle, opt, isEmphasis) {
   setTextStyleCommon(textStyle, textStyleModel, opt, isEmphasis);
   specifiedTextStyle && zrUtil.extend(textStyle, specifiedTextStyle);
@@ -9794,7 +9551,6 @@ function setTextStyle(textStyle, textStyleModel, specifiedTextStyle, opt, isEmph
  * @param {string|boolean} defaultColor Default text color.
  *        If set as false, it will be processed as a emphasis style.
  */
-
 
 function setText(textStyle, labelModel, defaultColor) {
   var opt = {
@@ -9828,7 +9584,6 @@ function setText(textStyle, labelModel, defaultColor) {
  *      forceRich: boolean
  * }
  */
-
 
 function setTextStyleCommon(textStyle, textStyleModel, opt, isEmphasis) {
   // Consider there will be abnormal when merge hover style to normal style if given default value.
@@ -9906,7 +9661,6 @@ function setTextStyleCommon(textStyle, textStyleModel, opt, isEmphasis) {
 //     }
 // }
 
-
 function getRichItemNames(textStyleModel) {
   // Use object to remove duplicated names.
   var richItemNameMap;
@@ -9948,14 +9702,12 @@ function setTokenTextStyle(textStyle, textStyleModel, globalTextStyle, opt, isEm
       textStyle.insideRollbackOpt = opt;
     } // Set default finally.
 
-
     if (textStyle.textFill == null) {
       textStyle.textFill = opt.autoColor;
     }
   } // Do not use `getFont` here, because merge should be supported, where
   // part of these properties may be changed in emphasis style, and the
   // others should remain their original value got from normal style.
-
 
   textStyle.fontStyle = textStyleModel.getShallow('fontStyle') || globalTextStyle.fontStyle;
   textStyle.fontWeight = textStyleModel.getShallow('fontWeight') || globalTextStyle.fontWeight;
@@ -10037,7 +9789,6 @@ function animateOrSetProps(isUpdate, el, props, animatableModel, dataIndex, cb) 
   // animation model is an `itemModel`, whose does not have `isAnimationEnabled`
   // but its parent model (`seriesModel`) does.
 
-
   var animationEnabled = animatableModel && animatableModel.isAnimationEnabled();
 
   if (animationEnabled) {
@@ -10084,7 +9835,6 @@ function animateOrSetProps(isUpdate, el, props, animatableModel, dataIndex, cb) 
  *     }, seriesModel, function () { console.log('Animation done!'); });
  */
 
-
 function updateProps(el, props, animatableModel, dataIndex, cb) {
   animateOrSetProps(true, el, props, animatableModel, dataIndex, cb);
 }
@@ -10103,7 +9853,6 @@ function updateProps(el, props, animatableModel, dataIndex, cb) {
  * @param {Function} cb
  */
 
-
 function initProps(el, props, animatableModel, dataIndex, cb) {
   animateOrSetProps(false, el, props, animatableModel, dataIndex, cb);
 }
@@ -10114,7 +9863,6 @@ function initProps(el, props, animatableModel, dataIndex, cb) {
  * @param {module:zrender/mixin/Transformable} target
  * @param {module:zrender/mixin/Transformable} [ancestor]
  */
-
 
 function getTransform(target, ancestor) {
   var mat = matrix.identity([]);
@@ -10136,7 +9884,6 @@ function getTransform(target, ancestor) {
  * @return {Array.<number>} [x, y]
  */
 
-
 function applyTransform(target, transform, invert) {
   if (transform && !zrUtil.isArrayLike(transform)) {
     transform = Transformable.getLocalTransform(transform);
@@ -10155,7 +9902,6 @@ function applyTransform(target, transform, invert) {
  * @return {string} Transformed direction. 'left' 'right' 'top' 'bottom'
  */
 
-
 function transformDirection(direction, transform, invert) {
   // Pick a base, ensure that transform result will not be (0, 0).
   var hBase = transform[4] === 0 || transform[5] === 0 || transform[0] === 0 ? 1 : Math.abs(2 * transform[4] / transform[0]);
@@ -10168,7 +9914,6 @@ function transformDirection(direction, transform, invert) {
  * Apply group transition animation from g1 to g2.
  * If no animatableModel, no animation.
  */
-
 
 function groupTransition(g1, g2, animatableModel, cb) {
   if (!g1 || !g2) {
@@ -10222,7 +9967,6 @@ function groupTransition(g1, g2, animatableModel, cb) {
  * @return {Array.<Array.<number>>} A new clipped points.
  */
 
-
 function clipPointsByRect(points, rect) {
   return zrUtil.map(points, function (point) {
     var x = point[0];
@@ -10239,7 +9983,6 @@ function clipPointsByRect(points, rect) {
  * @param {Object} rect {x, y, width, height}
  * @return {Object} A new clipped rect. If rect size are negative, return undefined.
  */
-
 
 function clipRectByRect(targetRect, rect) {
   var x = mathMax(targetRect.x, rect.x);
@@ -10262,7 +10005,6 @@ function clipRectByRect(targetRect, rect) {
  * @param {Object} [rect] {x, y, width, height}
  * @return {module:zrender/Element} Icon path or image element.
  */
-
 
 function createIcon(iconStr, opt, rect) {
   opt = zrUtil.extend({
@@ -10381,14 +10123,12 @@ function createPathProxyFromString(data) {
     return [];
   } // command string
 
-
   var cs = data.replace(/-/g, ' -').replace(/  /g, ' ').replace(/ /g, ',').replace(/,,/g, ',');
   var n; // create pipes so that we can split the data
 
   for (n = 0; n < cc.length; n++) {
     cs = cs.replace(new RegExp(cc[n], 'g'), '|' + cc[n]);
   } // create array
-
 
   var arr = cs.split('|'); // init context point
 
@@ -10627,7 +10367,6 @@ function createPathProxyFromString(data) {
   return path;
 } // TODO Optimize double memory cost problem
 
-
 function createPathOptions(str, opts) {
   var pathProxy = createPathProxyFromString(str);
   opts = opts || {};
@@ -10660,7 +10399,6 @@ function createPathOptions(str, opts) {
  * @param  {Object} opts Other options
  */
 
-
 function createFromString(str, opts) {
   return new Path(createPathOptions(str, opts));
 }
@@ -10669,7 +10407,6 @@ function createFromString(str, opts) {
  * @param  {string} str
  * @param  {Object} opts Other options
  */
-
 
 function extendFromString(str, opts) {
   return Path.extend(createPathOptions(str, opts));
@@ -10680,7 +10417,6 @@ function extendFromString(str, opts) {
 // TODO Apply transform
 // TODO stroke dash
 // TODO Optimize double memory cost problem
-
 
 function mergePath(pathEls, opts) {
   var pathList = [];
@@ -11167,7 +10903,6 @@ for (var i = 0; i < STYLE_COMMON_PROPS.length; i++) {
     styleProto[prop[0]] = prop[1];
   }
 } // Provide for others
-
 
 Style.getGradient = styleProto.getGradient;
 var _default = Style;
@@ -11685,12 +11420,10 @@ Animatable.prototype = {
               time = 500;
             } // Stop all previous animations
 
-
     this.stopAnimation();
 
     this._animateToShallow('', this, target, time, delay); // Animators may be removed immediately after start
     // if there is nothing to animate
-
 
     var animators = this.animators.slice();
     var count = animators.length;
@@ -11704,12 +11437,10 @@ Animatable.prototype = {
     } // No animators. This should be checked before animators[i].start(),
     // because 'done' may be executed immediately if no need to animate.
 
-
     if (!count) {
       callback && callback();
     } // Start after all animators created
     // Incase any animator is done immediately when all animation properties are not changed
-
 
     for (var i = 0; i < animators.length; i++) {
       animators[i].done(done).start(easing, forceAnimate);
@@ -11813,7 +11544,6 @@ function defaultSetter(target, key, value) {
  * @return {number}
  */
 
-
 function interpolateNumber(p0, p1, percent) {
   return (p1 - p0) * percent + p0;
 }
@@ -11823,7 +11553,6 @@ function interpolateNumber(p0, p1, percent) {
  * @param  {number} percent
  * @return {string}
  */
-
 
 function interpolateString(p0, p1, percent) {
   return percent > 0.5 ? p1 : p0;
@@ -11835,7 +11564,6 @@ function interpolateString(p0, p1, percent) {
  * @param  {Array} out
  * @param  {number} arrDim
  */
-
 
 function interpolateArray(p0, p1, percent, out, arrDim) {
   var len = p0.length;
@@ -11856,7 +11584,6 @@ function interpolateArray(p0, p1, percent, out, arrDim) {
 } // arr0 is source array, arr1 is target array.
 // Do some preprocess to avoid error happened when interpolating from arr0 to arr1
 
-
 function fillArr(arr0, arr1, arrDim) {
   var arr0Len = arr0.length;
   var arr1Len = arr1.length;
@@ -11875,7 +11602,6 @@ function fillArr(arr0, arr1, arrDim) {
       }
     }
   } // Handling NaN value
-
 
   var len2 = arr0[0] && arr0[0].length;
 
@@ -11899,7 +11625,6 @@ function fillArr(arr0, arr1, arrDim) {
  * @param  {number} arrDim
  * @return {boolean}
  */
-
 
 function isArraySame(arr0, arr1, arrDim) {
   if (arr0 === arr1) {
@@ -11945,7 +11670,6 @@ function isArraySame(arr0, arr1, arrDim) {
  * @param  {number} arrDim
  */
 
-
 function catmullRomInterpolateArray(p0, p1, p2, p3, t, t2, t3, out, arrDim) {
   var len = p0.length;
 
@@ -11974,7 +11698,6 @@ function catmullRomInterpolateArray(p0, p1, p2, p3, t, t2, t3, out, arrDim) {
  * @param  {number} t3
  * @return {number}
  */
-
 
 function catmullRomInterpolate(p0, p1, p2, p3, t, t2, t3) {
   var v0 = (p2 - p0) * 0.5;
@@ -12023,7 +11746,6 @@ function createTrackClip(animator, easing, oneTrackDone, keyframes, propName, fo
   if (!trackLen) {
     return;
   } // Guess data type
-
 
   var firstVal = keyframes[0].value;
   var isValueArray = isArrayLike(firstVal);
@@ -12120,7 +11842,6 @@ function createTrackClip(animator, easing, oneTrackDone, keyframes, propName, fo
         }
       } // PENDING really need to do this ?
 
-
       frame = Math.min(frame, trackLen - 2);
     } else {
       for (frame = lastFrame; frame < trackLen; frame++) {
@@ -12210,7 +11931,6 @@ function createTrackClip(animator, easing, oneTrackDone, keyframes, propName, fo
  * @param {Function} setter
  */
 
-
 var Animator = function (target, loop, getter, setter) {
   this._tracks = {};
   this._target = target;
@@ -12249,11 +11969,11 @@ Animator.prototype = {
         if (value == null) {
           // zrLog('Invalid property ' + propName);
           continue;
-        } // If time is 0
-        //  Then props is given initialize value
+        }
+        // If time is 0
+        // Then props is given initialize value
         // Else
-        //  Initialize value from current prop value
-
+        // Initialize value from current prop value
 
         if (time !== 0) {
           tracks[propName].push({
@@ -12353,7 +12073,6 @@ Animator.prototype = {
       }
     } // Add during callback on the last clip
 
-
     if (lastClip) {
       var oldOnFrame = lastClip.onframe;
 
@@ -12367,7 +12086,6 @@ Animator.prototype = {
     } // This optimization will help the case that in the upper application
     // the view may be refreshed frequently, where animation will be
     // called repeatly but nothing changed.
-
 
     if (!clipCount) {
       this._doneCallback();
@@ -12457,7 +12175,7 @@ function Clip(options) {
   this._life = options.life || 1000; // 延时
 
   this._delay = options.delay || 0; // 开始时间
-  // this._startTime = new Date().getTime() + this._delay;// 单位毫秒
+  // this._startTime = new Date().getTime() + this._delay; // 单位毫秒
 
   this._initialized = false; // 是否循环
 
@@ -12506,7 +12224,6 @@ Clip.prototype = {
         return 'restart';
       } // 动画完成将这个控制器标识为待删除
       // 在Animation.update中进行批量删除
-
 
       this._needsRemove = true;
       return 'destroy';
@@ -12984,7 +12701,6 @@ RectText.prototype = {
       return;
     } // FIXME
 
-
     ctx.save(); // Transform rect to view space
 
     var transform = this.transform;
@@ -12998,7 +12714,6 @@ RectText.prototype = {
     } else {
       this.setTransform(ctx);
     } // transformText and textRotation can not be used at the same time.
-
 
     textHelper.renderText(this, ctx, text, style, rect);
     ctx.restore();
@@ -13068,7 +12783,6 @@ function fromPoints(points, min, max) {
  * @param {Array.<number>} min
  * @param {Array.<number>} max
  */
-
 
 function fromLine(x0, y0, x1, y1, min, max) {
   min[0] = mathMin(x0, x1);
@@ -13140,7 +12854,6 @@ function fromCubic(x0, y0, x1, y1, x2, y2, x3, y3, min, max) {
  * @param {Array.<number>} max
  */
 
-
 function fromQuadratic(x0, y0, x1, y1, x2, y2, min, max) {
   var quadraticExtremum = curve.quadraticExtremum;
   var quadraticAt = curve.quadraticAt; // Find extremities, where derivative in x dim or y dim is zero
@@ -13168,7 +12881,6 @@ function fromQuadratic(x0, y0, x1, y1, x2, y2, min, max) {
  * @param {Array.<number>} min
  * @param {Array.<number>} max
  */
-
 
 function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
   var vec2Min = vec2.min;
@@ -13216,7 +12928,6 @@ function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
   } // var number = 0;
   // var step = (anticlockwise ? -Math.PI : Math.PI) / 2;
 
-
   for (var angle = 0; angle < endAngle; angle += Math.PI / 2) {
     if (angle > startAngle) {
       extremity[0] = mathCos(angle) * rx + x;
@@ -13262,7 +12973,6 @@ var EPSILON = 1e-4;
 function isAroundEqual(a, b) {
   return Math.abs(a - b) < EPSILON;
 } // 临时数组
-
 
 var roots = [-1, -1, -1];
 var extrema = [-1, -1];
@@ -13386,7 +13096,6 @@ function windingQuadratic(x0, y0, x1, y1, x2, y2, x, y) {
   }
 } // TODO
 // Arc 旋转
-
 
 function windingArc(cx, cy, r, startAngle, endAngle, anticlockwise, x, y) {
   y -= cy;
@@ -13559,7 +13268,6 @@ function containPath(data, lineWidth, isStroke, x, y) {
           x0 = x1;
           y0 = y1;
         } // zr 使用scale来模拟椭圆, 这里也对x做一定的缩放
-
 
         var _x = (x - cx) * ry / rx + cx;
 
@@ -13827,7 +13535,6 @@ function windingLine(x0, y0, x1, y1, x, y) {
     return 0;
   } // Ignore horizontal line
 
-
   if (y1 === y0) {
     return 0;
   }
@@ -14012,7 +13719,6 @@ ZImage.prototype = {
     // }
     // Else is canvas
 
-
     var x = style.x || 0;
     var y = style.y || 0;
     var width = style.width;
@@ -14028,7 +13734,6 @@ ZImage.prototype = {
       width = image.width;
       height = image.height;
     } // 设置transform
-
 
     this.setTransform(ctx);
 
@@ -14489,7 +14194,6 @@ var _default = Path.extend({
     // Better stroking in ShapeBundle
     // ctx.moveTo(shape.cx + shape.r, shape.cy);
 
-
     ctx.arc(shape.cx, shape.cy, shape.r, 0, Math.PI * 2, true);
   }
 });
@@ -14557,13 +14261,13 @@ var env = __webpack_require__(15);
 // whose area size is zero is drawn and ctx.clip() is called and
 // shadowBlur is set. See #4572, #3112, #5777.
 // (e.g.,
-//  ctx.moveTo(10, 10);
-//  ctx.lineTo(20, 10);
-//  ctx.closePath();
-//  ctx.clip();
-//  ctx.shadowBlur = 10;
-//  ...
-//  ctx.fill();
+// ctx.moveTo(10, 10);
+// ctx.lineTo(20, 10);
+// ctx.closePath();
+// ctx.clip();
+// ctx.shadowBlur = 10;
+// ...
+// ctx.fill();
 // )
 var shadowTemp = [['shadowBlur', 0], ['shadowColor', '#000'], ['shadowOffsetX', 0], ['shadowOffsetY', 0]];
 
@@ -14694,7 +14398,6 @@ function interpolate(p0, p1, p2, p3, t, t2, t3) {
  * @return {Array}
  */
 
-
 function _default(points, isLoop) {
   var len = points.length;
   var ret = [];
@@ -14786,7 +14489,6 @@ function _default(points, smooth, isLoop, constraint) {
       v2Min(min, min, points[i]);
       v2Max(max, max, points[i]);
     } // 与指定的包围盒做并集
-
 
     v2Min(min, min, constraint[0]);
     v2Max(max, max, constraint[1]);
@@ -15362,21 +15064,19 @@ echarts.extendChartView({
     }
 });
 
-
 /***/ }),
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+/*!
  * wordcloud2.js
  * http://timdream.org/wordcloud2.js/
  *
  * Copyright 2011 - 2013 Tim Chien
  * Released under the MIT license
  */
-
-
 
 // setImmediate
 if (!window.setImmediate) {
@@ -15595,7 +15295,7 @@ if (!window.clearImmediate) {
     if (typeof settings.weightFactor !== 'function') {
       var factor = settings.weightFactor;
       settings.weightFactor = function weightFactor(pt) {
-        return pt * factor; //in px
+        return pt * factor; // in px
       };
     }
 
@@ -15744,7 +15444,7 @@ if (!window.clearImmediate) {
       var rect = canvas.getBoundingClientRect();
       var clientX;
       var clientY;
-      /** Detect if touches are available */
+      // Detect if touches are available
       if (evt.touches) {
         clientX = evt.touches[0].clientX;
         clientY = evt.touches[0].clientY;
@@ -16534,14 +16234,14 @@ if (!window.clearImmediate) {
   // Expose the library as an AMD module
   if (true) {
     !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() { return WordCloud; }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+        __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   } else if (typeof module !== 'undefined' && module.exports) {
     module.exports = WordCloud;
   } else {
     global.WordCloud = WordCloud;
   }
 
-})(this); //jshint ignore:line
+})(this); // jshint ignore:line
 
 /***/ })
 /******/ ]);

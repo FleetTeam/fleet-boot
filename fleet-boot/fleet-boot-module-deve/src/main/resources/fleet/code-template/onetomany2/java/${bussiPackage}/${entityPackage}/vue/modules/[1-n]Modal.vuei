@@ -123,10 +123,10 @@
           this.form.setFieldsValue(pick(this.model, <#list subTab.colums as col>'${col.fieldName}', </#list>))
           // 时间格式化
 <#list subTab.colums as col><#rt/>
-	<#if col.fieldName !='id' && (col.fieldType =='date' || col.fieldType =='datetime')>
+  <#if col.fieldName !='id' && (col.fieldType =='date' || col.fieldType =='datetime')>
           this.form.setFieldsValue({ ${col.fieldName}: this.model.${col.fieldName} ? moment(this.model.${col.fieldName}) : null })
-	</#if>
-</#list>  
+  </#if>
+</#list>
         })
       },
       close() {
@@ -149,7 +149,7 @@
               method = 'put';
             }
             let formData = Object.assign(this.model, values);
-            //时间格式化
+            // 时间格式化
             <#list subTab.colums as po>
             <#if po.fieldName !='id' && po.fieldType =='date'>
             formData.${po.fieldName} = formData.${po.fieldName}?formData.${po.fieldName}.format():null;

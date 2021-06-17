@@ -84,11 +84,10 @@
         :rowSelection="{selectedRowKeys: selectedRowKeys, onChange: onSelectChange}"
         @change="handleTableChange">
 
-        <!-- 字符串超长截取省略号显示-->
+        <!-- 字符串超长截取省略号显示 -->
         <span slot="templateContent" slot-scope="text">
           <j-ellipsis :value="text" :length="25" />
         </span>
-
 
         <span slot="action" slot-scope="text, record">
           <a @click="handleEdit(record)">编辑</a>

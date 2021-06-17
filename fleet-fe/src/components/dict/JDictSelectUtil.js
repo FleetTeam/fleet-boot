@@ -16,14 +16,14 @@ export async function initDictOptions(dictCode) {
   if (!dictCode) {
     return '字典Code不能为空!';
   }
-  //优先从缓存中读取字典配置
+  // 优先从缓存中读取字典配置
   if(getDictItemsFromCache(dictCode)){
     let res = {}
     res.result = getDictItemsFromCache(dictCode);
     res.success = true;
     return res;
   }
-  //获取字典数组
+  // 获取字典数组
   let res = await ajaxGetDictItems(dictCode);
   return res;
 }
@@ -68,7 +68,7 @@ export function filterDictText(dictOptions, text) {
  * @return String
  */
 export function filterMultiDictText(dictOptions, text) {
-  //js “!text” 认为0为空，所以做提前处理
+  // js “!text” 认为0为空，所以做提前处理
   if(text === 0 || text === '0'){
     if(dictOptions){
       for (let dictItem of dictOptions) {
@@ -113,7 +113,7 @@ export function filterDictTextByCache(dictCode, key) {
   if (!dictCode) {
     return '字典Code不能为空!';
   }
-   //优先从缓存中读取字典配置
+  // 优先从缓存中读取字典配置
   if(getDictItemsFromCache(dictCode)){
     let item = getDictItemsFromCache(dictCode).filter(t => t["value"] == key)
     if(item && item.length>0){
@@ -122,15 +122,15 @@ export function filterDictTextByCache(dictCode, key) {
   }
 }
 
-/** 通过code获取字典数组 */
+// 通过code获取字典数组
 export async function getDictItems(dictCode, params) {
-    //优先从缓存中读取字典配置
+    // 优先从缓存中读取字典配置
     if(getDictItemsFromCache(dictCode)){
       let desformDictItems = getDictItemsFromCache(dictCode).map(item => ({...item, label: item.text}))
       return desformDictItems;
     }
 
-    //缓存中没有，就请求后台
+    // 缓存中没有，就请求后台
     return await ajaxGetDictItems(dictCode, params).then(({success, result}) => {
       if (success) {
         let res = result.map(item => ({...item, label: item.text}))

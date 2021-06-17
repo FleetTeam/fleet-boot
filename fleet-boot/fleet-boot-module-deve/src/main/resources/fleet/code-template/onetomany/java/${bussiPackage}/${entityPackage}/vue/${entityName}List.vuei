@@ -133,7 +133,7 @@
           }
         ],
         // 请求参数
-    	url: {
+      url: {
               list: "/${entityPackage}/${entityName?uncap_first}/list",
               delete: "/${entityPackage}/${entityName?uncap_first}/delete",
               deleteBatch: "/${entityPackage}/${entityName?uncap_first}/deleteBatch",
@@ -147,7 +147,6 @@
           <#noparse>return `${window._CONFIG['domianURL']}/${this.url.importExcelUrl}`;</#noparse>
         }
       },
-
 
     methods: {
 

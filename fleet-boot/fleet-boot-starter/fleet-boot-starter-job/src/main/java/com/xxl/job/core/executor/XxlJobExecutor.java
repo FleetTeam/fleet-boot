@@ -24,7 +24,12 @@ import java.util.concurrent.ConcurrentMap;
  */
 public class XxlJobExecutor {
     private static final Logger logger = LoggerFactory.getLogger(XxlJobExecutor.class);
-
+    // ---------------------- admin-client (rpc invoker) ----------------------
+    private static List<AdminBiz> adminBizList;
+    // ---------------------- job handler repository ----------------------
+    private static ConcurrentMap<String, IJobHandler> jobHandlerRepository = new ConcurrentHashMap<String, IJobHandler>();
+    // ---------------------- job thread repository ----------------------
+    private static ConcurrentMap<Integer, JobThread> jobThreadRepository = new ConcurrentHashMap<Integer, JobThread>();
     // ---------------------- param ----------------------
     private String adminAddresses;
     private String accessToken;
@@ -34,6 +39,51 @@ public class XxlJobExecutor {
     private int port;
     private String logPath;
     private int logRetentionDays;
+    // ---------------------- executor-server (rpc provider) ----------------------
+    private EmbedServer embedServer = null;
+
+    public static List<AdminBiz> getAdminBizList() {
+        return adminBizList;
+    }
+
+    public static IJobHandler loadJobHandler(String name) {
+        return jobHandlerRepository.get(name);
+    }
+
+    public static IJobHandler registJobHandler(String name, IJobHandler jobHandler) {
+        logger.info(">>>>>>>>>>> xxl-job register jobhandler success, name:{}, jobHandler:{}", name, jobHandler);
+        return jobHandlerRepository.put(name, jobHandler);
+    }
+
+    public static JobThread registJobThread(int jobId, IJobHandler handler, String removeOldReason) {
+        JobThread newJobThread = new JobThread(jobId, handler);
+        newJobThread.start();
+        logger.info(">>>>>>>>>>> xxl-job regist JobThread success, jobId:{}, handler:{}", new Object[]{jobId, handler});
+
+        JobThread oldJobThread = jobThreadRepository.put(jobId, newJobThread);    // putIfAbsent | oh my god, map's put method return the old value!!!
+        if (oldJobThread != null) {
+            oldJobThread.toStop(removeOldReason);
+            oldJobThread.interrupt();
+        }
+
+        return newJobThread;
+    }
+
+    public static JobThread removeJobThread(int jobId, String removeOldReason) {
+        JobThread oldJobThread = jobThreadRepository.remove(jobId);
+        if (oldJobThread != null) {
+            oldJobThread.toStop(removeOldReason);
+            oldJobThread.interrupt();
+
+            return oldJobThread;
+        }
+        return null;
+    }
+
+    public static JobThread loadJobThread(int jobId) {
+        JobThread jobThread = jobThreadRepository.get(jobId);
+        return jobThread;
+    }
 
     public void setAdminAddresses(String adminAddresses) {
         this.adminAddresses = adminAddresses;
@@ -67,7 +117,6 @@ public class XxlJobExecutor {
         this.logRetentionDays = logRetentionDays;
     }
 
-
     // ---------------------- start + stop ----------------------
     public void start() throws Exception {
 
@@ -76,7 +125,6 @@ public class XxlJobExecutor {
 
         // init invoker, admin-client
         initAdminBizList(adminAddresses, accessToken);
-
 
         // init JobLogFileCleanThread
         JobLogFileCleanThread.getInstance().start(logRetentionDays);
@@ -109,7 +157,6 @@ public class XxlJobExecutor {
         }
         jobHandlerRepository.clear();
 
-
         // destory JobLogFileCleanThread
         JobLogFileCleanThread.getInstance().toStop();
 
@@ -117,10 +164,6 @@ public class XxlJobExecutor {
         TriggerCallbackThread.getInstance().toStop();
 
     }
-
-
-    // ---------------------- admin-client (rpc invoker) ----------------------
-    private static List<AdminBiz> adminBizList;
 
     private void initAdminBizList(String adminAddresses, String accessToken) throws Exception {
         if (adminAddresses != null && adminAddresses.trim().length() > 0) {
@@ -137,13 +180,6 @@ public class XxlJobExecutor {
             }
         }
     }
-
-    public static List<AdminBiz> getAdminBizList() {
-        return adminBizList;
-    }
-
-    // ---------------------- executor-server (rpc provider) ----------------------
-    private EmbedServer embedServer = null;
 
     private void initEmbedServer(String address, String ip, int port, String appname, String accessToken) throws Exception {
 
@@ -176,53 +212,6 @@ public class XxlJobExecutor {
                 logger.error(e.getMessage(), e);
             }
         }
-    }
-
-
-    // ---------------------- job handler repository ----------------------
-    private static ConcurrentMap<String, IJobHandler> jobHandlerRepository = new ConcurrentHashMap<String, IJobHandler>();
-
-    public static IJobHandler loadJobHandler(String name) {
-        return jobHandlerRepository.get(name);
-    }
-
-    public static IJobHandler registJobHandler(String name, IJobHandler jobHandler) {
-        logger.info(">>>>>>>>>>> xxl-job register jobhandler success, name:{}, jobHandler:{}", name, jobHandler);
-        return jobHandlerRepository.put(name, jobHandler);
-    }
-
-
-    // ---------------------- job thread repository ----------------------
-    private static ConcurrentMap<Integer, JobThread> jobThreadRepository = new ConcurrentHashMap<Integer, JobThread>();
-
-    public static JobThread registJobThread(int jobId, IJobHandler handler, String removeOldReason) {
-        JobThread newJobThread = new JobThread(jobId, handler);
-        newJobThread.start();
-        logger.info(">>>>>>>>>>> xxl-job regist JobThread success, jobId:{}, handler:{}", new Object[]{jobId, handler});
-
-        JobThread oldJobThread = jobThreadRepository.put(jobId, newJobThread);    // putIfAbsent | oh my god, map's put method return the old value!!!
-        if (oldJobThread != null) {
-            oldJobThread.toStop(removeOldReason);
-            oldJobThread.interrupt();
-        }
-
-        return newJobThread;
-    }
-
-    public static JobThread removeJobThread(int jobId, String removeOldReason) {
-        JobThread oldJobThread = jobThreadRepository.remove(jobId);
-        if (oldJobThread != null) {
-            oldJobThread.toStop(removeOldReason);
-            oldJobThread.interrupt();
-
-            return oldJobThread;
-        }
-        return null;
-    }
-
-    public static JobThread loadJobThread(int jobId) {
-        JobThread jobThread = jobThreadRepository.get(jobId);
-        return jobThread;
     }
 
 }

@@ -161,7 +161,7 @@ CodeMirror.defineMode('powershell', function() {
   // tokenizers
   function tokenBase(stream, state) {
     // Handle Comments
-    //var ch = stream.peek();
+    // var ch = stream.peek();
 
     var parent = state.returnStack[state.returnStack.length - 1];
     if (parent && parent.shouldReturnFrom(state)) {

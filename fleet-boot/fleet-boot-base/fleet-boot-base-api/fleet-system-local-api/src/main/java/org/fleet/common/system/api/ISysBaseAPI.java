@@ -11,40 +11,44 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @Description  底层共通业务API，提供其他独立模块调用
- * @Author  scott
+ * @Description 底层共通业务API，提供其他独立模块调用
+ * @Author scott
  * @Date 2019-4-20
  * @Version V1.0
  */
 public interface ISysBaseAPI extends CommonAPI {
 
-
     /**
      * 1发送系统消息
+     *
      * @param message 使用构造器赋值参数 如果不设置category(消息类型)则默认为2 发送系统消息
      */
     void sendSysAnnouncement(MessageDTO message);
 
     /**
      * 2发送消息 附带业务参数
+     *
      * @param message 使用构造器赋值参数
      */
     void sendBusAnnouncement(BusMessageDTO message);
 
     /**
      * 3通过模板发送消息
+     *
      * @param message 使用构造器赋值参数
      */
     void sendTemplateAnnouncement(TemplateMessageDTO message);
 
     /**
      * 4通过模板发送消息 附带业务参数
+     *
      * @param message 使用构造器赋值参数
      */
     void sendBusTemplateAnnouncement(BusTemplateMessageDTO message);
 
     /**
      * 5通过消息中心模板，生成推送内容
+     *
      * @param templateDTO 使用构造器赋值参数
      * @return
      */
@@ -52,6 +56,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 6根据用户id查询用户信息
+     *
      * @param id
      * @return
      */
@@ -59,6 +64,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 7通过用户账号查询角色集合
+     *
      * @param username
      * @return
      */
@@ -66,6 +72,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 8通过用户账号查询部门集合
+     *
      * @param username
      * @return 部门 id
      */
@@ -73,31 +80,34 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 9通过用户账号查询部门 name
+     *
      * @param username
      * @return 部门 name
      */
     List<String> getDepartNamesByUsername(String username);
 
-
-
-    /** 11查询所有的父级字典，按照create_time排序 */
+    /**
+     * 11查询所有的父级字典，按照create_time排序
+     */
     public List<DictModel> queryAllDict();
 
     /**
      * 12查询所有分类字典
+     *
      * @return
      */
     public List<SysCategoryModel> queryAllDSysCategory();
 
-
     /**
      * 14查询所有部门 作为字典信息 id -->value,departName -->text
+     *
      * @return
      */
     public List<DictModel> queryAllDepartBackDictModel();
 
     /**
      * 15根据业务类型及业务id修改消息已读
+     *
      * @param busType
      * @param busId
      */
@@ -105,6 +115,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 16查询表字典 支持过滤数据
+     *
      * @param table
      * @param text
      * @param code
@@ -115,6 +126,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 17查询指定table的 text code 获取字典，包含text和value
+     *
      * @param table
      * @param text
      * @param code
@@ -126,18 +138,21 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 18查询所有用户 返回ComboModel
+     *
      * @return
      */
     public List<ComboModel> queryAllUserBackCombo();
 
     /**
      * 19分页查询用户 返回JSONObject
+     *
      * @return
      */
     public JSONObject queryAllUser(String userIds, Integer pageNo, Integer pageSize);
 
     /**
      * 20获取所有角色
+     *
      * @return
      */
     public List<ComboModel> queryAllRole();
@@ -145,12 +160,14 @@ public interface ISysBaseAPI extends CommonAPI {
     /**
      * 21获取所有角色 带参
      * roleIds 默认选中角色
+     *
      * @return
      */
-    public List<ComboModel> queryAllRole(String[] roleIds );
+    public List<ComboModel> queryAllRole(String[] roleIds);
 
     /**
      * 22通过用户账号查询角色Id集合
+     *
      * @param username
      * @return
      */
@@ -158,6 +175,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 23通过部门编号查询部门id
+     *
      * @param orgCode
      * @return
      */
@@ -165,12 +183,14 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 24查询所有部门
+     *
      * @return
      */
     public List<SysDepartModel> getAllSysDepart();
 
     /**
      * 25查找父级部门
+     *
      * @param departId
      * @return
      */
@@ -178,6 +198,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 26根据部门Id获取部门负责人
+     *
      * @param deptId
      * @return
      */
@@ -185,6 +206,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 27给指定用户发消息
+     *
      * @param userIds
      * @param cmd
      */
@@ -193,6 +215,7 @@ public interface ISysBaseAPI extends CommonAPI {
     /**
      * 28根据id获取所有参与用户
      * userIds
+     *
      * @return
      */
     public List<LoginUser> queryAllUserByIds(String[] userIds);
@@ -200,21 +223,23 @@ public interface ISysBaseAPI extends CommonAPI {
     /**
      * 29将会议签到信息推动到预览
      * userIds
-     * @return
+     *
      * @param userId
+     * @return
      */
     void meetingSignWebsocket(String userId);
 
     /**
      * 30根据name获取所有参与用户
      * userNames
+     *
      * @return
      */
     List<LoginUser> queryUserByNames(String[] userNames);
 
-
     /**
      * 31获取用户的角色集合
+     *
      * @param username
      * @return
      */
@@ -222,6 +247,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 32获取用户的权限集合
+     *
      * @param username
      * @return
      */
@@ -229,6 +255,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 33判断是否有online访问的权限
+     *
      * @param onlineAuthDTO
      * @return
      */
@@ -241,6 +268,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 35根据用户id查询用户所属公司下所有用户ids
+     *
      * @param userId
      * @return
      */
@@ -248,6 +276,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 36根据多个用户账号(逗号分隔)，查询返回多个用户信息
+     *
      * @param usernames
      * @return
      */
@@ -255,6 +284,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 37根据多个用户ID(逗号分隔)，查询返回多个用户信息
+     *
      * @param ids
      * @return
      */
@@ -262,6 +292,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 38根据多个部门编码(逗号分隔)，查询返回多个部门信息
+     *
      * @param orgCodes
      * @return
      */
@@ -269,6 +300,7 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 39根据多个部门id(逗号分隔)，查询返回多个部门信息
+     *
      * @param ids
      * @return
      */
@@ -276,13 +308,16 @@ public interface ISysBaseAPI extends CommonAPI {
 
     /**
      * 40发送邮件消息
+     *
      * @param email
      * @param title
      * @param content
      */
-    void sendEmailMsg(String email,String title,String content);
+    void sendEmailMsg(String email, String title, String content);
+
     /**
      * 41 获取公司下级部门和公司下所有用户信息
+     *
      * @param orgCode
      */
     List<Map> getDeptUserByOrgCode(String orgCode);

@@ -117,13 +117,13 @@
     },
     methods: {
       loadData() {
-        //20190908 scott for: 首次进入菜单列表的时候，不加载权限列表
+        // 20190908 scott for: 首次进入菜单列表的时候，不加载权限列表
         if(!this.permId){
           return
         }
         let that = this
         this.dataSource = []
-        var params = this.getQueryParams()//查询条件
+        var params = this.getQueryParams() // 查询条件
         getPermissionRuleList(params).then((res) => {
           if (res.success) {
             that.dataSource = res.result

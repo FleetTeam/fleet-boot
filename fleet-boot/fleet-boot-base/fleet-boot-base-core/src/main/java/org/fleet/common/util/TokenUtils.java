@@ -67,6 +67,7 @@ public class TokenUtils {
 
     /**
      * 刷新token（保证用户在线操作不掉线）
+     *
      * @param token
      * @param userName
      * @param passWord
@@ -81,15 +82,15 @@ public class TokenUtils {
                 String newAuthorization = JwtUtil.sign(userName, passWord);
                 // 设置Toekn缓存有效时间
                 redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, newAuthorization);
-                redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME*2 / 1000);
+                redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME * 2 / 1000);
             }
-            //update-begin--Author:scott  Date:20191005  for：解决每次请求，都重写redis中 token缓存问题
-//            else {
-//                redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, cacheToken);
-//                // 设置超时时间
-//                redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME / 1000);
-//            }
-            //update-end--Author:scott  Date:20191005  for：解决每次请求，都重写redis中 token缓存问题
+            // update-begin--Author:scott  Date:20191005  for：解决每次请求，都重写redis中 token缓存问题
+            // else {
+            //     redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, cacheToken);
+            //     // 设置超时时间
+            //     redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME / 1000);
+            // }
+            // update-end--Author:scott  Date:20191005  for：解决每次请求，都重写redis中 token缓存问题
             return true;
         }
         return false;

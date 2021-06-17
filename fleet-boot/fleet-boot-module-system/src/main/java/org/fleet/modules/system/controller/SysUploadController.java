@@ -28,24 +28,25 @@ public class SysUploadController {
 
     /**
      * 上传
+     *
      * @param request
      */
     @PostMapping(value = "/uploadMinio")
     public Result<?> uploadMinio(HttpServletRequest request) {
         Result<?> result = new Result<>();
         String bizPath = request.getParameter("biz");
-        if(oConvertUtils.isEmpty(bizPath)){
+        if (oConvertUtils.isEmpty(bizPath)) {
             bizPath = "";
         }
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = multipartRequest.getFile("file");// 获取上传文件对象
-        String orgName = file.getOriginalFilename();// 获取文件名
+        MultipartFile file = multipartRequest.getFile("file"); // 获取上传文件对象
+        String orgName = file.getOriginalFilename(); // 获取文件名
         orgName = CommonUtils.getFileName(orgName);
-        String file_url =  MinioUtil.upload(file,bizPath);
-        if(oConvertUtils.isEmpty(file_url)){
+        String file_url = MinioUtil.upload(file, bizPath);
+        if (oConvertUtils.isEmpty(file_url)) {
             return Result.error("上传失败,请检查配置信息是否正确!");
         }
-        //保存文件信息
+        // 保存文件信息
         OSSFile minioFile = new OSSFile();
         minioFile.setFileName(orgName);
         minioFile.setUrl(file_url);

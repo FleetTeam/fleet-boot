@@ -131,20 +131,20 @@ export default {
       this.editor.on('change', () => {
         this.$emit('change', this.editor.getMarkdown())
       })
-      //--begin 添加自定义上传按钮
+      // --begin 添加自定义上传按钮
       /*
        * 添加自定义按钮
        */
-      //获取编辑器上的功能条
+      // 获取编辑器上的功能条
       let toolbar = this.editor.getUI().getToolbar();
       let fileDom = this.$refs.files;
-      //添加图片点击事件
+      // 添加图片点击事件
       this.editor.eventManager.addEventType('isShowClickEvent');
       this.editor.eventManager.listen('isShowClickEvent', () => {
         this.isShow = true
         this.dialogVisible = true
       });
-      //addImageBlobHook图片上传、剪切、拖拽都会走此方法
+      // addImageBlobHook图片上传、剪切、拖拽都会走此方法
       // 删除默认监听事件
       this.editor.eventManager.removeEventHandler('addImageBlobHook')
       // 添加自定义监听事件
@@ -164,7 +164,7 @@ export default {
         }
         //
       });
-      //--end 添加自定义上传按钮
+      // --end 添加自定义上传按钮
     },
     destroyEditor() {
       if (!this.editor) return
@@ -218,7 +218,7 @@ export default {
       this.networkPic=""
       this.index=val
     },
-    //添加图片到markdown
+    // 添加图片到markdown
     addImgToMd(data,name) {
       let editor = this.editor.getCodeMirror();
       let editorHtml = this.editor.getCurrentModeEditor();

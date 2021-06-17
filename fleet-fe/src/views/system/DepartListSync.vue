@@ -21,7 +21,7 @@
             </div>
           </a-alert>
           <a-input-search @search="onSearch" style="width:100%;margin-top: 10px" placeholder="请输入部门名称"/>
-          <!-- 树-->
+          <!-- 树 -->
           <a-col :md="10" :sm="24">
             <template>
               <a-dropdown :trigger="[this.dropTrigger]" @visibleChange="dropStatus">
@@ -40,7 +40,7 @@
               :load-data="loadSubTree"
               @expand="onExpand"/>
                 </span>
-                <!--新增右键点击事件,和增加添加和删除功能-->
+                <!-- 新增右键点击事件,和增加添加和删除功能 -->
                 <a-menu slot="overlay">
                   <a-menu-item @click="handleAdd(3)" key="1">添加</a-menu-item>
                   <a-menu-item @click="handleDelete" key="2">删除</a-menu-item>
@@ -51,7 +51,7 @@
           </a-col>
         </div>
       </a-card>
-      <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+      <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
       <div class="drawer-bootom-button">
         <a-dropdown :trigger="['click']" placement="topCenter">
           <a-menu slot="overlay">
@@ -67,7 +67,7 @@
           </a-button>
         </a-dropdown>
       </div>
-      <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+      <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
     </a-col>
     <a-col :md="12" :sm="24">
       <a-tabs defaultActiveKey="1">
@@ -286,13 +286,13 @@
       },
       loadTree() {
         var that = this
-        //上级部门树信息
+        // 上级部门树信息
         that.treeData = []
-        //保存的树信息，搜索是需要用到
+        // 保存的树信息，搜索是需要用到
         that.departTreeAll = []
-        //所有的树信息
+        // 所有的树信息
         that.departTree = []
-        //所有的树节点key信息
+        // 所有的树节点key信息
         that.allIds = []
         queryDepartTreeSync().then((res) => {
           if (res.success) {
@@ -314,7 +314,7 @@
         return new Promise(resolve => {
             queryDepartTreeSync({pid:treeNode.dataRef.id}).then((res) => {
               if (res.success) {
-                //判断chidlren是否为空，并修改isLeaf属性值
+                // 判断chidlren是否为空，并修改isLeaf属性值
                 if(res.result.length == 0){
                   treeNode.dataRef['isLeaf']=true
                   return;
@@ -329,7 +329,7 @@
             })
             resolve();
         });
-        //保存全部部门信息，方便后面搜索使用
+        // 保存全部部门信息，方便后面搜索使用
         that.departTreeAll=that.departTree
       },
       refresh() {
@@ -340,7 +340,7 @@
       rightHandle(node) {
         this.dropTrigger = 'contextmenu'
         console.log(node.node.eventKey)
-        //注释：异步书加载key拼接__,以便于每次展开节点会刷新数据
+        // 注释：异步书加载key拼接__,以便于每次展开节点会刷新数据
         this.rightClickSelectedKey =  node.node.eventKey.split('__')[0]
         this.rightClickSelectedOrgCode = node.node.dataRef.orgCode
       },
@@ -423,14 +423,14 @@
       onCheck(checkedKeys, info) {
         console.log('onCheck', checkedKeys, info)
         this.hiding = false
-        //this.checkedKeys = checkedKeys.checked
-        // <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+        // this.checkedKeys = checkedKeys.checked
+        // <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
         if(this.checkStrictly){
           this.checkedKeys = checkedKeys.checked;
         }else{
           this.checkedKeys = checkedKeys
         }
-        // <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+        // <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
       },
       onSelect(selectedKeys, e) {
         console.log('selected', selectedKeys, e)
@@ -536,11 +536,11 @@
           onOk: function () {
             deleteByDepartId({id: that.rightClickSelectedKey}).then((resp) => {
               if (resp.success) {
-                //删除成功后，去除已选中中的数据
+                // 删除成功后，去除已选中中的数据
                 that.checkedKeys.splice(that.checkedKeys.findIndex(key => key === that.rightClickSelectedKey), 1);
                 that.$message.success('删除成功!')
                 that.loadTree()
-                //删除后同步清空右侧基本信息内容
+                // 删除后同步清空右侧基本信息内容
                 let orgCode=that.form.getFieldValue("orgCode");
                 if(orgCode && orgCode === that.rightClickSelectedOrgCode){
                   that.onClearSelected()
@@ -573,7 +573,7 @@
           }
         }
       },
-     // <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
+     // <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
       expandAll () {
         this.iExpandedKeys = this.allTreeKeys
       },
@@ -582,11 +582,11 @@
       },
       checkALL () {
         this.checkStriccheckStrictlytly = false
-        //this.checkedKeys = this.allTreeKeys
+        // this.checkedKeys = this.allTreeKeys
         this.checkedKeys = this.allIds
       },
       cancelCheckALL () {
-        //this.checkedKeys = this.defaultCheckedKeys
+        // this.checkedKeys = this.defaultCheckedKeys
         this.checkedKeys = []
       },
       switchCheckStrictly (v) {
@@ -605,8 +605,8 @@
           }
         }
       }
-      // <!---- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======------>
-      
+      // <!-- -- author:os_chengtgen -- date:20190827 --  for:切换父子勾选模式 =======---- -->
+
     },
     created() {
       this.currFlowId = this.$route.params.id

@@ -132,14 +132,14 @@
         this.randomPage(event.current, event.pageSize, true)
       },
 
-      /** 获取值，忽略表单验证 */
+      // 获取值，忽略表单验证
       handleTableGet() {
         const values = this.$refs.vTable.getTableData()
         console.log('获取值:', {values})
         this.$message.success('获取值成功，请看控制台输出')
       },
 
-      /* 随机生成数据 */
+      // 随机生成数据
       randomPage(current, pageSize, loading = false) {
         if (loading) {
           this.loading = true

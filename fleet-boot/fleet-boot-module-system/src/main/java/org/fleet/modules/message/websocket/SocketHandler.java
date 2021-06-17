@@ -26,8 +26,8 @@ public class SocketHandler implements FleetRedisListerer {
         String message = map.get("message");
         if (ObjectUtil.isNotEmpty(userId)) {
             webSocket.pushMessage(userId, message);
-            //app端消息推送
-            webSocket.pushMessage(userId+CommonSendStatus.APP_SESSION_SUFFIX, message);
+            // app端消息推送
+            webSocket.pushMessage(userId + CommonSendStatus.APP_SESSION_SUFFIX, message);
         } else {
             webSocket.pushMessage(message);
         }

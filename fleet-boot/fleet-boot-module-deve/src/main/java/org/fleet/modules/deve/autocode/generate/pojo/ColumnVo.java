@@ -1,6 +1,5 @@
 package org.fleet.modules.deve.autocode.generate.pojo;
 
-
 public class ColumnVo {
     public static final String OPTION_REQUIRED = "required:true";
     public static final String OPTION_NUMBER_INSEX = "precision:2,groupSeparator:','";
@@ -26,7 +25,6 @@ public class ColumnVo {
 
     private String optionType = "";
 
-
     public String getFieldDbType() {
         return this.fieldDbType;
     }
@@ -47,12 +45,12 @@ public class ColumnVo {
         return this.precision;
     }
 
-    public String getScale() {
-        return this.scale;
-    }
-
     public void setPrecision(String precision) {
         this.precision = precision;
+    }
+
+    public String getScale() {
+        return this.scale;
     }
 
     public void setScale(String scale) {
@@ -128,7 +126,6 @@ public class ColumnVo {
     public void setFieldDbName(String fieldDbName) {
         this.fieldDbName = fieldDbName;
     }
-
 
     public String toString() {
         return "ColumnVo [fieldDbName=" + this.fieldDbName + ", fieldName=" + this.fieldName + ", filedComment=" + this.filedComment + ", fieldType=" + this.fieldType + ", fieldDbType=" + this.fieldDbType + ", classType=" + this.classType + ", classType_row=" + this.classType_row + ", optionType=" + this.optionType + ", charmaxLength=" + this.charmaxLength + ", precision=" + this.precision + ", scale=" + this.scale + ", nullable=" + this.nullable + "]";

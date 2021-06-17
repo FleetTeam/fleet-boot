@@ -20,20 +20,18 @@ import org.springframework.http.ResponseEntity;
  * 系统用户单元测试
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = FleetSystemApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = FleetSystemApplication.class)
 @SuppressWarnings({"FieldCanBeLocal", "SpringJavaAutowiredMembersInspection"})
 public class SysUserTest {
-    @Autowired
-    private RedisUtil redisUtil;
-
     /**
      * 测试地址：实际使用时替换成你自己的地址
      */
     private final String BASE_URL = "http://localhost:8080/fleet-boot/sys/user/";
-
     // 请实际使用时替换成你自己的用户名和密码
     private final String USERNAME = "admin";
     private final String PASSWORD = "123456";
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 测试用例：新增
@@ -43,7 +41,7 @@ public class SysUserTest {
         // 用户Token
         String token = this.getToken();
         // 请求地址
-        String url = BASE_URL + "add" ;
+        String url = BASE_URL + "add";
         // 请求 Header （用于传递Token）
         HttpHeaders headers = this.getHeaders(token);
         // 请求方式是 POST 代表提交新增数据
@@ -56,11 +54,11 @@ public class SysUserTest {
         JSONObject params = new JSONObject();
         params.put("username", "wangwuTest");
         params.put("password", "123456");
-        params.put("confirmpassword","123456");
+        params.put("confirmpassword", "123456");
         params.put("realname", "单元测试");
         params.put("activitiSync", "1");
-        params.put("userIdentity","1");
-        params.put("workNo","0025");
+        params.put("userIdentity", "1");
+        params.put("workNo", "0025");
 
         System.out.println("请求参数：" + params.toJSONString());
 
@@ -72,7 +70,6 @@ public class SysUserTest {
             System.out.println("查询失败");
         }
     }
-
 
     /**
      * 测试用例：修改
@@ -98,9 +95,9 @@ public class SysUserTest {
         params.put("username", "wangwuTest");
         params.put("realname", "单元测试1111");
         params.put("activitiSync", "1");
-        params.put("userIdentity","1");
-        params.put("workNo","0025");
-        params.put("id",dataId);
+        params.put("userIdentity", "1");
+        params.put("workNo", "0025");
+        params.put("id", dataId);
 
         System.out.println("请求参数：" + params.toJSONString());
 
@@ -112,7 +109,6 @@ public class SysUserTest {
             System.out.println("查询失败");
         }
     }
-
 
     /**
      * 测试用例：删除

@@ -52,14 +52,12 @@ script内需引入jdate
     components: {
       JDate
     }
-    //...
+    // ...
   }
 </script>
 ```
 
-
  ---
-
 
 # JSuperQuery 高级查询 使用文档
 ## 参数配置
@@ -109,7 +107,7 @@ import JSuperQuery from '@/components/jeecg/JSuperQuery.vue';
 ```
 4.list页面声明回调事件handleSuperQuery(与组件的callback对应即可)
 ```vue
-//高级查询方法
+// 高级查询方法
 handleSuperQuery(arg) {
   if(!arg){
     this.superQueryParams=''
@@ -154,7 +152,6 @@ this.$refs.superQueryModal.show();
 1.组件带有v-model的使用方法
 ```vue
 <j-ellipsis :value="text"/>
-
 
 # Modal弹框实现最大化功能  
 
@@ -414,11 +411,11 @@ export default {
     components: {JCodeEditor},
     data() {
       return {
-        //省略代码......
+        // 省略代码......
       }
     },
     methods:{
-      //省略部分代码......
+      // 省略部分代码......
       handleImportXls(){
         this.$refs.importModal.show()
       },
@@ -466,7 +463,6 @@ online用 实际开发请使用components/dict/JMultiSelectTag
 </script>
 ```
 
-
 # JTreeSelect 树形下拉组件
 异步加载的树形下拉组件
 
@@ -508,5 +504,4 @@ online用 实际开发请使用components/dict/JMultiSelectTag
   }
 </script>
 ```
-
 

@@ -27,7 +27,6 @@
         </a-select>
       </a-form-model-item>
 
-
       <a-form-model-item v-if="isMultiDepart" :labelCol="{span:4}" :wrapperCol="{span:20}" style="margin-bottom:10px" :validate-status="validate_status2">
         <a-tooltip placement="topLeft" >
           <template slot="title">
@@ -95,7 +94,7 @@
       },
       bizDepart(loginResult){
         let multi_depart = loginResult.multi_depart
-        //0:无部门 1:一个部门 2:多个部门
+        // 0:无部门 1:一个部门 2:多个部门
         if(multi_depart==0){
           this.$notification.warn({
             message: '提示',
@@ -162,7 +161,7 @@
                 const userInfo = res.result.userInfo;
                 Vue.ls.set(USER_INFO, userInfo, 7 * 24 * 60 * 60 * 1000);
                 this.$store.commit('SET_INFO', userInfo);
-                //console.log("---切换组织机构---userInfo-------",store.getters.userInfo.orgCode);
+                // console.log("---切换组织机构---userInfo-------",store.getters.userInfo.orgCode);
                 resolve();
               }else{
                 this.requestFailed(res)

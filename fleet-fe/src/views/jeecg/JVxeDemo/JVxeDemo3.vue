@@ -48,20 +48,20 @@
           }
         ],
         dataSource: [],
-    
+
         mockData: [
           { text: '北京市', value: '110000', parent: null },
           { text: '天津市', value: '120000', parent: null },
           { text: '河北省', value: '130000', parent: null },
           { text: '上海市', value: '310000', parent: null },
-      
+
           { text: '北京市', value: '110100', parent: '110000' },
           { text: '天津市市', value: '120100', parent: '120000' },
           { text: '石家庄市', value: '130100', parent: '130000' },
           { text: '唐山市', value: '130200', parent: '130000' },
           { text: '秦皇岛市', value: '130300', parent: '130000' },
           { text: '上海市', value: '310100', parent: '310000' },
-      
+
           { text: '东城区', value: '110101', parent: '110100' },
           { text: '西城区', value: '110102', parent: '110100' },
           { text: '朝阳区', value: '110105', parent: '110100' },
@@ -89,17 +89,17 @@
       this.columns[0].options = this.request(null)
     },
     methods: {
-      
+
       request(parentId) {
         return this.mockData.filter(i => i.parent === parentId)
       },
-  
-      /** 当选项被改变时，联动其他组件 */
+
+      // 当选项被改变时，联动其他组件
       handleValueChange(event) {
         const { type, row, column, value, target } = event
         console.log("event",event)
         if (type === JVXETypes.select) {
-      
+
           // 第一列
           if (column.key === 's1') {
             // 设置第二列的 options
@@ -121,7 +121,7 @@
             }])
           }
         }
-    
+
       }
     }
   }

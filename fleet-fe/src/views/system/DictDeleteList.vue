@@ -25,7 +25,6 @@
 
   </a-modal>
 
-
 </template>
 
 <script>
@@ -79,7 +78,7 @@
     methods: {
       handleCancel(){
         this.visible = false
-        //回收站字典列表刷新
+        // 回收站字典列表刷新
         this.$emit("refresh")
       },
       show(){

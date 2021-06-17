@@ -18,9 +18,10 @@ public class BaseColumn {
      */
     private String field;
 
-    public BaseColumn(){}
+    public BaseColumn() {
+    }
 
-    public BaseColumn(String title,String field){
+    public BaseColumn(String title, String field) {
         this.title = title;
         this.field = field;
     }

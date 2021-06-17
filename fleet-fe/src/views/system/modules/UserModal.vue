@@ -30,7 +30,7 @@
           <a-form-model-item label="登录密码" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="password" >
             <a-input type="password" placeholder="请输入登录密码" v-model="model.password" />
           </a-form-model-item>
-  
+
           <a-form-model-item label="确认密码" :labelCol="labelCol" :wrapperCol="wrapperCol" prop="confirmpassword" >
             <a-input type="password" @blur="handleConfirmBlur" placeholder="请重新输入登录密码" v-model="model.confirmpassword"/>
           </a-form-model-item>
@@ -57,12 +57,12 @@
           </j-multi-select-tag>
         </a-form-model-item>
 
-        <!--部门分配-->
+        <!-- 部门分配 -->
         <a-form-model-item label="部门分配" :labelCol="labelCol" :wrapperCol="wrapperCol" v-show="!departDisabled">
           <j-select-depart v-model="model.selecteddeparts" :multi="true" @back="backDepartInfo" :backDepart="true"></j-select-depart>
         </a-form-model-item>
 
-        <!--租户分配-->
+        <!-- 租户分配 -->
         <a-form-model-item label="租户分配" :labelCol="labelCol" :wrapperCol="wrapperCol" v-show="!departDisabled">
           <j-multi-select-tag
             :disabled="disableSubmit"
@@ -99,7 +99,7 @@
             :format="dateFormat"
             :getCalendarContainer="node => node.parentNode"/>
         </a-form-model-item>
-     
+
         <a-form-model-item label="性别" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-select  v-model="model.sex"  placeholder="请选择性别" :getPopupContainer= "(target) => target.parentNode">
             <a-select-option :value="1">男</a-select-option>
@@ -126,7 +126,6 @@
       </a-form-model>
     </a-spin>
 
-
     <div class="drawer-bootom-button" v-show="!disableSubmit">
       <a-popconfirm title="确定放弃编辑？" @confirm="handleCancel" okText="确定" cancelText="取消">
         <a-button style="margin-right: .8rem">取消</a-button>
@@ -151,13 +150,13 @@
     },
     data () {
       return {
-        departDisabled: false, //是否是我的部门调用该页面
-        roleDisabled: false, //是否是角色维护调用该页面
+        departDisabled: false, // 是否是我的部门调用该页面
+        roleDisabled: false, // 是否是角色维护调用该页面
         modalWidth:800,
         drawerWidth:700,
         modaltoggleFlag:true,
         confirmDirty: false,
-        userId:"", //保存用户id
+        userId:"", // 保存用户id
         disableSubmit:false,
         dateFormat:"YYYY-MM-DD",
         validatorRules:{
@@ -194,7 +193,7 @@
           fileUpload: window._CONFIG['domianURL']+"/sys/common/upload",
           userWithDepart: "/sys/user/userDepartList", // 引入为指定用户查看部门信息需要的url
           userId:"/sys/user/generateUserId", // 引入生成添加用户情况下的url
-          syncUserByUserName:"/act/process/extActProcess/doSyncUserByUserName",//同步用户到工作流
+          syncUserByUserName:"/act/process/extActProcess/doSyncUserByUserName", // 同步用户到工作流
           queryTenantList: '/sys/tenant/queryList'
         },
         tenantsOptions: [],
@@ -221,11 +220,11 @@
       edit (record) {
         let that = this;
         that.visible = true;
-        //根据屏幕宽度自适应抽屉宽度
+        // 根据屏幕宽度自适应抽屉宽度
         this.resetScreenSize();
         that.userId = record.id;
         that.model = Object.assign({},{selectedroles:'',selecteddeparts:''}, record);
-        //身份为上级显示负责部门，否则不显示
+        // 身份为上级显示负责部门，否则不显示
         if(this.model.userIdentity==2){
           this.departIdShow=true;
         }else{
@@ -241,7 +240,7 @@
       isDisabledAuth(code){
         return disabledAuthFilter(code);
       },
-      //窗口最大化切换
+      // 窗口最大化切换
       toggleScreen(){
         if(this.modaltoggleFlag){
           this.modalWidth = window.innerWidth;
@@ -259,7 +258,7 @@
           this.drawerWidth = 700;
         }
       },
-      //初始化租户字典
+      // 初始化租户字典
       initTenantList(){
         getAction(this.url.queryTenantList).then(res=>{
           if(res.success){
@@ -271,7 +270,7 @@
           }
         })
       },
-      //初始化角色字典
+      // 初始化角色字典
       initRoleList(){
         queryall().then((res)=>{
           if(res.success){
@@ -299,7 +298,7 @@
             let selectDepartKeys=[]
             for (let i = 0; i < res.result.length; i++) {
               selectDepartKeys.push(res.result[i].key);
-              //新增负责部门选择下拉框
+              // 新增负责部门选择下拉框
               departOptions.push({
                 value: res.result[i].key,
                 label: res.result[i].title
@@ -338,7 +337,7 @@
         this.$refs.form.validate(valid => {
           if (valid) {
             that.confirmLoading = true;
-            //如果是上级择传入departIds,否则为空
+            // 如果是上级择传入departIds,否则为空
             if(this.model.userIdentity!==2){
               this.model.departIds="";
             }
@@ -472,7 +471,7 @@
           this.$message.warning('请上传图片');
           return false;
         }
-        //TODO 验证文件大小
+        // TODO 验证文件大小
       },
       identityChange(e){
         if(e.target.value===1){

@@ -15,10 +15,12 @@ public enum TriggerTypeEnum {
     PARENT(I18nUtil.getString("jobconf_trigger_type_parent")),
     API(I18nUtil.getString("jobconf_trigger_type_api"));
 
-    private TriggerTypeEnum(String title){
+    private String title;
+
+    private TriggerTypeEnum(String title) {
         this.title = title;
     }
-    private String title;
+
     public String getTitle() {
         return title;
     }

@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.fleetframework.boot</groupId>
@@ -22,12 +22,12 @@
         <module>fleet-boot-starter-rabbitmq</module>
     </modules>
     <dependencies>
-        <!--fleet-tools-->
+        <!-- fleet-tools -->
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-base-tools</artifactId>
         </dependency>
-        <!--加载配置信息-->
+        <!-- 加载配置信息 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>

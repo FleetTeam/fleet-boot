@@ -13,11 +13,11 @@ import {Modal} from 'ant-design-vue'
 export const JeecgListMixin = {
   data(){
     return {
-      /* 查询条件-请不要在queryParam中声明非字符串值的属性 */
+      // 查询条件-请不要在queryParam中声明非字符串值的属性
       queryParam: {},
-      /* 数据源 */
+      // 数据源
       dataSource:[],
-      /* 分页参数 */
+      // 分页参数
       ipagination:{
         current: 1,
         pageSize: 10,
@@ -29,26 +29,26 @@ export const JeecgListMixin = {
         showSizeChanger: true,
         total: 0
       },
-      /* 排序参数 */
+      // 排序参数
       isorter:{
         column: 'createTime',
         order: 'desc',
       },
-      /* 筛选参数 */
+      // 筛选参数
       filters: {},
-      /* table加载状态 */
+      // table加载状态
       loading:false,
-      /* table选中keys*/
+      // table选中keys
       selectedRowKeys: [],
-      /* table选中records*/
+      // table选中records
       selectionRows: [],
-      /* 查询折叠 */
+      // 查询折叠
       toggleSearchStatus:false,
-      /* 高级查询条件生效状态 */
+      // 高级查询条件生效状态
       superQueryFlag:false,
-      /* 高级查询条件 */
+      // 高级查询条件
       superQueryParams: '',
-      /** 高级查询拼接方式 */
+      // 高级查询拼接方式
       superQueryMatchType: 'and',
     }
   },
@@ -56,12 +56,12 @@ export const JeecgListMixin = {
       if(!this.disableMixinCreated){
         console.log(' -- mixin created -- ')
         this.loadData();
-        //初始化字典配置 在自己页面定义
+        // 初始化字典配置 在自己页面定义
         this.initDictConfig();
       }
   },
   computed: {
-    //token header
+    // token header
     tokenHeader(){
       let head = {'X-Access-Token': Vue.ls.get(ACCESS_TOKEN)}
       let tenantid = Vue.ls.get(TENANT_ID)
@@ -77,15 +77,15 @@ export const JeecgListMixin = {
         this.$message.error("请设置url.list属性!")
         return
       }
-      //加载数据 若传入参数1则加载第一页的内容
+      // 加载数据 若传入参数1则加载第一页的内容
       if (arg === 1) {
         this.ipagination.current = 1;
       }
-      var params = this.getQueryParams();//查询条件
+      var params = this.getQueryParams(); // 查询条件
       this.loading = true;
       getAction(this.url.list, params).then((res) => {
         if (res.success) {
-          //update-begin---author:zhangyafei    Date:20201118  for：适配不分页的数据列表------------
+          // update-begin---author:zhangyafei    Date:20201118  for：适配不分页的数据列表------------
           this.dataSource = res.result.records||res.result;
           if(res.result.total)
           {
@@ -93,7 +93,7 @@ export const JeecgListMixin = {
           }else{
             this.ipagination.total = 0;
           }
-          //update-end---author:zhangyafei    Date:20201118  for：适配不分页的数据列表------------
+          // update-end---author:zhangyafei    Date:20201118  for：适配不分页的数据列表------------
         }
         if(res.code===510){
           this.$message.warning(res.message)
@@ -105,7 +105,7 @@ export const JeecgListMixin = {
       console.log("--这是一个假的方法!")
     },
     handleSuperQuery(params, matchType) {
-      //高级查询方法
+      // 高级查询方法
       if(!params){
         this.superQueryParams=''
         this.superQueryFlag = false
@@ -117,7 +117,7 @@ export const JeecgListMixin = {
       this.loadData(1)
     },
     getQueryParams() {
-      //获取查询条件
+      // 获取查询条件
       let sqp = {}
       if(this.superQueryParams){
         sqp['superQueryParams']=encodeURI(this.superQueryParams)
@@ -130,7 +130,7 @@ export const JeecgListMixin = {
       return filterObj(param);
     },
     getQueryField() {
-      //TODO 字段权限控制
+      // TODO 字段权限控制
       var str = "id,";
       this.columns.forEach(function (value) {
         str += "," + value.dataIndex;
@@ -177,7 +177,7 @@ export const JeecgListMixin = {
             that.loading = true;
             deleteAction(that.url.deleteBatch, {ids: ids}).then((res) => {
               if (res.success) {
-                //重新计算分页问题
+                // 重新计算分页问题
                 that.reCalculatePage(that.selectedRowKeys.length)
                 that.$message.success(res.message);
                 that.loadData();
@@ -200,7 +200,7 @@ export const JeecgListMixin = {
       var that = this;
       deleteAction(that.url.delete, {id: id}).then((res) => {
         if (res.success) {
-          //重新计算分页问题
+          // 重新计算分页问题
           that.reCalculatePage(1)
           that.$message.success(res.message);
           that.loadData();
@@ -210,11 +210,11 @@ export const JeecgListMixin = {
       });
     },
     reCalculatePage(count){
-      //总数量-count
+      // 总数量-count
       let total=this.ipagination.total-count;
-      //获取删除后的分页数
+      // 获取删除后的分页数
       let currentIndex=Math.ceil(total/this.ipagination.pageSize);
-      //删除后的分页数<所在当前页
+      // 删除后的分页数<所在当前页
       if(currentIndex<this.ipagination.current){
         this.ipagination.current=currentIndex;
       }
@@ -231,8 +231,8 @@ export const JeecgListMixin = {
       this.$refs.modalForm.disableSubmit = false;
     },
     handleTableChange(pagination, filters, sorter) {
-      //分页、排序、筛选变化时触发
-      //TODO 筛选
+      // 分页、排序、筛选变化时触发
+      // TODO 筛选
       console.log(pagination)
       if (Object.keys(sorter).length > 0) {
         this.isorter.column = sorter.field;
@@ -251,7 +251,7 @@ export const JeecgListMixin = {
     modalFormOk() {
       // 新增/修改 成功时，重载列表
       this.loadData();
-      //清空列表选中
+      // 清空列表选中
       this.onClearSelected()
     },
     handleDetail:function(record){
@@ -289,8 +289,8 @@ export const JeecgListMixin = {
           link.setAttribute('download', fileName+'.xls')
           document.body.appendChild(link)
           link.click()
-          document.body.removeChild(link); //下载完成移除元素
-          window.URL.revokeObjectURL(url); //释放掉blob对象
+          document.body.removeChild(link); // 下载完成移除元素
+          window.URL.revokeObjectURL(url); // 释放掉blob对象
         }
       })
     },

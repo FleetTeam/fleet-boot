@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
 /**
  * 分布式锁解析器
  *
@@ -35,8 +34,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Aspect
 @Component
-public class DistributedLockHandler extends BaseAspect{
-
+public class DistributedLockHandler extends BaseAspect {
 
     @Autowired(required = false)
     private RedissonClient redissonClient;
@@ -55,16 +53,16 @@ public class DistributedLockHandler extends BaseAspect{
         log.info("进入RedisLock环绕通知...");
         RLock rLock = getLock(joinPoint, jLock);
         boolean res = false;
-        //获取超时时间
+        // 获取超时时间
         long expireSeconds = jLock.expireSeconds();
-        //等待多久,n秒内获取不到锁，则直接返回
+        // 等待多久,n秒内获取不到锁，则直接返回
         long waitTime = jLock.waitTime();
-        //执行aop
+        // 执行aop
         if (rLock != null) {
             try {
                 if (waitTime == -1) {
                     res = true;
-                    //一直等待加锁
+                    // 一直等待加锁
                     rLock.lock(expireSeconds, TimeUnit.MILLISECONDS);
                 } else {
                     res = rLock.tryLock(waitTime, expireSeconds, TimeUnit.MILLISECONDS);
@@ -143,7 +141,7 @@ public class DistributedLockHandler extends BaseAspect{
                 break;
             case REENTRANT:
                 List<String> valueBySpEL = getValueBySpEL(keys[0], parameterNames, args, keyConstant);
-                //如果spel表达式是数组或者LIST 则使用红锁
+                // 如果spel表达式是数组或者LIST 则使用红锁
                 if (valueBySpEL.size() == 1) {
                     rLock = redissonClient.getLock(valueBySpEL.get(0));
                 } else {

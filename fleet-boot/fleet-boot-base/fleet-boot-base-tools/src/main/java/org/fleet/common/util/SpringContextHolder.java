@@ -1,4 +1,3 @@
-
 package org.fleet.common.util;
 
 import cn.hutool.core.util.ObjectUtil;
@@ -16,20 +15,20 @@ public class SpringContextHolder implements ApplicationContextAware {
     private static ApplicationContext applicationContext;
 
     /**
+     * 取得存储在静态变量中的ApplicationContext.
+     */
+    public static ApplicationContext getApplicationContext() {
+        checkApplicationContext();
+        return applicationContext;
+    }
+
+    /**
      * 实现ApplicationContextAware接口的context注入函数, 将其存入静态变量.
      */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         // NOSONAR
         SpringContextHolder.applicationContext = applicationContext;
-    }
-
-    /**
-     * 取得存储在静态变量中的ApplicationContext.
-     */
-    public static ApplicationContext getApplicationContext() {
-        checkApplicationContext();
-        return applicationContext;
     }
 
     /**
@@ -55,7 +54,6 @@ public class SpringContextHolder implements ApplicationContextAware {
         }
         return t;
     }
-
 
     /**
      * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型.

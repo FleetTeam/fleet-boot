@@ -133,7 +133,7 @@
         dbDriverMap: {
           // MySQL 数据库
           '1': { dbDriver: 'com.mysql.jdbc.Driver' },
-          //MySQL5.7+ 数据库
+          // MySQL5.7+ 数据库
           '4': { dbDriver: 'com.mysql.cj.jdbc.Driver' },
           // Oracle
           '2': { dbDriver: 'oracle.jdbc.OracleDriver' },
@@ -147,7 +147,7 @@
         dbUrlMap: {
           // MySQL 数据库
           '1': { dbUrl: 'jdbc:mysql://127.0.0.1:3306/fleet-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false' },
-          //MySQL5.7+ 数据库
+          // MySQL5.7+ 数据库
           '4': { dbUrl: 'jdbc:mysql://127.0.0.1:3306/fleet-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai' },
           // Oracle
           '2': { dbUrl: 'jdbc:oracle:thin:@127.0.0.1:1521:ORCL' },

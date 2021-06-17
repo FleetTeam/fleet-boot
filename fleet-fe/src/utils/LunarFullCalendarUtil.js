@@ -11,8 +11,8 @@ import { getRefPromise } from '@/utils/JEditableTableUtil'
 /* 日历的视图类型 */
 const calendarViewType = {
   month: 'month', // 月视图
-  basicWeek: 'basicWeek',  // 基础周视图
-  basicDay: 'basicDay',//  基础天视图
+  basicWeek: 'basicWeek', // 基础周视图
+  basicDay: 'basicDay', // 基础天视图
   agendaWeek: 'agendaWeek', // 议程周视图
   agendaDay: 'agendaDay', // 议程天视图
 }
@@ -36,7 +36,7 @@ const defaultSettings = {
     center: 'title',
     right: 'hide, custom, month,agendaWeek,agendaDay'
   },
-  //点击今天日列表图
+  // 点击今天日列表图
   eventLimitClick: 'day',
   // 隐藏超出的事件
   eventLimit: true,
@@ -58,7 +58,7 @@ const defaultSettings = {
   nextDayThreshold: '00:00:00',
 }
 
-/** 提供了一些增强方法 */
+// 提供了一些增强方法
 const CalendarMixins = {
   data() {
     return {
@@ -88,7 +88,7 @@ const CalendarMixins = {
       }
     },
 
-    /** 获取 LunarFullCalendar 实例，ref = baseCalendar */
+    // 获取 LunarFullCalendar 实例，ref = baseCalendar
     getCalendar(fn) {
       return getRefPromise(this, 'baseCalendar').then(fn)
     },
@@ -97,7 +97,7 @@ const CalendarMixins = {
       this.getCalendar(ref => ref.$emit(name, data))
     },
 
-    /** 强制重新加载所有的事件（日程）*/
+    // 强制重新加载所有的事件（日程）
     calendarReloadEvents() {
       this.calendarEmit('reload-events')
     }

@@ -38,7 +38,6 @@ document.webL10n = (function(window, document, undefined) {
   var gMacros = {};
   var gReadyState = 'loading';
 
-
   /**
    * Synchronously loading l10n resources significantly minimizes flickering
    * from displaying the app with non-localized strings and then updating the
@@ -52,7 +51,6 @@ document.webL10n = (function(window, document, undefined) {
    */
 
   var gAsyncResourceLoading = true; // read-only
-
 
   /**
    * DOM helpers for the so-called "HTML API".
@@ -130,7 +128,6 @@ document.webL10n = (function(window, document, undefined) {
       onFailure();
     }
   }
-
 
   /**
    * l10n resource parser:
@@ -372,7 +369,6 @@ document.webL10n = (function(window, document, undefined) {
     // TODO: clear all non predefined macros.
     // There's no such macro /yet/ but we're planning to have some...
   }
-
 
   /**
    * Get rules for plural forms (shared with JetPack), see:
@@ -817,7 +813,6 @@ document.webL10n = (function(window, document, undefined) {
     return str;
   };
 
-
   /**
    * l10n dictionary functions
    */
@@ -833,11 +828,12 @@ document.webL10n = (function(window, document, undefined) {
       data = fallback;
     }
 
-    /** This is where l10n expressions should be processed.
-      * The plan is to support C-style expressions from the l20n project;
-      * until then, only two kinds of simple expressions are supported:
-      *   {[ index ]} and {{ arguments }}.
-      */
+    /**
+     * This is where l10n expressions should be processed.
+     * The plan is to support C-style expressions from the l20n project;
+     * until then, only two kinds of simple expressions are supported:
+     *   {[ index ]} and {{ arguments }}.
+     */
     var rv = {};
     for (var prop in data) {
       var str = data[prop];

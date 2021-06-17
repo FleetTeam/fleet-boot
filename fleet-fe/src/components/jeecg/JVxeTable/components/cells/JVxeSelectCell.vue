@@ -54,7 +54,7 @@
     },
     methods: {
 
-      /** 处理blur失去焦点事件 */
+      // 处理blur失去焦点事件
       handleBlur(value) {
         let {allowInput, options} = this.originColumn
 
@@ -79,18 +79,18 @@
         this.handleBlurCommon(value)
       },
 
-      /** 用于搜索下拉框中的内容 */
+      // 用于搜索下拉框中的内容
       handleSelectFilterOption(input, option) {
         let {allowSearch, allowInput} = this.originColumn
         if (allowSearch === true || allowInput === true) {
-          //update-begin-author:taoyan date:20200820 for:【专项任务】大连项目反馈行编辑问题处理 下拉框搜索
+          // update-begin-author:taoyan date:20200820 for:【专项任务】大连项目反馈行编辑问题处理 下拉框搜索
           return option.componentOptions.children[0].children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          //update-end-author:taoyan date:20200820 for:【专项任务】大连项目反馈行编辑问题处理 下拉框搜索
+          // update-end-author:taoyan date:20200820 for:【专项任务】大连项目反馈行编辑问题处理 下拉框搜索
         }
         return true
       },
 
-      /** select 搜索时的事件，用于动态添加options */
+      // select 搜索时的事件，用于动态添加options
       handleSearchSelect(value) {
         let {allowSearch, allowInput, options} = this.originColumn
 

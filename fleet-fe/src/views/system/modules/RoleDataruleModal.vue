@@ -26,7 +26,7 @@
         <div v-else><h3>无配置信息!</h3></div>
 
       </a-tab-pane>
-      <!--<a-tab-pane tab="按钮权限" key="2">敬请期待!!!</a-tab-pane>-->
+      <!-- <a-tab-pane tab="按钮权限" key="2">敬请期待!!!</a-tab-pane> -->
     </a-tabs>
 
   </a-drawer>
