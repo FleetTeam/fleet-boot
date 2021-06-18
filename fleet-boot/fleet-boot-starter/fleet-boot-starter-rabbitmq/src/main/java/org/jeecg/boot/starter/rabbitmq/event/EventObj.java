@@ -1,7 +1,7 @@
 package org.jeecg.boot.starter.rabbitmq.event;
 
 import lombok.Data;
-import org.jeecg.common.base.BaseMap;
+import org.fleet.common.base.BaseMap;
 
 import java.io.Serializable;
 

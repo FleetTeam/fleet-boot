@@ -37,7 +37,6 @@ import java.util.*;
  * @date: 2021-04-18
  * @description: shiro 配置类
  */
-
 @Slf4j
 @Configuration
 public class ShiroConfig {

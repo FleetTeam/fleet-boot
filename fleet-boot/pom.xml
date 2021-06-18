@@ -53,10 +53,8 @@
         <module>fleet-boot-module-demo</module>
         <module>fleet-boot-module-system</module>
         <module>fleet-boot-module-deve</module>
-        <!-- 需要微服务，请打开注释
         <module>fleet-boot-starter</module>
         <module>fleet-cloud-module</module>
-        -->
     </modules>
 
     <distributionManagement>

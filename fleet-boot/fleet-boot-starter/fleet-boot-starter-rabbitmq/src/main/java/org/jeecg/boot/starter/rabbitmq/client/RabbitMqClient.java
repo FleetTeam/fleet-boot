@@ -2,11 +2,13 @@ package org.jeecg.boot.starter.rabbitmq.client;
 
 import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.fleet.common.annotation.RabbitComponent;
+import org.fleet.common.base.BaseMap;
 import org.jeecg.boot.starter.rabbitmq.event.EventObj;
 import org.jeecg.boot.starter.rabbitmq.event.JeecgRemoteApplicationEvent;
 import org.jeecg.boot.starter.rabbitmq.exchange.DelayExchangeBuilder;
-import org.jeecg.common.annotation.RabbitComponent;
-import org.jeecg.common.base.BaseMap;
+import org.fleet.common.annotation.RabbitComponent;
+import org.fleet.common.base.BaseMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;

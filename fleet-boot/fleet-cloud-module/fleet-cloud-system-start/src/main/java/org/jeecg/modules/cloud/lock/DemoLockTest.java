@@ -1,10 +1,10 @@
 package org.jeecg.modules.cloud.lock;
 
 import lombok.extern.slf4j.Slf4j;
+import org.fleet.common.base.BaseMap;
 import org.jeecg.boot.starter.lock.annotation.JLock;
 import org.jeecg.boot.starter.lock.client.RedissonLockClient;
 import org.jeecg.boot.starter.rabbitmq.client.RabbitMqClient;
-import org.jeecg.common.base.BaseMap;
 import org.jeecg.modules.cloud.constant.CloudConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

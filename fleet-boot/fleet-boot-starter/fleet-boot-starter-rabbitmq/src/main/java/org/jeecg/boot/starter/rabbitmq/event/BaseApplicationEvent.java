@@ -2,7 +2,7 @@ package org.jeecg.boot.starter.rabbitmq.event;
 
 import cn.hutool.core.util.ObjectUtil;
 
-import org.jeecg.common.util.SpringContextHolder;
+import org.fleet.common.util.SpringContextHolder;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 

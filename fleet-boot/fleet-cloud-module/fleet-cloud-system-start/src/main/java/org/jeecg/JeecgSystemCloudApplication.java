@@ -1,9 +1,13 @@
 package org.jeecg;
 
 import lombok.extern.slf4j.Slf4j;
-import org.jeecg.common.util.oConvertUtils;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration;
+import org.fleet.common.util.oConvertUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -19,7 +23,12 @@ import java.net.UnknownHostException;
  * 注意： 需要先在naocs里面创建配置文件，参考文档 http://doc.jeecg.com/2043906
  */
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        ShiroAnnotationProcessorAutoConfiguration.class,
+        ShiroAutoConfiguration.class,
+        ShiroBeanAutoConfiguration.class,
+        DataSourceAutoConfiguration.class,
+})
 @EnableFeignClients(basePackages = {"org.jeecg"})
 @EnableScheduling
 public class JeecgSystemCloudApplication extends SpringBootServletInitializer {

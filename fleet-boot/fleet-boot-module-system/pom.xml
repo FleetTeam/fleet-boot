@@ -34,11 +34,13 @@
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-system-local-api</artifactId>
         </dependency>
+        <!-- 若采用微服务模式，注释demo依赖
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-module-demo</artifactId>
             <version>${fleetboot.version}</version>
         </dependency>
+        -->
         <dependency>
             <groupId>org.fleetframework.boot</groupId>
             <artifactId>fleet-boot-module-deve</artifactId>
@@ -65,7 +67,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- 微服务模式下修改为true,跳过此打包插件，否则微服务模块无法引用 -->
-                    <skip>false</skip>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>

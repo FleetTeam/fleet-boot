@@ -1,6 +1,6 @@
 package org.jeecg.modules.cloud.feign.feign;
 
-import org.jeecg.common.api.vo.Result;
+import org.fleet.common.api.vo.Result;
 import org.jeecg.modules.cloud.constant.CloudConstant;
 import org.jeecg.modules.cloud.feign.feign.fallback.JeecgTestClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
