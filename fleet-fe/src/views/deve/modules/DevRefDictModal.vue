@@ -7,11 +7,11 @@
     switchFullscreen
     @ok="handleOk"
     @cancel="handleCancel"
-    cancelText="关闭">
-
+    :okButtonProps="{ class: { 'jee-hidden': disableSubmit } }"
+    cancelText="关闭"
+  >
     <a-spin :spinning="confirmLoading">
       <a-form-model ref="form" :model="model" :rules="validatorRules">
-
         <!-- <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="ver" label="版本">
           <a-input placeholder="请输入版本" v-model="model.ver" />
         </a-form-model-item>
@@ -19,13 +19,14 @@
           <a-input placeholder="请输入系统标识" v-model="model.sysId" />
         </a-form-model-item> -->
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="dictCode" label="字典代码">
-          <a-input placeholder="请输入字典代码" v-model="model.dictCode" />
+          <!-- <a-input placeholder="请输入字典代码" v-model="model.dictCode" /> -->
+          <f-select-words v-model="model.dictCode" :disabled="dictCodeDisabled" @moreWordInfo="moreWordInfo" />
         </a-form-model-item>
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="dictDesc" label="字典描述">
           <a-input placeholder="请输入字典描述" v-model="model.dictDesc" />
         </a-form-model-item>
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="type" label="类型">
-          <a-input placeholder="请输入类型" v-model="model.type" />
+          <j-dict-select-tag v-model="model.type" title="类型" dictCode="ref_dict_type" placeholder="请选择类型" />
         </a-form-model-item>
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="length" label="长度">
           <a-input placeholder="请输入长度" v-model="model.length" />
@@ -51,99 +52,118 @@
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="remark" label="备注">
           <a-input placeholder="请输入备注" v-model="model.remark" />
         </a-form-model-item>
-
       </a-form-model>
     </a-spin>
   </j-modal>
 </template>
 
 <script>
-  import { httpAction } from '@/api/manage'
-  import moment from "moment"
+import { httpAction } from '@/api/manage'
+import FSelectWords from '@/components/deve/FSelectWords'
 
-  export default {
-    name: "DevRefDictModal",
-    data () {
-      return {
-        title:"操作",
-        visible: false,
-        model: {},
-        labelCol: {
-          xs: { span: 24 },
-          sm: { span: 5 },
-        },
-        wrapperCol: {
-          xs: { span: 24 },
-          sm: { span: 16 },
-        },
+import moment from 'moment'
 
-        confirmLoading: false,
-        validatorRules:{
-        dictCode:[{ required: true, message: '请输入字典代码!' }],
-        dictDesc:[{ required: true, message: '请输入字典描述!' }],
-        type:[{ required: true, message: '请输入类型!' }],
-        },
-        url: {
-          add: "/deve/devRefDict/add",
-          edit: "/deve/devRefDict/edit",
-        },
-      }
-    },
-    created () {
-    },
-    methods: {
-      add () {
-        // 初始化默认值
-        this.edit({});
+export default {
+  name: 'DevRefDictModal',
+  components: {
+    FSelectWords,
+  },
+  data() {
+    return {
+      title: '操作',
+      visible: false,
+      disableSubmit: false,
+      dictCodeDisabled: false,
+      model: {},
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 5 },
       },
-      edit (record) {
-        this.model = Object.assign({}, record);
-        this.visible = true;
-      },
-      close () {
-        this.$emit('close');
-        this.visible = false;
-        this.$refs.form.clearValidate();
-      },
-      handleOk () {
-        const that = this;
-        // 触发表单验证
-         this.$refs.form.validate(valid => {
-          if (valid) {
-            that.confirmLoading = true;
-            let httpurl = '';
-            let method = '';
-            if(!this.model.id){
-              httpurl+=this.url.add;
-              method = 'post';
-            }else{
-              httpurl+=this.url.edit;
-               method = 'put';
-            }
-            httpAction(httpurl,this.model,method).then((res)=>{
-              if(res.success){
-                that.$message.success(res.message);
-                that.$emit('ok');
-              }else{
-                that.$message.warning(res.message);
-              }
-            }).finally(() => {
-              that.confirmLoading = false;
-              that.close();
-            })
-          }else{
-             return false;
-          }
-        })
-      },
-      handleCancel () {
-        this.close()
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 },
       },
 
+      confirmLoading: false,
+      validatorRules: {
+        dictCode: [{ required: true, message: '请输入字典代码!' }],
+        dictDesc: [{ required: true, message: '请输入字典描述!' }],
+        type: [{ required: true, message: '请输入类型!' }],
+      },
+      url: {
+        add: '/deve/devRefDict/add',
+        edit: '/deve/devRefDict/edit',
+      },
     }
-  }
+  },
+  created() {},
+  methods: {
+    add() {
+      //初始化默认值
+      this.edit({})
+    },
+    edit(record) {
+      this.model = Object.assign({}, record)
+      console.log("edit log",record)
+
+      if (this.model.id) {
+        this.dictCodeDisabled = true
+      } else {
+        this.dictCodeDisabled = false
+      }
+      this.visible = true
+    },
+    close() {
+      this.$emit('close')
+      this.visible = false
+      this.$refs.form.clearValidate()
+    },
+    handleOk() {
+      const that = this
+      // 触发表单验证
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          that.confirmLoading = true
+          let httpurl = ''
+          let method = ''
+          if (!this.model.id) {
+            httpurl += this.url.add
+            method = 'post'
+          } else {
+            httpurl += this.url.edit
+            method = 'put'
+          }
+          httpAction(httpurl, this.model, method)
+            .then((res) => {
+              if (res.success) {
+                that.$message.success(res.message)
+                that.$emit('ok')
+              } else {
+                that.$message.warning(res.message)
+              }
+            })
+            .finally(() => {
+              that.confirmLoading = false
+              that.close()
+            })
+        } else {
+          return false
+        }
+      })
+    },
+    handleCancel() {
+      this.close()
+    },
+    moreWordInfo(wordList) {
+      let wordDescs = ''
+      for (var i = 0; i < wordList.length; i++) {
+        wordDescs += wordList[i].wordDesc
+      }
+      this.model.dictDesc = wordDescs
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>
-
 </style>

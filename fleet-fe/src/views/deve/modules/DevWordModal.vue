@@ -6,12 +6,14 @@
     :confirmLoading="confirmLoading"
     switchFullscreen
     @ok="handleOk"
+    :okButtonProps="{ class:{'jee-hidden': disableSubmit} }"
+
     @cancel="handleCancel"
     cancelText="关闭">
-
+    
     <a-spin :spinning="confirmLoading">
-      <a-form-model ref="form" :model="model" :rules="validatorRules">
-
+      <a-form-model ref="form" :model="model" :rules="validatorRules" >
+      
         <!-- <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="ver" label="版本">
           <a-input placeholder="请输入版本" v-model="model.ver" />
         </a-form-model-item>
@@ -19,7 +21,7 @@
           <a-input placeholder="请输入系统标识" v-model="model.sysId" />
         </a-form-model-item> -->
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="wordCode" label="词汇代码">
-          <a-input placeholder="请输入词汇代码" v-model="model.wordCode" />
+          <a-input placeholder="请输入词汇代码" v-model="model.wordCode" :disabled="wordCodeDisabled"/>
         </a-form-model-item>
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="wordDesc" label="词汇描述">
           <a-input placeholder="请输入词汇描述" v-model="model.wordDesc" />
@@ -36,7 +38,7 @@
         <a-form-model-item :labelCol="labelCol" :wrapperCol="wrapperCol" prop="remark" label="备注">
           <a-input placeholder="请输入备注" v-model="model.remark" />
         </a-form-model-item>
-
+		
       </a-form-model>
     </a-spin>
   </j-modal>
@@ -52,6 +54,8 @@
       return {
         title:"操作",
         visible: false,
+        disableSubmit: false,
+
         model: {},
         labelCol: {
           xs: { span: 24 },
@@ -61,7 +65,7 @@
           xs: { span: 24 },
           sm: { span: 16 },
         },
-
+        wordCodeDisabled: false,
         confirmLoading: false,
         validatorRules:{
         wordCode:[{ required: true, message: '请输入词汇代码!' }],
@@ -76,12 +80,17 @@
     },
     methods: {
       add () {
-        // 初始化默认值
+        //初始化默认值
         this.edit({});
       },
       edit (record) {
         this.model = Object.assign({}, record);
         this.visible = true;
+        if(this.model.id){
+          this.wordCodeDisabled = true;
+        }else{
+          this.wordCodeDisabled = false;
+        }
       },
       close () {
         this.$emit('close');
@@ -122,6 +131,7 @@
       handleCancel () {
         this.close()
       },
+
 
     }
   }

@@ -142,15 +142,7 @@
           </a-col>
           <a-col :span="12">选中值：{{ formData.selectPosition }}</a-col>
         </a-row>
-        <!-- 词汇选择 -->
-        <a-row :gutter="24">
-          <a-col :span="12">
-            <a-form-item label="选择词汇">
-              <f-select-word :buttons="false" v-model="formData.selectWord" />
-            </a-form-item>
-          </a-col>
-          <a-col :span="12">选中值：{{ formData.selectWord }}</a-col>
-        </a-row>
+
         <!-- 参考字典选择 -->
         <a-row :gutter="24">
           <a-col :span="12">
@@ -468,7 +460,6 @@
 <script>
 import JDictSelectTag from '../../components/dict/JDictSelectTag.vue'
 import JSelectDepart from '@/components/jeecgbiz/JSelectDepart'
-import FSelectWord from '@/components/deve/FSelectWord'
 import FSelectRefDict from '@/components/deve/FSelectRefDict'
 
 import FSelectDataDict from '@/components/deve/FSelectDataDict'
@@ -511,7 +502,6 @@ export default {
     JTreeDict,
     JDictSelectTag,
     JSelectDepart,
-    FSelectWord,
     JSelectUserByDep,
     JSelectMultiUser,
     JSelectRole,
