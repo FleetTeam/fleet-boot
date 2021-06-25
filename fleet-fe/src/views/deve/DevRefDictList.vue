@@ -26,7 +26,12 @@
           </a-col>
           <a-col :xl="6" :lg="7" :md="8" :sm="24">
             <a-form-item label="类型">
-              <j-dict-select-tag v-model="queryParam.type" title="类型" dictCode="ref_dict_type" placeholder="请选择类型" />
+              <j-dict-select-tag
+                v-model="queryParam.type"
+                title="类型"
+                dictCode="ref_dict_type"
+                placeholder="请选择类型"
+              />
             </a-form-item>
           </a-col>
           <template v-if="toggleSearchStatus">

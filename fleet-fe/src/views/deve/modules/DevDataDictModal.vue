@@ -70,7 +70,8 @@ import FSelectWords from '@/components/deve/FSelectWords'
 export default {
   name: 'DevDataDictModal',
   components: {
-    FSelectRefDict,FSelectWords
+    FSelectRefDict,
+    FSelectWords,
   },
   data() {
     return {

@@ -20,7 +20,7 @@ export default {
       settings: {
         name: '数据字典',
         displayKey: 'unitDataCode',
-        returnKeys: ['unitDataCode','unitDataDesc'],
+        returnKeys: ['unitDataCode', 'unitDataDesc'],
         listUrl: '/deve/devDataDict/list',
         multiple: false,
         placeholder: '请选择数据字典',
@@ -28,7 +28,7 @@ export default {
         queryParamText: '数据字典代码',
         columns: [
           { title: '数据字典代码', dataIndex: 'unitDataCode', align: 'center', width: '30%', widthRight: '70%' },
-          { title: '数据字典描述', dataIndex: 'unitDataDesc', align: 'center', width: '35%'},
+          { title: '数据字典描述', dataIndex: 'unitDataDesc', align: 'center', width: '35%' },
           // { title: '类型', dataIndex: 'type', align: 'center', width: '25%' },
           // { title: '长度', dataIndex: 'length', align: 'center', width: '25%' },
           // { title: '小数', dataIndex: 'point', align: 'center', width: '25%' }

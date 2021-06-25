@@ -20,7 +20,7 @@ export default {
       settings: {
         name: '参考字典',
         displayKey: 'dictCode',
-        returnKeys: ['dictCode','dictDesc'],
+        returnKeys: ['dictCode', 'dictDesc'],
         listUrl: '/deve/devRefDict/list',
         multiple: false,
         placeholder: '请选择参考字典',
@@ -28,7 +28,7 @@ export default {
         queryParamText: '字典代码',
         columns: [
           { title: '字典代码', dataIndex: 'dictCode', align: 'center', width: '30%', widthRight: '70%' },
-          { title: '字典描述', dataIndex: 'dictDesc', align: 'center', width: '35%'},
+          { title: '字典描述', dataIndex: 'dictDesc', align: 'center', width: '35%' },
           { title: '类型', dataIndex: 'type', align: 'center', width: '25%' },
           { title: '长度', dataIndex: 'length', align: 'center', width: '25%' },
           { title: '小数', dataIndex: 'point', align: 'center', width: '25%' },
@@ -51,7 +51,7 @@ export default {
         {
           key: 'point',
           label: '小数',
-        }
+        },
       ],
     }
   },

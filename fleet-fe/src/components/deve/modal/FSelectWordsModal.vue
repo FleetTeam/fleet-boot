@@ -42,10 +42,9 @@
       :columns="columns"
       :dataSource="dataSource"
       :pagination="ipagination"
-      :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange, onSelect: onSelect}"
+      :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange, onSelect: onSelect }"
       @change="handleTableChange"
     >
-
     </a-table>
   </a-modal>
 </template>
@@ -54,7 +53,7 @@
 import { filterObj } from '@/utils/util'
 import { pushIfNotExist } from '@/utils/util'
 
-import { getAction} from '@/api/manage'
+import { getAction } from '@/api/manage'
 
 export default {
   name: 'FSelectWordsModal',
@@ -64,26 +63,26 @@ export default {
       title: '选择词汇',
       queryParam: {},
       columns: [
-		   {
-            title: '词汇代码',
-            align:"center",
-            dataIndex: 'wordCode'
-           },
-		   {
-            title: '词汇描述',
-            align:"center",
-            dataIndex: 'wordDesc'
-           },
-		   {
-            title: '英文描述',
-            align:"center",
-            dataIndex: 'englishDesc'
-           },
-		   {
-            title: '词汇缩写',
-            align:"center",
-            dataIndex: 'abbreviate'
-           }
+        {
+          title: '词汇代码',
+          align: 'center',
+          dataIndex: 'wordCode',
+        },
+        {
+          title: '词汇描述',
+          align: 'center',
+          dataIndex: 'wordDesc',
+        },
+        {
+          title: '英文描述',
+          align: 'center',
+          dataIndex: 'englishDesc',
+        },
+        {
+          title: '词汇缩写',
+          align: 'center',
+          dataIndex: 'abbreviate',
+        },
       ],
       dataSource: [],
       ipagination: {
@@ -110,9 +109,7 @@ export default {
   created() {
     this.loadData()
   },
-     watch:{
-
-    }, 
+  watch: {},
   methods: {
     show(wordIds) {
       this.visible = true
@@ -128,7 +125,7 @@ export default {
     },
     edit(wordList, wordIds) {
       //控制台报错
-      console.log("edit input parm wordIds",wordIds)
+      console.log('edit input parm wordIds', wordIds)
       if (wordIds && wordIds.length > 0) {
         this.selectedRowKeys = wordIds.split(',')
       } else {
@@ -151,7 +148,7 @@ export default {
         this.ipagination.current = 1
       }
       let params = this.getQueryParams() //查询条件
-      getAction("/deve/devWord/list",params).then((res) => {
+      getAction('/deve/devWord/list', params).then((res) => {
         if (res.success) {
           this.dataSource = res.result.records
           this.ipagination.total = res.result.total
@@ -176,30 +173,29 @@ export default {
       }
       return str
     },
-    onSelectChange(selectedRowKeys,selectionRows) {
-      console.log("when change onSelectChange input parm!",selectedRowKeys,selectionRows)
-      console.log("when change onSelectChange global var before eval:",this.selectedRowKeys,this.selectionRows)
+    onSelectChange(selectedRowKeys, selectionRows) {
+      console.log('when change onSelectChange input parm!', selectedRowKeys, selectionRows)
+      console.log('when change onSelectChange global var before eval:', this.selectedRowKeys, this.selectionRows)
 
       this.selectedRowKeys = selectedRowKeys
-      //this.selectionRows = selectionRows  
+      //this.selectionRows = selectionRows
       // for (let data of selectionRows) {
       //     pushIfNotExist(this.selectionRows,data,'id')
-       
+
       // }
       // console.log("when change onSelectChange global var after eval:!",this.selectedRowKeys,this.selectionRows)
-
     },
     onSelect(record, selected) {
-      console.log("onSelect in ",record,selected,this.selectionRows)
-        if(selected == true ){
-          this.selectionRows.push(record);
-        }else {
-          this.selectionRows.forEach(function(item,index,arr){
-            if(item.id == record.id) {
-              arr.splice(index, 1);
-            }
-          })
-        }
+      console.log('onSelect in ', record, selected, this.selectionRows)
+      if (selected == true) {
+        this.selectionRows.push(record)
+      } else {
+        this.selectionRows.forEach(function (item, index, arr) {
+          if (item.id == record.id) {
+            arr.splice(index, 1)
+          }
+        })
+      }
     },
 
     searchReset() {
@@ -211,7 +207,7 @@ export default {
     },
     handleTableChange(pagination, filters, sorter) {
       //TODO 筛选
-      console.log("when your change handleTableChange",this.selectionRows)
+      console.log('when your change handleTableChange', this.selectionRows)
       if (Object.keys(sorter).length > 0) {
         this.isorter.column = sorter.field
         this.isorter.order = 'ascend' == sorter.order ? 'asc' : 'desc'
@@ -226,13 +222,13 @@ export default {
     },
 
     handleOk() {
-      let wordIds = ""
-      for(var i = 0;i<this.selectionRows.length;i++){
-        wordIds+=','+this.selectionRows[i].id
+      let wordIds = ''
+      for (var i = 0; i < this.selectionRows.length; i++) {
+        wordIds += ',' + this.selectionRows[i].id
       }
-      console.log("modal in wordIds:",wordIds.substring(1))
+      console.log('modal in wordIds:', wordIds.substring(1))
 
-      this.$emit('ok', this.selectionRows,wordIds.substring(1))
+      this.$emit('ok', this.selectionRows, wordIds.substring(1))
       this.handleCancel()
     },
     searchByquery() {

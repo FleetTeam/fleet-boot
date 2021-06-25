@@ -104,7 +104,7 @@ export default {
     },
     edit(record) {
       this.model = Object.assign({}, record)
-      console.log("edit log",record)
+      console.log('edit log', record)
 
       if (this.model.id) {
         this.dictCodeDisabled = true
