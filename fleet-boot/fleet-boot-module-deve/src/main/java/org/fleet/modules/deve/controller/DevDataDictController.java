@@ -12,6 +12,7 @@ import org.fleet.common.system.base.controller.FleetController;
 import org.fleet.common.system.query.QueryGenerator;
 import org.fleet.modules.deve.entity.DevDataDict;
 import org.fleet.modules.deve.service.IDevDataDictService;
+import org.fleet.modules.deve.vo.DevDataRefDictVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,6 +54,28 @@ public class DevDataDictController extends FleetController<DevDataDict, IDevData
         QueryWrapper<DevDataDict> queryWrapper = QueryGenerator.initQueryWrapper(devDataDict, req.getParameterMap());
         Page<DevDataDict> page = new Page<DevDataDict>(pageNo, pageSize);
         IPage<DevDataDict> pageList = devDataDictService.page(page, queryWrapper);
+        return Result.OK(pageList);
+    }
+
+    /**
+     * 分页列表查询包含参考字典属性
+     *
+     * @param devDataRefDictVo
+     * @param pageNo
+     * @param pageSize
+     * @param req
+     * @return
+     */
+    @AutoLog(value = "数据字典-分页列表查询参考字典属性")
+    @ApiOperation(value = "数据字典-分页列表查询参考字典属性", notes = "数据字典-分页列表查询参考字典属性")
+    @GetMapping(value = "/listAttr")
+    public Result<?> queryDataDictOfAttrList(DevDataRefDictVo devDataRefDictVo,
+                                             @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
+                                             @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize,
+                                             HttpServletRequest req) {
+        QueryWrapper<DevDataRefDictVo> queryWrapper = QueryGenerator.initQueryWrapper(devDataRefDictVo, req.getParameterMap());
+        Page<DevDataRefDictVo> page = new Page<DevDataRefDictVo>(pageNo, pageSize);
+        IPage<DevDataRefDictVo> pageList = devDataDictService.queryDataDictRefAttr(page, queryWrapper);
         return Result.OK(pageList);
     }
 

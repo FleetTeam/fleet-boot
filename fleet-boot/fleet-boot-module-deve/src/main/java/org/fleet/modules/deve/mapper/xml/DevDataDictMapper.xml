@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.fleet.modules.deve.mapper.DevDataDictMapper">
+    <resultMap id="devDataRefDict" type="org.fleet.modules.deve.vo.DevDataRefDictVo">
+        <id column="id" property="id"/>
+        <result column="ver" property="ver"/>
+        <result column="sys_id" property="sysId"/>
+        <result column="unit_data_code" property="unitDataCode"/>
+        <result column="unit_data_desc" property="unitDataDesc"/>
+        <result column="ref_dict" property="refDict"/>
+        <result column="status" property="status"/>
+        <result column="option_code" property="optionCode"/>
+        <result column="option_group" property="optionGroup"/>
+        <result column="option_ver" property="optionVer"/>
+        <result column="ctrl_status" property="ctrlStatus"/>
+        <result column="ver_no" property="verNo"/>
+        <result column="ver_status" property="verStatus"/>
+        <result column="check_user" property="checkUser"/>
+        <result column="remark" property="remark"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <!--参考字典属性-->
+        <result column="type" property="type"/>
+        <result column="length" property="length"/>
+        <result column="point" property="point"/>
+    </resultMap>
+    <select id="getDataDictAttr" parameterType="Object" resultType="org.fleet.modules.deve.vo.DevDataRefDictVo">
+        select a.id,a.ver,a.sys_id,a.unit_data_code,a.unit_data_desc,
+        a.ref_dict,a.status,a.option_code,a.option_group,a.option_ver,
+        a.ctrl_status,a.ver_no,a.ver_status,a.check_user,a.remark,
+        a.create_by,a.create_time,a.update_by,a.update_time,
+        b.type ,b.length ,b.point
+        from dev_data_dict a inner join dev_ref_dict b where a.ref_dict = b.dict_code
 
+        <if test=" ew.emptyOfWhere == false ">
+            AND ${ew.sqlSegment}
+        </if>
+
+    </select>
 </mapper>

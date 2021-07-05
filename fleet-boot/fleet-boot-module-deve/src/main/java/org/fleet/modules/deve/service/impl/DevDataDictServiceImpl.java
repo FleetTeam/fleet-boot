@@ -7,6 +7,7 @@ import org.fleet.modules.deve.entity.DevDataDict;
 import org.fleet.modules.deve.mapper.DevDataDictMapper;
 import org.fleet.modules.deve.service.IDevDataDictService;
 import org.fleet.modules.deve.vo.DevDataRefDictVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -19,9 +20,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  */
 @Service
 public class DevDataDictServiceImpl extends ServiceImpl<DevDataDictMapper, DevDataDict> implements IDevDataDictService {
+    @Autowired
+    private DevDataDictMapper devDataDictMapper;
 
     @Override
     public IPage<DevDataRefDictVo> queryDataDictRefAttr(Page<DevDataRefDictVo> page, QueryWrapper<DevDataRefDictVo> queryWrapper) {
-        return null;
+        return devDataDictMapper.getDataDictAttr(page, queryWrapper);
     }
 }

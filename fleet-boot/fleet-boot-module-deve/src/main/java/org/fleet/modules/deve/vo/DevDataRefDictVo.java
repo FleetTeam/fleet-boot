@@ -94,5 +94,17 @@ public class DevDataRefDictVo {
     /**
      * 参考字典属性
      */
-    private DevRefDict devRefDict;
+    /**
+     * 参考字典的数据类型
+     */
+    private String type;
+    /**
+     * 参考字典的长度
+     */
+    private java.lang.Integer length;
+    /**
+     * 参考字典小数位数
+     */
+    private java.lang.Integer point;
+
 }

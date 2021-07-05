@@ -21,7 +21,7 @@ export default {
         name: '数据字典',
         displayKey: 'unitDataCode',
         returnKeys: ['unitDataCode', 'unitDataDesc'],
-        listUrl: '/deve/devDataDict/list',
+        listUrl: '/deve/devDataDict/listAttr',
         multiple: false,
         placeholder: '请选择数据字典',
         queryParamCode: 'unitDataCode',
@@ -29,9 +29,9 @@ export default {
         columns: [
           { title: '数据字典代码', dataIndex: 'unitDataCode', align: 'center', width: '30%', widthRight: '70%' },
           { title: '数据字典描述', dataIndex: 'unitDataDesc', align: 'center', width: '35%' },
-          // { title: '类型', dataIndex: 'type', align: 'center', width: '25%' },
-          // { title: '长度', dataIndex: 'length', align: 'center', width: '25%' },
-          // { title: '小数', dataIndex: 'point', align: 'center', width: '25%' }
+          { title: '类型', dataIndex: 'type', align: 'center', width: '25%' },
+          { title: '长度', dataIndex: 'length', align: 'center', width: '25%' },
+          { title: '小数', dataIndex: 'point', align: 'center', width: '25%' }
         ],
       },
       // 多条件查询配置
@@ -40,18 +40,18 @@ export default {
           key: 'unitDataDesc',
           label: '数据字典描述',
         },
-        // {
-        //   key: 'type',
-        //   label: '类型',
-        // },
-        // {
-        //   key: 'length',
-        //   label: '长度',
-        // },
-        // {
-        //   key: 'point',
-        //   label: '小数',
-        // }
+        {
+          key: 'type',
+          label: '类型',
+        },
+        {
+          key: 'length',
+          label: '长度',
+        },
+        {
+          key: 'point',
+          label: '小数',
+        }
       ],
     }
   },
