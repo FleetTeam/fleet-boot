@@ -107,6 +107,11 @@ public class MockController {
         return readJson("classpath:org/fleet/modules/demo/mock/json/getCntrNoCountInfo.json");
     }
 
+    @GetMapping(value = "/report/getTubiao")
+    public String getTubiao() {
+        return readJson("classpath:org/fleet/modules/demo/mock/json/getTubiao.json");
+    }
+
     /**
      * 实时磁盘监控
      *
